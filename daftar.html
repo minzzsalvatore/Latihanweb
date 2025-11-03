@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Daftar - MinzzStore</title>
+<style>
+:root {
+  --bg:#04070d;
+  --accent:#009dff;
+  --card:#0a111b;
+  --text:#cfd9e8;
+  font-family:"Poppins",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);display:flex;align-items:center;justify-content:center;height:100vh}
+.register-box{background:var(--card);padding:30px 25px;border-radius:18px;box-shadow:0 0 25px rgba(0,157,255,.25);width:90%;max-width:400px;text-align:center}
+.register-box img{width:70px;margin-bottom:12px}
+.register-box h2{margin-bottom:20px;color:#fff}
+.register-box input{width:100%;padding:12px;margin:8px 0;background:#09121d;border:none;border-radius:10px;color:#fff;font-size:14px;outline:none}
+.register-box button{width:100%;padding:12px;margin-top:15px;background:linear-gradient(135deg,#00b7ff,#007bff);border:none;border-radius:10px;color:#fff;font-weight:700;cursor:pointer;transition:.3s}
+.register-box button:hover{transform:scale(1.05)}
+.register-box p{margin-top:15px;font-size:14px}
+.register-box a{color:var(--accent);text-decoration:none;font-weight:600}
+.alert{margin-top:10px;padding:10px;border-radius:10px;font-size:13px}
+.alert.success{background:rgba(0,255,100,.1);color:#4efc7c}
+.alert.error{background:rgba(255,0,0,.1);color:#ff6a6a}
+.alert.loading{background:rgba(0,157,255,.1);color:#00b7ff}
+</style>
+</head>
+<body>
+  <div class="register-box">
+    <img src="https://f.top4top.io/p_3592x38860.png" alt="Minzz Logo">
+    <h2>Buat Akun Baru</h2>
+    <form id="registerForm">
+      <input type="text" id="username" placeholder="Username" required>
+      <input type="password" id="password" placeholder="Password" required>
+      <input type="password" id="confirm" placeholder="Konfirmasi Password" required>
+      <button type="submit">Daftar Sekarang</button>
+    </form>
+    <div id="alertBox"></div>
+    <p>Sudah punya akun? <a href="login.html">Masuk</a></p>
+  </div>
+
+<script>
+document.getElementById("registerForm").addEventListener("submit", async (e)=>{
+  e.preventDefault();
+  const user=document.getElementById('username').value.trim();
+  const pass=document.getElementById('password').value.trim();
+  const confirm=document.getElementById('confirm').value.trim();
+  const alertBox=document.getElementById('alertBox');
+  alertBox.innerHTML="";
+
+  if(!user||!pass||!confirm){
+    alertBox.innerHTML='<div class="alert error">❌ Semua kolom wajib diisi!</div>';
+    return;
+  }
+  if(pass!==confirm){
+    alertBox.innerHTML='<div class="alert error">⚠️ Password tidak cocok!</div>';
+    return;
+  }
+
+  alertBox.innerHTML='<div class="alert loading">⏳ Sedang memproses...</div>';
+
+  try {
+    const res = await fetch("backend.php?action=register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username: user, password: pass })
+    });
+
+    const data = await res.json();
+    if (data.success) {
+      alertBox.innerHTML='<div class="alert success">✅ Pendaftaran berhasil! Mengalihkan ke login...</div>';
+      setTimeout(()=>location.href="login.html", 1500);
+    } else {
+      alertBox.innerHTML='<div class="alert error">❌ '+(data.message || 'Gagal mendaftar!')+'</div>';
+    }
+  } catch (err) {
+    alertBox.innerHTML='<div class="alert error">⚠️ Gagal konek ke server.</div>';
+  }
+});
+</script>
+</body>
+</html>

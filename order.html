@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Detail Pesanan — Selfbeauty</title>
+<style>
+body{background:#0d0f12;color:#fff;font-family:Inter,system-ui,sans-serif;padding:20px}
+.box{background:#171a1f;padding:20px;border-radius:14px;border:1px solid rgba(255,255,255,.1);max-width:500px;margin:auto}
+h2{font-size:20px;font-weight:900;margin-bottom:10px;text-align:center}
+.status{padding:8px 12px;border-radius:8px;font-weight:700;text-transform:capitalize;text-align:center}
+.success{background:#203126;color:#3ad07e}
+.process{background:#2a2736;color:#ffd86a}
+.failed{background:#3a1a1a;color:#ff5c5c}
+.label{color:#9aa4b2}
+.row{display:flex;justify-content:space-between;margin:8px 0}
+</style>
+</head>
+<body>
+<div class="box">
+  <h2>Detail Transaksi</h2>
+  <div id="statusBox" class="status process">Loading...</div>
+  <div class="row"><span class="label">Invoice</span><span id="invoice">-</span></div>
+  <div class="row"><span class="label">Produk</span><span id="product">-</span></div>
+  <div class="row"><span class="label">Harga</span><span id="price">-</span></div>
+  <div class="row"><span class="label">Waktu</span><span id="time">-</span></div>
+</div>
+<script>
+const API_KEY="q3EdSMpHrXGrd6qzp3kh";
+const DETAIL_URL="https://www.synnmlbb.com/api/v1/detail-transaction";
+const qs=new URLSearchParams(location.search);
+const invoice=qs.get("invoice");
+async function loadDetail(){
+ if(!invoice){document.getElementById('statusBox').textContent='Invoice tidak ditemukan';return;}
+ const res=await fetch(DETAIL_URL,{method:'POST',headers:{'Content-Type':'application/json','Authorization':API_KEY},body:JSON.stringify({invoice})});
+ const data=await res.json();
+ if(!data.success){document.getElementById('statusBox').textContent=data.message||'Gagal';return;}
+ const tr=data.data.transaction;
+ document.getElementById('invoice').textContent=tr.invoice;
+ document.getElementById('product').textContent=tr.product;
+ document.getElementById('price').textContent='Rp '+tr.price;
+ document.getElementById('time').textContent=tr.processed_at;
+ const statusBox=document.getElementById('statusBox');
+ statusBox.textContent=tr.status;
+ if(tr.status.toLowerCase().includes('success'))statusBox.className='status success';
+ else if(tr.status.toLowerCase().includes('process'))statusBox.className='status process';
+ else statusBox.className='status failed';
+}
+loadDetail();
+</script>
+</body>
+</html>

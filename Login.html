@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Login - MinzzStore</title>
+<style>
+:root {
+  --bg:#04070d;
+  --accent:#009dff;
+  --card:#0a111b;
+  --text:#cfd9e8;
+  font-family:"Poppins",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);display:flex;align-items:center;justify-content:center;height:100vh}
+.login-box{background:var(--card);padding:30px 25px;border-radius:18px;box-shadow:0 0 25px rgba(0,157,255,.25);width:90%;max-width:400px;text-align:center}
+.login-box img{width:70px;margin-bottom:12px}
+.login-box h2{margin-bottom:20px;color:#fff}
+.login-box input{width:100%;padding:12px;margin:8px 0;background:#09121d;border:none;border-radius:10px;color:#fff;font-size:14px;outline:none}
+.login-box button{width:100%;padding:12px;margin-top:15px;background:linear-gradient(135deg,#00b7ff,#007bff);border:none;border-radius:10px;color:#fff;font-weight:700;cursor:pointer;transition:.3s}
+.login-box button:hover{transform:scale(1.05)}
+.login-box p{margin-top:15px;font-size:14px}
+.login-box a{color:var(--accent);text-decoration:none;font-weight:600}
+.alert{margin-top:10px;padding:10px;border-radius:10px;font-size:13px}
+.alert.success{background:rgba(0,255,100,.1);color:#4efc7c}
+.alert.error{background:rgba(255,0,0,.1);color:#ff6a6a}
+</style>
+</head>
+<body>
+  <div class="login-box">
+    <img src="https://f.top4top.io/p_3592x38860.png" alt="Minzz Logo">
+    <h2>Masuk ke MinzzStore</h2>
+    <input type="text" id="username" placeholder="Username" required>
+    <input type="password" id="password" placeholder="Password" required>
+    <button onclick="login()">Masuk</button>
+    <div id="alertBox"></div>
+    <p>Belum punya akun? <a href="daftar.html">Daftar</a></p>
+  </div>
+
+<script>
+function login(){
+  const user=document.getElementById('username').value.trim();
+  const pass=document.getElementById('password').value.trim();
+  const alertBox=document.getElementById('alertBox');
+  alertBox.innerHTML="";
+
+  if(!user||!pass){
+    alertBox.innerHTML='<div class="alert error">❌ Semua kolom wajib diisi!</div>';
+    return;
+  }
+
+  fetch('backend.php?action=login',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({username:user,password:pass})
+  })
+  .then(r=>r.json())
+  .then(d=>{
+    if(d.success){
+      alertBox.innerHTML='<div class="alert success">✅ Login berhasil! Mengalihkan...</div>';
+      setTimeout(()=>location.href='index.html',1500);
+    }else{
+      alertBox.innerHTML='<div class="alert error">❌ '+(d.message||'Username / Password salah')+'</div>';
+    }
+  })
+  .catch(()=>alertBox.innerHTML='<div class="alert error">⚠️ Gagal terhubung ke server.</div>');
+}
+</script>
+</body>
+</html>

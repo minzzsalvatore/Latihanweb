@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>MinzzStore - Top Up Game</title>
+<style>
+:root {
+  --bg:#04070d;
+  --accent:#009dff;
+  --card:#0a111b;
+  font-family:"Poppins",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:#fff;overflow-x:hidden;scroll-behavior:smooth}
+header{display:flex;justify-content:space-between;align-items:center;padding:18px 16px;position:sticky;top:0;z-index:50;background:rgba(5,8,14,.9);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.06)}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;color:#cfd9e8}
+.logo img{width:44px;height:44px;border-radius:12px;box-shadow:0 0 12px rgba(0,157,255,.5)}
+.menu-btn{font-size:26px;cursor:pointer;color:#fff}
+.nav-backdrop{position:fixed;inset:0;background:rgba(0,0,0,0.5);opacity:0;pointer-events:none;transition:.25s;z-index:40}
+.nav-backdrop.active{opacity:1;pointer-events:auto}
+.nav-menu{position:fixed;top:0;left:-100%;width:80%;max-width:360px;height:100%;background:#0b1118;transition:.3s;z-index:50;padding-top:20px;display:flex;flex-direction:column}
+.nav-menu.active{left:0}
+.nav-header{display:flex;align-items:center;gap:10px;padding:0 18px 15px;border-bottom:1px solid rgba(255,255,255,0.05)}
+.nav-header img{width:44px;height:44px;border-radius:10px;box-shadow:0 0 10px rgba(0,157,255,.5)}
+.nav-header span{font-size:18px;font-weight:700;color:#fff}
+.nav-item{padding:13px 18px;color:#cfd9e8;text-decoration:none;transition:.3s;font-size:15px;display:flex;align-items:center;gap:8px}
+.nav-item:hover{background:rgba(255,255,255,.06);color:#fff}
+.banner{width:100%;height:160px;border-radius:18px;background:url('https://i.top4top.io/p_35799fodf0.jpg')center/cover no-repeat;margin:18px auto;box-shadow:0 0 30px rgba(0,157,255,.25)}
+.search{display:flex;align-items:center;background:var(--card);padding:12px 18px;border-radius:50px;margin:14px 18px;box-shadow:inset 0 0 10px rgba(0,157,255,.2)}
+.search input{flex:1;background:none;border:none;outline:none;color:#fff;font-size:15px}
+.popular-section{background:linear-gradient(180deg,#06101d,#02060c);padding:20px;border-radius:20px;margin:0 18px 25px;box-shadow:0 0 25px rgba(0,157,255,.15)}
+.popular-section h2{color:#fff;font-size:20px;font-weight:700;margin-bottom:8px}
+.popular-section p{color:#9cb1d5;font-size:14px;margin-bottom:16px}
+.popular-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.pop-card{display:flex;flex-direction:column;background:linear-gradient(135deg,#0b1320,#08111c);border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,0.05);transition:0.3s;text-decoration:none;color:#fff;height:175px}
+.pop-card:hover{transform:translateY(-3px);box-shadow:0 0 10px rgba(0,157,255,.4)}
+.pop-img{width:100%;height:115px;background-size:cover;background-position:center}
+.pop-info{padding:8px;text-align:center}
+.pop-info h3{font-size:12px;font-weight:700;margin-bottom:4px}
+.pop-info p{font-size:10px;color:#8fa4be;margin-top:4px}
+.category-bar{display:flex;overflow-x:auto;gap:10px;margin:18px;padding-bottom:6px;scrollbar-width:none}
+.category-bar::-webkit-scrollbar{display:none}
+.cat-btn{flex:0 0 auto;background:#0e1723;border:none;color:#fff;padding:10px 18px;border-radius:12px;font-weight:600;cursor:pointer;transition:.3s;white-space:nowrap}
+.cat-btn.active,.cat-btn:hover{background:var(--accent);box-shadow:0 0 10px rgba(0,157,255,.4)}
+.games-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:14px;margin:0 18px 30px}
+.game-box{display:block;position:relative;border-radius:14px;overflow:hidden;text-decoration:none;color:#fff;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05);transition:.3s}
+.game-box:hover{transform:translateY(-4px);box-shadow:0 0 20px rgba(0,157,255,.3)}
+.thumb-vertical{width:100%;aspect-ratio:9/13;background-size:cover;background-position:center}
+.game-info{text-align:center;padding:8px 0 12px}
+.game-info h4{font-size:12px;color:#fff;margin-bottom:4px}
+.game-info p{font-size:10px;color:#8fa4be;margin-top:4px}
+footer{background:#090b10;text-align:center;padding:45px 20px;color:#cfd6df}
+.footer-center{display:flex;flex-direction:column;align-items:center;gap:14px}
+.footer-logo{width:110px;margin-bottom:10px}
+footer p{font-size:14px;color:#a9b7c9;max-width:320px;line-height:1.6}
+.footer-socials{display:flex;align-items:center;gap:8px;justify-content:center;margin-top:5px}
+.footer-link{color:#009dff;font-weight:600;text-decoration:none;transition:0.3s}
+.footer-link:hover{color:#33b8ff;text-shadow:0 0 8px #00aaff}
+.footer-copy{border-top:1px solid rgba(255,255,255,0.1);margin-top:20px;padding-top:10px;font-size:13px;color:#8ea4c2}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo"><img src="https://f.top4top.io/p_3592x38860.png" alt="logo"><span>Minzz Salvatore</span></div>
+  <div class="menu-btn" onclick="toggleMenu()">☰</div>
+</header>
+
+<div class="nav-backdrop" id="navBackdrop" onclick="toggleMenu()"></div>
+<div class="nav-menu" id="navMenu">
+  <div class="nav-header"><img src="https://f.top4top.io/p_3592x38860.png"><span>MinzzStore</span></div>
+  <a href="index.html" class="nav-item">🏠 Beranda</a>
+  <a href="status.html" class="nav-item">🔍 Cek Transaksi</a>
+  <a href="#" class="nav-item">🏆 Leaderboard</a>
+  <div class="nav-divider"></div>
+  <a href="login.html" class="nav-item">🔑 Masuk</a>
+  <a href="daftar.html" class="nav-item">👤 Daftar</a>
+</div>
+
+<main>
+  <div class="banner"></div>
+  <div class="search">
+    <input id="searchInput" type="search" placeholder="Cari produk..." oninput="searchProduct()" />
+  </div>
+
+  <section class="popular-section">
+    <h2>🔥 PALING POPULER!</h2>
+    <p>Produk paling laku di MinzzStore!</p>
+    <div class="popular-grid" id="popularGrid"></div>
+  </section>
+
+  <div class="category-bar">
+    <button class="cat-btn active" onclick="filterCategory('topup',event)">Topup Game</button>
+    <button class="cat-btn" onclick="filterCategory('mlbb',event)">Specialist MLBB</button>
+    <button class="cat-btn" onclick="filterCategory('via',event)">Via Login</button>
+    <button class="cat-btn" onclick="filterCategory('apps',event)">Apps Premium</button>
+  </div>
+
+  <div class="games-grid" id="productGrid"></div>
+</main>
+
+<footer>
+  <div class="footer-center">
+    <img src="https://f.top4top.io/p_3592x38860.png" alt="Minzz Logo" class="footer-logo">
+    <p>Supplier Top-Up Game Online termurah, proses cepat, dan open 24 jam.</p>
+    <div class="footer-socials">
+      <a href="#" class="footer-link">WhatsApp</a><span>|</span>
+      <a href="#" class="footer-link">Instagram</a><span>|</span>
+      <a href="#" class="footer-link">TikTok</a>
+    </div>
+    <div class="footer-copy">© 2025 Minzz Salvatore. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+function toggleMenu(){
+  const m=document.getElementById("navMenu");
+  const b=document.getElementById("navBackdrop");
+  const a=m.classList.toggle("active");
+  b.classList.toggle("active",a);
+}
+
+const placeholder="https://d.top4top.io/p_3592ov5d30.png";
+const popular=[
+{name:"MLBB - Malaysia 2",pub:"Moonton",img:placeholder,link:"mlmy.html"},
+{name:"MLBB - Indonesia 3",pub:"Moonton",img:placeholder,link:"mlid.html"},
+{name:"Free Fire (SG & MY)",pub:"Garena",img:placeholder,link:"ffs2.html"},
+{name:"PUBG Mobile - Global",pub:"Tencent Games",img:placeholder,link:"pubg.html"}
+];
+
+const products={
+topup:[
+{name:"CODMY",pub:"Activision",img:placeholder,link:"codmy.html"},
+{name:"EA FC",pub:"EA Sports",img:placeholder,link:"eafc.html"},
+{name:"Free Fire Indonesia",pub:"Garena",img:placeholder,link:"ffid.html"},
+{name:"Free Fire (SG & MY)",pub:"Garena",img:placeholder,link:"ffs2.html"},
+{name:"Genshin Impact",pub:"HoYoverse",img:placeholder,link:"genshin.html"},
+{name:"Honor Of Kings",pub:"Tencent",img:placeholder,link:"mlid.php"},
+{name:"Marvel Rivals",pub:"NetEase",img:placeholder,link:"marvel.html"},
+{name:"Magic Chess Go Go",pub:"Moonton",img:placeholder,link:"magicchess.html"},
+{name:"PUBG Mobile",pub:"Tencent Games",img:placeholder,link:"pubg.html"},
+{name:"Star Rail",pub:"HoYoverse",img:placeholder,link:"hsr.html"},
+{name:"Valorant Malaysia",pub:"Riot Games",img:placeholder,link:"valorant.html"},
+{name:"Wild Rift",pub:"Riot Games",img:placeholder,link:"wildrift.html"},
+{name:"Wuthering Waves",pub:"Kuro Games",img:placeholder,link:"wuthering.html"}
+],
+mlbb:[
+{name:"MLMY2",pub:"Moonton",img:placeholder,link:"mlmy.html"},
+{name:"MLMY3",pub:"Moonton",img:placeholder,link:"mlmy3.html"},
+{name:"MLMY6",pub:"Moonton",img:placeholder,link:"mlmy6.html"},
+{name:"MLID",pub:"Moonton",img:placeholder,link:"mlid.html"},
+{name:"MLPH",pub:"Moonton",img:placeholder,link:"mlph.html"},
+{name:"MLGlobal",pub:"Moonton",img:placeholder,link:"mlglobal.html"},
+{name:"ML Brazil",pub:"Moonton",img:placeholder,link:"mlbrazil.html"},
+{name:"Roomtour",pub:"Moonton",img:placeholder,link:"roomtour.html"},
+{name:"Starlight",pub:"Moonton",img:placeholder,link:"starlight.html"},
+{name:"Joki MLBB",pub:"Moonton",img:placeholder,link:"jokimlbb.html"}
+],
+via:[
+{name:"Login Moonton",pub:"Moonton",img:placeholder,link:"loginmoonton.html"},
+{name:"Login Garena",pub:"Garena",img:placeholder,link:"logingarena.html"}
+],
+apps:[
+{name:"Netflix Premium",pub:"Netflix",img:placeholder,link:"netflix.html"},
+{name:"Spotify Premium",pub:"Spotify",img:placeholder,link:"spotify.html"},
+{name:"Canva Pro",pub:"Canva Pty Ltd",img:placeholder,link:"canva.html"},
+{name:"CapCut Pro",pub:"Bytedance",img:placeholder,link:"capcut.html"},
+{name:"Disney+ Hotstar",pub:"Disney",img:placeholder,link:"disney.html"},
+{name:"HBO GO",pub:"Warner Bros",img:placeholder,link:"hbogo.html"},
+{name:"Viu Premium",pub:"PCCW Media",img:placeholder,link:"viu.html"},
+{name:"Apple Music",pub:"Apple",img:placeholder,link:"applemusic.html"},
+{name:"WeTV VIP",pub:"Tencent Video",img:placeholder,link:"wetv.html"},
+{name:"YouTube Premium",pub:"Google",img:placeholder,link:"youtube.html"}
+]};
+
+function renderPopular(){
+  const grid=document.getElementById("popularGrid");
+  grid.innerHTML="";
+  popular.forEach(p=>{
+    grid.innerHTML+=`
+    <a href="${p.link}" class="pop-card">
+      <div class="pop-img" style="background-image:url('${p.img}')"></div>
+      <div class="pop-info">
+        <h3>${p.name}</h3>
+        <p>${p.pub}</p>
+      </div>
+    </a>`;
+  });
+}
+
+function renderProducts(cat){
+  const grid=document.getElementById("productGrid");
+  grid.innerHTML="";
+  products[cat].forEach(p=>{
+    grid.innerHTML+=`
+      <a href="${p.link}" class="game-box">
+        <div class="thumb-vertical" style="background-image:url('${p.img}')"></div>
+        <div class="game-info"><h4>${p.name}</h4><p>${p.pub}</p></div>
+      </a>`;
+  });
+}
+
+function filterCategory(cat,e){
+  document.querySelectorAll(".cat-btn").forEach(b=>b.classList.remove("active"));
+  e.target.classList.add("active");
+  renderProducts(cat);
+}
+
+function searchProduct(){
+  const q=document.getElementById("searchInput").value.toLowerCase();
+  const active=document.querySelector(".cat-btn.active").textContent.toLowerCase();
+  let cat="topup";
+  if(active.includes("mlbb"))cat="mlbb";
+  else if(active.includes("via"))cat="via";
+  else if(active.includes("apps"))cat="apps";
+  const filtered=products[cat].filter(p=>p.name.toLowerCase().includes(q)||p.pub.toLowerCase().includes(q));
+  const grid=document.getElementById("productGrid");
+  grid.innerHTML="";
+  filtered.forEach(p=>{
+    grid.innerHTML+=`
+      <a href="${p.link}" class="game-box">
+        <div class="thumb-vertical" style="background-image:url('${p.img}')"></div>
+        <div class="game-info"><h4>${p.name}</h4><p>${p.pub}</p></div>
+      </a>`;
+  });
+}
+
+renderPopular();
+renderProducts('topup');
+</script>
+<script>
+// === Integrasi Backend PHP ke Index ===
+
+// Panggil status login dari backend.php
+fetch('backend.php?action=checkLogin')
+  .then(res => res.json())
+  .then(data => {
+    if (data.loggedIn) {
+      // Hapus tombol login & daftar
+      document.querySelectorAll('.nav-item[href="login.html"], .nav-item[href="daftar.html"]').forEach(el => el.remove());
+
+      // Tambah menu logout
+      const menu = document.getElementById('navMenu');
+      const logout = document.createElement('a');
+      logout.href = "#";
+      logout.className = "nav-item";
+      logout.textContent = "🚪 Logout (" + data.username + ")";
+      logout.onclick = () => {
+        fetch('backend.php?action=logout')
+          .then(() => location.reload());
+      };
+      menu.appendChild(logout);
+    }
+  })
+  .catch(() => console.warn('⚠️ Backend tidak terhubung.'));
+</script>
+</body>
+</html>
+</body>
+</html>
