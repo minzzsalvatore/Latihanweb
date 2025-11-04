@@ -15,44 +15,20 @@
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:var(--bg);color:var(--text);overflow-x:hidden}
 header{display:flex;align-items:center;justify-content:space-between;background:#0a131d;padding:14px 16px;position:sticky;top:0;z-index:100;border-bottom:1px solid rgba(255,255,255,.08)}
-.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px;position:relative;overflow:hidden}
-.logo img{width:42px;height:42px;border-radius:10px}
+.logo{font-weight:700;font-size:20px;color:#00bfff;position:relative;overflow:hidden;white-space:nowrap;border-right:3px solid #00bfff;width:15ch;animation:typing 3s steps(15,end) infinite alternate,glow 2s ease-in-out infinite;}
+@keyframes typing{
+  0%{width:0ch}
+  100%{width:15ch}
+}
+@keyframes glow{
+  0%,100%{text-shadow:0 0 5px #00bfff,0 0 15px #00bfff,0 0 30px #009dff;}
+  50%{text-shadow:0 0 10px #00ffff,0 0 25px #00eaff,0 0 45px #00d5ff;}
+}
 .header-right{display:flex;align-items:center;gap:10px}
 .icon-btn{width:36px;height:36px;background:#111d2a;border:none;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px;cursor:pointer;transition:.3s}
 .icon-btn:hover{background:#12293f}
 
-/* ======== Animasi Logo Neon ======== */
-.logo span{
-  color:#00bfff;
-  font-weight:700;
-  letter-spacing:1px;
-  position:relative;
-  text-shadow:
-    0 0 5px #00bfff,
-    0 0 10px #00bfff,
-    0 0 20px #00bfff,
-    0 0 40px #00bfff;
-  animation: glow 2.5s ease-in-out infinite, shine 4s linear infinite;
-}
-@keyframes glow{
-  0%,100%{opacity:0.9;text-shadow:0 0 5px #009dff,0 0 15px #00bfff,0 0 30px #00aaff;}
-  50%{opacity:1;text-shadow:0 0 10px #00e0ff,0 0 25px #00ffff,0 0 45px #00e0ff;}
-}
-.logo::after{
-  content:"";
-  position:absolute;
-  top:0;left:-75%;
-  width:50%;height:100%;
-  background:linear-gradient(120deg,transparent,rgba(255,255,255,0.4),transparent);
-  animation: glare 4s infinite linear;
-}
-@keyframes glare{
-  0%{left:-75%;}
-  50%{left:125%;}
-  100%{left:125%;}
-}
-
-/* ======== Menu dan Layout ======== */
+/* Menu samping */
 .nav-menu{position:fixed;top:0;right:-100%;width:75%;max-width:320px;height:100%;background:#0b141d;padding:60px 20px;transition:.3s;z-index:200;display:flex;flex-direction:column;gap:16px}
 .nav-menu.active{right:0}
 .nav-menu a{color:#eaf4ff;text-decoration:none;padding:10px 14px;border-radius:8px;background:rgba(255,255,255,.03);transition:.3s}
@@ -60,10 +36,11 @@ header{display:flex;align-items:center;justify-content:space-between;background:
 .nav-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;z-index:150}
 .nav-backdrop.active{display:block}
 
+/* Banner */
 .banner{margin:15px auto;border-radius:16px;overflow:hidden;width:95%;max-width:1000px}
 .banner img{width:100%;border-radius:16px}
 
-/* kategori */
+/* Kategori */
 .category-bar{display:flex;gap:10px;overflow-x:auto;margin:16px;padding:10px 6px;scrollbar-width:none}
 .category-bar::-webkit-scrollbar{display:none}
 .cat-btn{flex:0 0 auto;background:#0f1a28;border:none;color:#fff;padding:10px 18px;border-radius:10px;font-weight:600;cursor:pointer;transition:.3s}
@@ -79,7 +56,7 @@ header{display:flex;align-items:center;justify-content:space-between;background:
 .product-card h4{text-align:center;font-size:13px;margin:5px 0 3px}
 .product-card p{text-align:center;font-size:11px;color:#9cb1d0;margin-bottom:6px}
 
-/* artikel */
+/* Artikel */
 .article-section{background:#0c1620;padding:25px 16px;border-radius:18px;margin:30px auto;max-width:1000px}
 .article-section h2{color:#00aaff;font-size:20px;margin-bottom:8px;text-align:center}
 .article-section p{text-align:center;color:#9bb1c9;margin-bottom:25px}
@@ -90,14 +67,14 @@ header{display:flex;align-items:center;justify-content:space-between;background:
 .article-card h3{font-size:14px;margin-bottom:6px}
 .article-card small{color:#9cb3d0;font-size:12px}
 
-/* footer */
+/* Footer */
 footer{background:#090f16;padding:40px 16px;text-align:center;color:#a9b9c9;margin-top:40px}
 .footer-logo{width:100px;margin-bottom:12px}
 footer p{font-size:13px;line-height:1.6;max-width:380px;margin:auto;margin-bottom:12px}
 .footer-links a{color:#00aaff;text-decoration:none;margin:0 6px;font-size:13px}
 .footer-links a:hover{text-decoration:underline}
 
-/* search */
+/* Search popup */
 .search-popup{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.9);display:none;flex-direction:column;align-items:center;padding-top:70px;z-index:250}
 .search-popup.active{display:flex}
 .search-input{width:90%;max-width:400px;padding:10px 14px;border:none;border-radius:10px;font-size:15px;background:#0e1824;color:#fff}
@@ -110,7 +87,7 @@ footer p{font-size:13px;line-height:1.6;max-width:380px;margin:auto;margin-botto
 <body>
 
 <header>
-  <div class="logo"><img src="https://f.top4top.io/p_3592x38860.png"><span>Minzz Salvatore!</span></div>
+  <div class="logo">Minzz Salvatore</div>
   <div class="header-right">
     <button class="icon-btn" onclick="toggleSearch()">🔍</button>
     <button class="icon-btn" onclick="toggleMenu()">☰</button>
@@ -138,7 +115,7 @@ footer p{font-size:13px;line-height:1.6;max-width:380px;margin:auto;margin-botto
   <button class="cat-btn" onclick="document.getElementById('popular').scrollIntoView({behavior:'smooth'})">🔥 Popular</button>
   <button class="cat-btn" onclick="document.getElementById('topup').scrollIntoView({behavior:'smooth'})">💎 Topup Game</button>
   <button class="cat-btn" onclick="document.getElementById('apps').scrollIntoView({behavior:'smooth'})">📱 Apps Premium</button>
-  <button class="cat-btn" onclick="document.getElementById('mlbb').scrollIntoView({behavior:'smooth'})">⚔️ Mobile Legends Services</button>
+  <button class="cat-btn" onclick="document.getElementById('mlbb').scrollIntoView({behavior:'smooth'})">⚔️ MLBB Services</button>
 </div>
 
 <section class="section" id="popular">
@@ -195,57 +172,6 @@ function toggleMenu(){
 function toggleSearch(){
   document.getElementById("searchPopup").classList.toggle("active");
   document.getElementById("searchInput").focus();
-}
-const products=[
-  {name:"Mobile Legends",pub:"Moonton",img:"https://files.catbox.moe/nv79jx.webp",link:"mlid.html"},
-  {name:"Free Fire",pub:"Garena",img:"https://files.catbox.moe/jyjx6a.webp",link:"ff.html"},
-  {name:"PUBG Mobile",pub:"Tencent",img:"https://files.catbox.moe/jhpfey.webp",link:"pubg.html"},
-  {name:"Genshin Impact",pub:"HoYoverse",img:"https://files.catbox.moe/oejgi0.webp",link:"genshin.html"},
-  {name:"Valorant",pub:"Riot Games",img:"https://files.catbox.moe/lkbxjt.webp",link:"valorant.html"},
-  {name:"COD Mobile",pub:"Activision",img:"https://files.catbox.moe/jvjfbq.webp",link:"cod.html"},
-  {name:"Wild Rift",pub:"Riot Games",img:"https://files.catbox.moe/q2ugsl.webp",link:"wildrift.html"},
-  {name:"Arena Breakout",pub:"Tencent",img:"https://files.catbox.moe/vqft9s.webp",link:"arena.html"},
-  {name:"Star Rail",pub:"HoYoverse",img:"https://files.catbox.moe/oejgi0.webp",link:"hsr.html"}
-];
-const popular=products.slice(0,6);
-const topup=products.slice(0,9);
-const apps=[
-  {name:"Netflix Premium",pub:"Netflix",img:"https://files.catbox.moe/mm6s32.jpg",link:"netflix.html"},
-  {name:"Spotify Premium",pub:"Spotify",img:"https://files.catbox.moe/ebukmh.jpg",link:"spotify.html"},
-  {name:"Canva Pro",pub:"Canva",img:"https://files.catbox.moe/vacd5x.jpg",link:"canva.html"},
-  {name:"YouTube Premium",pub:"Google",img:"https://files.catbox.moe/ocmwli.jpg",link:"youtube.html"},
-  {name:"Apple Music",pub:"Apple",img:"https://files.catbox.moe/ba3ran.jpg",link:"apple.html"},
-  {name:"Disney+ Hotstar",pub:"Disney",img:"https://files.catbox.moe/5clwe3.jpg",link:"disney.html"},
-  {name:"HBO GO",pub:"Warner Bros",img:"https://files.catbox.moe/lg9qwd.jpg",link:"hbogo.html"},
-  {name:"Viu Premium",pub:"PCCW",img:"https://files.catbox.moe/10eyau.jpg",link:"viu.html"},
-  {name:"WeTV VIP",pub:"Tencent",img:"https://files.catbox.moe/7avu4z.jpg",link:"wetv.html"},
-  {name:"CapCut Pro",pub:"Bytedance",img:"https://files.catbox.moe/34unzv.jpg",link:"capcut.html"}
-];
-const mlbb=[
-  {name:"Joki MLBB",pub:"Moonton",img:"https://files.catbox.moe/h1bm8u.webp",link:"joki.html"},
-  {name:"Squad Verified",pub:"Moonton",img:"https://files.catbox.moe/q2ugsl.webp",link:"squad.html"},
-  {name:"Room Tournament",pub:"Moonton",img:"https://files.catbox.moe/4g31mr.webp",link:"room.html"},
-  {name:"Starlight Gift",pub:"Moonton",img:"https://files.catbox.moe/tb9hy3.webp",link:"starlight.html"},
-  {name:"Account Bind",pub:"Moonton",img:"https://files.catbox.moe/h1bm8u.webp",link:"bind.html"}
-];
-function renderList(arr,id){
-  const grid=document.getElementById(id);
-  arr.forEach(p=>{
-    grid.innerHTML+=`<a href="${p.link}" class="product-card"><img src="${p.img}"><h4>${p.name}</h4><p>${p.pub}</p></a>`;
-  });
-}
-renderList(popular,"popularGrid");
-renderList(topup,"topupGrid");
-renderList(apps,"appsGrid");
-renderList(mlbb,"mlbbGrid");
-
-function searchProducts(){
-  const q=document.getElementById("searchInput").value.toLowerCase();
-  const r=document.getElementById("searchResults");
-  r.innerHTML="";
-  [...popular,...topup,...apps,...mlbb].filter(p=>p.name.toLowerCase().includes(q)).forEach(p=>{
-    r.innerHTML+=`<a href="${p.link}" class="search-item"><img src="${p.img}"><div><strong>${p.name}</strong><br><small>${p.pub}</small></div></a>`;
-  });
 }
 </script>
 </body>
