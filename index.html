@@ -114,12 +114,6 @@ footer p{font-size:13px;line-height:1.6;max-width:380px;margin:auto;margin-botto
   <a href="#">⚔️ Winrate</a>
 </div>
 
-<div class="search-popup" id="searchPopup">
-  <button class="close-btn" onclick="toggleSearch()">✖</button>
-  <input type="text" class="search-input" id="searchInput" placeholder="Cari produk..." oninput="searchProducts()">
-  <div class="search-results" id="searchResults"></div>
-</div>
-
 <div class="banner"><img src="https://i.top4top.io/p_35799fodf0.jpg" alt="Promo"></div>
 
 <div class="category-bar">
@@ -147,26 +141,6 @@ footer p{font-size:13px;line-height:1.6;max-width:380px;margin:auto;margin-botto
 <section class="section" id="mlbb">
   <h2>⚔️ MOBILE LEGENDS SERVICES</h2>
   <div class="scroll-grid" id="mlbbGrid"></div>
-</section>
-
-<section class="article-section" id="artikel">
-  <h2>📰 Artikel & Berita Game</h2>
-  <p>Dapatkan panduan dan update terbaru seputar dunia game!</p>
-  <div class="article-slider">
-    <a href="zilong.html" class="article-card">
-      <img src="https://files.catbox.moe/b2c3j7.jpeg">
-      <div class="info"><h3>Guide Zilong ML: Build & Counter Terbaru</h3><small>Redaksi • 2025</small><p>Panduan build terbaru dan counter terbaik untuk Zilong.</p></div>
-    </a>
-    <a href="ml-guide2.html" class="article-card">
-      <img src="https://i.ibb.co/TBRbJcg/guide2.jpg">
-      <div class="info"><h3>Guide Alucard ML: Build Paling Sakit 2025</h3><small>Redaksi • 2025</small><p>Build dan combo terbaik hero Alucard untuk season baru.</p></div>
-    </a>
-    <a href="hanabi.html" class="article-card">
-      <img src="https://i.ibb.co/BLf7d4f/hanabi.jpg">
-      <div class="info"><h3>Guide Hanabi ML: Build Meta</h3><small>Redaksi • 2025</small><p>Build meta dan emblem terbaru untuk Hanabi 2025.</p></div>
-    </a>
-  </div>
-  <div class="view-all"><a href="artikel.html">Lihat Semua Artikel</a></div>
 </section>
 
 <footer>
@@ -201,8 +175,10 @@ const products=[
   {name:"Arena Breakout",pub:"Tencent",img:"https://files.catbox.moe/vqft9s.webp",link:"arena.html"},
   {name:"Star Rail",pub:"HoYoverse",img:"https://files.catbox.moe/oejgi0.webp",link:"hsr.html"}
 ];
+
 const popular=products.slice(0,6);
 const topup=products;
+
 const apps=[
   {name:"Netflix Premium",pub:"Netflix",img:"https://files.catbox.moe/mm6s32.jpg",link:"netflix.html"},
   {name:"Spotify Premium",pub:"Spotify",img:"https://files.catbox.moe/ebukmh.jpg",link:"spotify.html"},
@@ -215,6 +191,7 @@ const apps=[
   {name:"WeTV VIP",pub:"Tencent",img:"https://files.catbox.moe/7avu4z.jpg",link:"wetv.html"},
   {name:"CapCut Pro",pub:"Bytedance",img:"https://files.catbox.moe/34unzv.jpg",link:"capcut.html"}
 ];
+
 const mlbb=[
   {name:"Joki MLBB",pub:"Moonton",img:"https://files.catbox.moe/h1bm8u.webp",link:"joki.html"},
   {name:"Squad Verified",pub:"Moonton",img:"https://files.catbox.moe/q2ugsl.webp",link:"squad.html"},
@@ -229,6 +206,7 @@ function renderList(arr,id){
     grid.innerHTML+=`<a href="${p.link}" class="product-card"><img src="${p.img}"><h4>${p.name}</h4><p>${p.pub}</p></a>`;
   });
 }
+
 renderList(popular,"popularGrid");
 renderList(topup,"topupGrid");
 renderList(apps,"appsGrid");
@@ -239,3 +217,9 @@ function searchProducts(){
   const r=document.getElementById("searchResults");
   r.innerHTML="";
   [...popular,...topup,...apps,...mlbb].filter(p=>p.name.toLowerCase().includes(q)).forEach(p=>{
+    r.innerHTML+=`<a href="${p.link}" class="search-item"><img src="${p.img}"><div><strong>${p.name}</strong><br><small>${p.pub}</small></div></a>`;
+  });
+}
+</script>
+</body>
+</html>
