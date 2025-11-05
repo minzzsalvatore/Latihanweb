@@ -195,6 +195,26 @@ footer p{font-size:13px;line-height:1.6;max-width:380px;margin:auto;margin-botto
   <div style="margin-top:8px;font-size:12px;color:#6f8199;">© 2025 MinzzStore. All rights reserved.</div>
 </footer>
 
+  renderList(popular,"popularGrid");
+renderList(topup,"topupGrid");
+renderList(apps,"appsGrid");
+renderList(mlbb,"mlbbGrid");
+
+function searchProducts(){
+  const q=document.getElementById("searchInput").value.toLowerCase();
+  const r=document.getElementById("searchResults");
+  r.innerHTML="";
+  [...popular,...topup,...apps,...mlbb].filter(p=>p.name.toLowerCase().includes(q)).forEach(p=>{
+    r.innerHTML+=`<a href="${p.link}" class="search-item">
+      <img src="${p.img}">
+      <div><strong>${p.name}</strong><br><small>${p.pub}</small></div>
+    </a>`;
+  });
+}
+</script>
+</body>
+</html>
+
 <script>
 function toggleMenu(){
   document.getElementById("navMenu").classList.toggle("active");
