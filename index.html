@@ -42,6 +42,7 @@ header{display:flex;align-items:center;justify-content:space-between;background:
 .nav-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;z-index:150}
 .nav-backdrop.active{display:block}
 
+/* Banner */
 .banner{margin:15px auto;border-radius:16px;overflow:hidden;width:95%;max-width:1000px}
 .banner img{width:100%;border-radius:16px}
 
@@ -84,6 +85,15 @@ footer{background:#090f16;padding:40px 16px;text-align:center;color:#a9b9c9;marg
 footer p{font-size:13px;line-height:1.6;max-width:380px;margin:auto;margin-bottom:12px}
 .footer-links a{color:#00aaff;text-decoration:none;margin:0 6px;font-size:13px}
 .footer-links a:hover{text-decoration:underline}
+
+/* Search */
+.search-popup{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.9);display:none;flex-direction:column;align-items:center;padding-top:70px;z-index:250}
+.search-popup.active{display:flex}
+.search-input{width:90%;max-width:400px;padding:10px 14px;border:none;border-radius:10px;font-size:15px;background:#0e1824;color:#fff}
+.search-results{width:90%;max-width:420px;margin-top:20px}
+.search-item{display:flex;align-items:center;gap:10px;background:#0d141e;border-radius:10px;padding:10px 14px;margin-bottom:10px;text-decoration:none;color:#fff}
+.search-item img{width:40px;height:40px;border-radius:8px}
+.close-btn{position:absolute;top:20px;right:20px;background:#1b2a3a;border:none;color:#fff;border-radius:50%;width:36px;height:36px;font-size:18px;cursor:pointer}
 </style>
 </head>
 <body>
@@ -105,12 +115,17 @@ footer p{font-size:13px;line-height:1.6;max-width:380px;margin:auto;margin-botto
   <a href="#">⚔️ Winrate</a>
 </div>
 
+<div class="search-popup" id="searchPopup">
+  <button class="close-btn" onclick="toggleSearch()">✖</button>
+  <input type="text" class="search-input" id="searchInput" placeholder="Cari produk..." oninput="searchProducts()">
+  <div class="search-results" id="searchResults"></div>
+</div>
+
 <div class="banner"><img src="https://i.top4top.io/p_35799fodf0.jpg" alt="Promo"></div>
 
 <div class="category-bar">
   <button class="cat-btn" onclick="document.getElementById('popular').scrollIntoView({behavior:'smooth'})">🔥 Popular</button>
   <button class="cat-btn" onclick="document.getElementById('topup').scrollIntoView({behavior:'smooth'})">💎 Topup Game</button>
-  <button class="cat-btn" onclick="document.getElementById('apps').scrollIntoView({behavior:'smooth'})">📱 Apps Premium</button>
   <button class="cat-btn" onclick="document.getElementById('mlbb').scrollIntoView({behavior:'smooth'})">⚔️ MLBB Services</button>
 </div>
 
@@ -124,21 +139,9 @@ footer p{font-size:13px;line-height:1.6;max-width:380px;margin:auto;margin-botto
   <div class="scroll-grid" id="topupGrid"></div>
 </section>
 
-<section class="section" id="apps">
-  <h2>📱 APPS PREMIUM</h2>
-  <div class="scroll-grid" id="appsGrid"></div>
-</section>
-
 <section class="section" id="mlbb">
   <h2>⚔️ MOBILE LEGENDS SERVICES</h2>
   <div class="scroll-grid" id="mlbbGrid"></div>
-</section>
-
-<section class="article-section" id="artikel">
-  <h2>📰 Artikel & Berita Game</h2>
-  <p>Dapatkan panduan dan update terbaru seputar dunia game!</p>
-  <div class="article-slider" id="articleSlider"></div>
-  <div class="view-all"><a href="artikel.html">Lihat Semua Artikel</a></div>
 </section>
 
 <footer>
@@ -157,34 +160,35 @@ function toggleMenu(){
   document.getElementById("navMenu").classList.toggle("active");
   document.getElementById("navBackdrop").classList.toggle("active");
 }
+function toggleSearch(){
+  document.getElementById("searchPopup").classList.toggle("active");
+  document.getElementById("searchInput").focus();
+}
 
-const products=[
+const popular=[
   {name:"Mobile Legends",pub:"Moonton",img:"https://files.catbox.moe/nv79jx.webp",link:"mlid.html"},
   {name:"Free Fire",pub:"Garena",img:"https://files.catbox.moe/jyjx6a.webp",link:"ff.html"},
   {name:"PUBG Mobile",pub:"Tencent",img:"https://files.catbox.moe/jhpfey.webp",link:"pubg.html"},
   {name:"Genshin Impact",pub:"HoYoverse",img:"https://files.catbox.moe/oejgi0.webp",link:"genshin.html"},
   {name:"Valorant",pub:"Riot Games",img:"https://files.catbox.moe/lkbxjt.webp",link:"valorant.html"},
   {name:"COD Mobile",pub:"Activision",img:"https://files.catbox.moe/jvjfbq.webp",link:"cod.html"},
-  {name:"Wild Rift",pub:"Riot Games",img:"https://files.catbox.moe/q2ugsl.webp",link:"wildrift.html"},
-  {name:"Arena Breakout",pub:"Tencent",img:"https://files.catbox.moe/vqft9s.webp",link:"arena.html"},
-  {name:"Star Rail",pub:"HoYoverse",img:"https://files.catbox.moe/oejgi0.webp",link:"hsr.html"}
 ];
 
-const apps=[
-  {name:"Netflix Premium",pub:"Netflix",img:"https://files.catbox.moe/mm6s32.jpg",link:"netflix.html"},
-  {name:"Spotify Premium",pub:"Spotify",img:"https://files.catbox.moe/ebukmh.jpg",link:"spotify.html"},
-  {name:"Canva Pro",pub:"Canva",img:"https://files.catbox.moe/vacd5x.jpg",link:"canva.html"}
+const topup=[
+  ...popular,
+  {name:"Wild Rift",pub:"Riot Games",img:"https://files.catbox.moe/q2ugsl.webp",link:"wildrift.html"},
+  {name:"Arena Breakout",pub:"Tencent",img:"https://files.catbox.moe/vqft9s.webp",link:"arena.html"},
+  {name:"Star Rail",pub:"HoYoverse",img:"https://files.catbox.moe/oejgi0.webp",link:"hsr.html"},
+  {name:"Clash of Clans",pub:"Supercell",img:"https://files.catbox.moe/z3k2wj.webp",link:"coc.html"},
+  {name:"Farlight 84",pub:"Lilith",img:"https://files.catbox.moe/fbx5b2.webp",link:"farlight.html"}
 ];
 
 const mlbb=[
   {name:"Joki MLBB",pub:"Moonton",img:"https://files.catbox.moe/h1bm8u.webp",link:"joki.html"},
-  {name:"Room Tournament",pub:"Moonton",img:"https://files.catbox.moe/4g31mr.webp",link:"room.html"}
-];
-
-const articles=[
-  {title:"Guide Zilong ML: Build & Counter Terbaru",img:"https://files.catbox.moe/b2c3j7.jpeg",desc:"Panduan build terbaru dan counter terbaik Zilong.",link:"zilong.html"},
-  {title:"Guide Alucard ML: Build Paling Sakit 2025",img:"https://i.ibb.co/TBRbJcg/guide2.jpg",desc:"Build dan combo terbaik hero Alucard untuk season baru.",link:"ml-guide2.html"},
-  {title:"Guide Hanabi ML: Build Meta 2025",img:"https://i.ibb.co/BLf7d4f/hanabi.jpg",desc:"Build meta dan emblem terbaru untuk Hanabi.",link:"hanabi.html"}
+  {name:"Squad Verified",pub:"Moonton",img:"https://files.catbox.moe/q2ugsl.webp",link:"squad.html"},
+  {name:"Room Tournament",pub:"Moonton",img:"https://files.catbox.moe/4g31mr.webp",link:"room.html"},
+  {name:"Starlight Gift",pub:"Moonton",img:"https://files.catbox.moe/tb9hy3.webp",link:"starlight.html"},
+  {name:"Account Bind",pub:"Moonton",img:"https://files.catbox.moe/h1bm8u.webp",link:"bind.html"}
 ];
 
 function renderList(arr,id){
@@ -193,22 +197,18 @@ function renderList(arr,id){
     grid.innerHTML+=`<a href="${p.link}" class="product-card"><img src="${p.img}"><h4>${p.name}</h4><p>${p.pub}</p></a>`;
   });
 }
-renderList(products,"popularGrid");
-renderList(products,"topupGrid");
-renderList(apps,"appsGrid");
+renderList(popular,"popularGrid");
+renderList(topup,"topupGrid");
 renderList(mlbb,"mlbbGrid");
 
-function renderArticles(){
-  const cont=document.getElementById("articleSlider");
-  articles.forEach(a=>{
-    cont.innerHTML+=`
-      <a href="${a.link}" class="article-card">
-        <img src="${a.img}">
-        <div class="info"><h3>${a.title}</h3><small>Redaksi • 2025</small><p>${a.desc}</p></div>
-      </a>`;
+function searchProducts(){
+  const q=document.getElementById("searchInput").value.toLowerCase();
+  const r=document.getElementById("searchResults");
+  r.innerHTML="";
+  [...popular,...topup,...mlbb].filter(p=>p.name.toLowerCase().includes(q)).forEach(p=>{
+    r.innerHTML+=`<a href="${p.link}" class="search-item"><img src="${p.img}"><div><strong>${p.name}</strong><br><small>${p.pub}</small></div></a>`;
   });
 }
-renderArticles();
 </script>
 </body>
 </html>
