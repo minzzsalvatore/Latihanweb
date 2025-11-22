@@ -175,7 +175,7 @@ section {
 
 
 /* -------------------------------------- */
-/* --- POPULAR GAMES SECTION (FIXED LOGO POSITION, GRID SIZE UNTOUCHED) --- */
+/* --- POPULAR GAMES SECTION (FIXED ALIGNMENT) --- */
 /* -------------------------------------- */
 .popular-grid {
     display: grid;
@@ -198,9 +198,9 @@ section {
     background-color: #330066;
     border-radius: 8px;
     padding: 10px;
-    /* Menggunakan Flexbox untuk menata elemen utama (Logo Besar, Teks, Logo Kecil) */
+    /* KRITIKAL: Memastikan semua item di dalam kotak berbaris rata secara vertikal di tengah */
     display: flex;
-    align-items: center;
+    align-items: center; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     position: relative;
     border: 1px solid transparent;
@@ -226,18 +226,24 @@ section {
     line-height: 1.3;
     flex-grow: 1; 
     text-align: left;
-    margin-right: 5px; /* Memberi jarak sebelum logo kecil */
+    margin-right: 5px; 
+    /* KRITIKAL: Memastikan Teks fleksibel dan rata di tengah (walaupun teksnya panjang) */
+    align-self: center; 
+    /* Mengatur tinggi minimum/maksimum opsional untuk konsistensi */
+    min-height: 40px; 
+    display: flex;
+    align-items: center; /* Rata tengah untuk teks multiline */
 }
 
 .game-logo-right {
     /* Logo kecil (Logo Game) diletakkan di sebelah kanan teks */
-    position: static; /* KRITIKAL: Memastikan logo ini mengikuti alur Flexbox, BUKAN absolute */
+    position: static; 
     width: 25px !important;
     height: 25px !important;
     border-radius: 0 !important;
     margin-right: 0 !important;
     flex-shrink: 0;
-    align-self: center; /* Rata tengah vertikal dengan teks */
+    align-self: center; /* Rata tengah vertikal */
 }
 /* -------------------------------------- */
 
