@@ -1,281 +1,367 @@
-<!DOCTYPE html>  <html lang="id">  
-<head>  
-    <meta charset="UTF-8">  
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-    <title>Minzz Salvatore - ELJI STORE Ungu</title>  
-    <link rel="stylesheet" href="style.css">  
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">  
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">  
-</head>  
-<body>  <a href="https://wa.me/your_whatsapp_number" class="whatsapp-float" target="_blank">  
-    <i class="fab fa-whatsapp"></i>  
-</a>  
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minzz Salvatore - ELJI STORE Ungu</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+<a href="https://wa.me/your_whatsapp_number" class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+</a>
 
-<header class="main-header">  
-    <div class="header-left">  
-        <i class="fas fa-gem header-icon"></i> <span class="store-name">MINZZ STORE</span>  
-    </div>  
-    <div class="header-right">  
-        <button class="menu-btn" onclick="toggleSidebar()"><i class="fas fa-bars"></i></button>  
-    </div>  
-</header>  
+<header class="main-header">
+    <div class="header-left">
+        <i class="fas fa-gem header-icon"></i> <span class="store-name">MINZZ STORE</span>
+    </div>
+    <div class="header-right">
+        <div class="search-input-container">
+            <input type="text" id="search-input" placeholder="Cari Game, Produk..." onkeyup="filterProducts()">
+            <i class="fas fa-search search-icon"></i>
+        </div>
+        <button class="menu-btn" id="menu-toggle-btn">
+            <i class="fas fa-bars" id="menu-icon"></i>
+        </button>
+    </div>
+</header>
 
-<main>  
-    <section class="banner-slider">  
-        <div class="slider-wrapper">  
-            <div class="slider-item active">  
+<div id="sidebar">
+    <nav>
+        <ul>
+            <li><a href="#"><i class="fas fa-home"></i> Beranda</a></li>
+            <li><a href="#"><i class="fas fa-gift"></i> Promo</a></li>
+            <li class="sidebar-separator">Kategori</li>
+            <li><a href="#" class="category-link" data-category="Game Top Up"><i class="fas fa-gamepad"></i> Top Up Game</a></li>
+            <li><a href="#" class="category-link" data-category="Joki Games"><i class="fas fa-fire"></i> Joki Games</a></li>
+            <li><a href="#" class="category-link" data-category="Voucher Game"><i class="fas fa-ticket-alt"></i> Voucher Game</a></li>
+            <li class="sidebar-separator">Lainnya</li>
+            <li><a href="#"><i class="fas fa-headset"></i> Kontak & Dukungan</a></li>
+            <li><a href="#"><i class="fas fa-user-shield"></i> Kebijakan Privasi</a></li>
+        </ul>
+    </nav>
+</div>
+
+
+<main>
+    <section class="banner-slider">
+        <div class="slider-wrapper">
+            <div class="slider-item active">
                 <img src="https://files.catbox.moe/eft49j.png" alt="Banner Utama">
-            </div>  
-            </div>  
-        <div class="slider-dots">  
-            <span class="dot active"></span>  
-            <span class="dot"></span>  
-            <span class="dot"></span>  
-        </div>  
-        <button class="slider-arrow prev"><i class="fas fa-chevron-left"></i></button>  
-        <button class="slider-arrow next"><i class="fas fa-chevron-right"></i></button>  
-    </section>  
+            </div>
+        </div>
+        <div class="slider-dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+        <button class="slider-arrow prev"><i class="fas fa-chevron-left"></i></button>
+        <button class="slider-arrow next"><i class="fas fa-chevron-right"></i></button>
+    </section>
 
-    <section class="popular-games-section">  
-        <div class="section-title-wrap">  
-            <i class="fas fa-fire icon-fire"></i>  
-            <h2 class="section-title">Terpopuler Saat Ini</h2>  
-        </div>  
+    <section class="popular-games-section">
+        <div class="section-title-wrap">
+            <i class="fas fa-fire icon-fire"></i>
+            <h2 class="section-title">Terpopuler Saat Ini</h2>
+        </div>
           
-        <div class="popular-grid">  
-            <a href="mlmy.html" class="game-card">  
-                <img src="https://files.catbox.moe/8qxp7i.png" alt="Mobile Legends">  
-                <span class="game-name">Moonton <br> Mobile Legends</span>  
-            </a>  
-            <a href="#" class="game-card">  
-                <img src="https://files.catbox.moe/zo3ln6.png" alt="Free Fire">  
-                <span class="game-name">Garena <br> Free Fire</span>  
-            </a>  
-            <a href="#" class="game-card">  
-                <img src="https://files.catbox.moe/8qxp7i.png" alt="Roblox">  
+        <div class="popular-grid">
+            <a href="mlmy.html" class="game-card">
+                <img src="https://files.catbox.moe/8qxp7i.png" alt="Mobile Legends">
+                <span class="game-name">Moonton <br> Mobile Legends</span>
+            </a>
+            <a href="#" class="game-card">
+                <img src="https://files.catbox.moe/zo3ln6.png" alt="Free Fire">
+                <span class="game-name">Garena <br> Free Fire</span>
+            </a>
+            <a href="#" class="game-card">
+                <img src="https://files.catbox.moe/8qxp7i.png" alt="Roblox">
                 <span class="game-name">Roblox Corporation <br> Roblox</span>
-            </a>  
-            <a href="#" class="game-card">  
-                <img src="https://via.placeholder.com/100x100/A020F0/ffffff" alt="Call of Duty Mobile">  
-                <span class="game-name">Activision <br> Call of Duty Mobile</span>  
-                <img src="https://via.placeholder.com/30x30/ffffff/000000?text=COD" alt="COD Logo" class="game-logo-right">  
-            </a>  
-            <a href="#" class="game-card">  
-                <img src="https://files.catbox.moe/8qxp7i.png" alt="Valorant">  
-                <span class="game-name">Riot Games <br> Valorant</span>  
-                <img src="https://files.catbox.moe/i9nz0f.png" alt="Valorant Logo" class="game-logo-right">  
-            </a>  
-            <a href="#" class="game-card">  
-                <img src="https://via.placeholder.com/100x100/A020F0/ffffff" alt="Joki Rank ML">  
-                <span class="game-name">Joki Services <br> Joki Rank ML</span>  
-                <img src="https://files.catbox.moe/8qxp7i.png" alt="ML Logo" class="game-logo-right">  
-            </a>  
-            <a href="#" class="game-card">  
-                <img src="https://via.placeholder.com/100x100/A020F0/ffffff" alt="Joki Gendong">  
-                <span class="game-name">Joki Services <br> Joki Gendong</span>  
-                <img src="https://files.catbox.moe/8qxp7i.png" alt="ML Logo" class="game-logo-right">  
-            </a>  
-            <a href="#" class="game-card">  
-                <img src="https://via.placeholder.com/100x100/A020F0/ffffff" alt="Joki Classic">  
-                <span class="game-name">Joki Services <br> Joki Classic</span>  
-                <img src="https://files.catbox.moe/8qxp7i.png" alt="ML Logo" class="game-logo-right">  
-            </a>  
-            <a href="#" class="game-card">  
-                <img src="https://via.placeholder.com/100x100/A020F0/ffffff" alt="Joki Montage">  
-                <span class="game-name">Joki Services <br> Joki Montage</span>  
-                <img src="https://files.catbox.moe/8qxp7i.png" alt="ML Logo" class="game-logo-right">  
-            </a>  
-            <a href="#" class="game-card">  
-                <img src="https://via.placeholder.com/100x100/A020F0/ffffff" alt="Mabar VIP">  
-                <span class="game-name">Joki Services <br> Mabar VIP</span>  
-                <img src="https://files.catbox.moe/8qxp7i.png" alt="ML Logo" class="game-logo-right">  
-            </a>  
-        </div>  
-    </section>  
+            </a>
+            <a href="#" class="game-card">
+                <img src="https://via.placeholder.com/100x100/A020F0/ffffff" alt="Call of Duty Mobile">
+                <span class="game-name">Activision <br> Call of Duty Mobile</span>
+                <img src="https://via.placeholder.com/30x30/ffffff/000000?text=COD" alt="COD Logo" class="game-logo-right">
+            </a>
+            <a href="#" class="game-card">
+                <img src="https://files.catbox.moe/8qxp7i.png" alt="Valorant">
+                <span class="game-name">Riot Games <br> Valorant</span>
+                <img src="https://files.catbox.moe/i9nz0f.png" alt="Valorant Logo" class="game-logo-right">
+            </a>
+            <a href="#" class="game-card">
+                <img src="https://via.placeholder.com/100x100/A020F0/ffffff" alt="Joki Rank ML">
+                <span class="game-name">Joki Services <br> Joki Rank ML</span>
+                <img src="https://files.catbox.moe/8qxp7i.png" alt="ML Logo" class="game-logo-right">
+            </a>
+            <a href="#" class="game-card">
+                <img src="https://via.placeholder.com/100x100/A020F0/ffffff" alt="Joki Gendong">
+                <span class="game-name">Joki Services <br> Joki Gendong</span>
+                <img src="https://files.catbox.moe/8qxp7i.png" alt="ML Logo" class="game-logo-right">
+            </a>
+            <a href="#" class="game-card">
+                <img src="https://via.placeholder.com/100x100/A020F0/ffffff" alt="Joki Classic">
+                <span class="game-name">Joki Services <br> Joki Classic</span>
+                <img src="https://files.catbox.moe/8qxp7i.png" alt="ML Logo" class="game-logo-right">
+            </a>
+            <a href="#" class="game-card">
+                <img src="https://via.placeholder.com/100x100/A020F0/ffffff" alt="Joki Montage">
+                <span class="game-name">Joki Services <br> Joki Montage</span>
+                <img src="https://files.catbox.moe/8qxp7i.png" alt="ML Logo" class="game-logo-right">
+            </a>
+            <a href="#" class="game-card">
+                <img src="https://via.placeholder.com/100x100/A020F0/ffffff" alt="Mabar VIP">
+                <span class="game-name">Joki Services <br> Mabar VIP</span>
+                <img src="https://files.catbox.moe/8qxp7i.png" alt="ML Logo" class="game-logo-right">
+            </a>
+        </div>
+    </section>
 
-    <section class="product-category-section">  
-        <div class="section-title-wrap">  
-            <i class="fas fa-bolt icon-bolt"></i>  
-            <h2 class="section-title">Kategori Produk</h2>  
-        </div>  
+    <section class="product-category-section">
+        <div class="section-title-wrap">
+            <i class="fas fa-bolt icon-bolt"></i>
+            <h2 class="section-title">Kategori Produk</h2>
+        </div>
 
-        <div class="category-buttons-container">  
-            <div class="category-buttons">  
-                <button class="category-btn active">  
-                    <i class="fas fa-gamepad category-icon"></i>  
-                    <span>Game Top Up</span>  
-                </button>  
-                <button class="category-btn">  
-                    <i class="fas fa-fire category-icon"></i>  
-                    <span>Joki Games</span>  
-                </button>  
-                <button class="category-btn">  
-                    <i class="fas fa-ticket-alt category-icon"></i>  
-                    <span>Voucher Game</span>  
-                </button>  
-            </div>  
-        </div>  
+        <div class="category-buttons-container">
+            <div class="category-buttons">
+                <button class="category-btn active" data-category="Game Top Up">
+                    <i class="fas fa-gamepad category-icon"></i>
+                    <span>Game Top Up</span>
+                </button>
+                <button class="category-btn" data-category="Joki Games">
+                    <i class="fas fa-fire category-icon"></i>
+                    <span>Joki Games</span>
+                </button>
+                <button class="category-btn" data-category="Voucher Game">
+                    <i class="fas fa-ticket-alt category-icon"></i>
+                    <span>Voucher Game</span>
+                </button>
+            </div>
+        </div>
 
-        <div class="product-grid-category">  
-            <a href="#" class="product-card-category">  
-                <img src="https://files.catbox.moe/8qxp7i.png" alt="Free Fire">  
-                <span class="game-label-right">FREE FIRE</span>  
-            </a>  
-            <a href="#" class="product-card-category">  
-                <img src="https://via.placeholder.com/300x400/8A2BE2/1A0033?text=Mobile+Legends" alt="Mobile Legends">  
-                <span class="game-label-right">MOBILE LEGENDS</span>  
-            </a>  
-            <a href="#" class="product-card-category">  
-                <img src="https://via.placeholder.com/300x400/8A2BE2/1A0033?text=Magic+Chess" alt="Magic Chess">  
-                <span class="game-label-right">MAGIC CHESS GO GO</span>  
-            </a>  
-             <a href="#" class="product-card-category">  
-                <img src="https://via.placeholder.com/300x400/8A2BE2/1A0033?text=Genshin+Impact" alt="Genshin Impact">  
-                <span class="game-label-right">GENSHIN IMPACT</span>  
-            </a>  
-             <a href="#" class="product-card-category">  
-                <img src="https://via.placeholder.com/300x400/8A2BE2/1A0033?text=PUBG+Mobile" alt="PUBG Mobile">  
-                <span class="game-label-right">PUBG MOBILE</span>  
-            </a>  
-        </div>  
-    </section>  
+        <div class="product-grid-category active" id="Game Top Up">
+            <a href="#" class="product-card-category" data-name="Free Fire">
+                <img src="https://files.catbox.moe/zo3ln6.png" alt="Free Fire">
+                <span class="game-label-right">FREE FIRE</span>
+            </a>
+            <a href="#" class="product-card-category" data-name="Mobile Legends">
+                <img src="https://via.placeholder.com/300x400/8A2BE2/1A0033?text=Mobile+Legends" alt="Mobile Legends">
+                <span class="game-label-right">MOBILE LEGENDS</span>
+            </a>
+            <a href="#" class="product-card-category" data-name="Magic Chess Go Go">
+                <img src="https://via.placeholder.com/300x400/8A2BE2/1A0033?text=Magic+Chess" alt="Magic Chess">
+                <span class="game-label-right">MAGIC CHESS GO GO</span>
+            </a>
+             <a href="#" class="product-card-category" data-name="Genshin Impact">
+                <img src="https://via.placeholder.com/300x400/8A2BE2/1A0033?text=Genshin+Impact" alt="Genshin Impact">
+                <span class="game-label-right">GENSHIN IMPACT</span>
+            </a>
+             <a href="#" class="product-card-category" data-name="PUBG Mobile">
+                <img src="https://via.placeholder.com/300x400/8A2BE2/1A0033?text=PUBG+Mobile" alt="PUBG Mobile">
+                <span class="game-label-right">PUBG MOBILE</span>
+            </a>
+            <a href="#" class="product-card-category" data-name="Valorant">
+                <img src="https://via.placeholder.com/300x400/330066/B28FEE?text=Valorant" alt="Valorant">
+                <span class="game-label-right">VALORANT</span>
+            </a>
+            <a href="#" class="product-card-category" data-name="Call of Duty Mobile">
+                <img src="https://via.placeholder.com/300x400/330066/B28FEE?text=COD+Mobile" alt="Call of Duty Mobile">
+                <span class="game-label-right">COD MOBILE</span>
+            </a>
+            <a href="#" class="product-card-category" data-name="Honkai Star Rail">
+                <img src="https://via.placeholder.com/300x400/330066/B28FEE?text=Honkai+SR" alt="Honkai Star Rail">
+                <span class="game-label-right">HONKAI STAR RAIL</span>
+            </a>
+            <a href="#" class="product-card-category" data-name="Apex Legends">
+                <img src="https://via.placeholder.com/300x400/330066/B28FEE?text=Apex+Legends" alt="Apex Legends">
+                <span class="game-label-right">APEX LEGENDS</span>
+            </a>
+             <a href="#" class="product-card-category" data-name="Point Blank">
+                <img src="https://via.placeholder.com/300x400/330066/B28FEE?text=Point+Blank" alt="Point Blank">
+                <span class="game-label-right">POINT BLANK</span>
+            </a>
+            <a href="#" class="product-card-category" data-name="Clash of Clans">
+                <img src="https://via.placeholder.com/300x400/330066/B28FEE?text=Clash+of+Clans" alt="Clash of Clans">
+                <span class="game-label-right">CLASH OF CLANS</span>
+            </a>
+        </div>
+        
+        <div class="product-grid-category" id="Joki Games">
+            <a href="#" class="product-card-category" data-name="Joki Rank ML">
+                <img src="https://via.placeholder.com/300x400/8A2BE2/1A0033?text=Joki+ML+Rank" alt="Joki Rank ML">
+                <span class="game-label-right">JOKI RANK ML</span>
+            </a>
+            <a href="#" class="product-card-category" data-name="Joki Rank FF">
+                <img src="https://via.placeholder.com/300x400/8A2BE2/1A0033?text=Joki+FF+Rank" alt="Joki Rank FF">
+                <span class="game-label-right">JOKI RANK FF</span>
+            </a>
+            <a href="#" class="product-card-category" data-name="Joki Rank PUBGM">
+                <img src="https://via.placeholder.com/300x400/8A2BE2/1A0033?text=Joki+PUBG+Rank" alt="Joki Rank PUBGM">
+                <span class="game-label-right">JOKI RANK PUBGM</span>
+            </a>
+            <a href="#" class="product-card-category" data-name="Joki Akun Valorant">
+                <img src="https://via.placeholder.com/300x400/8A2BE2/1A0033?text=Joki+Valorant" alt="Joki Akun Valorant">
+                <span class="game-label-right">JOKI VALORANT</span>
+            </a>
+             <a href="#" class="product-card-category" data-name="Joki Harian Genshin">
+                <img src="https://via.placeholder.com/300x400/8A2BE2/1A0033?text=Joki+Genshin+Daily" alt="Joki Harian Genshin">
+                <span class="game-label-right">JOKI HARIAN GENSHIN</span>
+            </a>
+            <a href="#" class="product-card-category" data-name="Joki Gendong ML">
+                <img src="https://via.placeholder.com/300x400/8A2BE2/1A0033?text=Joki+Gendong+ML" alt="Joki Gendong ML">
+                <span class="game-label-right">JOKI GENDONG ML</span>
+            </a>
+            <a href="#" class="product-card-category" data-name="Joki Classic ML">
+                <img src="https://via.placeholder.com/300x400/8A2BE2/1A0033?text=Joki+Classic+ML" alt="Joki Classic ML">
+                <span class="game-label-right">JOKI CLASSIC ML</span>
+            </a>
+            <a href="#" class="product-card-category" data-name="Joki Montage ML">
+                <img src="https://via.placeholder.com/300x400/8A2BE2/1A0033?text=Joki+Montage+ML" alt="Joki Montage ML">
+                <span class="game-label-right">JOKI MONTAGE ML</span>
+            </a>
+            <a href="#" class="product-card-category" data-name="Mabar VIP ML">
+                <img src="https://via.placeholder.com/300x400/8A2BE2/1A0033?text=Mabar+VIP+ML" alt="Mabar VIP ML">
+                <span class="game-label-right">MABAR VIP ML</span>
+            </a>
+             <a href="#" class="product-card-category" data-name="Joki All Game Custom">
+                <img src="https://via.placeholder.com/300x400/8A2BE2/1A0033?text=Joki+Custom" alt="Joki All Game Custom">
+                <span class="game-label-right">JOKI ALL GAME (Custom)</span>
+            </a>
+        </div>
+        
+        <div class="product-grid-category" id="Voucher Game">
+            <a href="#" class="product-card-category" data-name="Voucher Google Play">
+                <img src="https://via.placeholder.com/300x400/330066/B28FEE?text=Google+Play" alt="Voucher Google Play">
+                <span class="game-label-right">VOUCHER GOOGLE PLAY</span>
+            </a>
+            <a href="#" class="product-card-category" data-name="Voucher Steam Wallet">
+                <img src="https://via.placeholder.com/300x400/330066/B28FEE?text=Steam+Wallet" alt="Voucher Steam Wallet">
+                <span class="game-label-right">VOUCHER STEAM WALLET</span>
+            </a>
+            <a href="#" class="product-card-category" data-name="Voucher PSN">
+                <img src="https://via.placeholder.com/300x400/330066/B28FEE?text=PSN+Card" alt="Voucher PSN">
+                <span class="game-label-right">VOUCHER PSN</span>
+            </a>
+            <a href="#" class="product-card-category" data-name="Voucher Xbox Gift Card">
+                <img src="https://via.placeholder.com/300x400/330066/B28FEE?text=Xbox+Gift" alt="Voucher Xbox Gift Card">
+                <span class="game-label-right">VOUCHER XBOX</span>
+            </a>
+             <a href="#" class="product-card-category" data-name="Voucher iTunes">
+                <img src="https://via.placeholder.com/300x400/330066/B28FEE?text=iTunes+Card" alt="Voucher iTunes">
+                <span class="game-label-right">VOUCHER ITUNES</span>
+            </a>
+            <a href="#" class="product-card-category" data-name="Garena Shell">
+                <img src="https://via.placeholder.com/300x400/330066/B28FEE?text=Garena+Shell" alt="Garena Shell">
+                <span class="game-label-right">GARENA SHELL</span>
+            </a>
+            <a href="#" class="product-card-category" data-name="Voucher Unipin">
+                <img src="https://via.placeholder.com/300x400/330066/B28FEE?text=Unipin+Voucher" alt="Voucher Unipin">
+                <span class="game-label-right">VOUCHER UNIPIN</span>
+            </a>
+            <a href="#" class="product-card-category" data-name="Voucher Razer Gold">
+                <img src="https://via.placeholder.com/300x400/330066/B28FEE?text=Razer+Gold" alt="Voucher Razer Gold">
+                <span class="game-label-right">VOUCHER RAZER GOLD</span>
+            </a>
+            <a href="#" class="product-card-category" data-name="Voucher Nintendo E-shop">
+                <img src="https://via.placeholder.com/300x400/330066/B28FEE?text=Nintendo+Eshop" alt="Voucher Nintendo E-shop">
+                <span class="game-label-right">VOUCHER NINTENDO</span>
+            </a>
+            <a href="#" class="product-card-category" data-name="Voucher Diamond MLBB">
+                <img src="https://via.placeholder.com/300x400/330066/B28FEE?text=Diamond+MLBB" alt="Voucher Diamond MLBB">
+                <span class="game-label-right">VOUCHER DM MLBB</span>
+            </a>
+        </div>
+    </section>
 
-    <section class="trust-section">  
-        <div class="container">  
-            <p class="trust-intro">Dipercaya oleh ribuan pengguna</p>  
-            <h2 class="trust-title">ELJI STORE Sudah Terpercaya <br> di Indonesia Maupun diluar Negeri</h2>  
-            <p class="trust-description">ELJI STORE menyediakan layanan Top up game dan Reseller Voucher Game Termurah dan terpercaya diseluruh dunia.</p>  
+    <section class="trust-section">
+        <div class="container">
+            <p class="trust-intro">Dipercaya oleh ribuan pengguna</p>
+            <h2 class="trust-title">ELJI STORE Sudah Terpercaya <br> di Indonesia Maupun diluar Negeri</h2>
+            <p class="trust-description">ELJI STORE menyediakan layanan Top up game dan Reseller Voucher Game Termurah dan terpercaya diseluruh dunia.</p>
 
-            <div class="stats-grid">  
-                <div class="stat-item">  
-                    <div class="stat-number">100+</div>  
-                    <div class="stat-label">Pengguna</div>  
-                </div>  
-                <div class="stat-item">  
-                    <div class="stat-number">20+</div>  
-                    <div class="stat-label">Games</div>  
-                </div>  
-                <div class="stat-item">  
-                    <div class="stat-number">87+</div>  
-                    <div class="stat-label">Product</div>  
-                </div>  
-                <div class="stat-item">  
-                    <div class="stat-number">1357+</div>  
-                    <div class="stat-label">Transaksi</div>  
-                </div>  
-            </div>  
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">100+</div>
+                    <div class="stat-label">Pengguna</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">20+</div>
+                    <div class="stat-label">Games</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">87+</div>
+                    <div class="stat-label">Product</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">1357+</div>
+                    <div class="stat-label">Transaksi</div>
+                </div>
+            </div>
 
-            <button class="testimoni-btn">  
-                Tambahkan Testimoni <i class="fas fa-comment-dots"></i>  
-            </button>  
+            <button class="testimoni-btn">
+                Tambahkan Testimoni <i class="fas fa-comment-dots"></i>
+            </button>
 
-            <div class="testimonial-card">  
-                <div class="rating">  
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>  
-                </div>  
-                <p class="testimonial-product">Roblox</p>  
-                <p class="testimonial-text">Harga Robux sangat kompetitif dan proses top up sangat c...</p>  
-                <div class="testimonial-meta">  
-                    <span class="author">Andi Kurniawan</span>  
-                    <span class="id">ID: TRX25R******567892</span>  
-                    <span class="date">Date: 05 Oct 25</span>  
-                </div>  
-            </div>  
-        </div>  
-    </section>  
+            <div class="testimonial-card">
+                <div class="rating">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                </div>
+                <p class="testimonial-product">Roblox</p>
+                <p class="testimonial-text">Harga Robux sangat kompetitif dan proses top up sangat c...</p>
+                <div class="testimonial-meta">
+                    <span class="author">Andi Kurniawan</span>
+                    <span class="id">ID: TRX25R******567892</span>
+                    <span class="date">Date: 05 Oct 25</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <footer class="main-footer">  
-        <div class="footer-top">  
-            <i class="fas fa-gem footer-icon"></i>  
-            <span class="store-name">ELJI STORE</span>  
-            <p class="footer-description">Platform top-up game terpercaya dengan layanan cepat, aman, dan harga terbaik di Indonesia. Nikmati pengalaman transaksi yang mudah untuk berbagai game populer.</p>  
-            <div class="social-icons">  
-                <a href="#"><i class="fas fa-envelope"></i></a>  
-                <a href="#"><i class="fab fa-instagram"></i></a>  
-                <a href="#"><i class="fab fa-tiktok"></i></a>  
-                <a href="#"><i class="fab fa-facebook-f"></i></a>  
-            </div>  
-        </div>  
+    <footer class="main-footer">
+        <div class="footer-top">
+            <i class="fas fa-gem footer-icon"></i>
+            <span class="store-name">ELJI STORE</span>
+            <p class="footer-description">Platform top-up game terpercaya dengan layanan cepat, aman, dan harga terbaik di Indonesia. Nikmati pengalaman transaksi yang mudah untuk berbagai game populer.</p>
+            <div class="social-icons">
+                <a href="#"><i class="fas fa-envelope"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+            </div>
+        </div>
 
-        <div class="footer-links">  
-            <div class="link-group">  
-                <h3>Layanan</h3>  
-                <ul>  
-                    <li><a href="#">Beranda</a></li>  
-                    <li><a href="#">Daftar Harga</a></li>  
-                </ul>  
-            </div>  
-            <div class="link-group">  
-                <ul>  
-                    <li><a href="#">Top Up Game</a></li>  
-                    <li><a href="#">Lacak Pesanan</a></li>  
-                </ul>  
-            </div>  
-            <div class="link-group">  
-                <h3>Dukungan</h3>  
-                <ul>  
-                    <li><a href="#">Hubungi Kami</a></li>  
-                    <li><a href="#">Kebijakan Privasi</a></li>  
-                </ul>  
-            </div>  
-            <div class="link-group">  
-                <ul>  
-                    <li><a href="#">Syarat & Ketentuan</a></li>  
-                    <li><a href="#">Panduan Penggunaan</a></li>  
-                </ul>  
-            </div>  
-        </div>  
+        <div class="footer-links">
+            <div class="link-group">
+                <h3>Layanan</h3>
+                <ul>
+                    <li><a href="#">Beranda</a></li>
+                    <li><a href="#">Daftar Harga</a></li>
+                </ul>
+            </div>
+            <div class="link-group">
+                <ul>
+                    <li><a href="#">Top Up Game</a></li>
+                    <li><a href="#">Lacak Pesanan</a></li>
+                </ul>
+            </div>
+            <div class="link-group">
+                <h3>Dukungan</h3>
+                <ul>
+                    <li><a href="#">Hubungi Kami</a></li>
+                    <li><a href="#">Kebijakan Privasi</a></li>
+                </ul>
+            </div>
+            <div class="link-group">
+                <ul>
+                    <li><a href="#">Syarat & Ketentuan</a></li>
+                    <li><a href="#">Panduan Penggunaan</a></li>
+                </ul>
+            </div>
+        </div>
 
-        <div class="footer-contact">  
-            <h3>Kontak</h3>  
-            <p><i class="fas fa-whatsapp"></i> +62 851-9031-9325</p>  
-            <p><i class="fas fa-clock"></i> Jam Operasional</p>  
-        </div>  
-    </footer>  
-</main>  
-
-<script>  
-    // JavaScript untuk slider (sederhana)  
-    const sliderItems = document.querySelectorAll('.slider-item');  
-    const sliderDots = document.querySelectorAll('.dot');  
-    const prevArrow = document.querySelector('.slider-arrow.prev');  
-    const nextArrow = document.querySelector('.slider-arrow.next');  
-    let currentIndex = 0;  
-
-    function showSlide(index) {  
-        sliderItems.forEach((item, i) => {  
-            item.classList.remove('active');  
-            sliderDots[i].classList.remove('active');  
-        });  
-        sliderItems[index].classList.add('active');  
-        sliderDots[index].classList.add('active');  
-    }  
-
-    prevArrow.addEventListener('click', () => {  
-        currentIndex = (currentIndex > 0) ? currentIndex - 1 : sliderItems.length - 1;  
-        showSlide(currentIndex);  
-    });  
-
-    nextArrow.addEventListener('click', () => {  
-        currentIndex = (currentIndex < sliderItems.length - 1) ? currentIndex + 1 : 0;  
-        showSlide(currentIndex);  
-    });  
-
-    sliderDots.forEach((dot, index) => {  
-        dot.addEventListener('click', () => {  
-            currentIndex = index;  
-            showSlide(currentIndex);  
-        });  
-    });  
-
-    // Auto slide  
-    setInterval(() => {  
-        currentIndex = (currentIndex < sliderItems.length - 1) ? currentIndex + 1 : 0;  
-        showSlide(currentIndex);  
-    }, 5000); // Ganti setiap 5 detik  
-
-    showSlide(currentIndex); // Tampilkan slide pertama saat dimuat  
-</script>
-
-</body>  
-</html>
+        <div class="footer-contact">
+            <h3>Kontak</h3>
+            <p><i class="fas fa-whatsapp"></i> +62 851-9031-9
