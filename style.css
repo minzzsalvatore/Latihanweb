@@ -175,7 +175,7 @@ section {
 
 
 /* -------------------------------------- */
-/* --- POPULAR GAMES SECTION (FIXED ALIGNMENT) --- */
+/* --- POPULAR GAMES SECTION (FIXED ALIGNMENT DAN TEXT TRUNCATION) --- */
 /* -------------------------------------- */
 .popular-grid {
     display: grid;
@@ -198,12 +198,14 @@ section {
     background-color: #330066;
     border-radius: 8px;
     padding: 10px;
-    /* KRITIKAL: Memastikan semua item di dalam kotak berbaris rata secara vertikal di tengah */
+    /* Memastikan semua item di dalam kotak berbaris rata secara vertikal di tengah */
     display: flex;
     align-items: center; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     position: relative;
     border: 1px solid transparent;
+    /* Memberikan tinggi minimum agar kotak tidak terlalu pendek saat teksnya sedikit */
+    min-height: 80px; 
 }
 .game-card:hover {
     border-color: #8A2BE2;
@@ -227,12 +229,14 @@ section {
     flex-grow: 1; 
     text-align: left;
     margin-right: 5px; 
-    /* KRITIKAL: Memastikan Teks fleksibel dan rata di tengah (walaupun teksnya panjang) */
-    align-self: center; 
-    /* Mengatur tinggi minimum/maksimum opsional untuk konsistensi */
-    min-height: 40px; 
-    display: flex;
-    align-items: center; /* Rata tengah untuk teks multiline */
+
+    /* KRITIKAL: Batasi teks agar hanya 2 baris */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Batasi maksimal 2 baris */
+    -webkit-box-orient: vertical;
+    max-height: calc(1.3em * 2); /* Mengatur tinggi maksimum agar teks tidak lebih dari 2 baris */
 }
 
 .game-logo-right {
@@ -243,7 +247,7 @@ section {
     border-radius: 0 !important;
     margin-right: 0 !important;
     flex-shrink: 0;
-    align-self: center; /* Rata tengah vertikal */
+    align-self: center; 
 }
 /* -------------------------------------- */
 
@@ -553,4 +557,4 @@ section {
         bottom: 20px;
         right: 20px;
     }
-}
+        }
