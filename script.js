@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+
     // --- 1. SLIDER FUNCTIONALITY ---
     const sliderItems = document.querySelectorAll('.slider-item');
     const sliderDots = document.querySelectorAll('.dot');
@@ -7,15 +8,20 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentIndex = 0;
 
     function showSlide(index) {
+        if (sliderItems.length === 0) return;
+        
         // Normalisasi index
         if (index >= sliderItems.length) index = 0;
         if (index < 0) index = sliderItems.length - 1;
         currentIndex = index;
 
+        // Sembunyikan semua item dan non-aktifkan dot
         sliderItems.forEach((item, i) => {
             item.classList.remove('active');
             sliderDots[i].classList.remove('active');
         });
+
+        // Tampilkan item yang aktif dan aktifkan dot
         if (sliderItems[currentIndex]) {
             sliderItems[currentIndex].classList.add('active');
         }
@@ -59,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (menuBtn && sidebar) {
         menuBtn.addEventListener('click', () => {
             sidebar.classList.toggle('active');
-            // Mengganti ikon
+            // Mengganti ikon antara garis 3 (fa-bars) dan X (fa-times)
             if (sidebar.classList.contains('active')) {
                 menuIcon.classList.remove('fa-bars');
                 menuIcon.classList.add('fa-times');
@@ -68,123 +74,90 @@ document.addEventListener('DOMContentLoaded', () => {
                 menuIcon.classList.add('fa-bars');
             }
         });
-    }
-
-    // --- 3. FILTER KATEGORI FUNCTIONALITY ---
-    const categoryButtons = document.querySelectorAll('.category-btn');
-    const productGrids = document.querySelectorAll('.product-grid-category');
-
-    function showCategory(categoryName) {
-        // Hapus active dari semua tombol dan grid
-        categoryButtons.forEach(btn => btn.classList.remove('active'));
-        productGrids.forEach(grid => {
-             // Pastikan semua produk tampil sebelum menyembunyikan/menampilkan grid
-             grid.querySelectorAll('.product-card-category').forEach(card => card.style.display = 'inline-block');
-             grid.classList.remove('active');
-        });
-
-        // Tambahkan active ke tombol dan grid yang sesuai
-        const activeBtn = document.querySelector(`.category-btn[data-category="${categoryName}"]`);
-        const activeGrid = document.getElementById(categoryName);
         
-        if (activeBtn) activeBtn.classList.add('active');
-        if (activeGrid) activeGrid.classList.add('active');
+        // Menutup sidebar ketika link di-klik
+        const sidebarLinks = document.querySelectorAll('#sidebar a');
+        sidebarLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                 sidebar.classList.remove('active');
+                 menuIcon.classList.remove('fa-times');
+                 menuIcon.classList.add('fa-bars');
+            });
+        });
     }
 
-    categoryButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const category = btn.getAttribute('data-category');
-            showCategory(category);
-            // Kosongkan input pencarian saat kategori diubah
-            document.getElementById('search-input').value = ''; 
-            // Pastikan semua produk di kategori ini terlihat jika sebelumnya disembunyikan oleh filter
-            document.querySelectorAll('.product-card-category').forEach(card => card.style.display = 'inline-block');
-        });
-    });
-
-    // Sidebar Category Links (juga memfilter kategori)
+    // --- 3. FILTER PRODUK BERDASARKAN KATEGORI (DARI SIDEBAR) ---
     const sidebarCategoryLinks = document.querySelectorAll('.category-link');
     sidebarCategoryLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
             const category = link.getAttribute('data-category');
-            showCategory(category);
-            // Tutup sidebar setelah memilih kategori
+            filterProductsByCategory(category);
+             // Tutup sidebar setelah memilih kategori
             if (sidebar.classList.contains('active')) {
                 sidebar.classList.remove('active');
                 menuIcon.classList.remove('fa-times');
                 menuIcon.classList.add('fa-bars');
             }
-             // Kosongkan input pencarian saat kategori diubah
-            document.getElementById('search-input').value = '';
+            // Kosongkan input pencarian saat kategori diubah
+            document.getElementById('search-input').value = ''; 
         });
     });
-
-    // Tampilkan kategori pertama saat dimuat
-    showCategory('Game Top Up');
+    
+    function filterProductsByCategory(category) {
+        const productCards = document.querySelectorAll('.product-grid .product-card');
+        productCards.forEach(card => {
+            const cardCategory = card.getAttribute('data-category');
+            if (category === 'Semua' || cardCategory === category) {
+                 // Tampilkan semua jika kategori yang dipilih adalah 'Semua' 
+                 // (meski menu 'Semua' tidak ada, ini antisipasi)
+                 // atau kategori cocok
+                card.style.display = 'flex';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+        // Scroll ke bagian produk
+        document.querySelector('.product-grid-section').scrollIntoView({ behavior: 'smooth' });
+    }
 });
 
 
-// --- 4. GLOBAL SEARCH PRODUCT FUNCTIONALITY ---
+// --- 4. GLOBAL SEARCH PRODUCT FUNCTIONALITY (Dipanggil oleh onkeyup di HTML) ---
 function filterProducts() {
     const searchInput = document.getElementById('search-input');
     if (!searchInput) return; 
     
     const filter = searchInput.value.toLowerCase().trim();
-    
-    // Cari di *semua* produk (di semua kategori)
-    const allCategoryProducts = document.querySelectorAll('.product-card-category');
-    const productGrids = document.querySelectorAll('.product-grid-category');
+    const productCards = document.querySelectorAll('.product-grid .product-card');
 
-    if (filter.length > 0) {
-        // 1. Tampilkan semua grid kategori 
-        productGrids.forEach(grid => grid.classList.add('active'));
-        
-        // 2. Nonaktifkan semua tombol kategori
-        document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
+    productCards.forEach(card => {
+        // Ambil data nama, kategori, dan region
+        const name = card.querySelector('.product-name').textContent.toLowerCase();
+        const category = card.getAttribute('data-category').toLowerCase();
+        const region = card.getAttribute('data-region').toLowerCase();
 
-        // 3. Filter produk
-        allCategoryProducts.forEach(card => {
-            const name = card.getAttribute('data-name').toLowerCase();
-            if (name.includes(filter)) {
-                card.style.display = 'inline-block'; 
-            } else {
-                card.style.display = 'none';
-            }
-        });
-    } else {
-        // Jika filter kosong, kembalikan ke tampilan default: Game Top Up
-        
-        // 1. Reset tombol kategori
-        document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
-        const defaultBtn = document.querySelector('.category-btn[data-category="Game Top Up"]');
-        if (defaultBtn) defaultBtn.classList.add('active');
-        
-        // 2. Reset grid produk
-        productGrids.forEach(grid => {
-            // Tampilkan kembali semua produk di grid
-            grid.querySelectorAll('.product-card-category').forEach(card => card.style.display = 'inline-block');
-            
-            // Atur kembali grid yang aktif
-            if (grid.id === 'Game Top Up') {
-                 grid.classList.add('active');
-            } else {
-                 grid.classList.remove('active');
-            }
-        });
-    }
+        // Cari berdasarkan nama produk, kategori, atau region
+        if (name.includes(filter) || category.includes(filter) || region.includes(filter)) {
+            card.style.display = 'flex'; // Tampilkan
+        } else {
+            card.style.display = 'none'; // Sembunyikan
+        }
+    });
 }
 
 
-// --- 5. TAMBAH TESTIMONI FUNCTIONALITY ---
+// --- 5. TAMBAH TESTIMONI FUNCTIONALITY (Dipanggil oleh onclick di HTML) ---
 function addTestimonial() {
-    // Menggunakan window.prompt untuk input cepat
-    const product = prompt("Masukkan nama produk (misalnya: Mobile Legends Diamond, Joki Rank ML):");
-    if (!product) return;
+    // 1. Input Produk
+    const product = prompt("Masukkan nama produk (misalnya: MLBB Diamond, Joki Rank ML):");
+    if (!product || product.trim() === "") return;
 
-    const author = prompt("Masukkan nama Anda (maks 20 karakter):").substring(0, 20); 
-    if (!author) return;
+    // 2. Input Nama
+    const author = prompt("Masukkan nama Anda:").substring(0, 20); 
+    if (!author || author.trim() === "") return;
 
+    // 3. Input Rating
     const rating = prompt("Beri nilai (1-5):");
     let numRating = parseInt(rating);
     if (isNaN(numRating) || numRating < 1 || numRating > 5) {
@@ -192,8 +165,9 @@ function addTestimonial() {
         return;
     }
 
+    // 4. Input Teks Testimoni
     const text = prompt("Masukkan teks testimoni Anda (maks 100 karakter):").substring(0, 100);
-    if (!text) return;
+    if (!text || text.trim() === "") return;
     
     // Buat HTML untuk bintang rating
     let ratingHtml = '';
@@ -205,17 +179,15 @@ function addTestimonial() {
         }
     }
 
-    // Generate ID & Date
-    const randomId = 'TRX' + Math.random().toString(36).substring(2, 10).toUpperCase();
+    // Generate tanggal: 23 Nov 25
     const now = new Date();
-    // Format tanggal: 22 Nov 25
     const dateStr = now.getDate().toString().padStart(2, '0') + ' ' + 
                     now.toLocaleString('id', { month: 'short' }) + ' ' + 
                     (now.getFullYear() % 100).toString().padStart(2, '0');
 
     // Buat elemen card baru
     const newCardHtml = `
-        <div class="testimonial-card">
+        <div class="testimonial-card" data-rating="${numRating}">
             <div class="rating">
                 ${ratingHtml}
             </div>
@@ -223,13 +195,12 @@ function addTestimonial() {
             <p class="testimonial-text">"${text}"</p>
             <div class="testimonial-meta">
                 <span class="author">${author}</span>
-                <span class="id">ID: ${randomId}</span>
-                <span class="date">Date: ${dateStr}</span>
+                <span class="date">${dateStr}</span>
             </div>
         </div>
     `;
 
-    // Tambahkan card baru ke container (di posisi paling atas)
+    // Tambahkan card baru ke container (di posisi paling atas/afterbegin)
     const container = document.getElementById('testimonial-container');
     if (container) {
         container.insertAdjacentHTML('afterbegin', newCardHtml); 
