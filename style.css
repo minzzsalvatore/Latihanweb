@@ -79,6 +79,22 @@ a {
     color: #B28FEE;
 }
 
+/* Login/Daftar Button di Header */
+.auth-link-btn {
+    display: flex;
+    align-items: center;
+    padding: 8px 15px;
+    background-color: #5500aa;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-right: 10px;
+}
+
+.auth-link-btn i {
+    margin-right: 5px;
+}
+
 /* Menu Button (Hamburger) */
 .menu-btn {
     background: none;
@@ -117,7 +133,7 @@ a {
 }
 
 #sidebar nav ul li {
-    padding: 10px 0;
+    padding: 5px 0;
 }
 
 #sidebar nav ul li a {
@@ -148,6 +164,127 @@ a {
     padding: 0 15px;
     border-bottom: 1px solid #330066;
 }
+
+/* ==================================== */
+/* =============== MODAL ================ */
+/* ==================================== */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #1a0033;
+    margin: 5% auto;
+    padding: 25px;
+    border: 1px solid #5500aa;
+    width: 90%;
+    max-width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    transition: color 0.2s;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: #B28FEE;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-content h3 {
+    color: #B28FEE;
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.modal-content input, .modal-content textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    display: block;
+    border: 1px solid #5500aa;
+    border-radius: 5px;
+    background-color: #0d0d1a;
+    color: #f0f0ff;
+    box-sizing: border-box;
+}
+
+.modal-content input::placeholder, .modal-content textarea::placeholder {
+    color: #B28FEE80;
+}
+
+.login-btn {
+    background-color: #5500aa;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.login-btn:hover {
+    background-color: #B28FEE;
+    color: #1a0033;
+}
+
+.modal-switch-text {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.modal-switch-text a {
+    color: #B28FEE;
+    font-weight: 600;
+}
+
+/* Rating input for Testimonial Modal */
+.rating-input {
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+}
+
+.rating-input label {
+    margin-right: 10px;
+    font-weight: 600;
+    color: #f0f0ff;
+}
+
+.testi-star i {
+    font-size: 20px;
+    color: #ccc;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.testi-star.active i {
+    color: #ffcc00;
+}
+
 
 /* ==================================== */
 /* ============== MAIN =============== */
@@ -255,68 +392,49 @@ section {
 
 
 /* ==================================== */
-/* =========== PRODUCT GRID =========== */
+/* =========== PRODUCT GRID (REVISI) =========== */
 /* ==================================== */
 .product-grid {
     display: grid;
-    /* Ubah ke 2 kolom di mobile agar lebih besar dan mudah disentuh */
+    /* 2 kolom di mobile */
     grid-template-columns: repeat(2, 1fr); 
-    gap: 15px; /* Jarak antar kartu */
+    gap: 15px; 
 }
 
 .product-card {
-    /* Menghilangkan latar belakang kartu agar gambar mengisi penuh */
     background-color: transparent; 
-    border-radius: 15px; /* Sudut lebih melengkung seperti di gambar */
+    border-radius: 15px; 
     overflow: hidden;
     text-align: center;
     transition: transform 0.3s, box-shadow 0.3s;
-    /* Memberikan efek bayangan lembut agar terlihat menonjol */
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); 
     position: relative;
     display: flex;
     flex-direction: column;
-    /* Paksa kartu berbentuk portrait (rasio 1:1.5) */
+    /* Rasio portrait 1:1.5 */
     padding-bottom: 150%; 
     height: 0;
 }
 
 .product-card:hover {
-    transform: scale(1.05); /* Efek zoom/angkat sedikit */
-    box-shadow: 0 8px 25px rgba(178, 143, 238, 0.5); /* Shadow ungu yang lebih kuat */
+    transform: scale(1.05); 
+    box-shadow: 0 8px 25px rgba(178, 143, 238, 0.5); 
 }
 
-/* Container untuk gambar dan info diletakkan di dalam product-card */
 .product-card img {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%; 
-    object-fit: cover; /* Pastikan gambar memenuhi seluruh kotak */
+    object-fit: cover; 
     display: block;
     z-index: 1;
 }
 
-/* Menyembunyikan/menghapus bagian info/nama/tag seperti permintaan Anda */
+/* Menyembunyikan elemen info/nama produk yang lama */
 .product-info {
     display: none; 
-}
-
-/* Jika Anda ingin menambahkan nama di bagian bawah gambar (seperti Elji Store): */
-.product-name-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    /* Tambahkan gradient overlay agar teks mudah dibaca */
-    background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0));
-    color: #fff;
-    padding: 15px 10px 5px 10px;
-    font-size: 14px;
-    font-weight: 700;
-    text-align: left;
-    z-index: 2;
 }
 
 
@@ -329,11 +447,11 @@ section {
 
 .article-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 20px;
     margin-bottom: 30px;
 }
-
+/* ... (Styling Artikel lainnya sama) ... */
 .article-card {
     background-color: #0d0d1a;
     border-radius: 8px;
@@ -565,8 +683,8 @@ section {
     position: fixed;
     width: 60px;
     height: 60px;
-    bottom: 40px;
-    right: 40px;
+    bottom: 20px;
+    right: 20px;
     background-color: #25d366;
     color: #FFF;
     border-radius: 50px;
@@ -589,7 +707,10 @@ section {
 /* ==================================== */
 @media (min-width: 768px) {
     .search-input-container {
-        display: block; /* Tampilkan di desktop */
+        display: block; 
+    }
+    .auth-link-btn {
+        display: none; /* Sembunyikan tombol login/daftar jika ada menu garis 3 */
     }
     .main-header {
         padding: 15px 10%;
@@ -613,14 +734,18 @@ section {
         margin-top: 15px;
     }
     .product-grid {
-        /* Ubah kembali ke layout 4 kolom atau lebih di desktop */
-        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); 
+        /* Ubah kembali ke 4-5 kolom di desktop */
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); 
     }
     /* Sesuaikan rasio kartu produk di desktop */
     .product-card {
-        padding-bottom: 120%; /* Rasio sedikit lebih pendek (misal 1:1.2) */
+        padding-bottom: 140%; 
     }
     .article-grid {
         grid-template-columns: repeat(3, 1fr);
+    }
+    .whatsapp-float {
+        bottom: 40px;
+        right: 40px;
     }
 }
