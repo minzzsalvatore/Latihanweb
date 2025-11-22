@@ -1,5 +1,5 @@
-// --- 1. SLIDER FUNCTIONALITY ---
 document.addEventListener('DOMContentLoaded', () => {
+    // --- 1. SLIDER FUNCTIONALITY ---
     const sliderItems = document.querySelectorAll('.slider-item');
     const sliderDots = document.querySelectorAll('.dot');
     const prevArrow = document.querySelector('.slider-arrow.prev');
@@ -7,42 +7,43 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentIndex = 0;
 
     function showSlide(index) {
+        // Normalisasi index
+        if (index >= sliderItems.length) index = 0;
+        if (index < 0) index = sliderItems.length - 1;
+        currentIndex = index;
+
         sliderItems.forEach((item, i) => {
             item.classList.remove('active');
             sliderDots[i].classList.remove('active');
         });
-        if (sliderItems[index]) {
-            sliderItems[index].classList.add('active');
+        if (sliderItems[currentIndex]) {
+            sliderItems[currentIndex].classList.add('active');
         }
-        if (sliderDots[index]) {
-            sliderDots[index].classList.add('active');
+        if (sliderDots[currentIndex]) {
+            sliderDots[currentIndex].classList.add('active');
         }
     }
 
     if (prevArrow && nextArrow) {
         prevArrow.addEventListener('click', () => {
-            currentIndex = (currentIndex > 0) ? currentIndex - 1 : sliderItems.length - 1;
-            showSlide(currentIndex);
+            showSlide(currentIndex - 1);
         });
 
         nextArrow.addEventListener('click', () => {
-            currentIndex = (currentIndex < sliderItems.length - 1) ? currentIndex + 1 : 0;
-            showSlide(currentIndex);
+            showSlide(currentIndex + 1);
         });
     }
 
     sliderDots.forEach((dot, index) => {
         dot.addEventListener('click', () => {
-            currentIndex = index;
-            showSlide(currentIndex);
+            showSlide(index);
         });
     });
 
     // Auto slide
     if (sliderItems.length > 1) {
         setInterval(() => {
-            currentIndex = (currentIndex < sliderItems.length - 1) ? currentIndex + 1 : 0;
-            showSlide(currentIndex);
+            showSlide(currentIndex + 1);
         }, 5000); // Ganti setiap 5 detik
     }
 
@@ -77,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Hapus active dari semua tombol dan grid
         categoryButtons.forEach(btn => btn.classList.remove('active'));
         productGrids.forEach(grid => {
-             // Pastikan semua produk tampil sebelum menampilkan grid kategori
+             // Pastikan semua produk tampil sebelum menyembunyikan/menampilkan grid
              grid.querySelectorAll('.product-card-category').forEach(card => card.style.display = 'inline-block');
              grid.classList.remove('active');
         });
@@ -94,6 +95,10 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.addEventListener('click', () => {
             const category = btn.getAttribute('data-category');
             showCategory(category);
+            // Kosongkan input pencarian saat kategori diubah
+            document.getElementById('search-input').value = ''; 
+            // Pastikan semua produk di kategori ini terlihat jika sebelumnya disembunyikan oleh filter
+            document.querySelectorAll('.product-card-category').forEach(card => card.style.display = 'inline-block');
         });
     });
 
@@ -110,6 +115,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 menuIcon.classList.remove('fa-times');
                 menuIcon.classList.add('fa-bars');
             }
+             // Kosongkan input pencarian saat kategori diubah
+            document.getElementById('search-input').value = '';
         });
     });
 
@@ -121,58 +128,61 @@ document.addEventListener('DOMContentLoaded', () => {
 // --- 4. GLOBAL SEARCH PRODUCT FUNCTIONALITY ---
 function filterProducts() {
     const searchInput = document.getElementById('search-input');
-    // Jika searchInput tidak ada, hentikan fungsi
     if (!searchInput) return; 
     
-    const filter = searchInput.value.toLowerCase();
+    const filter = searchInput.value.toLowerCase().trim();
     
-    // Cari di *semua* produk di semua kategori grid
+    // Cari di *semua* produk (di semua kategori)
     const allCategoryProducts = document.querySelectorAll('.product-card-category');
-
-    allCategoryProducts.forEach(card => {
-        const name = card.getAttribute('data-name').toLowerCase();
-        
-        // Atur display berdasarkan hasil filter
-        if (name.includes(filter)) {
-            // Tampilkan card dengan lebar default (agar berfungsi di flex/scroll)
-            card.style.display = 'inline-block'; 
-            card.style.width = null; 
-        } else {
-            card.style.display = 'none';
-        }
-    });
-
-    // Saat search dilakukan, kita pastikan semua grid kategori terlihat 
-    // agar pencarian mencakup semua produk, terlepas dari kategori yang aktif.
     const productGrids = document.querySelectorAll('.product-grid-category');
-    productGrids.forEach(grid => {
-        // Jika sedang memfilter (filter tidak kosong), pastikan semua grid terlihat
-        if (filter.length > 0) {
-            grid.classList.add('active');
-            // Hapus class 'active' dari tombol kategori
-            const categoryButtons = document.querySelectorAll('.category-btn');
-            categoryButtons.forEach(btn => btn.classList.remove('active'));
-        } else {
-            // Jika filter kosong, kembalikan ke kategori aktif default (Top Up Game)
-            const defaultCategory = document.getElementById('Game Top Up');
-            if (grid === defaultCategory) {
+
+    if (filter.length > 0) {
+        // 1. Tampilkan semua grid kategori 
+        productGrids.forEach(grid => grid.classList.add('active'));
+        
+        // 2. Nonaktifkan semua tombol kategori
+        document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
+
+        // 3. Filter produk
+        allCategoryProducts.forEach(card => {
+            const name = card.getAttribute('data-name').toLowerCase();
+            if (name.includes(filter)) {
+                card.style.display = 'inline-block'; 
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    } else {
+        // Jika filter kosong, kembalikan ke tampilan default: Game Top Up
+        
+        // 1. Reset tombol kategori
+        document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
+        const defaultBtn = document.querySelector('.category-btn[data-category="Game Top Up"]');
+        if (defaultBtn) defaultBtn.classList.add('active');
+        
+        // 2. Reset grid produk
+        productGrids.forEach(grid => {
+            // Tampilkan kembali semua produk di grid
+            grid.querySelectorAll('.product-card-category').forEach(card => card.style.display = 'inline-block');
+            
+            // Atur kembali grid yang aktif
+            if (grid.id === 'Game Top Up') {
                  grid.classList.add('active');
             } else {
                  grid.classList.remove('active');
             }
-            // Aktifkan kembali tombol kategori pertama
-            document.querySelector('.category-btn[data-category="Game Top Up"]').classList.add('active');
-        }
-    });
+        });
+    }
 }
 
 
 // --- 5. TAMBAH TESTIMONI FUNCTIONALITY ---
 function addTestimonial() {
+    // Menggunakan window.prompt untuk input cepat
     const product = prompt("Masukkan nama produk (misalnya: Mobile Legends Diamond, Joki Rank ML):");
     if (!product) return;
 
-    const author = prompt("Masukkan nama Anda (misalnya: Budi S.) :").substring(0, 20); // Batasi nama 20 karakter
+    const author = prompt("Masukkan nama Anda (maks 20 karakter):").substring(0, 20); 
     if (!author) return;
 
     const rating = prompt("Beri nilai (1-5):");
@@ -198,6 +208,7 @@ function addTestimonial() {
     // Generate ID & Date
     const randomId = 'TRX' + Math.random().toString(36).substring(2, 10).toUpperCase();
     const now = new Date();
+    // Format tanggal: 22 Nov 25
     const dateStr = now.getDate().toString().padStart(2, '0') + ' ' + 
                     now.toLocaleString('id', { month: 'short' }) + ' ' + 
                     (now.getFullYear() % 100).toString().padStart(2, '0');
@@ -218,10 +229,10 @@ function addTestimonial() {
         </div>
     `;
 
-    // Tambahkan card baru ke container (di bagian atas)
+    // Tambahkan card baru ke container (di posisi paling atas)
     const container = document.getElementById('testimonial-container');
     if (container) {
-         // Masukkan testimoni baru sebelum yang lama
         container.insertAdjacentHTML('afterbegin', newCardHtml); 
+        alert("Terima kasih! Testimoni Anda berhasil ditambahkan.");
     }
 }
