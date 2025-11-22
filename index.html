@@ -16,14 +16,13 @@
 
 <header class="main-header">
     <div class="header-left">
-        <i class="fas fa-gem header-icon"></i> <span class="store-name">MINZZ STORE</span>
+        <i class="fas fa-bolt header-icon"></i> <span class="store-name">MINZZ STORE</span>
     </div>
     <div class="header-right">
         <div class="search-input-container">
             <input type="text" id="search-input" placeholder="Cari Produk..." onkeyup="filterProducts()">
             <i class="fas fa-search search-icon"></i>
         </div>
-        <span class="region-switch">ID/IDR</span>
         <button class="menu-btn" id="menu-toggle-btn">
             <i class="fas fa-bars" id="menu-icon"></i>
         </button>
@@ -33,9 +32,7 @@
 <div id="sidebar">
     <nav>
         <ul>
-            <button class="close-sidebar-btn" id="close-sidebar-btn"><i class="fas fa-times"></i></button>
-
-            <li><a href="#" class="sidebar-link active" data-page="beranda"><i class="fas fa-home"></i> Beranda</a></li>
+            <li><a href="#" class="sidebar-link" data-page="beranda"><i class="fas fa-home"></i> Beranda</a></li>
             <li><a href="#" class="sidebar-link" data-page="check-pesanan"><i class="fas fa-receipt"></i> Check Pesanan</a></li>
             
             <li class="sidebar-separator">Informasi & Tools</li>
@@ -51,8 +48,6 @@
             
             <li class="sidebar-separator">Lainnya</li>
             <li><a href="#" class="sidebar-link" data-page="kontak"><i class="fas fa-headset"></i> Kontak & Dukungan</a></li>
-            <li><a href="#" class="sidebar-link" data-page="masuk"><i class="fas fa-sign-in-alt"></i> Masuk</a></li>
-            <li><a href="#" class="sidebar-link" data-page="daftar"><i class="fas fa-user-plus"></i> Daftar</a></li>
         </ul>
     </nav>
 </div>
@@ -76,86 +71,81 @@
             <span class="dot"></span>
             <span class="dot"></span>
         </div>
-        </section>
-
-    <section class="top-categories-scroll">
-        <button class="category-scroll-btn active" data-filter="Semua">Game Top-Up</button>
-        <button class="category-scroll-btn" data-filter="Joki Games">Joki Services</button>
-        <button class="category-scroll-btn" data-filter="Voucher">Voucher</button>
-        <button class="category-scroll-btn" data-filter="Promo">Promo</button>
+        <button class="slider-arrow prev"><i class="fas fa-chevron-left"></i></button>
+        <button class="slider-arrow next"><i class="fas fa-chevron-right"></i></button>
     </section>
-
 
     <section class="product-grid-section">
         <div class="section-title-wrap">
-            <i class="fas fa-heartbeat promo-icon"></i>
-            <h2 class="section-title">Terpopuler Saat Ini</h2>
-            <p class="section-subtitle">Berikut adalah produk-produk yang paling banyak dibeli.</p>
+            <h2 class="section-title">Semua Produk</h2>
         </div>
         
         <div class="product-grid" id="main-product-grid">
             <a href="#" class="product-card" data-category="Top Up Games" data-region="Global">
-                <span class="promo-badge">PROMO</span>
                 <img src="https://files.catbox.moe/8qxp7i.png" alt="Mobile Legends">
                 <div class="product-info">
                     <span class="product-name">Mobile Legends</span>
-                    <span class="product-tag tag-region">ID/Global</span>
+                    <span class="product-tag tag-region">Malaysia 2</span>
+                    <span class="product-tag tag-type">Instan</span>
                 </div>
             </a>
             <a href="#" class="product-card" data-category="Top Up Games" data-region="Indonesia">
                 <img src="https://files.catbox.moe/zo3ln6.png" alt="Free Fire">
                 <div class="product-info">
-                    <span class="product-name">Free Fire</span>
-                    <span class="product-tag tag-region">Garena</span>
+                    <span class="product-name">Mobile Legends</span>
+                    <span class="product-tag tag-region">Indonesia 3</span>
+                    <span class="product-tag tag-type">Instan</span>
                 </div>
             </a>
             <a href="#" class="product-card" data-category="Top Up Games" data-region="Global">
-                <img src="https://files.catbox.moe/19b2q0.png" alt="Roblox">
+                <img src="https://via.placeholder.com/150x150/330066/B28FEE?text=VALORANT" alt="Valorant">
                 <div class="product-info">
-                    <span class="product-name">Roblox</span>
-                    <span class="product-tag tag-region">Via Login</span>
+                    <span class="product-name">Mobile Legends</span>
+                    <span class="product-tag tag-region">Philippines</span>
+                    <span class="product-tag tag-type">Instan</span>
                 </div>
             </a>
-             <a href="#" class="product-card" data-category="Joki Games" data-region="Indonesia">
+             <a href="#" class="product-card" data-category="Top Up Games" data-region="Global">
+                <img src="https://via.placeholder.com/150x150/8A2BE2/1A0033?text=GENSHIN" alt="Genshin Impact">
+                <div class="product-info">
+                    <span class="product-name">Mobile Legends</span>
+                    <span class="product-tag tag-region">Global</span>
+                    <span class="product-tag tag-type">Instan</span>
+                </div>
+            </a>
+            <a href="#" class="product-card" data-category="Joki Games" data-region="Indonesia">
                 <img src="https://via.placeholder.com/150x150/A020F0/ffffff?text=JOKI+ML" alt="Joki Rank ML">
                 <div class="product-info">
                     <span class="product-name">Joki Rank ML</span>
-                    <span class="product-tag tag-region">Termurah</span>
+                    <span class="product-tag tag-region">Lokal</span>
+                    <span class="product-tag tag-type">Joki</span>
+                </div>
+            </a>
+            <a href="#" class="product-card" data-category="Voucher" data-region="Global">
+                <img src="https://via.placeholder.com/150x150/330066/B28FEE?text=STEAM" alt="Steam Wallet">
+                <div class="product-info">
+                    <span class="product-name">Steam Wallet</span>
+                    <span class="product-tag tag-region">Global</span>
+                    <span class="product-tag tag-type">Voucher</span>
                 </div>
             </a>
             <a href="#" class="product-card" data-category="Top Up Games" data-region="Global">
                 <img src="https://via.placeholder.com/150x150/5500aa/f0e6ff?text=PUBGM" alt="PUBG Mobile">
                 <div class="product-info">
                     <span class="product-name">PUBG Mobile</span>
-                    <span class="product-tag tag-region">Tencent Games</span>
+                    <span class="product-tag tag-region">Global</span>
+                    <span class="product-tag tag-type">UC</span>
                 </div>
             </a>
-            <a href="#" class="product-card" data-category="Top Up Games" data-region="Global">
-                <img src="https://via.placeholder.com/150x150/5500aa/f0e6ff?text=CODM" alt="Call of Duty Mobile">
+            <a href="#" class="product-card" data-category="Voucher" data-region="Indonesia">
+                <img src="https://via.placeholder.com/150x150/8A2BE2/1A0033?text=GOOGLE+PLAY" alt="Google Play Gift Card">
                 <div class="product-info">
-                    <span class="product-name">Call of Duty Mobile</span>
-                    <span class="product-tag tag-region">Garena</span>
-                </div>
-            </a>
-            <a href="#" class="product-card" data-category="Top Up Games" data-region="Global">
-                <img src="https://files.catbox.moe/u087d1.png" alt="Magic Chess">
-                <div class="product-info">
-                    <span class="product-name">Magic Chess</span>
-                    <span class="product-tag tag-region">Moonton</span>
-                </div>
-            </a>
-            <a href="#" class="product-card" data-category="Top Up Games" data-region="Global">
-                <img src="https://via.placeholder.com/150x150/8A2BE2/1A0033?text=GENSHIN" alt="Genshin Impact">
-                <div class="product-info">
-                    <span class="product-name">Genshin Impact</span>
-                    <span class="product-tag tag-region">Hoyoverse</span>
+                    <span class="product-name">Google Play Gift Card</span>
+                    <span class="product-tag tag-region">Indonesia</span>
+                    <span class="product-tag tag-type">Voucher</span>
                 </div>
             </a>
             
-        </div>
-        
-        <div class="text-center">
-             <button class="view-all-btn" data-tag="Produk Lainnya">Lihat Semua Produk</button>
         </div>
     </section>
 
@@ -235,7 +225,7 @@
 
     <footer class="main-footer">
         <div class="footer-top">
-            <i class="fas fa-gem footer-icon"></i>
+            <i class="fas fa-bolt footer-icon"></i>
             <span class="store-name">MINZZ STORE</span>
             <p class="footer-description">Platform top-up game terpercaya dengan layanan cepat, aman, dan harga terbaik.</p>
             <div class="social-icons">
