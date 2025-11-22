@@ -1,209 +1,240 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // ====================================
+    // 1. Sidebar Toggle & Login Status
+    // ====================================
+    const sidebar = document.getElementById('sidebar');
+    const menuToggleBtn = document.getElementById('menu-toggle-btn');
+    const menuIcon = document.getElementById('menu-icon');
+    const authLink = document.getElementById('auth-link');
+    const loggedInMenu = document.getElementById('logged-in-menu');
 
-    // --- 1. SLIDER FUNCTIONALITY ---
+    // Cek status login (simulasi)
+    let isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    let userName = localStorage.getItem('userName') || 'User Minzz';
+
+    function updateLoginStatus() {
+        if (isLoggedIn) {
+            authLink.style.display = 'none';
+            loggedInMenu.style.display = 'block';
+            // Ubah ikon menu menjadi silang saat sidebar aktif
+            menuToggleBtn.onclick = () => {
+                sidebar.classList.toggle('active');
+                menuIcon.classList.toggle('fa-bars');
+                menuIcon.classList.toggle('fa-times');
+            };
+        } else {
+            authLink.style.display = 'flex';
+            loggedInMenu.style.display = 'none';
+            // Tetapkan fungsi agar membuka modal jika belum login
+            authLink.onclick = () => toggleLoginModal(true);
+            menuToggleBtn.onclick = () => {
+                sidebar.classList.toggle('active');
+                menuIcon.classList.toggle('fa-bars');
+                menuIcon.classList.toggle('fa-times');
+            };
+        }
+        
+        // Tutup sidebar jika status diubah
+        sidebar.classList.remove('active');
+        menuIcon.classList.remove('fa-times');
+        menuIcon.classList.add('fa-bars');
+    }
+
+    updateLoginStatus();
+
+    // Fungsi Logout
+    window.logout = function() {
+        isLoggedIn = false;
+        localStorage.removeItem('isLoggedIn');
+        localStorage.removeItem('userName');
+        alert('Anda telah Logout.');
+        updateLoginStatus();
+    }
+
+
+    // ====================================
+    // 2. Login/Register Modal
+    // ====================================
+    const loginModal = document.getElementById('login-modal');
+    const modalTitle = document.getElementById('modal-title');
+    const loginForm = document.getElementById('login-form');
+    const registerForm = document.getElementById('register-form');
+
+    window.toggleLoginModal = function(show) {
+        loginModal.style.display = show ? 'block' : 'none';
+    }
+
+    window.switchModal = function(mode) {
+        if (mode === 'register') {
+            modalTitle.textContent = 'Daftar Akun Baru';
+            loginForm.style.display = 'none';
+            registerForm.style.display = 'block';
+        } else {
+            modalTitle.textContent = 'Login ke Akun Anda';
+            loginForm.style.display = 'block';
+            registerForm.style.display = 'none';
+        }
+    }
+
+    // Simulasi proses Login
+    loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const inputUsername = document.getElementById('login-username').value;
+        // Simulasi berhasil login
+        isLoggedIn = true;
+        userName = inputUsername.split('@')[0] || 'User Minzz';
+        localStorage.setItem('isLoggedIn', 'true');
+        localStorage.setItem('userName', userName);
+        
+        toggleLoginModal(false);
+        updateLoginStatus();
+        alert(`Selamat datang, ${userName}! Login Berhasil.`);
+    });
+
+    // Simulasi proses Register
+    registerForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        // Simulasi berhasil daftar, lalu otomatis login
+        const regName = document.getElementById('reg-name').value;
+        isLoggedIn = true;
+        userName = regName.split(' ')[0] || 'User Baru';
+        localStorage.setItem('isLoggedIn', 'true');
+        localStorage.setItem('userName', userName);
+        
+        toggleLoginModal(false);
+        updateLoginStatus();
+        alert(`Akun berhasil dibuat. Selamat datang, ${userName}!`);
+    });
+
+    // ====================================
+    // 3. Slider Fungsionalitas
+    // ====================================
+    const sliderWrapper = document.querySelector('.slider-wrapper');
     const sliderItems = document.querySelectorAll('.slider-item');
-    const sliderDots = document.querySelectorAll('.dot');
+    const dots = document.querySelectorAll('.dot');
     const prevArrow = document.querySelector('.slider-arrow.prev');
     const nextArrow = document.querySelector('.slider-arrow.next');
     let currentIndex = 0;
 
-    function showSlide(index) {
-        if (sliderItems.length === 0) return;
-        
-        // Normalisasi index
-        if (index >= sliderItems.length) index = 0;
-        if (index < 0) index = sliderItems.length - 1;
-        currentIndex = index;
+    function updateSlider() {
+        const itemWidth = sliderItems[0].clientWidth;
+        sliderWrapper.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
 
-        // Sembunyikan semua item dan non-aktifkan dot
-        sliderItems.forEach((item, i) => {
-            item.classList.remove('active');
-            sliderDots[i].classList.remove('active');
-        });
-
-        // Tampilkan item yang aktif dan aktifkan dot
-        if (sliderItems[currentIndex]) {
-            sliderItems[currentIndex].classList.add('active');
-        }
-        if (sliderDots[currentIndex]) {
-            sliderDots[currentIndex].classList.add('active');
-        }
-    }
-
-    if (prevArrow && nextArrow) {
-        prevArrow.addEventListener('click', () => {
-            showSlide(currentIndex - 1);
-        });
-
-        nextArrow.addEventListener('click', () => {
-            showSlide(currentIndex + 1);
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentIndex);
+            sliderItems[index].classList.toggle('active', index === currentIndex);
         });
     }
 
-    sliderDots.forEach((dot, index) => {
+    // Pastikan slider responsif saat window resize
+    window.addEventListener('resize', updateSlider);
+
+    prevArrow.addEventListener('click', () => {
+        currentIndex = (currentIndex > 0) ? currentIndex - 1 : sliderItems.length - 1;
+        updateSlider();
+    });
+
+    nextArrow.addEventListener('click', () => {
+        currentIndex = (currentIndex < sliderItems.length - 1) ? currentIndex + 1 : 0;
+        updateSlider();
+    });
+
+    dots.forEach((dot, index) => {
         dot.addEventListener('click', () => {
-            showSlide(index);
+            currentIndex = index;
+            updateSlider();
         });
     });
+
+    updateSlider(); // Initial call
 
     // Auto slide
-    if (sliderItems.length > 1) {
-        setInterval(() => {
-            showSlide(currentIndex + 1);
-        }, 5000); // Ganti setiap 5 detik
+    setInterval(() => {
+        currentIndex = (currentIndex < sliderItems.length - 1) ? currentIndex + 1 : 0;
+        updateSlider();
+    }, 5000); 
+
+    // ====================================
+    // 4. Testimonial Form & Rating
+    // ====================================
+    const testimonialModal = document.getElementById('testimonial-modal');
+    const testimonialForm = document.getElementById('new-testimonial-form');
+    const testiNameInput = document.getElementById('testi-name');
+    const testimonialContainer = document.getElementById('testimonial-container');
+    const starInputs = document.querySelectorAll('.testi-star');
+    const ratingInputHidden = document.getElementById('testi-rating');
+
+    window.openTestimonialForm = function() {
+        if (!isLoggedIn) {
+            alert('Anda harus Login terlebih dahulu untuk menambahkan testimoni.');
+            toggleLoginModal(true);
+            return;
+        }
+        testiNameInput.value = userName;
+        testimonialModal.style.display = 'block';
     }
 
-    if (sliderItems.length > 0) {
-        showSlide(currentIndex); // Tampilkan slide pertama saat dimuat
+    window.closeTestimonialForm = function() {
+        testimonialModal.style.display = 'none';
+        testimonialForm.reset();
     }
 
-    // --- 2. MENU HAMBURGER & SIDEBAR FUNCTIONALITY ---
-    const sidebar = document.getElementById('sidebar');
-    const menuBtn = document.getElementById('menu-toggle-btn');
-    const menuIcon = document.getElementById('menu-icon');
-
-    if (menuBtn && sidebar) {
-        menuBtn.addEventListener('click', () => {
-            sidebar.classList.toggle('active');
-            // Mengganti ikon antara garis 3 (fa-bars) dan X (fa-times)
-            if (sidebar.classList.contains('active')) {
-                menuIcon.classList.remove('fa-bars');
-                menuIcon.classList.add('fa-times');
-            } else {
-                menuIcon.classList.remove('fa-times');
-                menuIcon.classList.add('fa-bars');
-            }
-        });
-        
-        // Menutup sidebar ketika link di-klik
-        const sidebarLinks = document.querySelectorAll('#sidebar a');
-        sidebarLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                 sidebar.classList.remove('active');
-                 menuIcon.classList.remove('fa-times');
-                 menuIcon.classList.add('fa-bars');
+    // Fungsionalitas Rating Bintang
+    starInputs.forEach(star => {
+        star.addEventListener('click', () => {
+            const value = parseInt(star.getAttribute('data-value'));
+            ratingInputHidden.value = value;
+            starInputs.forEach((s, i) => {
+                s.classList.toggle('active', i < value);
+                s.querySelector('i').className = (i < value) ? 'fas fa-star' : 'far fa-star';
             });
         });
-    }
-
-    // --- 3. FILTER PRODUK BERDASARKAN KATEGORI (DARI SIDEBAR) ---
-    const sidebarCategoryLinks = document.querySelectorAll('.category-link');
-    sidebarCategoryLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const category = link.getAttribute('data-category');
-            filterProductsByCategory(category);
-             // Tutup sidebar setelah memilih kategori
-            if (sidebar.classList.contains('active')) {
-                sidebar.classList.remove('active');
-                menuIcon.classList.remove('fa-times');
-                menuIcon.classList.add('fa-bars');
-            }
-            // Kosongkan input pencarian saat kategori diubah
-            document.getElementById('search-input').value = ''; 
-        });
     });
-    
-    function filterProductsByCategory(category) {
-        const productCards = document.querySelectorAll('.product-grid .product-card');
+
+    // Simulasi Submit Testimonial
+    testimonialForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const newTestimonial = document.createElement('div');
+        newTestimonial.classList.add('testimonial-card');
+        
+        const rating = parseInt(ratingInputHidden.value);
+        const starsHtml = Array(5).fill(0).map((_, i) => 
+            `<i class="fas fa-star" style="color: ${i < rating ? '#ffcc00' : '#ccc'}"></i>`
+        ).join('');
+
+        const currentDate = new Date().toLocaleDateString('id-ID', {day: '2-digit', month: 'short', year: '2-digit'});
+
+        newTestimonial.innerHTML = `
+            <div class="rating">${starsHtml}</div>
+            <p class="testimonial-product">${document.getElementById('testi-product').value}</p>
+            <p class="testimonial-text">"${document.getElementById('testi-review').value}"</p>
+            <div class="testimonial-meta">
+                <span class="author">${testiNameInput.value}</span>
+                <span class="date">${currentDate}</span>
+            </div>
+        `;
+        
+        // Tambahkan di awal container
+        testimonialContainer.prepend(newTestimonial);
+        closeTestimonialForm();
+        alert('Testimoni berhasil ditambahkan! Terima kasih.');
+    });
+
+    // ====================================
+    // 5. Fungsi Pencarian (Filter) Produk
+    // ====================================
+    window.filterProducts = function() {
+        const query = document.getElementById('search-input').value.toLowerCase();
+        const productCards = document.querySelectorAll('.product-card');
+
         productCards.forEach(card => {
-            const cardCategory = card.getAttribute('data-category');
-            if (category === 'Semua' || cardCategory === category) {
-                 // Tampilkan semua jika kategori yang dipilih adalah 'Semua' 
-                 // (meski menu 'Semua' tidak ada, ini antisipasi)
-                 // atau kategori cocok
-                card.style.display = 'flex';
+            const altText = card.querySelector('img').alt.toLowerCase();
+            if (altText.includes(query)) {
+                card.style.display = 'block';
             } else {
                 card.style.display = 'none';
             }
         });
-        // Scroll ke bagian produk
-        document.querySelector('.product-grid-section').scrollIntoView({ behavior: 'smooth' });
     }
 });
-
-
-// --- 4. GLOBAL SEARCH PRODUCT FUNCTIONALITY (Dipanggil oleh onkeyup di HTML) ---
-function filterProducts() {
-    const searchInput = document.getElementById('search-input');
-    if (!searchInput) return; 
-    
-    const filter = searchInput.value.toLowerCase().trim();
-    const productCards = document.querySelectorAll('.product-grid .product-card');
-
-    productCards.forEach(card => {
-        // Ambil data nama, kategori, dan region
-        const name = card.querySelector('.product-name').textContent.toLowerCase();
-        const category = card.getAttribute('data-category').toLowerCase();
-        const region = card.getAttribute('data-region').toLowerCase();
-
-        // Cari berdasarkan nama produk, kategori, atau region
-        if (name.includes(filter) || category.includes(filter) || region.includes(filter)) {
-            card.style.display = 'flex'; // Tampilkan
-        } else {
-            card.style.display = 'none'; // Sembunyikan
-        }
-    });
-}
-
-
-// --- 5. TAMBAH TESTIMONI FUNCTIONALITY (Dipanggil oleh onclick di HTML) ---
-function addTestimonial() {
-    // 1. Input Produk
-    const product = prompt("Masukkan nama produk (misalnya: MLBB Diamond, Joki Rank ML):");
-    if (!product || product.trim() === "") return;
-
-    // 2. Input Nama
-    const author = prompt("Masukkan nama Anda:").substring(0, 20); 
-    if (!author || author.trim() === "") return;
-
-    // 3. Input Rating
-    const rating = prompt("Beri nilai (1-5):");
-    let numRating = parseInt(rating);
-    if (isNaN(numRating) || numRating < 1 || numRating > 5) {
-        alert("Peringatan: Rating harus berupa angka antara 1 sampai 5. Testimoni dibatalkan.");
-        return;
-    }
-
-    // 4. Input Teks Testimoni
-    const text = prompt("Masukkan teks testimoni Anda (maks 100 karakter):").substring(0, 100);
-    if (!text || text.trim() === "") return;
-    
-    // Buat HTML untuk bintang rating
-    let ratingHtml = '';
-    for (let i = 0; i < 5; i++) {
-        if (i < numRating) {
-            ratingHtml += '<i class="fas fa-star"></i>'; // Bintang penuh
-        } else {
-            ratingHtml += '<i class="far fa-star"></i>'; // Bintang kosong
-        }
-    }
-
-    // Generate tanggal: 23 Nov 25
-    const now = new Date();
-    const dateStr = now.getDate().toString().padStart(2, '0') + ' ' + 
-                    now.toLocaleString('id', { month: 'short' }) + ' ' + 
-                    (now.getFullYear() % 100).toString().padStart(2, '0');
-
-    // Buat elemen card baru
-    const newCardHtml = `
-        <div class="testimonial-card" data-rating="${numRating}">
-            <div class="rating">
-                ${ratingHtml}
-            </div>
-            <p class="testimonial-product">${product}</p>
-            <p class="testimonial-text">"${text}"</p>
-            <div class="testimonial-meta">
-                <span class="author">${author}</span>
-                <span class="date">${dateStr}</span>
-            </div>
-        </div>
-    `;
-
-    // Tambahkan card baru ke container (di posisi paling atas/afterbegin)
-    const container = document.getElementById('testimonial-container');
-    if (container) {
-        container.insertAdjacentHTML('afterbegin', newCardHtml); 
-        alert("Terima kasih! Testimoni Anda berhasil ditambahkan.");
-    }
-}
