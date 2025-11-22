@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minzz Store - Home</title>
+    <title>Minzz Store - Top Up Game Instan & Murah</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
     
@@ -16,13 +16,18 @@
 
 <header class="main-header">
     <div class="header-left">
-        <i class="fas fa-bolt header-icon"></i> <span class="store-name">MINZZ SALVATORE</span>
+        <i class="fas fa-bolt header-icon"></i> <span class="store-name">MINZZ STORE</span>
     </div>
     <div class="header-right">
         <div class="search-input-container">
             <input type="text" id="search-input" placeholder="Cari Produk..." onkeyup="filterProducts()">
             <i class="fas fa-search search-icon"></i>
         </div>
+        
+        <a href="#" id="auth-link" class="auth-link-btn" onclick="toggleLoginModal(true)">
+            <i class="fas fa-user-circle"></i> Login/Daftar
+        </a>
+
         <button class="menu-btn" id="menu-toggle-btn">
             <i class="fas fa-bars" id="menu-icon"></i>
         </button>
@@ -34,41 +39,59 @@
         <ul>
             <li><a href="#" class="sidebar-link" data-page="beranda"><i class="fas fa-home"></i> Beranda</a></li>
             <li><a href="#" class="sidebar-link" data-page="check-pesanan"><i class="fas fa-receipt"></i> Check Pesanan</a></li>
-            
+        </ul>
+
+        <ul id="logged-in-menu" style="display: none;">
+            <li class="sidebar-separator">Akun Saya</li>
+            <li><a href="#" class="sidebar-link" data-page="profil"><i class="fas fa-id-badge"></i> Profil</a></li>
+            <li><a href="#" class="sidebar-link" data-page="saldo"><i class="fas fa-wallet"></i> Saldo</a></li>
+            <li><a href="#" class="sidebar-link" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        </ul>
+        
+        <ul>
             <li class="sidebar-separator">Informasi & Tools</li>
             <li><a href="#" class="sidebar-link" data-page="leaderboard"><i class="fas fa-medal"></i> Leaderboard</a></li>
-            <li><a href="#" class="sidebar-link" data-page="check-region"><i class="fas fa-globe-asia"></i> Check Region</a></li>
+            <li><a href="#" class="sidebar-link" data-page="check-region"><i class="fas fa-globe-asia"></i> Check Region ID/Server</a></li>
             <li><a href="#" class="sidebar-link" data-page="winrate"><i class="fas fa-percentage"></i> Win Rate Calculator</a></li>
             <li><a href="#" class="sidebar-link" data-page="kalkulator"><i class="fas fa-calculator"></i> Kalkulator Diamond</a></li>
-            
-            <li class="sidebar-separator">Kategori Produk</li>
-            <li><a href="#" class="category-link" data-category="Top Up Games"><i class="fas fa-gamepad"></i> Top Up Games</a></li>
-            <li><a href="#" class="category-link" data-category="Voucher"><i class="fas fa-ticket-alt"></i> Voucher</a></li>
-            <li><a href="#" class="category-link" data-category="Joki Games"><i class="fas fa-fire"></i> Joki Games</a></li>
-            
-            <li class="sidebar-separator">Lainnya</li>
-            <li><a href="#" class="sidebar-link" data-page="kontak"><i class="fas fa-headset"></i> Kontak & Dukungan</a></li>
         </ul>
     </nav>
 </div>
 
 
 <main>
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="toggleLoginModal(false)">&times;</span>
+            <h3 id="modal-title">Login ke Akun Anda</h3>
+            <form id="login-form">
+                <input type="text" id="login-username" placeholder="Username / Email" required>
+                <input type="password" id="login-password" placeholder="Password" required>
+                <button type="submit" class="login-btn">Login</button>
+                <p class="modal-switch-text">Belum punya akun? <a href="#" onclick="switchModal('register')">Daftar Sekarang</a></p>
+            </form>
+            <form id="register-form" style="display: none;">
+                <input type="text" id="reg-name" placeholder="Nama Lengkap" required>
+                <input type="email" id="reg-email" placeholder="Email Aktif" required>
+                <input type="password" id="reg-password" placeholder="Password" required>
+                <input type="password" id="reg-confirm-password" placeholder="Konfirmasi Password" required>
+                <button type="submit" class="login-btn">Daftar</button>
+                <p class="modal-switch-text">Sudah punya akun? <a href="#" onclick="switchModal('login')">Login</a></p>
+            </form>
+        </div>
+    </div>
+    
     <section class="banner-slider">
         <div class="slider-wrapper">
             <div class="slider-item active" data-tag="Promo Hebat">
-                <img src="https://files.catbox.moe/oh0p46.jpg" alt="Banner Utama">
+                <img src="https://files.catbox.moe/oh0p46.jpg" alt="Banner Promo Diamond">
             </div>
             <div class="slider-item" data-tag="Diskon Spesial">
-                 <img src="https://files.catbox.moe/50kwm3.jpg" alt="Banner Promo">
-            </div>
-            <div class="slider-item" data-tag="Info Terbaru">
-                 <img src="https://files.catbox.moe/iycgyo.jpg" alt="Banner Joki">
+                 <img src="https://files.catbox.moe/50kwm3.jpg" alt="Banner Diskon">
             </div>
         </div>
         <div class="slider-dots">
             <span class="dot active"></span>
-            <span class="dot"></span>
             <span class="dot"></span>
         </div>
         <button class="slider-arrow prev"><i class="fas fa-chevron-left"></i></button>
@@ -77,46 +100,100 @@
 
     <section class="product-grid-section">
         <div class="section-title-wrap">
-            <h2 class="section-title">Semua Produk</h2>
+            <h2 class="section-title">✨ Produk Populer</h2>
         </div>
         
-        <div class="product-grid" id="main-product-grid">
-            <a href="#" class="product-card" data-category="Top Up Games" data-region="Global">
-                <img src="https://files.catbox.moe/x86ltv.jpg" alt="Mobile Legends">
-                </a>
-            <a href="#" class="product-card" data-category="Top Up Games" data-region="Indonesia">
-                <img src="https://files.catbox.moe/y86f5c.jpg" alt="Free Fire">
-            </a>
-            <a href="#" class="product-card" data-category="Top Up Games" data-region="Global">
-                <img src="https://files.catbox.moe/934g6b.jpg" alt="Honor of Kings">
-            </a>
-             <a href="#" class="product-card" data-category="Top Up Games" data-region="Global">
-                <img src="https://files.catbox.moe/h7e3p0.jpg" alt="Magic Chess Go Go">
-            </a>
-            <a href="#" class="product-card" data-category="Top Up Games" data-region="Global">
-                <img src="https://files.catbox.moe/t0n3s6.jpg" alt="Genshin Impact">
-            </a>
-            <a href="#" class="product-card" data-category="Top Up Games" data-region="Global">
-                <img src="https://files.catbox.moe/v6h0y4.jpg" alt="PUBG Mobile">
-            </a>
-            <a href="#" class="product-card" data-category="Top Up Games" data-region="Global">
-                <img src="https://files.catbox.moe/e2q6w7.jpg" alt="Call of Duty Mobile">
-            </a>
-            <a href="#" class="product-card" data-category="Joki Games" data-region="Indonesia">
-                <img src="https://via.placeholder.com/400x600/A020F0/ffffff?text=JOKI+RANK+ML" alt="Joki Rank ML">
-            </a>
-            
+        <div class="product-grid" id="popular-product-grid">
+            <a href="#" class="product-card" data-category="Top Up Games"><img src="https://files.catbox.moe/x86ltv.jpg" alt="Mobile Legends"></a>
+            <a href="#" class="product-card" data-category="Top Up Games"><img src="https://files.catbox.moe/v6h0y4.jpg" alt="PUBG Mobile"></a>
+            <a href="#" class="product-card" data-category="Top Up Games"><img src="https://files.catbox.moe/t0n3s6.jpg" alt="Genshin Impact"></a>
+            <a href="#" class="product-card" data-category="Top Up Games"><img src="https://files.catbox.moe/y86f5c.jpg" alt="Free Fire"></a>
+            <a href="#" class="product-card" data-category="Top Up Games"><img src="https://files.catbox.moe/934g6b.jpg" alt="Honor of Kings"></a>
+            <a href="#" class="product-card" data-category="Top Up Games"><img src="https://files.catbox.moe/e2q6w7.jpg" alt="Call of Duty Mobile"></a>
         </div>
     </section>
 
+    <section class="product-grid-section">
+        <div class="section-title-wrap">
+            <h2 class="section-title">🎮 Kategori Top Up Game</h2>
+        </div>
+        
+        <div class="product-grid" id="topup-game-grid">
+            <a href="#" class="product-card" data-category="Top Up Games"><img src="https://files.catbox.moe/x86ltv.jpg" alt="Mobile Legends"></a>
+            <a href="#" class="product-card" data-category="Top Up Games"><img src="https://files.catbox.moe/y86f5c.jpg" alt="Free Fire"></a>
+            <a href="#" class="product-card" data-category="Top Up Games"><img src="https://files.catbox.moe/934g6b.jpg" alt="Honor of Kings"></a>
+            <a href="#" class="product-card" data-category="Top Up Games"><img src="https://files.catbox.moe/t0n3s6.jpg" alt="Genshin Impact"></a>
+            <a href="#" class="product-card" data-category="Top Up Games"><img src="https://files.catbox.moe/v6h0y4.jpg" alt="PUBG Mobile"></a>
+            <a href="#" class="product-card" data-category="Top Up Games"><img src="https://files.catbox.moe/e2q6w7.jpg" alt="Call of Duty Mobile"></a>
+            <a href="#" class="product-card" data-category="Top Up Games"><img src="https://via.placeholder.com/150x225/330066/B28FEE?text=VALORANT" alt="Valorant"></a>
+            <a href="#" class="product-card" data-category="Top Up Games"><img src="https://via.placeholder.com/150x225/5500aa/f0e6ff?text=COC" alt="Clash of Clans"></a>
+            <a href="#" class="product-card" data-category="Top Up Games"><img src="https://via.placeholder.com/150x225/8A2BE2/1A0033?text=WILD+RIFT" alt="Wild Rift"></a>
+            <a href="#" class="product-card" data-category="Top Up Games"><img src="https://via.placeholder.com/150x225/A020F0/ffffff?text=EPE+GAME" alt="Epep Game"></a>
+            <a href="#" class="product-card" data-category="Top Up Games"><img src="https://via.placeholder.com/150x225/1A0033/B28FEE?text=POKE+MON" alt="Pokemon Unite"></a>
+        </div>
+    </section>
+
+    <section class="product-grid-section">
+        <div class="section-title-wrap">
+            <h2 class="section-title">🌍 Other Region (Global)</h2>
+        </div>
+        
+        <div class="product-grid" id="other-region-grid">
+            <a href="#" class="product-card" data-category="Other Region"><img src="https://via.placeholder.com/150x225/330066/B28FEE?text=Steam+IDR" alt="Steam Wallet IDR"></a>
+            <a href="#" class="product-card" data-category="Other Region"><img src="https://via.placeholder.com/150x225/5500aa/f0e6ff?text=Google+Play+MY" alt="Google Play MY"></a>
+            <a href="#" class="product-card" data-category="Other Region"><img src="https://via.placeholder.com/150x225/8A2BE2/1A0033?text=iTunes+US" alt="iTunes US"></a>
+            <a href="#" class="product-card" data-category="Other Region"><img src="https://via.placeholder.com/150x225/A020F0/ffffff?text=NINTENDO+E" alt="Nintendo Eshop"></a>
+            <a href="#" class="product-card" data-category="Other Region"><img src="https://via.placeholder.com/150x225/1A0033/B28FEE?text=PSN+SG" alt="PSN SG"></a>
+            <a href="#" class="product-card" data-category="Other Region"><img src="https://via.placeholder.com/150x225/330066/B28FEE?text=XBOX+US" alt="XBOX US"></a>
+            <a href="#" class="product-card" data-category="Other Region"><img src="https://via.placeholder.com/150x225/5500aa/f0e6ff?text=BLIZZARD" alt="Blizzard"></a>
+            <a href="#" class="product-card" data-category="Other Region"><img src="https://via.placeholder.com/150x225/8A2BE2/1A0033?text=Garena+Shells" alt="Garena Shells"></a>
+            <a href="#" class="product-card" data-category="Other Region"><img src="https://via.placeholder.com/150x225/A020F0/ffffff?text=EPIC+GAMES" alt="Epic Games"></a>
+            <a href="#" class="product-card" data-category="Other Region"><img src="https://via.placeholder.com/150x225/1A0033/B28FEE?text=RAZER+GOLD" alt="Razer Gold"></a>
+        </div>
+    </section>
+
+    <section class="product-grid-section">
+        <div class="section-title-wrap">
+            <h2 class="section-title">⚔️ MLBB Services</h2>
+        </div>
+        
+        <div class="product-grid" id="mlbb-service-grid">
+            <a href="#" class="product-card" data-category="MLBB Service"><img src="https://via.placeholder.com/150x225/A020F0/ffffff?text=JOKI+RANK" alt="Joki Rank MLBB"></a>
+            <a href="#" class="product-card" data-category="MLBB Service"><img src="https://via.placeholder.com/150x225/5500aa/f0e6ff?text=JASA+EMBLEM" alt="Jasa Max Emblem"></a>
+            <a href="#" class="product-card" data-category="MLBB Service"><img src="https://via.placeholder.com/150x225/330066/B28FEE?text=JASA+WR" alt="Jasa Win Rate"></a>
+            <a href="#" class="product-card" data-category="MLBB Service"><img src="https://via.placeholder.com/150x225/8A2BE2/1A0033?text=VERIF+AKUN" alt="Verifikasi Akun"></a>
+            <a href="#" class="product-card" data-category="MLBB Service"><img src="https://via.placeholder.com/150x225/1A0033/B28FEE?text=AKUN+SMURF" alt="Akun Smurf MLBB"></a>
+        </div>
+    </section>
+
+    <section class="product-grid-section">
+        <div class="section-title-wrap">
+            <h2 class="section-title">⭐ Apps Premium</h2>
+        </div>
+        
+        <div class="product-grid" id="apps-premium-grid">
+            <a href="#" class="product-card" data-category="Apps Premium"><img src="https://via.placeholder.com/150x225/330066/B28FEE?text=NETFLIX" alt="Netflix Premium"></a>
+            <a href="#" class="product-card" data-category="Apps Premium"><img src="https://via.placeholder.com/150x225/5500aa/f0e6ff?text=SPOTIFY" alt="Spotify Premium"></a>
+            <a href="#" class="product-card" data-category="Apps Premium"><img src="https://via.placeholder.com/150x225/8A2BE2/1A0033?text=YOUTUBE+P" alt="Youtube Premium"></a>
+            <a href="#" class="product-card" data-category="Apps Premium"><img src="https://via.placeholder.com/150x225/A020F0/ffffff?text=VIDIO" alt="Vidio Premium"></a>
+            <a href="#" class="product-card" data-category="Apps Premium"><img src="https://via.placeholder.com/150x225/1A0033/B28FEE?text=DISNEY+H" alt="Disney+ Hotstar"></a>
+            <a href="#" class="product-card" data-category="Apps Premium"><img src="https://via.placeholder.com/150x225/330066/B28FEE?text=CANVA" alt="Canva Pro"></a>
+            <a href="#" class="product-card" data-category="Apps Premium"><img src="https://via.placeholder.com/150x225/5500aa/f0e6ff?text=WARNER+BROS" alt="HBO Go"></a>
+            <a href="#" class="product-card" data-category="Apps Premium"><img src="https://via.placeholder.com/150x225/8A2BE2/1A0033?text=IP+TV" alt="IP TV"></a>
+            <a href="#" class="product-card" data-category="Apps Premium"><img src="https://via.placeholder.com/150x225/A020F0/ffffff?text=GETFLIX" alt="GetFlix"></a>
+            <a href="#" class="product-card" data-category="Apps Premium"><img src="https://via.placeholder.com/150x225/1A0033/B28FEE?text=VP+N" alt="VPN Service"></a>
+        </div>
+    </section>
+
+
     <section class="article-section">
         <div class="section-title-wrap">
-            <h2 class="section-title">Artikel Terbaru & Info Game</h2>
+            <h2 class="section-title">📰 Info & Artikel Terbaru</h2>
         </div>
         
         <div class="article-grid">
             <a href="#" class="article-card" data-tag="Info Game">
-                <img src="https://via.placeholder.com/400x200/5500aa/f0e6ff?text=Artikel+MLBB+Terbaru" alt="Thumbnail Artikel">
+                <img src="https://via.placeholder.com/400x200/5500aa/f0e6ff?text=TIER+LIST+MLBB" alt="Thumbnail Artikel">
                 <div class="article-content">
                     <span class="article-tag">MLBB</span>
                     <h3 class="article-title">Tier List Hero Mobile Legends Terbaik di Season Ini</h3>
@@ -124,7 +201,7 @@
                 </div>
             </a>
             <a href="#" class="article-card" data-tag="Tips & Trik">
-                <img src="https://via.placeholder.com/400x200/8A2BE2/1A0033?text=Tips+Top+Up+Aman" alt="Thumbnail Artikel">
+                <img src="https://via.placeholder.com/400x200/8A2BE2/1A0033?text=TIPS+TOP+UP" alt="Thumbnail Artikel">
                 <div class="article-content">
                     <span class="article-tag">Umum</span>
                     <h3 class="article-title">5 Cara Top Up Game Murah dan Aman Tanpa Ribet</h3>
@@ -132,7 +209,7 @@
                 </div>
             </a>
             <a href="#" class="article-card" data-tag="Event Game">
-                <img src="https://via.placeholder.com/400x200/FF69B4/1A0033?text=Event+Genshin" alt="Thumbnail Artikel">
+                <img src="https://via.placeholder.com/400x200/FF69B4/1A0033?text=KODE+REDEEM" alt="Thumbnail Artikel">
                 <div class="article-content">
                     <span class="article-tag">Genshin</span>
                     <h3 class="article-title">Daftar Semua Kode Redeem Genshin Impact Terbaru</h3>
@@ -152,9 +229,31 @@
             <h2 class="trust-title">Kepuasan Pelanggan Adalah Prioritas</h2>
             <p class="trust-description">Lihat apa kata mereka yang sudah top up di Minzz Store.</p>
             
-            <button class="testimoni-btn" onclick="addTestimonial()">
+            <button class="testimoni-btn" onclick="openTestimonialForm()">
                 Tambahkan Testimoni <i class="fas fa-comment-dots"></i>
             </button>
+
+            <div id="testimonial-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close-btn" onclick="closeTestimonialForm()">&times;</span>
+                    <h3>Tambah Testimoni Anda</h3>
+                    <form id="new-testimonial-form">
+                        <input type="text" id="testi-name" placeholder="Nama (Diisi Otomatis Setelah Login)" readonly>
+                        <input type="text" id="testi-product" placeholder="Game/Layanan yang dibeli" required>
+                        <textarea id="testi-review" placeholder="Review/Testimoni Anda" rows="4" required></textarea>
+                        <div class="rating-input">
+                            <label>Rating:</label>
+                            <span data-value="1" class="testi-star"><i class="far fa-star"></i></span>
+                            <span data-value="2" class="testi-star"><i class="far fa-star"></i></span>
+                            <span data-value="3" class="testi-star"><i class="far fa-star"></i></span>
+                            <span data-value="4" class="testi-star"><i class="far fa-star"></i></span>
+                            <span data-value="5" class="testi-star"><i class="far fa-star"></i></span>
+                            <input type="hidden" id="testi-rating" value="5">
+                        </div>
+                        <button type="submit" class="login-btn">Kirim Testimoni</button>
+                    </form>
+                </div>
+            </div>
 
             <div id="testimonial-container">
                 <div class="testimonial-card" data-rating="5">
@@ -186,7 +285,7 @@
     <footer class="main-footer">
         <div class="footer-top">
             <i class="fas fa-bolt footer-icon"></i>
-            <span class="store-name">MINZZ SALVATORE</span>
+            <span class="store-name">MINZZ STORE</span>
             <p class="footer-description">Platform top-up game terpercaya dengan layanan cepat, aman, dan harga terbaik.</p>
             <div class="social-icons">
                 <a href="#"><i class="fab fa-instagram"></i></a>
@@ -217,16 +316,4 @@
                     <li><a href="#">Check Region</a></li>
                     <li><a href="#">Kalkulator Diamond</a></li>
                 </ul>
-            </div>
-        </div>
-        
-        <div class="footer-bottom">
-            <p>&copy; 2025 MINZZ STORE. All rights reserved.</p>
-        </div>
-    </footer>
-</main>
-
-<script src="script.js"></script>
-
-</body>
-</html>
+ 
