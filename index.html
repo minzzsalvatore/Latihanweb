@@ -3,317 +3,626 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minzz Store - Top Up Game Instan & Murah</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Milo Gaming Store - Topup Game</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-dark: #0f172a;
+            --card-bg: #1e293b;
+            --input-bg: #0f172a;
+            --primary-blue: #2563eb;
+            --primary-blue-hover: #1d4ed8;
+            --accent-blue: #38bdf8;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            padding-bottom: 100px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+
+        /* Banner Header */
+        .banner {
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1e3a8a, #0284c7);
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .banner h2 {
+            color: #fff;
+            font-size: 22px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .banner p {
+            color: var(--accent-blue);
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        /* Card MLBB Title */
+        .game-header {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            border: 1px solid var(--border-color);
+        }
+
+        .game-header img {
+            width: 60px;
+            height: 60px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        .game-title h3 {
+            font-size: 18px;
+            margin-bottom: 4px;
+        }
+
+        .badge-secure {
+            background-color: rgba(37, 99, 235, 0.2);
+            color: var(--accent-blue);
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-size: 11px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Section Block */
+        .section-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 18px;
+            margin-bottom: 15px;
+            border: 1px solid var(--border-color);
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .step-number {
+            background-color: var(--primary-blue);
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        /* Form Controls */
+        .form-group {
+            margin-bottom: 12px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 5px;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 10px;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        input[type="text"], input[type="email"], input[type="number"] {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--input-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: #fff;
+            font-size: 14px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input:focus {
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.3);
+        }
+
+        /* Category Tabs */
+        .tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 15px;
+            overflow-x: auto;
+            padding-bottom: 5px;
+        }
+
+        .tab-btn {
+            background-color: var(--input-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: 0.3s;
+        }
+
+        .tab-btn.active {
+            background-color: var(--primary-blue);
+            color: #fff;
+            border-color: var(--primary-blue);
+        }
+
+        /* Grid Item Produk */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .product-card {
+            background-color: var(--input-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 12px;
+            cursor: pointer;
+            position: relative;
+            transition: 0.3s;
+        }
+
+        .product-card:hover {
+            border-color: var(--accent-blue);
+        }
+
+        .product-card.selected {
+            border-color: var(--primary-blue);
+            background-color: rgba(37, 99, 235, 0.15);
+        }
+
+        .product-name {
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .product-price {
+            font-size: 13px;
+            color: var(--accent-blue);
+            font-weight: bold;
+        }
+
+        .badge-instan {
+            display: inline-block;
+            font-size: 9px;
+            background-color: #1e293b;
+            color: #10b981;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-top: 5px;
+            border: 1px solid #10b981;
+        }
+
+        /* Quantity Selector */
+        .qty-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .qty-btn {
+            background-color: var(--primary-blue);
+            color: white;
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .qty-input {
+            width: 60px !important;
+            text-align: center;
+        }
+
+        /* Payment Method Options */
+        .payment-option {
+            background-color: var(--input-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 12px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .payment-option.selected {
+            border-color: var(--primary-blue);
+            background-color: rgba(37, 99, 235, 0.15);
+        }
+
+        .payment-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .payment-info i {
+            font-size: 20px;
+            color: var(--accent-blue);
+        }
+
+        .payment-name {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .payment-fee {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .badge-best {
+            background-color: #0284c7;
+            color: #fff;
+            font-size: 10px;
+            padding: 3px 8px;
+            border-radius: 12px;
+        }
+
+        /* Help Section Button */
+        .help-btn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: var(--input-bg);
+            border: 1px solid var(--border-color);
+            padding: 12px 15px;
+            border-radius: 8px;
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .help-btn:hover {
+            border-color: var(--primary-blue);
+            color: var(--accent-blue);
+        }
+
+        /* Promo Box */
+        .promo-box {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-apply {
+            background-color: var(--primary-blue);
+            color: white;
+            border: none;
+            padding: 0 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* Footer Sticky Bar */
+        .bottom-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #0b1120;
+            border-top: 1px solid var(--border-color);
+            padding: 12px 15px;
+            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.5);
+            z-index: 100;
+        }
+
+        .bottom-bar-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .selected-item-text {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+            text-align: center;
+        }
+
+        .btn-order {
+            width: 100%;
+            background-color: var(--primary-blue);
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: 0.3s;
+        }
+
+        .btn-order:hover {
+            background-color: var(--primary-blue-hover);
+        }
+
+        /* Rating Stars */
+        .rating-box {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background-color: var(--input-bg);
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .score {
+            font-size: 32px;
+            font-weight: bold;
+            color: #f59e0b;
+        }
+
+        .stars {
+            color: #f59e0b;
+            font-size: 12px;
+        }
+
+        .footer-links {
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 20px;
+            line-height: 1.8;
+        }
+    </style>
 </head>
 <body>
-    
-<a href="https://wa.me/your_whatsapp_number" class="whatsapp-float" target="_blank">
-    <i class="fab fa-whatsapp"></i>
-</a>
 
-<header class="main-header">
-    <div class="header-left">
-        <i class="fas fa-bolt header-icon"></i> <span class="store-name">MINZZ STORE</span>
-    </div>
-    <div class="header-right">
-        <div class="search-input-container">
-            <input type="text" id="search-input" placeholder="Cari Produk..." onkeyup="filterProducts()">
-            <i class="fas fa-search search-icon"></i>
+    <div class="container">
+        <div class="banner">
+            <h2>MILO GAMING STORE</h2>
+            <p>TOPUP GAME PALING LENGKAP</p>
         </div>
-        
-        <a href="#" id="auth-link" class="auth-link-btn" onclick="toggleLoginModal(true)">
-            <i class="fas fa-user-circle"></i> Login/Daftar
-        </a>
 
-        <button class="menu-btn" id="menu-toggle-btn">
-            <i class="fas fa-bars" id="menu-icon"></i>
-        </button>
-    </div>
-</header>
-
-<div id="sidebar">
-    <nav>
-        <ul>
-            <li><a href="#" class="sidebar-link" data-page="beranda"><i class="fas fa-home"></i> Beranda</a></li>
-            <li><a href="#" class="sidebar-link" data-page="check-pesanan"><i class="fas fa-receipt"></i> Check Pesanan</a></li>
-        </ul>
-
-        <ul id="logged-in-menu" style="display: none;">
-            <li class="sidebar-separator">Akun Saya</li>
-            <li><a href="#" class="sidebar-link" data-page="profil"><i class="fas fa-id-badge"></i> Profil</a></li>
-            <li><a href="#" class="sidebar-link" data-page="saldo"><i class="fas fa-wallet"></i> Saldo</a></li>
-            <li><a href="#" class="sidebar-link" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
-        </ul>
-        
-        <ul>
-            <li class="sidebar-separator">Informasi & Tools</li>
-            <li><a href="#" class="sidebar-link" data-page="leaderboard"><i class="fas fa-medal"></i> Leaderboard</a></li>
-            <li><a href="#" class="sidebar-link" data-page="check-region"><i class="fas fa-globe-asia"></i> Check Region ID/Server</a></li>
-            <li><a href="#" class="sidebar-link" data-page="winrate"><i class="fas fa-percentage"></i> Win Rate Calculator</a></li>
-            <li><a href="#" class="sidebar-link" data-page="kalkulator"><i class="fas fa-calculator"></i> Kalkulator Diamond</a></li>
-        </ul>
-    </nav>
-</div>
-
-
-<main>
-    <div id="login-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="toggleLoginModal(false)">&times;</span>
-            <h3 id="modal-title">Login ke Akun Anda</h3>
-            <form id="login-form">
-                <input type="text" id="login-username" placeholder="Username / Email" required>
-                <input type="password" id="login-password" placeholder="Password" required>
-                <button type="submit" class="login-btn">Login</button>
-                <p class="modal-switch-text">Belum punya akun? <a href="#" onclick="switchModal('register')">Daftar Sekarang</a></p>
-            </form>
-            <form id="register-form" style="display: none;">
-                <input type="text" id="reg-name" placeholder="Nama Lengkap" required>
-                <input type="email" id="reg-email" placeholder="Email Aktif" required>
-                <input type="password" id="reg-password" placeholder="Password" required>
-                <input type="password" id="reg-confirm-password" placeholder="Konfirmasi Password" required>
-                <button type="submit" class="login-btn">Daftar</button>
-                <p class="modal-switch-text">Sudah punya akun? <a href="#" onclick="switchModal('login')">Login</a></p>
-            </form>
-        </div>
-    </div>
-    
-    <section class="banner-slider">
-        <div class="slider-wrapper">
-            <div class="slider-item active" data-tag="Promo Hebat">
-                <img src="https://files.catbox.moe/oh0p46.jpg" alt="Banner Promo Diamond">
-            </div>
-            <div class="slider-item" data-tag="Diskon Spesial">
-                 <img src="https://files.catbox.moe/50kwm3.jpg" alt="Banner Diskon">
+        <div class="game-header">
+            <img src="https://via.placeholder.com/60/2563eb/ffffff?text=MLBB" alt="Mobile Legends">
+            <div class="game-title">
+                <h3>Mobile Legends: Bang Bang</h3>
+                <span class="badge-secure"><i class="fa-solid fa-shield-halved"></i> Secure Payment</span>
             </div>
         </div>
-        <div class="slider-dots">
-            <span class="dot active"></span>
-            <span class="dot"></span>
-        </div>
-        <button class="slider-arrow prev"><i class="fas fa-chevron-left"></i></button>
-        <button class="slider-arrow next"><i class="fas fa-chevron-right"></i></button>
-    </section>
 
-    <section class="product-grid-section">
-        <div class="section-title-wrap">
-            <h2 class="section-title">✨ Produk Populer</h2>
-        </div>
-        
-        <div class="product-grid" id="popular-product-grid">
-            <a href="#" class="product-card" data-category="Top Up Games"><img src="https://files.catbox.moe/x86ltv.jpg" alt="Mobile Legends"></a>
-            <a href="#" class="product-card" data-category="Top Up Games"><img src="https://files.catbox.moe/v6h0y4.jpg" alt="PUBG Mobile"></a>
-            <a href="#" class="product-card" data-category="Top Up Games"><img src="https://files.catbox.moe/t0n3s6.jpg" alt="Genshin Impact"></a>
-            <a href="#" class="product-card" data-category="Top Up Games"><img src="https://files.catbox.moe/y86f5c.jpg" alt="Free Fire"></a>
-            <a href="#" class="product-card" data-category="Top Up Games"><img src="https://files.catbox.moe/934g6b.jpg" alt="Honor of Kings"></a>
-            <a href="#" class="product-card" data-category="Top Up Games"><img src="https://files.catbox.moe/e2q6w7.jpg" alt="Call of Duty Mobile"></a>
-        </div>
-    </section>
-
-    <section class="product-grid-section">
-        <div class="section-title-wrap">
-            <h2 class="section-title">🎮 Kategori Top Up Game</h2>
-        </div>
-        
-        <div class="product-grid" id="topup-game-grid">
-            <a href="#" class="product-card" data-category="Top Up Games"><img src="https://files.catbox.moe/x86ltv.jpg" alt="Mobile Legends"></a>
-            <a href="#" class="product-card" data-category="Top Up Games"><img src="https://files.catbox.moe/y86f5c.jpg" alt="Free Fire"></a>
-            <a href="#" class="product-card" data-category="Top Up Games"><img src="https://files.catbox.moe/934g6b.jpg" alt="Honor of Kings"></a>
-            <a href="#" class="product-card" data-category="Top Up Games"><img src="https://files.catbox.moe/t0n3s6.jpg" alt="Genshin Impact"></a>
-            <a href="#" class="product-card" data-category="Top Up Games"><img src="https://files.catbox.moe/v6h0y4.jpg" alt="PUBG Mobile"></a>
-            <a href="#" class="product-card" data-category="Top Up Games"><img src="https://files.catbox.moe/e2q6w7.jpg" alt="Call of Duty Mobile"></a>
-            <a href="#" class="product-card" data-category="Top Up Games"><img src="https://via.placeholder.com/150x225/330066/B28FEE?text=VALORANT" alt="Valorant"></a>
-            <a href="#" class="product-card" data-category="Top Up Games"><img src="https://via.placeholder.com/150x225/5500aa/f0e6ff?text=COC" alt="Clash of Clans"></a>
-            <a href="#" class="product-card" data-category="Top Up Games"><img src="https://via.placeholder.com/150x225/8A2BE2/1A0033?text=WILD+RIFT" alt="Wild Rift"></a>
-            <a href="#" class="product-card" data-category="Top Up Games"><img src="https://via.placeholder.com/150x225/A020F0/ffffff?text=EPE+GAME" alt="Epep Game"></a>
-            <a href="#" class="product-card" data-category="Top Up Games"><img src="https://via.placeholder.com/150x225/1A0033/B28FEE?text=POKE+MON" alt="Pokemon Unite"></a>
-        </div>
-    </section>
-
-    <section class="product-grid-section">
-        <div class="section-title-wrap">
-            <h2 class="section-title">🌍 Other Region (Global)</h2>
-        </div>
-        
-        <div class="product-grid" id="other-region-grid">
-            <a href="#" class="product-card" data-category="Other Region"><img src="https://via.placeholder.com/150x225/330066/B28FEE?text=Steam+IDR" alt="Steam Wallet IDR"></a>
-            <a href="#" class="product-card" data-category="Other Region"><img src="https://via.placeholder.com/150x225/5500aa/f0e6ff?text=Google+Play+MY" alt="Google Play MY"></a>
-            <a href="#" class="product-card" data-category="Other Region"><img src="https://via.placeholder.com/150x225/8A2BE2/1A0033?text=iTunes+US" alt="iTunes US"></a>
-            <a href="#" class="product-card" data-category="Other Region"><img src="https://via.placeholder.com/150x225/A020F0/ffffff?text=NINTENDO+E" alt="Nintendo Eshop"></a>
-            <a href="#" class="product-card" data-category="Other Region"><img src="https://via.placeholder.com/150x225/1A0033/B28FEE?text=PSN+SG" alt="PSN SG"></a>
-            <a href="#" class="product-card" data-category="Other Region"><img src="https://via.placeholder.com/150x225/330066/B28FEE?text=XBOX+US" alt="XBOX US"></a>
-            <a href="#" class="product-card" data-category="Other Region"><img src="https://via.placeholder.com/150x225/5500aa/f0e6ff?text=BLIZZARD" alt="Blizzard"></a>
-            <a href="#" class="product-card" data-category="Other Region"><img src="https://via.placeholder.com/150x225/8A2BE2/1A0033?text=Garena+Shells" alt="Garena Shells"></a>
-            <a href="#" class="product-card" data-category="Other Region"><img src="https://via.placeholder.com/150x225/A020F0/ffffff?text=EPIC+GAMES" alt="Epic Games"></a>
-            <a href="#" class="product-card" data-category="Other Region"><img src="https://via.placeholder.com/150x225/1A0033/B28FEE?text=RAZER+GOLD" alt="Razer Gold"></a>
-        </div>
-    </section>
-
-    <section class="product-grid-section">
-        <div class="section-title-wrap">
-            <h2 class="section-title">⚔️ MLBB Services</h2>
-        </div>
-        
-        <div class="product-grid" id="mlbb-service-grid">
-            <a href="#" class="product-card" data-category="MLBB Service"><img src="https://via.placeholder.com/150x225/A020F0/ffffff?text=JOKI+RANK" alt="Joki Rank MLBB"></a>
-            <a href="#" class="product-card" data-category="MLBB Service"><img src="https://via.placeholder.com/150x225/5500aa/f0e6ff?text=JASA+EMBLEM" alt="Jasa Max Emblem"></a>
-            <a href="#" class="product-card" data-category="MLBB Service"><img src="https://via.placeholder.com/150x225/330066/B28FEE?text=JASA+WR" alt="Jasa Win Rate"></a>
-            <a href="#" class="product-card" data-category="MLBB Service"><img src="https://via.placeholder.com/150x225/8A2BE2/1A0033?text=VERIF+AKUN" alt="Verifikasi Akun"></a>
-            <a href="#" class="product-card" data-category="MLBB Service"><img src="https://via.placeholder.com/150x225/1A0033/B28FEE?text=AKUN+SMURF" alt="Akun Smurf MLBB"></a>
-        </div>
-    </section>
-
-    <section class="product-grid-section">
-        <div class="section-title-wrap">
-            <h2 class="section-title">⭐ Apps Premium</h2>
-        </div>
-        
-        <div class="product-grid" id="apps-premium-grid">
-            <a href="#" class="product-card" data-category="Apps Premium"><img src="https://via.placeholder.com/150x225/330066/B28FEE?text=NETFLIX" alt="Netflix Premium"></a>
-            <a href="#" class="product-card" data-category="Apps Premium"><img src="https://via.placeholder.com/150x225/5500aa/f0e6ff?text=SPOTIFY" alt="Spotify Premium"></a>
-            <a href="#" class="product-card" data-category="Apps Premium"><img src="https://via.placeholder.com/150x225/8A2BE2/1A0033?text=YOUTUBE+P" alt="Youtube Premium"></a>
-            <a href="#" class="product-card" data-category="Apps Premium"><img src="https://via.placeholder.com/150x225/A020F0/ffffff?text=VIDIO" alt="Vidio Premium"></a>
-            <a href="#" class="product-card" data-category="Apps Premium"><img src="https://via.placeholder.com/150x225/1A0033/B28FEE?text=DISNEY+H" alt="Disney+ Hotstar"></a>
-            <a href="#" class="product-card" data-category="Apps Premium"><img src="https://via.placeholder.com/150x225/330066/B28FEE?text=CANVA" alt="Canva Pro"></a>
-            <a href="#" class="product-card" data-category="Apps Premium"><img src="https://via.placeholder.com/150x225/5500aa/f0e6ff?text=WARNER+BROS" alt="HBO Go"></a>
-            <a href="#" class="product-card" data-category="Apps Premium"><img src="https://via.placeholder.com/150x225/8A2BE2/1A0033?text=IP+TV" alt="IP TV"></a>
-            <a href="#" class="product-card" data-category="Apps Premium"><img src="https://via.placeholder.com/150x225/A020F0/ffffff?text=GETFLIX" alt="GetFlix"></a>
-            <a href="#" class="product-card" data-category="Apps Premium"><img src="https://via.placeholder.com/150x225/1A0033/B28FEE?text=VP+N" alt="VPN Service"></a>
-        </div>
-    </section>
-
-
-    <section class="article-section">
-        <div class="section-title-wrap">
-            <h2 class="section-title">📰 Info & Artikel Terbaru</h2>
-        </div>
-        
-        <div class="article-grid">
-            <a href="#" class="article-card" data-tag="Info Game">
-                <img src="https://via.placeholder.com/400x200/5500aa/f0e6ff?text=TIER+LIST+MLBB" alt="Thumbnail Artikel">
-                <div class="article-content">
-                    <span class="article-tag">MLBB</span>
-                    <h3 class="article-title">Tier List Hero Mobile Legends Terbaik di Season Ini</h3>
-                    <p class="article-meta"><i class="fas fa-calendar-alt"></i> 22 Nov 2025</p>
+        <div class="section-card">
+            <div class="section-title">
+                <span class="step-number">1</span>
+                <span>Masukkan Data Akaun</span>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>User ID</label>
+                    <input type="number" id="userId" placeholder="Masukkan User ID">
                 </div>
-            </a>
-            <a href="#" class="article-card" data-tag="Tips & Trik">
-                <img src="https://via.placeholder.com/400x200/8A2BE2/1A0033?text=TIPS+TOP+UP" alt="Thumbnail Artikel">
-                <div class="article-content">
-                    <span class="article-tag">Umum</span>
-                    <h3 class="article-title">5 Cara Top Up Game Murah dan Aman Tanpa Ribet</h3>
-                    <p class="article-meta"><i class="fas fa-calendar-alt"></i> 15 Nov 2025</p>
+                <div class="form-group">
+                    <label>Zone ID</label>
+                    <input type="number" id="zoneId" placeholder="Masukkan Zone ID">
                 </div>
-            </a>
-            <a href="#" class="article-card" data-tag="Event Game">
-                <img src="https://via.placeholder.com/400x200/FF69B4/1A0033?text=KODE+REDEEM" alt="Thumbnail Artikel">
-                <div class="article-content">
-                    <span class="article-tag">Genshin</span>
-                    <h3 class="article-title">Daftar Semua Kode Redeem Genshin Impact Terbaru</h3>
-                    <p class="article-meta"><i class="fas fa-calendar-alt"></i> 10 Nov 2025</p>
+            </div>
+        </div>
+
+        <div class="section-card">
+            <div class="section-title">
+                <span class="step-number">2</span>
+                <span>Pilih Jumlah Items</span>
+            </div>
+
+            <div class="tabs">
+                <button class="tab-btn active" onclick="filterCategory('all')">Malaysia 🇲🇾</button>
+                <button class="tab-btn" onclick="filterCategory('all')">Indonesia 🇮🇩</button>
+                <button class="tab-btn" onclick="filterCategory('all')">Philippines 🇵🇭</button>
+                <button class="tab-btn" onclick="filterCategory('all')">Global 🌐</button>
+            </div>
+
+            <div class="product-grid">
+                <div class="product-card" onclick="selectProduct(this, 'First Recharge 100 Diamonds (50 + 50)', '3.99')">
+                    <div class="product-name">100 Diamonds (50 + 50)</div>
+                    <div class="product-price">RM 3.99</div>
+                    <span class="badge-instan"><i class="fa-solid fa-bolt"></i> INSTAN</span>
                 </div>
+                <div class="product-card" onclick="selectProduct(this, 'First Recharge 300 Diamonds (150 + 150)', '11.83')">
+                    <div class="product-name">300 Diamonds (150 + 150)</div>
+                    <div class="product-price">RM 11.83</div>
+                    <span class="badge-instan"><i class="fa-solid fa-bolt"></i> INSTAN</span>
+                </div>
+                <div class="product-card" onclick="selectProduct(this, 'First Recharge 500 Diamonds (250 + 250)', '19.68')">
+                    <div class="product-name">500 Diamonds (250 + 250)</div>
+                    <div class="product-price">RM 19.68</div>
+                    <span class="badge-instan"><i class="fa-solid fa-bolt"></i> INSTAN</span>
+                </div>
+                <div class="product-card" onclick="selectProduct(this, 'First Recharge 1000 Diamonds (500 + 500)', '40.07')">
+                    <div class="product-name">1000 Diamonds (500 + 500)</div>
+                    <div class="product-price">RM 40.07</div>
+                    <span class="badge-instan"><i class="fa-solid fa-bolt"></i> INSTAN</span>
+                </div>
+                <div class="product-card" onclick="selectProduct(this, 'One Time Weekly Diamond', '8.67')">
+                    <div class="product-name">Weekly Diamond Pass</div>
+                    <div class="product-price">RM 8.67</div>
+                    <span class="badge-instan"><i class="fa-solid fa-bolt"></i> INSTAN</span>
+                </div>
+                <div class="product-card" onclick="selectProduct(this, 'Twilight Pass', '43.57')">
+                    <div class="product-name">Twilight Pass</div>
+                    <div class="product-price">RM 43.57</div>
+                    <span class="badge-instan"><i class="fa-solid fa-bolt"></i> INSTAN</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-card">
+            <div class="section-title">
+                <span class="step-number">3</span>
+                <span>Masukkan Kuantiti Pembelian</span>
+            </div>
+            <div class="qty-control">
+                <button class="qty-btn" onclick="changeQty(-1)">-</button>
+                <input type="number" id="itemQty" class="qty-input" value="1" readonly>
+                <button class="qty-btn" onclick="changeQty(1)">+</button>
+            </div>
+        </div>
+
+        <div class="section-card">
+            <div class="section-title">
+                <span class="step-number">4</span>
+                <span>Pilih Pembayaran</span>
+            </div>
+
+            <div class="payment-option" onclick="selectPayment(this, 'MGS Wallet')">
+                <div class="payment-info">
+                    <i class="fa-solid fa-wallet"></i>
+                    <div>
+                        <div class="payment-name">MGS Wallet</div>
+                        <div class="payment-fee">Fee: Percuma</div>
+                    </div>
+                </div>
+                <span class="badge-best">Best Price</span>
+            </div>
+
+            <div class="payment-option" onclick="selectPayment(this, 'DuitNow QR')">
+                <div class="payment-info">
+                    <i class="fa-solid fa-qrcode"></i>
+                    <div>
+                        <div class="payment-name">DuitNow QR</div>
+                        <div class="payment-fee">Fee: 1.6%</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="payment-option" onclick="selectPayment(this, 'FPX Online Banking')">
+                <div class="payment-info">
+                    <i class="fa-solid fa-building-columns"></i>
+                    <div>
+                        <div class="payment-name">FPX Online Banking</div>
+                        <div class="payment-fee">Fee: RM 1.00</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-card">
+            <div class="section-title">
+                <span class="step-number">5</span>
+                <span>Maklumat Hubungan</span>
+            </div>
+            <div class="form-group">
+                <label>E-mel (pilihan)</label>
+                <input type="email" id="email" placeholder="nama@emel.com">
+            </div>
+            <div class="form-group">
+                <label>No. WhatsApp</label>
+                <input type="text" id="whatsapp" placeholder="Contoh: 60123456789">
+                <span style="font-size: 10px; color: var(--text-muted); display: block; margin-top: 4px;">**Nombor ini akan dihubungi jika ada masalah</span>
+            </div>
+        </div>
+
+        <div class="section-card">
+            <div class="section-title">
+                <span class="step-number">6</span>
+                <span>Kod Promosi</span>
+            </div>
+            <div class="promo-box">
+                <input type="text" placeholder="Taip Kod Promosi Anda">
+                <button class="btn-apply">Guna</button>
+            </div>
+        </div>
+
+        <div class="section-card">
+            <div class="section-title">
+                <i class="fa-solid fa-circle-question" style="color: var(--accent-blue);"></i>
+                <span>Perlukan Bantuan?</span>
+            </div>
+            <a href="https://wa.me/60146166722?text=Halo%20admin,%20saya%20perlukan%20bantuan%20mengenai%20topup" target="_blank" class="help-btn">
+                <span>hubungi kami disini</span>
+                <i class="fa-solid fa-chevron-right"></i>
             </a>
         </div>
-        
-        <div class="text-center">
-            <button class="view-all-btn" data-tag="Artikel Lainnya">Lihat Semua Artikel</button>
-        </div>
-    </section>
 
-
-    <section class="trust-section">
-        <div class="container">
-            <h2 class="trust-title">Kepuasan Pelanggan Adalah Prioritas</h2>
-            <p class="trust-description">Lihat apa kata mereka yang sudah top up di Minzz Store.</p>
-            
-            <button class="testimoni-btn" onclick="openTestimonialForm()">
-                Tambahkan Testimoni <i class="fas fa-comment-dots"></i>
-            </button>
-
-            <div id="testimonial-modal" class="modal">
-                <div class="modal-content">
-                    <span class="close-btn" onclick="closeTestimonialForm()">&times;</span>
-                    <h3>Tambah Testimoni Anda</h3>
-                    <form id="new-testimonial-form">
-                        <input type="text" id="testi-name" placeholder="Nama (Diisi Otomatis Setelah Login)" readonly>
-                        <input type="text" id="testi-product" placeholder="Game/Layanan yang dibeli" required>
-                        <textarea id="testi-review" placeholder="Review/Testimoni Anda" rows="4" required></textarea>
-                        <div class="rating-input">
-                            <label>Rating:</label>
-                            <span data-value="1" class="testi-star"><i class="far fa-star"></i></span>
-                            <span data-value="2" class="testi-star"><i class="far fa-star"></i></span>
-                            <span data-value="3" class="testi-star"><i class="far fa-star"></i></span>
-                            <span data-value="4" class="testi-star"><i class="far fa-star"></i></span>
-                            <span data-value="5" class="testi-star"><i class="far fa-star"></i></span>
-                            <input type="hidden" id="testi-rating" value="5">
-                        </div>
-                        <button type="submit" class="login-btn">Kirim Testimoni</button>
-                    </form>
-                </div>
+        <div class="section-card">
+            <div class="section-title">
+                <i class="fa-solid fa-star" style="color: #f59e0b;"></i>
+                <span>Ulasan & Penilaian</span>
             </div>
-
-            <div id="testimonial-container">
-                <div class="testimonial-card" data-rating="5">
-                    <div class="rating">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <div class="rating-box">
+                <div class="score">4.9</div>
+                <div>
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
                     </div>
-                    <p class="testimonial-product">Mobile Legends Diamond</p>
-                    <p class="testimonial-text">"Proses cepat dan adminnya responsif! Top up 1000 diamond hanya 2 menit."</p>
-                    <div class="testimonial-meta">
-                        <span class="author">Budi S.</span>
-                        <span class="date">05 Okt 25</span>
-                    </div>
+                    <p style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">Berdasarkan 74 ulasan pelanggan</p>
                 </div>
-                <div class="testimonial-card" data-rating="4">
-                    <div class="rating">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-                    </div>
-                    <p class="testimonial-product">Valorant Points</p>
-                    <p class="testimonial-text">"Harga bersaing, cuma sempat pending sebentar tapi langsung diproses setelah konfirmasi."</p>
-                    <div class="testimonial-meta">
-                        <span class="author">Anya F.</span>
-                        <span class="date">10 Okt 25</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="main-footer">
-        <div class="footer-top">
-            <i class="fas fa-bolt footer-icon"></i>
-            <span class="store-name">MINZZ STORE</span>
-            <p class="footer-description">Platform top-up game terpercaya dengan layanan cepat, aman, dan harga terbaik.</p>
-            <div class="social-icons">
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-tiktok"></i></a>
             </div>
         </div>
 
         <div class="footer-links">
-            <div class="link-group">
-                <h3>Tentang Kami</h3>
-                <ul>
-                    <li><a href="#">Tentang Minzz Store</a></li>
-                    <li><a href="#">Karir</a></li>
-                </ul>
-            </div>
-            <div class="link-group">
-                <h3>Dukungan</h3>
-                <ul>
-                    <li><a href="#">Hubungi Kami</a></li>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">Kebijakan Privasi</a></li>
-                </ul>
-            </div>
-            <div class="link-group">
-                <h3>Tools</h3>
-                <ul>
-                    <li><a href="#">Check Region</a></li>
-                    <li><a href="#">Kalkulator Diamond</a></li>
-                </ul>
- 
+            <p>FPX | DuitNow QR</p>
+            <p style="margin-top: 10px;">&copy; 2026 Milo Gaming Store. All Rights Reserved.</p>
+        </div>
+
+    </div>
+
+    <div class="bottom-bar">
+        <div class="bottom-bar-content">
+            <div class="selected-item-text" id="selectedText">Tiada item produk dipilih.</div>
+            <button class="btn-order" onclick="processOrder()">
+                <i class="fa-solid fa-bag-shopping"></i> Pesan Sek
