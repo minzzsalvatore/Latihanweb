@@ -2,57 +2,90 @@
 <html lang="ms">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>KHAI STORE</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
-<body>
-<header class="top">
-<img id="logoTop" class="logo" src="">
-<div class="kanan">
-<button id="btnTheme" class="ikon">☀️</button>
-<button class="ikon">👤</button>
-<button id="btnMenu" class="ikon">☰</button>
-</div>
+<body class="dark">
+<header class="navbar">
+  <img id="logoImg" src="https://i.ibb.co/placeholder.png" class="logo" alt="KHAI STORE">
+  <div class="nav-right">
+    <button id="themeBtn" class="icon-btn">☀️</button>
+    <button class="icon-btn">👤</button>
+    <button id="menuBtn" class="icon-btn">☰</button>
+  </div>
 </header>
 
-<div id="drawer" class="drawer">
-<div class="cari">🔍<input id="inputCari" placeholder="Quick search..."></div>
-<div class="m aktif">▦ HOME</div>
-<div class="m">⌕ TRACK ORDER</div>
-<div class="m">🧮 CALCULATOR</div>
-<div class="m">📍 CHECK REGION</div>
-<div class="lang">🇬🇧 English</div>
-<div class="help"><p>NEED HELP?</p><a id="waSisi" href="#">WhatsApp CS ›</a></div>
+<!-- SIDEBAR MENU macam gambar last kau -->
+<div id="sidebar" class="sidebar">
+  <div class="side-top">
+    <input type="text" id="quickSearch" placeholder="Quick search...">
+    <div class="side-menu"><span>HOME</span></div>
+    <div class="side-menu">TRACK ORDER</div>
+    <div class="side-menu">CALCULATOR</div>
+    <div class="side-menu">CHECK REGION</div>
+    <p class="lang">🇬🇧 English</p>
+    <div class="help-box">
+      <p>NEED HELP?</p>
+      <a id="waLinkSide" href="#">WhatsApp CS →</a>
+    </div>
+  </div>
 </div>
 
-<div class="banner"><div id="track" class="track"></div><div id="dots" class="dots"></div></div>
-
-<h2 class="tajuk">🔥 FAMOUS GAME MALAYSIA</h2>
-<div id="gridFamous" class="grid"></div>
-
-<h2 class="tajuk">▦ ALL SERVICES</h2>
-<div class="tabs">
-<button class="tab aktif" data-jenis="semua">Semua</button>
-<button class="tab" data-jenis="uid">UID Games</button>
-<button class="tab" data-jenis="other">Other Region</button>
+<!-- BANNER SLIDER -->
+<div class="banner-container">
+  <div id="bannerSlider" class="banner-slider"></div>
+  <div class="dots" id="bannerDots"></div>
 </div>
-<div id="gridAll" class="grid"></div>
-<button id="btnMore" class="more">Show More</button>
 
-<footer class="bawah">
-<img id="logoBawah" class="logoBawah" src="">
-<p>Automatic game top-up service 24/7. Fast, secure, and instant.</p>
-<div class="bawahGrid">
-<div><b>SITE MAP</b><a>Home</a><a>Track Order</a><a>Calculator</a><a>Check Region</a><a>Service List</a><a>API Documentation</a></div>
-<div><b>SUPPORT</b><span>No data yet</span></div>
-</div>
-<div class="bawahHelp"><b>HELP CENTER</b><a id="waBawah" class="hijau"></a></div>
-<div class="copy">© 2026 KHAI STORE. ALL RIGHTS RESERVED.</div>
+<section>
+  <h2 class="section-title"><span>🔥</span> FAMOUS GAME MALAYSIA</h2>
+  <div id="famousGrid" class="game-grid"></div>
+</section>
+
+<section>
+  <h2 class="section-title"><span>▦</span> ALL SERVICES</h2>
+  <div class="tabs">
+    <button class="tab active" data-filter="semua">Semua</button>
+    <button class="tab" data-filter="uid">UID Games</button>
+    <button class="tab" data-filter="other">Other Region</button>
+  </div>
+  <div id="allServicesGrid" class="game-grid"></div>
+  <button id="showMoreBtn" class="show-more">Show More</button>
+</section>
+
+<section class="why">
+  <h2>Why Choose Us?</h2>
+  <div class="why-card">
+    <div class="why-icon">🛡️</div>
+    <h3>Jujur & Terpercaya</h3>
+    <p>Setiap hari ada ribuan transaksi top-up game.</p>
+  </div>
+  <div class="why-card">
+    <div class="why-icon">💳</div>
+    <h3>Metode Pembayaran</h3>
+    <p>Kami menawarkan begitu banyak pilihan channel pembayaran.</p>
+  </div>
+</section>
+
+<footer>
+  <img id="footerLogo" src="" class="logo-footer">
+  <p class="desc">Automatic game top-up service 24/7. Fast, secure, and instant. Play without limits!</p>
+  <div class="foot-grid">
+    <div><b>SITE MAP</b><a>Home</a><a>Track Order</a><a>Calculator</a><a>Check Region</a><a>Service List</a><a>API Documentation</a></div>
+    <div><b>SUPPORT</b><span>No data yet</span></div>
+    <div><b>HELP CENTER</b><a id="waFooter" class="wa-green">601115852234</a></div>
+  </div>
+  <p class="copy">© 2026 KHAII STORE. ALL RIGHTS RESERVED.</p>
 </footer>
 
-<a id="waFloat" class="wa">💬</a>
+<!-- WHATSAPP FLOAT + PRODUCT SOLD TOAST -->
+<a id="waFloat" class="wa-float">💬</a>
+<div id="toast" class="toast">
+  <div><b>PRODUCT SOLD</b><span>Just bought</span><p id="toastText"></p><small>Verified by KHAII STORE</small></div>
+  <img id="toastImg" src="">
+</div>
+
 <script src="script.js"></script>
 </body>
-</html>
+    </html>
