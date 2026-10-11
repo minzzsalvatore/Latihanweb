@@ -38,6 +38,7 @@ body{background:var(--bg);color:var(--text);transition:.3s}
 .bawah{border-top:1px solid var(--garis);padding:20px 14px;margin-top:18px;color:var(--kelabu);font-size:12px}
 .bawah b{color:var(--text);display:block;margin-bottom:8px;font-size:11px;letter-spacing:1px}
 .bawah p{line-height:1.5}
+.tiktok{width:38px;height:38px;background:var(--card);border:1px solid var(--garis);border-radius:10px;display:flex;align-items:center;justify-content:center;margin:14px 0}
 .footgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
 .footgrid a{display:block;margin:6px 0;color:var(--kelabu);text-decoration:none;font-size:12px}
 .hijau{color:var(--hijau)!important;font-weight:700}
@@ -46,6 +47,7 @@ body{background:var(--bg);color:var(--text);transition:.3s}
 </style>
 </head>
 <body>
+
 <div class="top">
 <img id="logoTop" class="logo" src="">
 <div class="kanan">
@@ -54,16 +56,19 @@ body{background:var(--bg);color:var(--text);transition:.3s}
 <button class="ikon" id="btnMenu">☰</button>
 </div>
 </div>
+
 <div id="drawer" class="drawer">
 <div class="cari">🔍 <input id="cari" placeholder="Quick search..."></div>
-<div class="m aktif">▦ HOME</div>
-<div class="m">⌕ TRACK ORDER</div>
-<div class="m">🧮 CALCULATOR</div>
-<div class="m">📍 CHECK REGION</div>
+<div class="m aktif">▦ HOME</div><div class="m">⌕ TRACK ORDER</div><div class="m">🧮 CALCULATOR</div><div class="m">📍 CHECK REGION</div>
+<div style="margin-top:16px;font-weight:700">🇬🇧 English</div>
+<div style="background:var(--bg);border:1px solid var(--garis);border-radius:12px;padding:12px;margin-top:16px"><p style="font-size:10px;color:var(--kelabu)">NEED HELP?</p><a id="waSide" href="#" style="color:#3a7bff;font-weight:700;text-decoration:none">WhatsApp CS →</a></div>
 </div>
+
 <div class="banner"><div id="track" class="track"></div><div id="dots" class="dots"></div></div>
+
 <div class="tajuk">🔥 FAMOUS GAME MALAYSIA</div>
 <div id="grid1" class="grid"></div>
+
 <div class="tajuk">▦ ALL SERVICES</div>
 <div class="tabs">
 <button class="tab aktif" data-f="semua">Semua</button>
@@ -72,50 +77,63 @@ body{background:var(--bg);color:var(--text);transition:.3s}
 </div>
 <div id="grid2" class="grid"></div>
 <button id="btnMore" class="more">Show More</button>
+
 <div class="bawah">
 <img id="logoBawah" class="logo" src="" style="margin-bottom:10px">
-<p>Topup 24/7 laju, selamat, auto masuk.</p>
+<p>Automatic game top-up service 24/7. Fast, secure, and instant. Play without limits!</p>
+<div class="tiktok">♪</div>
 <div class="footgrid">
-<div><b>SITE MAP</b><a>Home</a><a>Track Order</a></div>
-<div><b>SUPPORT</b><a id="waBawah" class="hijau" href="#"></a></div>
+<div><b>SITE MAP</b><a>Home</a><a>Track Order</a><a>Calculator</a><a>Check Region</a><a>Service List</a><a>API Documentation</a></div>
+<div><b>SUPPORT</b><span>No data yet</span></div>
 </div>
-<div class="copy">© 2026 KHAI STORE.</div>
+<div><b>HELP CENTER</b><a id="waBawah" class="hijau" href="#"></a></div>
+<div class="copy">© 2026 KHAI STORE. ALL RIGHTS RESERVED.</div>
 </div>
+
 <a id="waFloat" class="wa" href="#">💬</a>
+
 <script>
-// === DAH SIAP BETUL, LINK SEMUA JADI ===
-const LOGO_URL = "https://dummyimage.com/150x50/ffffff/0a0a0a.png&text=KHAI+STORE";
+// ==== KAU GANTI LINK SINI JE ====
+const LOGO_URL = "https://via.placeholder.com/120x40/ffffff/000000?text=KHAI+STORE";
 const BANNER_URLS = [
-  "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=800",
-  "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=800",
+  "https://kommodo.ai/i/dGvinN6sxuvxUdZBYeAt",
   "https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=800"
 ];
 const WA = "601115852234";
+// ===============================
 
 const GAMES=[
-{name:"Mobile Legends MY",t:"uid",img:"https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=400",link:"mlmy.html"},
-{name:"Mobile Legends ID",t:"other",img:"https://images.unsplash.com/photo-1542751371-adc38448a05e?w=400",link:"mlmy.html"},
-{name:"PUBG Mobile",t:"uid",img:"https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=400",link:"mlmy.html"},
-{name:"Free Fire MY",t:"uid",img:"https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400",link:"mlmy.html"},
-{name:"Genshin Impact",t:"other",img:"https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=400",link:"mlmy.html"},
-{name:"Valorant",t:"uid",img:"https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400",link:"mlmy.html"}
+{name:"Mobile Legends MY",t:"uid",img:"https://ibb.co/svrhNTpd",link:"mlmy.html"},
+{name:"Mobile Legends ID",t:"other",img:"https://images.unsplash.com/photo-1542751371-adc38448a05e?w=300",link:"mlmy.html"},
+{name:"Mobile Legends Global",t:"other",img:"https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=300",link:"mlmy.html"},
+{name:"Free Fire IN",t:"uid",img:"https://images.unsplash.com/photo-1511512578047-dfb367046420?w=300",link:"mlmy.html"},
+{name:"PUBG Mobile",t:"uid",img:"https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=300",link:"mlmy.html"},
+{name:"Free Fire MY/SG",t:"uid",img:"https://images.unsplash.com/photo-1511512578047-dfb367046420?w=300",link:"mlmy.html"},
+{name:"AFK Journey",t:"other",img:"https://images.unsplash.com/photo-1511512578047-dfb367046420?w=300",link:"mlmy.html"},
+{name:"Arena Breakout",t:"uid",img:"https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=300",link:"mlmy.html"},
+{name:"Genshin Impact",t:"other",img:"https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=300",link:"mlmy.html"}
 ];
 
-function render(id,list){document.getElementById(id).innerHTML=list.map(g=>`<div class="kad" onclick="location.href='${g.link}'"><img src="${g.img}"><b>${g.name}</b></div>`).join('')}
+function render(id,list){document.getElementById(id).innerHTML=list.map(g=>`<div class="kad" onclick="location.href='${g.link}'"><img src="${g.img}" onerror="this.src='https://via.placeholder.com/300x400?text=${g.name}'"><b>${g.name}</b></div>`).join('')}
+
 document.getElementById('logoTop').src=LOGO_URL;
 document.getElementById('logoBawah').src=LOGO_URL;
 document.getElementById('waFloat').href="https://wa.me/"+WA;
+document.getElementById('waSide').href="https://wa.me/"+WA;
 document.getElementById('waBawah').href="https://wa.me/"+WA;
 document.getElementById('waBawah').innerText="🟢 "+WA;
+
 let track=document.getElementById('track');
 let dots=document.getElementById('dots');
 track.innerHTML=BANNER_URLS.map(u=>`<img src="${u}">`).join('');
 dots.innerHTML=BANNER_URLS.map((_,i)=>`<span class="${i==0?'on':''}"></span>`).join('');
 let idx=0;
 setInterval(()=>{idx=(idx+1)%BANNER_URLS.length;track.style.transform=`translateX(-${idx*100}%)`;dots.querySelectorAll('span').forEach((s,i)=>s.className=i==idx?'on':'')},3000);
+
 render('grid1',GAMES.slice(0,6));
 let showAll=false;
 render('grid2',GAMES.slice(0,6));
+
 document.getElementById('btnMenu').onclick=()=>document.getElementById('drawer').classList.toggle('buka');
 document.getElementById('btnTheme').onclick=()=>{
   document.body.classList.toggle('light');
