@@ -1,56 +1,58 @@
 <!DOCTYPE html>
-<html>
+<html lang="ms">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>KHAI STORE</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="top">
+<header class="top">
 <img id="logoTop" class="logo" src="">
-<div class="right">
-<button id="btnTheme" class="ic">☀️</button>
-<button class="ic">👤</button>
-<button id="btnMenu" class="ic">☰</button>
+<div class="kanan">
+<button id="btnTheme" class="ikon">☀️</button>
+<button class="ikon">👤</button>
+<button id="btnMenu" class="ikon">☰</button>
 </div>
-</div>
+</header>
 
 <div id="drawer" class="drawer">
-<div class="search">🔍<input id="cari" placeholder="Quick search..."></div>
-<div class="m active">▦ HOME</div>
+<div class="cari">🔍<input id="inputCari" placeholder="Quick search..."></div>
+<div class="m aktif">▦ HOME</div>
 <div class="m">⌕ TRACK ORDER</div>
 <div class="m">🧮 CALCULATOR</div>
 <div class="m">📍 CHECK REGION</div>
-<div class="help"><p>NEED HELP?</p><a id="waSide" class="waSide">WhatsApp CS ›</a></div>
+<div class="lang">🇬🇧 English</div>
+<div class="help"><p>NEED HELP?</p><a id="waSisi" href="#">WhatsApp CS ›</a></div>
 </div>
 
-<div class="banner"><div id="track" class="track"></div></div>
+<div class="banner"><div id="track" class="track"></div><div id="dots" class="dots"></div></div>
 
-<div class="judul">♨ FAMOUS GAME MALAYSIA</div>
-<div id="famous" class="grid"></div>
+<h2 class="tajuk">🔥 FAMOUS GAME MALAYSIA</h2>
+<div id="gridFamous" class="grid"></div>
 
-<div class="judul">▦ ALL SERVICES</div>
+<h2 class="tajuk">▦ ALL SERVICES</h2>
 <div class="tabs">
-<button class="tab active" data-f="semua">Semua</button>
-<button class="tab" data-f="uid">UID Games</button>
-<button class="tab" data-f="other">Other Region</button>
+<button class="tab aktif" data-jenis="semua">Semua</button>
+<button class="tab" data-jenis="uid">UID Games</button>
+<button class="tab" data-jenis="other">Other Region</button>
 </div>
-<div id="all" class="grid"></div>
-<button id="more" class="more">Show More</button>
+<div id="gridAll" class="grid"></div>
+<button id="btnMore" class="more">Show More</button>
 
-<footer>
-<img id="logoFoot" class="logoFoot" src="">
-<p class="desc">Automatic game top-up service 24/7. Fast, secure, and instant.</p>
-<div class="footGrid">
+<footer class="bawah">
+<img id="logoBawah" class="logoBawah" src="">
+<p>Automatic game top-up service 24/7. Fast, secure, and instant.</p>
+<div class="bawahGrid">
 <div><b>SITE MAP</b><a>Home</a><a>Track Order</a><a>Calculator</a><a>Check Region</a><a>Service List</a><a>API Documentation</a></div>
 <div><b>SUPPORT</b><span>No data yet</span></div>
 </div>
-<div class="helpFoot"><b>HELP CENTER</b><a id="waFoot" class="green"></a></div>
+<div class="bawahHelp"><b>HELP CENTER</b><a id="waBawah" class="hijau"></a></div>
 <div class="copy">© 2026 KHAI STORE. ALL RIGHTS RESERVED.</div>
 </footer>
-<a id="waFloat" class="waFloat">💬</a>
+
+<a id="waFloat" class="wa">💬</a>
 <script src="script.js"></script>
 </body>
 </html>
