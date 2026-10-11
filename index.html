@@ -5,88 +5,53 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>KHAI STORE</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
-body{background:#080c14;color:#fff}
-.top{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;position:sticky;top:0;background:#080c14;z-index:99;border-bottom:1px solid #151e32}
-.logo{height:32px;border-radius:8px;background:#000;padding:3px}
-.right{display:flex;gap:10px}
-.icon{width:38px;height:38px;border-radius:12px;border:none;background:#121a2b;color:#fff;font-size:16px}
-.drawer{position:fixed;top:56px;right:-100%;width:88%;height:100%;background:#121a2b;z-index:200;padding:16px;transition:.35s}
-.drawer.open{right:0}
-.search{display:flex;gap:10px;background:#080c14;border:1px solid #1c2742;border-radius:14px;padding:12px 14px;margin-bottom:14px}
-.search input{flex:1;background:transparent;border:none;outline:none;color:#fff;font-weight:600}
-.m{background:#080c14;padding:14px;border-radius:14px;margin-bottom:10px;font-weight:800;font-size:12px;letter-spacing:.8px;text-transform:uppercase;color:#7a8599;display:flex;gap:10px}
-.m.active{background:#0e1d3d;color:#1a5bff;border:1px solid #1a3a8a}
-.banner{margin:14px;height:158px;border-radius:18px;overflow:hidden;position:relative;background:#121a2b}
-.banner img{width:100%;height:100%;object-fit:cover}
-.head{font-size:16px;font-weight:800;padding:14px 14px 10px;display:flex;gap:8px;text-transform:uppercase;letter-spacing:.3px}
-.grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;padding:0 12px}
-.card{border-radius:18px;overflow:hidden;aspect-ratio:3/4.2;background:#121a2b;border:1px solid #1c2742;position:relative}
-.card img{width:100%;height:100%;object-fit:cover}
-.card .lb{position:absolute;bottom:0;left:0;right:0;padding:8px;background:linear-gradient(transparent,rgba(0,0,0,.9));text-align:center;font-size:10px;font-weight:700}
-.tabs{display:flex;gap:8px;padding:10px 14px}
-.tab{padding:9px 18px;border-radius:20px;border:none;background:#121a2b;color:#7a8599;font-weight:700}
-.tab.active{background:#1a5bff;color:#fff}
-.more{margin:16px auto;display:block;background:#1a5bff;color:#fff;border:none;padding:11px 26px;border-radius:22px;font-weight:800}
-.whyTitle{text-align:center;font-size:20px;font-weight:800;margin:24px 0 12px}
-.why{background:#121a2b;border:1px solid #1c2742;border-radius:18px;padding:20px;text-align:center;margin:0 14px 12px}
-footer{padding:18px;border-top:1px solid #1c2742;margin-top:20px}
-.foot{font-size:12px;color:#7a8599;margin:8px 0}
-.wa{position:fixed;bottom:18px;right:14px;width:56px;height:56px;background:#00d084;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;text-decoration:none}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
-<body>
-<div class="top">
-<img src="https://i.imgur.com/8QJ4sQW.jpeg" class="logo" id="logo">
-<div class="right"><button class="icon" id="theme">☀️</button><button class="icon">👤</button><button class="icon" id="openM">☰</button></div>
+<body class="dark">
+<header class="topbar">
+<img id="logoTop" class="logo" src="">
+<div class="right">
+<button id="btnTheme" class="icon">☀️</button>
+<button class="icon">👤</button>
+<button id="btnMenu" class="icon">☰</button>
 </div>
-<div class="drawer" id="drawer">
-<div class="search">🔍<input id="q" placeholder="Quick search..."></div>
-<div class="m active">▦ HOME</div><div class="m">⌕ TRACK ORDER</div><div class="m">🧮 CALCULATOR</div><div class="m">📍 CHECK REGION</div>
-<div style="margin:18px 0;font-weight:700">🇬🇧 English</div>
-<div style="background:#080c14;border:1px solid #1c2742;border-radius:16px;padding:14px"><p style="font-size:10px;letter-spacing:1.5px;color:#7a8599;font-weight:700">NEED HELP?</p><a href="https://wa.me/601115852234" style="display:block;margin-top:8px;background:#0e1d3d;color:#1a5bff;padding:12px;border-radius:12px;text-decoration:none;font-weight:700">WhatsApp CS ›</a></div>
-<div style="margin-top:14px"><b style="font-size:11px;letter-spacing:.8px">HELP CENTER</b><br><a style="color:#00e676;font-weight:800;margin-top:6px;display:block">🟢 601115852234</a></div>
+</header>
+
+<div id="drawer" class="drawer">
+<div class="search"><span>🔍</span><input id="inputSearch" placeholder="Quick search..."></div>
+<div class="menu"><div class="m active">▦ HOME</div><div class="m">⌕ TRACK ORDER</div><div class="m">🧮 CALCULATOR</div><div class="m">📍 CHECK REGION</div></div>
+<div class="lang">🇬🇧 English</div>
+<div class="helpBox"><p>NEED HELP?</p><a id="waSide" class="waSide">WhatsApp CS <span>›</span></a></div>
 </div>
 
-<div class="banner"><img id="bannerImg" src="https://i.imgur.com/8QJ4sQW.jpeg"></div>
+<div class="bannerWrap"><div id="bannerTrack" class="bannerTrack"></div><div id="dots" class="dots"></div></div>
 
-<div class="head">♨ FAMOUS GAME MALAYSIA</div>
-<div class="grid" id="famous"></div>
+<h2 class="judul">♨ FAMOUS GAME MALAYSIA</h2>
+<div id="gridFamous" class="grid"></div>
 
-<div class="head" style="margin-top:18px">▦ ALL SERVICES</div>
-<div class="tabs"><button class="tab active">Semua</button><button class="tab">UID Games</button><button class="tab">Other Region</button></div>
-<div class="grid" id="all"></div>
-<button class="more" id="moreBtn">Show More</button>
+<h2 class="judul">▦ ALL SERVICES</h2>
+<div class="tabs"><button class="tab active" data-k="semua">Semua</button><button class="tab" data-k="uid">UID Games</button><button class="tab" data-k="other">Other Region</button></div>
+<div id="gridAll" class="grid"></div>
+<button id="btnMore" class="more">Show More</button>
 
-<div class="whyTitle">Why Choose Us?</div>
-<div class="why"><div style="font-size:28px">🛡️</div><b>Jujur & Terpercaya</b><p style="font-size:12px;color:#7a8599;margin-top:6px">Setiap hari ada ribuan transaksi top-up game.</p></div>
-<div class="why"><div style="font-size:28px">💳</div><b>Metode Pembayaran</b><p style="font-size:12px;color:#7a8599;margin-top:6px">Kami menawarkan banyak pilihan pembayaran.</p></div>
+<h2 class="whyTitle">Why Choose Us?</h2>
+<div class="why"><div class="whyIcon">🛡️</div><b>Jujur & Terpercaya</b><p>Setiap hari ada ribuan transaksi top-up game.</p></div>
+<div class="why"><div class="whyIcon">💳</div><b>Metode Pembayaran</b><p>Kami menawarkan begitu banyak pilihan channel pembayaran.</p></div>
 
-<footer><div class="foot"><b>SITE MAP</b><br>Home • Track Order • Calculator</div><div class="foot"><b>HELP CENTER</b><br>601115852234</div><div style="text-align:center;font-size:10px;color:#445169;margin-top:12px;border-top:1px solid #1c2742;padding-top:10px">© 2026 KHAI STORE. ALL RIGHTS RESERVED.</div></footer>
-<a href="https://wa.me/601115852234" class="wa">💬</a>
+<footer class="footer">
+<img id="logoFoot" class="logoFoot" src="">
+<p class="footDesc">Automatic game top-up service 24/7. Fast, secure, and instant. Play without limits!</p>
+<div class="footGrid">
+<div><b>SITE MAP</b><a>Home</a><a>Track Order</a><a>Calculator</a><a>Check Region</a><a>Service List</a><a>API Documentation</a></div>
+<div><b>SUPPORT</b><span>No data yet</span></div>
+</div>
+<div class="helpFoot"><b>HELP CENTER</b><a id="waFoot" class="waGreen"></a></div>
+<div class="copy">© 2026 KHAI STORE. ALL RIGHTS RESERVED.</div>
+</footer>
 
-<script>
-const games=[
-{name:"Mobile Legends MY",img:"https://i.imgur.com/8QJ4sQW.jpeg"},
-{name:"Mobile Legends ID",img:"https://i.imgur.com/8QJ4sQW.jpeg"},
-{name:"Mobile Legends Global",img:"https://i.imgur.com/8QJ4sQW.jpeg"},
-{name:"Free Fire IN",img:"https://i.imgur.com/3Z1QZ1Q.jpeg"},
-{name:"PUBG Mobile",img:"https://i.imgur.com/Ql2zA1I.png"},
-{name:"Free Fire MY/SG",img:"https://i.imgur.com/3Z1QZ1Q.jpeg"},
-{name:"AFK Journey",img:"https://i.imgur.com/5X2p6yA.png"},
-{name:"Age of Empires",img:"https://i.imgur.com/5X2p6yA.png"},
-{name:"Arena Breakout",img:"https://i.imgur.com/5X2p6yA.png"},
-];
-function render(id,data){document.getElementById(id).innerHTML=data.map(g=>`<div class="card" onclick="location.href='product.html?game='+encodeURIComponent(g.name)"><img src="${g.img}"><div class="lb">${g.name}</div></div>`).join('')}
-render('famous',games.slice(0,6));
-let show=false;
-function renderAll(){render('all',show?games:games.slice(0,6))}
-renderAll();
-document.getElementById('moreBtn').onclick=()=>{show=!show;document.getElementById('moreBtn').innerText=show?'Show Less':'Show More';renderAll()};
-document.getElementById('openM').onclick=()=>document.getElementById('drawer').classList.toggle('open');
-document.getElementById('theme').onclick=()=>{document.body.style.background=document.body.style.background=='white'?'#080c14':'white';document.body.style.color=document.body.style.background=='white'?'#000':'#fff'};
-document.getElementById('q').oninput=e=>{let f=games.filter(x=>x.name.toLowerCase().includes(e.target.value.toLowerCase()));render('famous',f);render('all',f.slice(0,6))};
-</script>
+<a id="waFloat" class="waFloat">💬</a>
+<div id="toast" class="toast"><div><div class="toastHead">PRODUCT SOLD <span>Just bought</span></div><p id="toastText"></p><small>✓ Verified by KHAI STORE</small></div><img id="toastImg"></div>
+
+<script src="script.js"></script>
 </body>
 </html>
