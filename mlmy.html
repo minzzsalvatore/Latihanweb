@@ -1,254 +1,175 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="ms">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Minzz Salvatore - Top Up MLBB Malaysia 2</title>
+<title>MOBILE LEGENDS MALAYSIA - KHAI STORE</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700;800&display=swap" rel="stylesheet">
 <style>
-:root{
-  --bg:#04070d;--accent:#009dff;--accent2:#00c6ff;
-  --text:#cfd9e8;--card:#0b1118;
-  font-family:"Poppins",sans-serif;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--text);overflow-x:hidden;scroll-behavior:smooth}
-
-/* POPUP WARNING */
-#alertPopup{position:fixed;inset:0;background:rgba(0,0,0,.85);
-display:flex;justify-content:center;align-items:center;
-z-index:999;transition:opacity .3s ease;}
-#alertPopup.hidden{opacity:0;pointer-events:none}
-.alert-box{background:#0b111d;border:1px solid rgba(0,157,255,.4);
-box-shadow:0 0 25px rgba(0,157,255,.7);border-radius:18px;
-padding:22px 20px;width:90%;max-width:400px;text-align:center;
-color:#cfd9e8;animation:pop .3s ease;}
-@keyframes pop{from{transform:scale(.8);opacity:0}to{transform:scale(1);opacity:1}}
-.alert-box h3{color:#00b7ff;margin-bottom:10px}
-.alert-box button{background:linear-gradient(135deg,#00b7ff,var(--accent));
-border:none;color:#fff;border-radius:10px;padding:10px 22px;cursor:pointer;
-font-weight:600;box-shadow:0 0 12px rgba(0,157,255,.7);transition:.3s}
-.alert-box button:hover{transform:scale(1.05)}
-
-/* HEADER */
-header{display:flex;justify-content:space-between;align-items:center;
-padding:18px 16px;position:sticky;top:0;z-index:50;
-background:rgba(5,8,14,.9);backdrop-filter:blur(10px);
-border-bottom:1px solid rgba(255,255,255,.06)}
-.logo{display:flex;align-items:center;gap:10px;font-weight:700;color:#cfd9e8}
-.logo img{width:44px;height:44px;border-radius:12px;
-box-shadow:0 0 12px rgba(0,157,255,.5)}
-.menu-btn{font-size:26px;cursor:pointer;color:#fff}
-
-/* NAV MENU */
-.nav-backdrop{position:fixed;inset:0;background:rgba(0,0,0,0.5);
-opacity:0;pointer-events:none;transition:.25s;z-index:40}
-.nav-backdrop.active{opacity:1;pointer-events:auto}
-.nav-menu{position:fixed;top:0;left:-100%;width:80%;max-width:360px;height:100%;
-background:#0b1118;transition:.3s;z-index:50;padding-top:20px;
-display:flex;flex-direction:column}
-.nav-menu.active{left:0}
-.nav-header{display:flex;align-items:center;gap:10px;padding:0 18px 15px;
-border-bottom:1px solid rgba(255,255,255,0.05)}
-.nav-header img{width:44px;height:44px;border-radius:10px;
-box-shadow:0 0 10px rgba(0,157,255,.5)}
-.nav-header span{font-size:18px;font-weight:700;color:#fff}
-.nav-item{padding:13px 18px;color:#cfd9e8;text-decoration:none;
-transition:.3s;font-size:15px;display:flex;align-items:center;gap:8px}
-.nav-item:hover{background:rgba(255,255,255,.06);color:#fff}
-
-/* BANNER */
-.banner-container{position:relative;width:90%;max-width:700px;height:230px;
-margin:25px auto 15px;border-radius:20px;overflow:hidden;
-background:linear-gradient(145deg,#071324,#041b31);
-box-shadow:0 0 25px rgba(0,157,255,.3);}
-canvas#stars{position:absolute;inset:0;width:100%;height:100%;z-index:0;}
-.banner-content{position:relative;z-index:2;display:flex;align-items:center;
-gap:16px;padding:20px;height:100%;background:rgba(0,0,0,0.35);
-backdrop-filter:blur(5px);}
-.banner-logo{width:90px;height:90px;border-radius:20px;
-box-shadow:0 0 25px rgba(0,157,255,.7);animation:float 4s ease-in-out infinite alternate;}
-@keyframes float{from{transform:translateY(0);}to{transform:translateY(-6px);}}
-.banner-text{flex:1;}
-.banner-text h2{font-size:20px;font-weight:700;color:#fff;
-text-shadow:0 0 10px rgba(0,157,255,.8);}
-.banner-text p{font-size:14px;color:#9bc4ff;margin-top:6px;}
-.banner-list{margin-top:10px;display:flex;flex-direction:column;
-gap:4px;font-size:13px;color:#bcd2f5;}
-
-/* DESKRIPSI */
-.desc{width:90%;max-width:700px;margin:10px auto 25px;background:#0b1320;
-border-radius:14px;padding:16px;box-shadow:0 0 20px rgba(0,157,255,.2);
-cursor:pointer;transition:.3s;}
-.desc:hover{box-shadow:0 0 30px rgba(0,157,255,.4);}
-.desc h3{display:flex;justify-content:space-between;align-items:center;
-font-size:15px;font-weight:700;}
-.desc-content{max-height:0;overflow:hidden;color:#b8c7d9;font-size:14px;
-line-height:1.6;opacity:0;transition:max-height .6s ease,opacity .6s ease;}
-.desc.active .desc-content{max-height:200px;opacity:1;margin-top:8px;}
-.desc span{transition:transform .3s;}
-.desc.active span{transform:rotate(180deg);}
-
-/* STEP LABEL */
-.step-label{width:90%;max-width:700px;margin:25px auto 10px;
-display:flex;align-items:center;gap:10px}
-.step-circle{width:30px;height:30px;border-radius:50%;
-background:var(--accent);color:#fff;display:flex;align-items:center;
-justify-content:center;font-weight:700;box-shadow:0 0 12px rgba(0,157,255,.7)}
-.step-label h3{font-size:16px;font-weight:700}
-
-/* CATEGORY SECTION */
-.category{width:90%;max-width:700px;margin:20px auto}
-.cat-btns{display:flex;gap:10px;overflow-x:auto;margin-bottom:14px}
-.cat-btn{padding:10px 18px;border:none;border-radius:10px;color:#fff;
-font-weight:600;background:#0c1624;cursor:pointer}
-.cat-btn.active,.cat-btn:hover{background:linear-gradient(135deg,#00b7ff,#007bff);
-box-shadow:0 0 15px rgba(0,157,255,.6)}
-.price-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.price-item{background:#0b111d;padding:14px;border-radius:14px;text-align:center;
-border:1px solid rgba(255,255,255,.06);transition:.3s;cursor:pointer}
-.price-item:hover{transform:translateY(-3px);box-shadow:0 0 15px rgba(0,157,255,.5)}
-.price-item.active{border:1px solid var(--accent)}
-.price-item img{width:36px;height:36px;margin-bottom:6px}
-.price-item h4{font-size:14px}
-.price-item span{color:#00b7ff;font-weight:600;font-size:13px}
-
-/* FORM */
-.section-header{display:flex;align-items:center;gap:10px;margin:20px 18px 10px}
-.section-card{background:#0c1624;border-radius:14px;margin:0 18px 20px;padding:14px}
-.section-card input, select{width:100%;background:#0b111d;border:none;outline:none;
-padding:12px;border-radius:10px;color:#fff;margin-bottom:8px;font-size:14px}
-.payment-box select{appearance:none}
-.section-card small{font-size:12px;color:#9fb4d1}
-
-/* BUTTON */
-.btn-blue{display:block;width:90%;margin:25px auto 10px;padding:14px;
-border:none;border-radius:12px;background:linear-gradient(135deg,#00b7ff,#007bff);
-color:#fff;font-weight:700;font-size:15px;text-align:center;cursor:pointer;
-box-shadow:0 0 25px rgba(0,157,255,.5);transition:.3s}
-.btn-blue:hover{transform:scale(1.05)}
-footer{text-align:center;background:#06101d;padding:30px 10px;color:#9fb4d1;
-margin-top:40px;font-size:13px}
-footer img{width:80px;margin-bottom:10px}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+:root{--bg:#060a14;--card:#121b2e;--card2:#0f192b;--biru:#1a5bff;--text:#fff;--kelabu:#7a8599;--garis:#1e2c4a}
+body{background:var(--bg);color:var(--text);padding-bottom:20px}
+body.light{--bg:#f5f7fb;--card:#fff;--card2:#eef2f9;--text:#0e121a}
+.top{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--bg);position:sticky;top:0;z-index:99}
+.logo{height:32px;border-radius:8px;background:#fff;padding:2px}
+.kanan{display:flex;gap:8px}
+.ikon{width:38px;height:38px;border-radius:12px;border:none;background:var(--card);color:var(--text)}
+.back{margin:12px 14px;display:flex;align-items:center;gap:8px;background:var(--card);border:none;color:var(--text);padding:8px 14px;border-radius:20px;font-weight:700;font-size:12px}
+.wrap{margin:0 14px;background:var(--card);border-radius:24px;overflow:hidden;border:1px solid var(--garis);margin-bottom:14px}
+.banner{height:210px;position:relative;background:#1a1a}
+.banner img{width:100%;height:100%;object-fit:cover}
+.icon-kecik{position:absolute;right:14px;bottom:-30px;width:82px;height:82px;border-radius:16px;border:3px solid var(--card);overflow:hidden;background:var(--card);box-shadow:0 4px 20px rgba(0,0,0,.5)}
+.icon-kecik img{width:100%;height:100%;object-fit:cover}
+.info{padding:18px 16px;padding-top:16px}
+.info h1{font-size:22px;font-weight:800;line-height:1.2}
+.badge{display:inline-flex;align-items:center;gap:6px;margin-top:10px;border:1px solid var(--garis);background:var(--card2);padding:6px 12px;border-radius:20px;font-size:11px;color:var(--kelabu)}
+.moonton{color:var(--biru);font-weight:800;font-size:12px;margin-top:12px;display:block;letter-spacing:1px}
+.how{border-top:1px solid var(--garis);margin-top:14px;padding-top:14px}
+.how-head{display:flex;justify-content:space-between;align-items:center;font-weight:800;font-size:13px;letter-spacing:.5px;cursor:pointer}
+.how-body{font-size:11px;color:var(--kelabu);line-height:1.6;margin-top:12px;display:none}
+.how-body.show{display:block}
+.how-body ol{margin-left:16px;margin-bottom:10px}
+.card{margin:14px;background:var(--card);border:1px solid var(--garis);border-radius:20px;padding:16px}
+.card-head{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.num{width:38px;height:38px;background:var(--biru);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800}
+.card-head b{font-size:14px;letter-spacing:.3px}
+.input{width:100%;background:var(--bg);border:1px solid var(--garis);border-radius:12px;padding:14px;color:var(--text);outline:none;margin-top:6px}
+.label{font-size:10px;color:var(--kelabu);font-weight:700;letter-spacing:.8px;margin-top:12px;display:block}
+.infobox{background:#15213c;border-radius:12px;padding:12px;font-size:11px;color:#6b9bff;line-height:1.5;margin-top:12px;display:flex;gap:8px}
+.tabs{display:flex;gap:8px;overflow:auto;padding-bottom:8px}
+.tab{padding:10px 18px;border-radius:20px;border:1px solid var(--garis);background:var(--bg);color:var(--kelabu);font-weight:700;font-size:11px;white-space:nowrap}
+.tab.on{background:var(--biru);color:#fff;border-color:var(--biru)}
+.nom-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.nom{border:1px solid var(--garis);background:var(--bg);border-radius:14px;padding:14px;text-align:center}
+.nom.active{border-color:var(--biru);background:#102044}
+.nom b{display:block;font-size:12px;margin:8px 0 4px}
+.nom span{color:var(--biru);font-weight:800;font-size:12px}
+.pay{border:1px solid var(--garis);background:var(--bg);border-radius:14px;padding:12px;display:flex;justify-content:space-between;align-items:center;margin-top:10px}
+.pay.active{border-color:var(--biru)}
+.pay img{height:28px;background:#fff;border-radius:6px;padding:2px}
+.pay b{font-size:12px}
+.pay small{color:var(--kelabu);font-size:10px;display:block}
+.wa-input{display:flex;gap:8px;margin-top:8px}
+.wa-input input{flex:1}
+.btn-apply{background:var(--card2);border:1px solid var(--garis);color:var(--kelabu);padding:12px 18px;border-radius:12px;font-weight:700}
+.summary{border:1px solid var(--garis);border-radius:14px;padding:14px;margin-top:12px;background:var(--bg)}
+.row{display:flex;justify-content:space-between;font-size:12px;margin:6px 0}
+.total{color:var(--biru);font-size:18px;font-weight:800}
+.checkout{width:100%;margin-top:14px;background:#1a253e;color:#5a6b8a;border:none;padding:14px;border-radius:14px;font-weight:800;letter-spacing:.5px}
+.checkout.active{background:var(--biru);color:#fff}
+.about p{font-size:11px;color:var(--kelabu);line-height:1.6;margin-top:8px}
 </style>
 </head>
 <body>
-
-<!-- POPUP -->
-<div id="alertPopup">
-  <div class="alert-box">
-    <h3>⚠️ Peringatan!</h3>
-    <p>Pastikan data ID, Server, dan Nomor WhatsApp kamu benar sebelum melakukan transaksi.<br>Kami tidak bertanggung jawab atas kesalahan input data!</p>
-    <button id="closeAlert">Tutup</button>
-  </div>
+<div class="top">
+<img id="logoTop" class="logo" src="">
+<div class="kanan">
+<button id="btnTheme" class="ikon">☀️</button>
+<button class="ikon">👤</button>
+<button class="ikon">☰</button>
+</div>
 </div>
 
-<header>
-  <div class="logo"><img src="https://f.top4top.io/p_3592x38860.png" alt="logo"><span>Minzz Salvatore</span></div>
-  <div class="menu-btn" onclick="toggleMenu()">☰</div>
-</header>
+<button class="back" onclick="history.back()">‹ &nbsp; BACK</button>
 
-<div class="nav-backdrop" id="navBackdrop" onclick="toggleMenu()"></div>
-<div class="nav-menu" id="navMenu">
-  <div class="nav-header"><img src="https://f.top4top.io/p_3592x38860.png"><span>MinzzStore</span></div>
-  <a href="index.html" class="nav-item">🏠 Beranda</a>
-  <a href="status.html" class="nav-item">🔍 Cek Transaksi</a>
+<div class="wrap">
+<div class="banner">
+<img id="bannerGame" src="">
+<div class="icon-kecik"><img id="iconGame" src=""></div>
+</div>
+<div class="info">
+<h1>MOBILE LEGENDS<br>MALAYSIA</h1>
+<div class="badge">☆ No reviews yet</div>
+<span class="moonton">MOONTON</span>
+<div class="how">
+<div class="how-head" id="howHead">HOW TO TOP UP <span>⌄</span></div>
+<div class="how-body" id="howBody">
+<p>How to top up ML Diamond?</p>
+<ol>
+<li>Select the Diamond denomination.</li>
+<li>Enter your ML User ID and Zone ID.</li>
+<li>Check out and select your payment method.</li>
+<li>Once payment is made, the ML Diamond you purchased will be credited to your MLBB Account shortly.</li>
+</ol>
+<p>How to find ML User ID and Zone ID?</p>
+<ol>
+<li>Use your account to login the game.</li>
+<li>Click on your avatar in the top-left corner.</li>
+<li>Your ML User ID and Zone ID will be displayed.(e.g. User ID="12345678", ZoneID="1234")</li>
+</ol>
+</div>
+</div>
+</div>
 </div>
 
-<main>
-  <div class="banner-container">
-    <canvas id="stars"></canvas>
-    <div class="banner-content">
-      <img class="banner-logo" src="https://d.top4top.io/p_3592ov5d30.png" alt="MLBB Logo">
-      <div class="banner-text">
-        <h2>MLBB Malaysia 2</h2>
-        <p>by Moonton</p>
-        <div class="banner-list">
-          <div>🛡️ Layanan Resmi</div>
-          <div>⚡ Proses Instan</div>
-          <div>🔒 Topup Aman</div>
-          <div>🎧 Customer Support 24/7</div>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="card">
+<div class="card-head"><div class="num">1</div><b>ACCOUNT DATA</b></div>
+<span class="label">USER ID</span>
+<input class="input" id="userId" placeholder="Example : 42562624">
+<span class="label">SERVER ID</span>
+<input class="input" id="serverId" placeholder="Example: 2432">
+<div class="infobox">ⓘ &nbsp; To find your User ID, click on your avatar in the top left corner of the screen and go to the General Info tab. Example: 2334522 (3252).</div>
+</div>
 
-  <div class="desc active" id="descBox" onclick="toggleDesc()">
-    <h3>Deskripsi <span>⬇️</span></h3>
-    <div class="desc-content">
-      Minzz Salvatore — pilihan terbaik untuk Top Up Mobile Legends!  
-      Dapatkan Diamond MLBB dengan harga bersahabat, proses cepat, dan layanan profesional 24 jam.
-    </div>
-  </div>
+<div class="card">
+<div class="card-head"><div class="num">2</div><b>SELECT NOMINAL</b></div>
+<div class="tabs">
+<button class="tab on" data-tab="topup">🔥 TOP UP</button>
+<button class="tab" data-tab="weekly">🎁 WEEKLYDP, & TWILIGHT PASS</button>
+<button class="tab" data-tab="first">🎁 FIRST RECHARGE</button>
+</div>
+<div id="nomGrid" class="nom-grid"></div>
+</div>
 
-  <div class="step-label"><div class="step-circle">1</div><h3>Pilih Nominal (wajib)</h3></div>
-  <section class="category">
-    <div class="cat-btns">
-      <button class="cat-btn active" onclick="changeCat('diamond',event)">Diamond</button>
-      <button class="cat-btn" onclick="changeCat('weekly',event)">Weekly</button>
-      <button class="cat-btn" onclick="changeCat('twilight',event)">Twilight</button>
-      <button class="cat-btn" onclick="changeCat('double',event)">Double Diamond</button>
-    </div>
-    <div class="price-grid" id="priceGrid"></div>
-  </section>
+<div class="card">
+<div class="card-head"><div class="num">3</div><b>SELECT PAYMENT</b></div>
+<span class="label">QR - DUITNOW</span>
+<div class="pay active" data-pay="duitnow"><div style="display:flex;align-items:center;gap:10px"><img src="https://i.ibb.co/1pZzKxZq/duITNOW.png" onerror="this.src='https://via.placeholder.com/60x28?text=DuitNow'"><div><b>QR - DuitNow</b><small>QR - DuitNow</small></div></div><b>RM 2,543.85</b></div>
+<span class="label" style="margin-top:16px">FPX - ONLINE BANKING</span>
+<div class="pay" data-pay="fpxb2c"><div style="display:flex;align-items:center;gap:10px"><img src="https://via.placeholder.com/60x28?text=FPX"><div><b>FPX (B2C)</b><small>FPX (B2C)</small></div></div><b>RM 2,517.17</b></div>
+<div class="pay" data-pay="fpxb2b"><div style="display:flex;align-items:center;gap:10px"><img src="https://via.placeholder.com/60x28?text=FPX"><div><b>FPX (B2B1)</b><small>FPX (B2B1)</small></div></div><b>RM 2,518.17</b></div>
+<span class="label" style="margin-top:16px">E - WALLET</span>
+<div class="pay" data-pay="tng"><div style="display:flex;align-items:center;gap:10px"><img src="https://via.placeholder.com/60x28?text=TNG"><div><b>Touch N Go</b></div></div><b>RM 2,543.85</b></div>
+</div>
 
-  <div class="section-header"><div class="step-circle">2</div><h3>ID Player (wajib)</h3></div>
-  <div class="section-card">
-    <input type="text" placeholder="User ID">
-    <input type="text" placeholder="Server ID">
-  </div>
+<div class="card">
+<div class="card-head"><div class="num">4</div><b>CONFIRM ORDER</b></div>
+<span class="label">WHATSAPP NUMBER<span style="color:red">*</span></span>
+<input class="input" id="waNum" placeholder="Example: 60xxxxxxxxxx">
+<p style="font-size:9px;color:var(--kelabu);margin-top:4px">*WhatsApp number will be contacted in case of issues.</p>
+<span class="label">EMAIL ADDRESS <span style="background:var(--card2);padding:2px 6px;border-radius:6px;font-size:9px">OPTIONAL</span></span>
+<input class="input" placeholder="Example: user@email.com">
+<p style="font-size:9px;color:var(--kelabu);margin-top:4px">*Transaction proof or invoice will be sent to this email.</p>
+<span class="label">HAVE A PROMO CODE?</span>
+<div class="wa-input"><input class="input" style="margin-top:0" placeholder="◿ ENTER PROMO CODE"><button class="btn-apply">APPLY</button></div>
+<div class="summary">
+<div class="label">ORDER SUMMARY</div>
+<div style="display:flex;gap:10px;align-items:center;margin:12px 0"><img src="" id="sumIcon" style="width:48px;height:48px;border-radius:10px;background:var(--bg)"><div><small style="color:var(--kelabu);font-size:10px">MOBILE LEGENDS MALAYSIA</small><b id="sumNom" style="display:block;font-size:13px">Pilih Diamond</b></div></div>
+<div class="pay" style="margin:0"><img src="https://via.placeholder.com/60x28?text=DuitNow"><div><small>PAYMENT METHOD</small><b>QR - DuitNow</b></div></div>
+<div style="border-top:1px solid var(--garis);margin-top:12px;padding-top:10px">
+<div class="row"><span>Product Price</span><span id="priceProd">RM 0.00</span></div>
+<div class="row"><span>Service Fee</span><span style="color:var(--biru)" id="fee">+ RM 0.00</span></div>
+<div class="row" style="border-top:1px solid var(--garis);padding-top:10px;margin-top:10px"><span>TOTAL PAYMENT</span><span class="total" id="total">RM 0.00</span></div>
+</div>
+</div>
+<button class="checkout" id="btnCheckout">🛒 CHECKOUT ORDER</button>
+</div>
 
-  <div class="section-header"><div class="step-circle">3</div><h3>Metode Pembayaran (wajib)</h3></div>
-  <div class="section-card payment-box">
-    <select><option>Minzz Cash</option></select>
-  </div>
-
-  <div class="section-header"><div class="step-circle">4</div><h3>No. WhatsApp (wajib)</h3></div>
-  <div class="section-card"><input type="tel" placeholder="Contoh: 6014..."></div>
-
-  <button class="btn-blue">Konfirmasi Pesanan</button>
-</main>
-
-<footer>
-  <img src="https://f.top4top.io/p_3592x38860.png">
-  <p>Supplier Top-Up Game Online termurah, proses cepat, dan open 24 jam.</p>
-</footer>
+<div class="card about">
+<h3 style="font-size:14px">ABOUT MOBILE LEGENDS MALAYSIA</h3>
+<p>About Mobile Legends: Bang Bang<br>Mobile Legends: Bang Bang (MLBB) is a mobile MOBA developed by Moonton, launched in 2016 for iOS and Android. The game offers 5v5 real-time battles with over 100 heroes.</p>
+</div>
 
 <script>
-function toggleMenu(){
-  const m=document.getElementById("navMenu");
-  const b=document.getElementById("navBackdrop");
-  const a=m.classList.toggle("active");
-  b.classList.toggle("active",a);
-}
-function toggleDesc(){document.getElementById("descBox").classList.toggle("active");}
-document.getElementById("closeAlert").onclick=()=>{
-  const p=document.getElementById("alertPopup");
-  p.classList.add("hidden");
-  setTimeout(()=>p.remove(),300);
-};
-/* Pricelist */
-const icons=["https://b.top4top.io/p_3592nnn570.png","https://c.top4top.io/p_35926ckv81.png","https://d.top4top.io/p_3592qulav2.png"];
-const prices={
-diamond:[{img:icons[0],name:"86 Diamond",price:"RM 5.00"},{img:icons[1],name:"172 Diamond",price:"RM 10.00"},{img:icons[2],name:"257 Diamond",price:"RM 15.00"}],
-weekly:[{img:icons[1],name:"Weekly Pass 1x",price:"RM 8.00"},{img:icons[2],name:"Weekly Pass 2x",price:"RM 15.00"}],
-twilight:[{img:icons[0],name:"Twilight Pass",price:"RM 35.00"}],
-double:[{img:icons[1],name:"Double 86",price:"RM 9.00"},{img:icons[2],name:"Double 172",price:"RM 18.00"}]};
-function renderPrices(cat="diamond"){const grid=document.getElementById("priceGrid");grid.innerHTML="";
-prices[cat].forEach(p=>{const el=document.createElement("div");
-el.className="price-item";el.innerHTML=`<img src="${p.img}"><h4>${p.name}</h4><span>${p.price}</span>`;
-el.onclick=()=>selectPrice(el);grid.appendChild(el);});}
-function selectPrice(el){document.querySelectorAll(".price-item").forEach(x=>x.classList.remove("active"));
-el.classList.add("active");}
-function changeCat(cat,e){document.querySelectorAll(".cat-btn").forEach(b=>b.classList.remove("active"));
-e.target.classList.add("active");renderPrices(cat);}
-renderPrices();
-/* Bintang Jatuh */
-const canvas=document.getElementById("stars");const ctx=canvas.getContext("2d");let stars=[];
-function resize(){canvas.width=canvas.offsetWidth;canvas.height=canvas.offsetHeight;}window.addEventListener("resize",resize);resize();
-for(let i=0;i<80;i++){stars.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,s:Math.random()*2+0.5,spdX:Math.random()*-1-0.3,spdY:Math.random()*1+0.3});}
-function draw(){ctx.clearRect(0,0,canvas.width,canvas.height);ctx.fillStyle="#00b7ff";
-for(const st of stars){ctx.beginPath();ctx.arc(st.x,st.y,st.s,0,Math.PI*2);ctx.fill();st.x+=st.spdX;st.y+=st.spdY;if(st.y>canvas.height)st.y=0;if(st.x<0)st.x=canvas.width;}
-requestAnimationFrame(draw);}draw();
-</script>
-</body>
-</html>
+// GANTI LINK SINI JE
+const LOGO_URL="https://i.ibb.co/3Y0Z8p0k/logo-ml.png";
+const BANNER_URL="https://cdn.oneesports.gg/cdn-data/2024/09/MLBB_Nolan_RestlessHounds.jpg";
+const ICON_URL="https://cdn.oneesports.gg/cdn-data/2024/02/MLBB_M5_World_Championship_AP_Bren-1024x576.jpg";
+const WA_CS="601115852234";
+
+document.getElementById('logoTop').src=LOGO_URL;
+document.getElementById('bannerGame').src=BANNER_URL;
+document.getElementById('iconGame').src=ICON_URL;
+document.getElementById('sumIcon').src=ICON_URL;
+
+const
