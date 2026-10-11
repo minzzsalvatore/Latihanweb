@@ -2,90 +2,73 @@
 <html lang="ms">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>KHAI STORE</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body class="dark">
-<header class="navbar">
-  <img id="logoImg" src="https://i.ibb.co/placeholder.png" class="logo" alt="KHAI STORE">
-  <div class="nav-right">
-    <button id="themeBtn" class="icon-btn">☀️</button>
-    <button class="icon-btn">👤</button>
-    <button id="menuBtn" class="icon-btn">☰</button>
+<header class="topnav">
+  <img id="logo" class="khai-logo" src="" alt="KHAI STORE">
+  <div class="right">
+    <button id="themeBtn" class="icon">☀️</button>
+    <button class="icon">👤</button>
+    <button id="openMenu" class="icon">☰</button>
   </div>
 </header>
 
-<!-- SIDEBAR MENU macam gambar last kau -->
-<div id="sidebar" class="sidebar">
-  <div class="side-top">
-    <input type="text" id="quickSearch" placeholder="Quick search...">
-    <div class="side-menu"><span>HOME</span></div>
-    <div class="side-menu">TRACK ORDER</div>
-    <div class="side-menu">CALCULATOR</div>
-    <div class="side-menu">CHECK REGION</div>
-    <p class="lang">🇬🇧 English</p>
-    <div class="help-box">
-      <p>NEED HELP?</p>
-      <a id="waLinkSide" href="#">WhatsApp CS →</a>
-    </div>
+<!-- MENU SEBIJI MACAM GAMBAR KAU NO 3 -->
+<div id="menuDrawer" class="drawer">
+  <div class="search-box">
+    <span>🔍</span><input id="quickSearch" placeholder="Quick search...">
+  </div>
+  <div class="menu-list">
+    <div class="m-item active"><span class="ic">▦</span> HOME</div>
+    <div class="m-item"><span class="ic">⌕</span> TRACK ORDER</div>
+    <div class="m-item"><span class="ic">🧮</span> CALCULATOR</div>
+    <div class="m-item"><span class="ic">📍</span> CHECK REGION</div>
+  </div>
+  <div class="lang">🇬🇧 English</div>
+  <div class="need-help">
+    <p>NEED HELP?</p>
+    <a id="waSide" href="#" class="wa-btn">WhatsApp CS <span>›</span></a>
+  </div>
+  <div class="help-center-drawer">
+    <p>HELP CENTER</p>
+    <a id="waNumberDrawer" class="wa-green">🟢 601115852234</a>
   </div>
 </div>
 
-<!-- BANNER SLIDER -->
-<div class="banner-container">
-  <div id="bannerSlider" class="banner-slider"></div>
-  <div class="dots" id="bannerDots"></div>
+<div class="banner-wrap"><div id="banner" class="banner"></div><div id="dots" class="dots"></div></div>
+
+<h2 class="head"><span class="blue">♨</span> FAMOUS GAME MALAYSIA</h2>
+<div id="famous" class="grid"></div>
+
+<h2 class="head" style="margin-top:22px"><span class="blue">▦</span> ALL SERVICES</h2>
+<div class="tabs">
+  <button class="tab active" data-f="all">Semua</button>
+  <button class="tab" data-f="uid">UID Games</button>
+  <button class="tab" data-f="other">Other Region</button>
 </div>
+<div id="all" class="grid"></div>
+<button id="moreBtn" class="more">Show More</button>
 
-<section>
-  <h2 class="section-title"><span>🔥</span> FAMOUS GAME MALAYSIA</h2>
-  <div id="famousGrid" class="game-grid"></div>
-</section>
-
-<section>
-  <h2 class="section-title"><span>▦</span> ALL SERVICES</h2>
-  <div class="tabs">
-    <button class="tab active" data-filter="semua">Semua</button>
-    <button class="tab" data-filter="uid">UID Games</button>
-    <button class="tab" data-filter="other">Other Region</button>
-  </div>
-  <div id="allServicesGrid" class="game-grid"></div>
-  <button id="showMoreBtn" class="show-more">Show More</button>
-</section>
-
-<section class="why">
-  <h2>Why Choose Us?</h2>
-  <div class="why-card">
-    <div class="why-icon">🛡️</div>
-    <h3>Jujur & Terpercaya</h3>
-    <p>Setiap hari ada ribuan transaksi top-up game.</p>
-  </div>
-  <div class="why-card">
-    <div class="why-icon">💳</div>
-    <h3>Metode Pembayaran</h3>
-    <p>Kami menawarkan begitu banyak pilihan channel pembayaran.</p>
-  </div>
-</section>
+<div class="why-title">Why Choose Us?</div>
+<div class="why-grid">
+  <div class="why-card"><div class="why-ic">🛡️</div><b>Jujur & Terpercaya</b><p>Setiap hari ada ribuan transaksi top-up game.</p></div>
+  <div class="why-card"><div class="why-ic">💳</div><b>Metode Pembayaran</b><p>Kami menawarkan begitu banyak pilihan channel</p></div>
+</div>
 
 <footer>
-  <img id="footerLogo" src="" class="logo-footer">
-  <p class="desc">Automatic game top-up service 24/7. Fast, secure, and instant. Play without limits!</p>
-  <div class="foot-grid">
-    <div><b>SITE MAP</b><a>Home</a><a>Track Order</a><a>Calculator</a><a>Check Region</a><a>Service List</a><a>API Documentation</a></div>
-    <div><b>SUPPORT</b><span>No data yet</span></div>
-    <div><b>HELP CENTER</b><a id="waFooter" class="wa-green">601115852234</a></div>
-  </div>
-  <p class="copy">© 2026 KHAII STORE. ALL RIGHTS RESERVED.</p>
+  <img id="footLogo" class="khai-logo" style="height:34px">
+  <p class="foot-desc">Automatic game top-up service 24/7. Fast, secure, and instant. Play without limits!</p>
+  <div class="foot-links"><div><b>SITE MAP</b><a>Home</a><a>Track Order</a><a>Calculator</a><a>Check Region</a><a>Service List</a><a>API Documentation</a></div><div><b>SUPPORT</b><span style="color:#555">No data yet</span></div></div>
+  <div class="help-foot"><b>HELP CENTER</b><a id="waFoot" class="wa-green"></a></div>
+  <div class="copy">© 2026 KHAI STORE. ALL RIGHTS RESERVED.</div>
 </footer>
 
-<!-- WHATSAPP FLOAT + PRODUCT SOLD TOAST -->
-<a id="waFloat" class="wa-float">💬</a>
-<div id="toast" class="toast">
-  <div><b>PRODUCT SOLD</b><span>Just bought</span><p id="toastText"></p><small>Verified by KHAII STORE</small></div>
-  <img id="toastImg" src="">
-</div>
-
+<a id="waFloat" class="float-wa">💬</a>
+<div id="toast" class="toast"><div><div class="t-head">PRODUCT SOLD <span>Just bought</span></div><p id="tText"></p><small>✓ Verified by KHAI STORE</small></div><img id="tImg"></div>
 <script src="script.js"></script>
 </body>
-  </html>
+                                                                                 </html>
