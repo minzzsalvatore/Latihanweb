@@ -2,90 +2,120 @@
 <html lang="ms">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>KHAI STORE</title>
-<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>KHAI STORE - Topup Game 24 Jam</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+body{background:#080c14;color:#fff}
+.top{position:sticky;top:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:#080c14;border-bottom:1px solid #1a253e}
+.logo{height:32px;background:#fff;padding:3px 10px;border-radius:8px;font-weight:800;color:#000;display:flex;align-items:center}
+.kanan{display:flex;gap:8px}
+.ikon{width:38px;height:38px;border-radius:12px;border:none;background:#121a2b;color:#fff;font-size:16px}
+.drawer{position:fixed;top:54px;right:-100%;width:85%;height:100%;background:#0e1628;z-index:200;padding:16px;transition:.3s}
+.drawer.buka{right:0}
+.cari{display:flex;gap:8px;background:#121a2b;border:1px solid #1a253e;border-radius:12px;padding:12px;margin-bottom:12px}
+.cari input{flex:1;background:transparent;border:none;outline:none;color:#fff}
+.m{padding:14px;background:#121a2b;border-radius:12px;margin-bottom:8px;font-weight:700;font-size:12px;color:#7a8599}
+.m.aktif{background:#12295a;color:#3a7bff;border:1px solid #1a4fbf}
+.banner{margin:12px;border-radius:18px;height:165px;overflow:hidden;background:#121a2b;position:relative}
+.track{display:flex;height:100%;transition:.4s}
+.track div{min-width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;background:linear-gradient(135deg,#1a5bff,#0e1a33)}
+.tajuk{padding:16px 14px 10px;font-size:14px;font-weight:800;letter-spacing:.3px}
+.grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;padding:0 12px}
+.kad{background:#121a2b;border:1px solid #1a253e;border-radius:16px;overflow:hidden;aspect-ratio:3/4.2;position:relative}
+.kad img{width:100%;height:100%;object-fit:cover}
+.kad b{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,#000);padding:10px 6px;font-size:10px;text-align:center}
+.tabs{display:flex;gap:8px;padding:10px 14px;overflow:auto}
+.tab{padding:8px 18px;border-radius:20px;border:none;background:#121a2b;color:#7a8599;font-weight:700;white-space:nowrap}
+.tab.aktif{background:#1a5bff;color:#fff}
+.more{margin:16px auto;display:block;background:#1a5bff;color:#fff;border:none;padding:10px 24px;border-radius:20px;font-weight:800}
+.why{padding:20px 14px}
+.why h2{text-align:center;margin-bottom:12px}
+.whybox{background:#121a2b;border:1px solid #1a253e;border-radius:16px;padding:16px;text-align:center;margin-bottom:10px}
+.bawah{background:#080c14;border-top:1px solid #1a253e;padding:18px 14px;margin-top:18px;color:#7a8599;font-size:12px}
+.bawah b{color:#fff;display:block;margin-bottom:8px;font-size:11px;letter-spacing:1px}
+.footgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:12px 0}
+.footgrid a{display:block;margin:6px 0;color:#7a8599;text-decoration:none;font-size:12px}
+.hijau{color:#00e676!important;font-weight:700}
+.copy{text-align:center;border-top:1px solid #1a253e;padding-top:12px;margin-top:12px;font-size:10px}
+.wa{position:fixed;bottom:16px;right:14px;width:54px;height:54px;background:#00d084;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;color:#fff;text-decoration:none;z-index:50}
+</style>
 </head>
-<body class="dark">
-<header class="navbar">
-  <img id="logoImg" src="https://i.ibb.co/placeholder.png" class="logo" alt="KHAI STORE">
-  <div class="nav-right">
-    <button id="themeBtn" class="icon-btn">☀️</button>
-    <button class="icon-btn">👤</button>
-    <button id="menuBtn" class="icon-btn">☰</button>
-  </div>
-</header>
-
-<!-- SIDEBAR MENU macam gambar last kau -->
-<div id="sidebar" class="sidebar">
-  <div class="side-top">
-    <input type="text" id="quickSearch" placeholder="Quick search...">
-    <div class="side-menu"><span>HOME</span></div>
-    <div class="side-menu">TRACK ORDER</div>
-    <div class="side-menu">CALCULATOR</div>
-    <div class="side-menu">CHECK REGION</div>
-    <p class="lang">🇬🇧 English</p>
-    <div class="help-box">
-      <p>NEED HELP?</p>
-      <a id="waLinkSide" href="#">WhatsApp CS →</a>
-    </div>
-  </div>
+<body>
+<div class="top">
+<div class="logo">KHAI STORE</div>
+<div class="kanan">
+<button class="ikon" id="btnTheme">☀️</button>
+<button class="ikon">👤</button>
+<button class="ikon" id="btnMenu">☰</button>
+</div>
 </div>
 
-<!-- BANNER SLIDER -->
-<div class="banner-container">
-  <div id="bannerSlider" class="banner-slider"></div>
-  <div class="dots" id="bannerDots"></div>
+<div id="drawer" class="drawer">
+<div class="cari">🔍 <input id="cari" placeholder="Quick search..."></div>
+<div class="m aktif">▦ HOME</div>
+<div class="m">⌕ TRACK ORDER</div>
+<div class="m">🧮 CALCULATOR</div>
+<div class="m">📍 CHECK REGION</div>
+<div style="margin-top:16px;font-weight:700">🇬🇧 English</div>
+<div style="background:#121a2b;border-radius:12px;padding:12px;margin-top:16px"><p style="font-size:10px;color:#7a8599">NEED HELP?</p><a href="https://wa.me/601115852234" style="color:#3a7bff;font-weight:700;text-decoration:none">WhatsApp CS →</a></div>
 </div>
 
-<section>
-  <h2 class="section-title"><span>🔥</span> FAMOUS GAME MALAYSIA</h2>
-  <div id="famousGrid" class="game-grid"></div>
-</section>
+<div class="banner"><div id="track" class="track"><div>🔥 BONUS TOP UP 20%</div><div>⚡ INSTANT 24 JAM</div></div></div>
 
-<section>
-  <h2 class="section-title"><span>▦</span> ALL SERVICES</h2>
-  <div class="tabs">
-    <button class="tab active" data-filter="semua">Semua</button>
-    <button class="tab" data-filter="uid">UID Games</button>
-    <button class="tab" data-filter="other">Other Region</button>
-  </div>
-  <div id="allServicesGrid" class="game-grid"></div>
-  <button id="showMoreBtn" class="show-more">Show More</button>
-</section>
+<div class="tajuk">🔥 FAMOUS GAME MALAYSIA</div>
+<div id="grid1" class="grid"></div>
 
-<section class="why">
-  <h2>Why Choose Us?</h2>
-  <div class="why-card">
-    <div class="why-icon">🛡️</div>
-    <h3>Jujur & Terpercaya</h3>
-    <p>Setiap hari ada ribuan transaksi top-up game.</p>
-  </div>
-  <div class="why-card">
-    <div class="why-icon">💳</div>
-    <h3>Metode Pembayaran</h3>
-    <p>Kami menawarkan begitu banyak pilihan channel pembayaran.</p>
-  </div>
-</section>
+<div class="tajuk">▦ ALL SERVICES</div>
+<div class="tabs">
+<button class="tab aktif" data-f="semua">Semua</button>
+<button class="tab" data-f="uid">UID Games</button>
+<button class="tab" data-f="other">Other Region</button>
+</div>
+<div id="grid2" class="grid"></div>
+<button id="btnMore" class="more">Show More</button>
 
-<footer>
-  <img id="footerLogo" src="" class="logo-footer">
-  <p class="desc">Automatic game top-up service 24/7. Fast, secure, and instant. Play without limits!</p>
-  <div class="foot-grid">
-    <div><b>SITE MAP</b><a>Home</a><a>Track Order</a><a>Calculator</a><a>Check Region</a><a>Service List</a><a>API Documentation</a></div>
-    <div><b>SUPPORT</b><span>No data yet</span></div>
-    <div><b>HELP CENTER</b><a id="waFooter" class="wa-green">601115852234</a></div>
-  </div>
-  <p class="copy">© 2026 KHAII STORE. ALL RIGHTS RESERVED.</p>
-</footer>
-
-<!-- WHATSAPP FLOAT + PRODUCT SOLD TOAST -->
-<a id="waFloat" class="wa-float">💬</a>
-<div id="toast" class="toast">
-  <div><b>PRODUCT SOLD</b><span>Just bought</span><p id="toastText"></p><small>Verified by KHAII STORE</small></div>
-  <img id="toastImg" src="">
+<div class="why">
+<h2>Why Choose Us?</h2>
+<div class="whybox"><div style="font-size:24px">🛡️</div><b>Jujur & Terpercaya</b><p style="font-size:12px;color:#7a8599">Setiap hari ada ribuan transaksi top-up game.</p></div>
+<div class="whybox"><div style="font-size:24px">💳</div><b>Metode Pembayaran</b><p style="font-size:12px;color:#7a8599">Banyak pilihan pembayaran.</p></div>
 </div>
 
-<script src="script.js"></script>
+<div class="bawah">
+<div style="font-weight:800;color:#fff;font-size:16px;margin-bottom:6px">KHAI STORE</div>
+<p>Automatic game top-up service 24/7. Fast, secure, and instant.</p>
+<div class="footgrid">
+<div><b>SITE MAP</b><a>Home</a><a>Track Order</a><a>Calculator</a><a>Check Region</a><a>Service List</a><a>API Documentation</a></div>
+<div><b>SUPPORT</b><span>No data yet</span></div>
+</div>
+<div><b>HELP CENTER</b><a class="hijau" href="https://wa.me/601115852234">🟢 601115852234</a></div>
+<div class="copy">© 2026 KHAI STORE. ALL RIGHTS RESERVED.</div>
+</div>
+
+<a class="wa" href="https://wa.me/601115852234">💬</a>
+
+<script>
+const GAMES=[
+{name:"Mobile Legends MY",t:"uid",img:"https://images.unsplash.com/photo-1511512578047-dfb367046420?w=300"},
+{name:"Mobile Legends ID",t:"other",img:"https://images.unsplash.com/photo-1542751371-adc38448a05e?w=300"},
+{name:"Mobile Legends Global",t:"other",img:"https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=300"},
+{name:"Free Fire IN",t:"uid",img:"https://images.unsplash.com/photo-1511512578047-dfb367046420?w=300"},
+{name:"PUBG Mobile",t:"uid",img:"https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=300"},
+{name:"Free Fire MY/SG",t:"uid",img:"https://images.unsplash.com/photo-1542751371-adc38448a05e?w=300"},
+{name:"AFK Journey",t:"other",img:"https://images.unsplash.com/photo-1511512578047-dfb367046420?w=300"},
+{name:"Arena Breakout",t:"uid",img:"https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=300"},
+{name:"Genshin Impact",t:"other",img:"https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=300"}
+];
+function render(id,list){document.getElementById(id).innerHTML=list.map(g=>`<div class="kad" onclick="location.href='product.html'"><img src="${g.img}"><b>${g.name}</b></div>`).join('')}
+render('grid1',GAMES.slice(0,6));
+let showAll=false;
+render('grid2',GAMES.slice(0,6));
+document.getElementById('btnMenu').onclick=()=>document.getElementById('drawer').classList.toggle('buka');
+document.getElementById('cari').oninput=e=>{let v=e.target.value.toLowerCase();let f=GAMES.filter(x=>x.name.toLowerCase().includes(v));render('grid1',f);render('grid2',f.slice(0,6))};
+document.querySelectorAll('.tab').forEach(t=>{t.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('aktif'));t.classList.add('aktif');let fil=t.dataset.f;let list=fil=='semua'?GAMES:GAMES.filter(x=>x.t==fil);render('grid2',showAll?list:list.slice(0,6))}});
+document.getElementById('btnMore').onclick=e=>{showAll=!showAll;e.target.innerText=showAll?'Show Less':'Show More';let act=document.querySelector('.tab.aktif').dataset.f;let list=act=='semua'?GAMES:GAMES.filter(x=>x.t==act);render('grid2',showAll?list:list.slice(0,6))};
+let idx=0;setInterval(()=>{idx=(idx+1)%2;document.getElementById('track').style.transform=`translateX(-${idx*100}%)`},3000);
+</script>
 </body>
-    </html>
+</html>
