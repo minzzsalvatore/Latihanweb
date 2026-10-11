@@ -3,79 +3,156 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ML MY - KHAI STORE AUTO SYNNSTORE</title>
+<title>MOBILE LEGENDS MALAYSIA - KHAI STORE</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
 :root{--bg:#080c14;--card:#121a2b;--card2:#0f192b;--biru:#1a5bff;--text:#fff;--kelabu:#7a8599;--garis:#1a253e;--hijau:#00e676}
 body.light{--bg:#f5f7fb;--card:#fff;--card2:#eef2f9;--text:#0e121a;--kelabu:#6b7280;--garis:#e5e7eb}
-body{background:var(--bg);color:var(--text)}
+body{background:var(--bg);color:var(--text);transition:.3s}
 .top{position:sticky;top:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--bg);border-bottom:1px solid var(--garis)}
-.logo{height:32px;background:#fff;border-radius:8px;padding:2px}
-.ikon{width:38px;height:38px;border-radius:12px;background:var(--card);color:var(--text);border:1px solid var(--garis)}
-.drawer{position:fixed;top:54px;right:-100%;width:85%;height:100%;background:var(--card);z-index:200;padding:16px;transition:.35s;border-left:1px solid var(--garis)}.drawer.buka{right:0}
+.logo{height:34px;border-radius:8px;background:#fff;padding:2px}
+.kanan{display:flex;gap:8px}
+.ikon{width:38px;height:38px;border-radius:12px;border:none;background:var(--card);color:var(--text);border:1px solid var(--garis)}
+.drawer{position:fixed;top:54px;right:-100%;width:85%;height:100%;background:var(--card);z-index:200;padding:16px;transition:.35s;border-left:1px solid var(--garis)}
+.drawer.buka{right:0}
+.cari{display:flex;gap:8px;background:var(--bg);border:1px solid var(--garis);border-radius:12px;padding:12px;margin-bottom:12px}
+.cari input{flex:1;background:transparent;border:none;outline:none;color:var(--text)}
+.m{padding:14px;background:var(--bg);border-radius:12px;margin-bottom:8px;font-weight:700;font-size:12px;color:var(--kelabu)}
+.m.aktif{background:#12295a;color:#3a7bff;border:1px solid #1a4fbf}
 .back{margin:12px 14px;background:var(--card);border:1px solid var(--garis);color:var(--text);padding:8px 14px;border-radius:20px;font-weight:700;font-size:12px}
 .wrap{margin:0 14px;background:var(--card);border-radius:22px;overflow:hidden;border:1px solid var(--garis)}
-.banner{height:200px;position:relative}.banner img{width:100%;height:100%;object-fit:cover}
-.icon-kecik{position:absolute;right:14px;bottom:-28px;width:80px;height:80px;border-radius:16px;border:3px solid var(--card);overflow:hidden}
+.banner{height:200px;position:relative;background:var(--card2)}
+.banner img{width:100%;height:100%;object-fit:cover}
+.icon-kecik{position:absolute;right:14px;bottom:-28px;width:80px;height:80px;border-radius:16px;border:3px solid var(--card);overflow:hidden;background:var(--card)}
 .icon-kecik img{width:100%;height:100%;object-fit:cover}
-.info{padding:16px}.badge{display:inline-flex;border:1px solid var(--garis);background:var(--card2);padding:6px 12px;border-radius:20px;font-size:11px;color:var(--kelabu);margin-top:8px}
+.info{padding:16px}
+.badge{display:inline-flex;border:1px solid var(--garis);background:var(--card2);padding:6px 12px;border-radius:20px;font-size:11px;color:var(--kelabu);margin-top:8px}
 .moonton{color:var(--biru);font-weight:800;font-size:11px;letter-spacing:1px;margin-top:10px;display:block}
-.how{border-top:1px solid var(--garis);margin-top:12px;padding-top:12px}.how-head{display:flex;justify-content:space-between;font-weight:800;font-size:12px;cursor:pointer}.how-body{display:none;font-size:11px;color:var(--kelabu);line-height:1.6;margin-top:10px}.how-body.show{display:block}
+.how{border-top:1px solid var(--garis);margin-top:12px;padding-top:12px}
+.how-head{display:flex;justify-content:space-between;font-weight:800;font-size:12px;cursor:pointer}
+.how-body{display:none;font-size:11px;color:var(--kelabu);line-height:1.6;margin-top:10px}
+.how-body.show{display:block}
 .card{margin:14px;background:var(--card);border:1px solid var(--garis);border-radius:20px;padding:16px}
-.card-head{display:flex;align-items:center;gap:10px;margin-bottom:12px}.num{width:36px;height:36px;background:var(--biru);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff}
+.card-head{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.num{width:36px;height:36px;background:var(--biru);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff}
 .label{font-size:10px;color:var(--kelabu);font-weight:700;letter-spacing:.8px;margin-top:10px;display:block}
 .input{width:100%;background:var(--bg);border:1px solid var(--garis);border-radius:12px;padding:14px;color:var(--text);outline:none;margin-top:6px}
-.tabs{display:flex;gap:8px;overflow:auto;padding-bottom:4px}.tab{padding:10px 16px;border-radius:20px;border:1px solid var(--garis);background:var(--bg);color:var(--kelabu);font-weight:700;font-size:11px;white-space:nowrap}.tab.on{background:var(--biru);color:#fff;border-color:var(--biru)}
-.nom-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}.nom{border:1px solid var(--garis);background:var(--bg);border-radius:14px;padding:12px;text-align:center;cursor:pointer}.nom.active{border-color:var(--biru);background:#102044}.nom b{font-size:11px;display:block;margin:6px 0 4px}.nom span{color:var(--biru);font-weight:800;font-size:11px}
-.pay{border:1px solid var(--garis);background:var(--bg);border-radius:14px;padding:12px;display:flex;justify-content:space-between;align-items:center;margin-top:10px;cursor:pointer}.pay.active{border-color:var(--biru);background:#102044}
-.summary{border:1px solid var(--garis);border-radius:18px;padding:14px;margin-top:12px;background:var(--bg)}.row{display:flex;justify-content:space-between;font-size:12px;margin:6px 0}.total{color:var(--biru);font-size:18px;font-weight:800}
-.checkout{width:100%;margin-top:14px;background:#1a253e;color:#5a6b8a;border:none;padding:14px;border-radius:14px;font-weight:800}.checkout.active{background:var(--biru);color:#fff}
-.bawah{border-top:1px solid var(--garis);padding:20px 14px;margin-top:24px;color:var(--kelabu);font-size:12px}.bawah b{color:var(--text);display:block;margin-bottom:8px;font-size:11px;letter-spacing:1px}.copy{text-align:center;border-top:1px solid var(--garis);padding-top:12px;margin-top:12px;font-size:10px}.hijau{color:var(--hijau)!important;font-weight:700}
+.infobox{background:#15213c;border-radius:12px;padding:10px;font-size:11px;color:#6b9bff;margin-top:10px;display:flex;gap:8px;line-height:1.5}
+.tabs{display:flex;gap:8px;overflow:auto;padding-bottom:4px}
+.tab{padding:10px 16px;border-radius:20px;border:1px solid var(--garis);background:var(--bg);color:var(--kelabu);font-weight:700;font-size:11px;white-space:nowrap}
+.tab.on{background:var(--biru);color:#fff;border-color:var(--biru)}
+.nom-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.nom{border:1px solid var(--garis);background:var(--bg);border-radius:14px;padding:12px;text-align:center;cursor:pointer}
+.nom.active{border-color:var(--biru);background:#102044}
+.nom b{font-size:11px;display:block;margin:6px 0 4px}
+.nom span{color:var(--biru);font-weight:800;font-size:11px}
+.pay{border:1px solid var(--garis);background:var(--bg);border-radius:14px;padding:12px;display:flex;justify-content:space-between;align-items:center;margin-top:10px;cursor:pointer}
+.pay.active{border-color:var(--biru);background:#102044}
+.pay img{height:28px;background:#fff;border-radius:6px;padding:2px}
+.summary{border:1px solid var(--garis);border-radius:18px;padding:14px;margin-top:12px;background:var(--bg)}
+.row{display:flex;justify-content:space-between;font-size:12px;margin:6px 0}
+.total{color:var(--biru);font-size:18px;font-weight:800}
+.checkout{width:100%;margin-top:14px;background:#1a253e;color:#5a6b8a;border:none;padding:14px;border-radius:14px;font-weight:800}
+.checkout.active{background:var(--biru);color:#fff}
+.bawah{border-top:1px solid var(--garis);padding:20px 14px;margin-top:24px;color:var(--kelabu);font-size:12px}
+.bawah b{color:var(--text);display:block;margin-bottom:8px;font-size:11px;letter-spacing:1px}
+.bawah p{line-height:1.5}
+.tiktok{width:38px;height:38px;background:var(--card);border:1px solid var(--garis);border-radius:10px;display:flex;align-items:center;justify-content:center;margin:14px 0}
+.footgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
+.footgrid a{display:block;margin:6px 0;color:var(--kelabu);text-decoration:none;font-size:12px}
+.hijau{color:var(--hijau)!important;font-weight:700}
+.copy{text-align:center;border-top:1px solid var(--garis);padding-top:12px;margin-top:12px;font-size:10px}
 .wa{position:fixed;bottom:16px;right:14px;width:54px;height:54px;background:#00d084;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;color:#fff;text-decoration:none;z-index:50}
 </style>
 </head>
 <body>
-<div class="top"><img id="logoTop" class="logo" src=""><div style="display:flex;gap:8px"><button class="ikon" id="btnTheme">☀️</button><button class="ikon" id="btnMenu">☰</button></div></div>
-<div id="drawer" class="drawer"><div style="padding:14px;background:var(--bg);border-radius:12px;font-weight:700;color:var(--kelabu)" onclick="location.href='index.html'">▦ HOME</div><div style="margin-top:16px;font-size:11px">SYNNSTORE AUTO AKTIF</div></div>
-<button class="back" onclick="location.href='index.html'">‹ BACK</button>
-<div class="wrap"><div class="banner"><img id="bannerGame" src=""><div class="icon-kecik"><img id="iconGame" src=""></div></div><div class="info"><h1>MOBILE LEGENDS MALAYSIA</h1><span class="moonton">MOONTON - SYNNSTORE API</span><div class="how"><div class="how-head" id="howHead">HOW TO TOP UP <span id="arrow">⌄</span></div><div class="how-body" id="howBody">1. Isi ID & Server<br>2. Pilih diamond (auto dari SynnStore)<br>3. Bayar TNG / ShopeePay / DuitNow<br>4. Auto masuk game</div></div></div></div>
 
-<div class="card"><div class="card-head"><div class="num">1</div><b>ACCOUNT DATA</b></div><span class="label">USER ID</span><input class="input" id="uid" placeholder="42562624"><span class="label">SERVER ID</span><input class="input" id="sid" placeholder="2432"></div>
-
-<div class="card"><div class="card-head"><div class="num">2</div><b>SELECT NOMINAL - AUTO SYNNSTORE</b></div><div class="tabs"><button class="tab on" data-t="topup">🔥 TOP UP</button><button class="tab" data-t="weekly">🎁 WEEKLY / WDP</button><button class="tab" data-t="first">🎁 FIRST RECHARGE</button></div><div id="loading" style="padding:20px;text-align:center;color:var(--kelabu);font-size:12px">Loading produk SynnStore...</div><div id="nomGrid" class="nom-grid"></div></div>
-
-<div class="card"><div class="card-head"><div class="num">3</div><b>SELECT PAYMENT</b></div>
-<div class="pay active" data-pay="duitnow"><div><b>QR - DuitNow</b></div><b class="payPrice">RM 0.00</b></div>
-<div class="pay" data-pay="tng"><div><b>Touch N Go</b></div><b class="payPrice">RM 0.00</b></div>
-<div class="pay" data-pay="shopee"><div><b>ShopeePay</b></div><b class="payPrice">RM 0.00</b></div>
-<div class="pay" data-pay="fpx"><div><b>FPX Banking</b></div><b class="payPrice">RM 0.00</b></div>
+<div class="top">
+<img id="logoTop" class="logo" src="">
+<div class="kanan">
+<button class="ikon" id="btnTheme">☀️</button>
+<button class="ikon">👤</button>
+<button class="ikon" id="btnMenu">☰</button>
+</div>
 </div>
 
-<div class="card"><div class="card-head"><div class="num">4</div><b>CONFIRM ORDER</b></div><span class="label">WHATSAPP</span><input class="input" id="waNum" placeholder="60xxxxxxxxxx">
-<div class="summary"><div class="row"><span>Product Price</span><span id="pPrice">RM 0.00</span></div><div class="row"><span>Service Fee</span><span id="pFee">+ RM 0.00</span></div><div class="row" style="border-top:1px solid var(--garis);padding-top:10px;margin-top:10px"><span>TOTAL</span><span class="total" id="pTotal">RM 0.00</span></div><div style="font-size:10px;color:var(--kelabu);margin-top:8px" id="sumNom">Pilih Diamond dulu</div></div>
+<div id="drawer" class="drawer">
+<div class="cari">🔍 <input id="cari" placeholder="Quick search..."></div>
+<div class="m aktif" onclick="location.href='index.html'">▦ HOME</div><div class="m">⌕ TRACK ORDER</div><div class="m">🧮 CALCULATOR</div><div class="m">📍 CHECK REGION</div>
+<div style="margin-top:16px;font-weight:700">🇬🇧 English</div>
+<div style="background:var(--bg);border:1px solid var(--garis);border-radius:12px;padding:12px;margin-top:16px"><p style="font-size:10px;color:var(--kelabu)">NEED HELP?</p><a id="waSide" href="#" style="color:#3a7bff;font-weight:700;text-decoration:none">WhatsApp CS →</a></div>
+<div style="margin-top:12px;font-size:11px;color:var(--biru);font-weight:700">⚡ SYNNSTORE AUTO: ON</div>
+</div>
+
+<button class="back" onclick="location.href='index.html'">‹ BACK</button>
+
+<div class="wrap">
+<div class="banner"><img id="bannerGame" src=""><div class="icon-kecik"><img id="iconGame" src=""></div></div>
+<div class="info">
+<h1>MOBILE LEGENDS<br>MALAYSIA</h1>
+<div class="badge">☆ No reviews yet - SynnStore Auto</div>
+<span class="moonton">MOONTON</span>
+<div class="how"><div class="how-head" id="howHead">HOW TO TOP UP <span id="arrow">⌄</span></div><div class="how-body" id="howBody"><p>1. Pilih jumlah Diamond (auto dari SynnStore)</p><p>2. Isi User ID & Zone ID</p><p>3. Pilih payment TNG / ShopeePay / DuitNow / FPX</p><p>4. Bayar, diamond masuk terus auto</p><br><p><b>Cara cari ID:</b> Buka ML > tekan avatar kiri atas > nampak User ID (contoh 12345678) dan Zone ID (1234)</p></div></div>
+</div>
+</div>
+
+<div class="card"><div class="card-head"><div class="num">1</div><b>ACCOUNT DATA</b></div><span class="label">USER ID</span><input class="input" id="uid" placeholder="Contoh : 42562624"><span class="label">SERVER ID</span><input class="input" id="sid" placeholder="Contoh: 2432"><div class="infobox">ⓘ Tekan avatar kiri atas dalam game untuk cari ID kau.</div></div>
+
+<div class="card"><div class="card-head"><div class="num">2</div><b>SELECT NOMINAL - AUTO SYNNSTORE</b></div><div class="tabs"><button class="tab on" data-t="topup">🔥 TOP UP</button><button class="tab" data-t="weekly">🎁 WEEKLY / WDP</button><button class="tab" data-t="first">🎁 FIRST RECHARGE</button></div><div id="loading" style="padding:16px;text-align:center;color:var(--kelabu);font-size:11px">Loading produk SynnStore...</div><div id="nomGrid" class="nom-grid"></div></div>
+
+<div class="card"><div class="card-head"><div class="num">3</div><b>SELECT PAYMENT</b></div>
+<span class="label">QR - DUITNOW</span>
+<div class="pay active" data-pay="duitnow"><div style="display:flex;gap:8px;align-items:center"><img src="https://via.placeholder.com/60x28?text=DuitNow"><div><b>QR - DuitNow</b><small style="color:var(--kelabu);display:block;font-size:10px">Instant</small></div></div><b class="payPrice">RM 0.00</b></div>
+<span class="label">E-WALLET - AUTO</span>
+<div class="pay" data-pay="tng"><div style="display:flex;gap:8px;align-items:center"><img src="https://via.placeholder.com/60x28?text=TnG"><div><b>Touch N Go</b></div></div><b class="payPrice">RM 0.00</b></div>
+<div class="pay" data-pay="shopee"><div style="display:flex;gap:8px;align-items:center"><img src="https://via.placeholder.com/60x28?text=Shopee"><div><b>ShopeePay</b></div></div><b class="payPrice">RM 0.00</b></div>
+<span class="label">FPX - ONLINE BANKING</span>
+<div class="pay" data-pay="fpx"><div style="display:flex;gap:8px;align-items:center"><img src="https://via.placeholder.com/60x28?text=FPX"><div><b>FPX (B2C)</b></div></div><b class="payPrice">RM 0.00</b></div>
+</div>
+
+<div class="card"><div class="card-head"><div class="num">4</div><b>CONFIRM ORDER</b></div>
+<span class="label">WHATSAPP NUMBER *</span><input class="input" id="waNum" placeholder="60xxxxxxxxxx">
+<span class="label">EMAIL OPTIONAL</span><input class="input" placeholder="user@email.com">
+<span class="label">PROMO CODE</span><input class="input" placeholder="KHAI123">
+<div class="summary"><span class="label">ORDER SUMMARY</span><div style="display:flex;gap:10px;align-items:center;margin:12px 0"><img id="sumIcon" style="width:48px;height:48px;border-radius:10px;background:var(--bg)"><div><small style="color:var(--kelabu);font-size:10px">MOBILE LEGENDS MALAYSIA</small><b id="sumNom" style="display:block;font-size:13px">Pilih Diamond</b><small id="sumPay" style="color:var(--kelabu);font-size:10px">QR - DuitNow - SynnStore Auto</small></div></div><div style="border-top:1px solid var(--garis);margin-top:12px;padding-top:10px"><div class="row"><span>Product Price</span><span id="pPrice">RM 0.00</span></div><div class="row"><span>Service Fee</span><span id="pFee" style="color:var(--biru)">+ RM 0.00</span></div><div class="row" style="border-top:1px solid var(--garis);padding-top:10px;margin-top:10px"><span>TOTAL PAYMENT</span><span class="total" id="pTotal">RM 0.00</span></div></div></div>
 <button class="checkout" id="btnCheck">🛒 CHECKOUT ORDER</button>
 </div>
 
-<div class="bawah"><img id="logoBawah" class="logo" src=""><div class="copy">© 2026 KHAI STORE - SYNNSTORE AUTO</div></div>
+<div class="bawah">
+<img id="logoBawah" class="logo" src="" style="margin-bottom:10px">
+<p>Automatic game top-up service 24/7. Fast, secure, and instant. Play without limits!</p>
+<div class="tiktok">♪</div>
+<div class="footgrid">
+<div><b>SITE MAP</b><a href="index.html">Home</a><a>Track Order</a><a>Calculator</a><a>Check Region</a><a>Service List</a><a>API Documentation</a></div>
+<div><b>SUPPORT</b><span style="font-size:11px;font-style:italic">No data yet</span></div>
+</div>
+<div><b>HELP CENTER</b><a id="waBawah" class="hijau" href="#"></a></div>
+<div class="copy">© 2026 KHAI STORE. ALL RIGHTS RESERVED. SYNNSTORE AUTO</div>
+</div>
+
 <a id="waFloat" class="wa" href="#">💬</a>
 
 <script>
-const LOGO_URL="https://via.placeholder.com/120x40/ffffff/000000?text=KHAI+STORE";
-const BANNER_URL="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=800";
-const ICON_URL="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=200";
-const WA="601115852234";
-const SYNN_WORKER_URL = "https://ISI_WORKER_KAU.workers.dev"; // <-- GANTI SINI NANTI
-
-// SET HARGA UNTUNG KAU DEKAT SINI JE
-const PROFIT_PERCENT = 18; // 18%
-const PROFIT_RM = 0.80; // tambah 80 sen
+// === KAU EDIT SINI JE ===
+const LOGO_URL = "https://via.placeholder.com/120x40/ffffff/000000?text=KHAI+STORE";
+const BANNER_URL = "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=800";
+const ICON_URL = "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=200";
+const WA = "601115852234";
+const SYNN_WORKER_URL = "https://ISI_WORKER_KAU.workers.dev"; // ganti nanti bila ada worker
+const PROFIT_PERCENT = 18; // % untung kau
+const PROFIT_RM = 0.80; // extra RM
+// ========================
 
 document.getElementById('logoTop').src=LOGO_URL;
 document.getElementById('logoBawah').src=LOGO_URL;
 document.getElementById('bannerGame').src=BANNER_URL;
 document.getElementById('iconGame').src=ICON_URL;
+document.getElementById('sumIcon').src=ICON_URL;
 document.getElementById('waFloat').href="https://wa.me/"+WA;
+document.getElementById('waSide').href="https://wa.me/"+WA;
+document.getElementById('waBawah').href="https://wa.me/"+WA;
+document.getElementById('waBawah').innerText="🟢 "+WA;
 
 let DATA={topup:[],weekly:[],first:[]};
 let sel=null, payMethod="QR - DuitNow";
@@ -83,7 +160,7 @@ function kiraFee(h){ if(h<5) return 0.30; if(h<20) return 0.50; if(h<100) return
 
 function render(tab){
  let g=document.getElementById('nomGrid');
- let list=DATA[tab];
+ let list=DATA[tab]||[];
  g.innerHTML=list.map(it=>`<div class="nom" data-n="${it.n}" data-p="${it.p}" data-code="${it.code}"><div>💎</div><b>${it.n}</b><span>RM ${it.p.toFixed(2)}</span></div>`).join('');
  g.querySelectorAll('.nom').forEach(el=>{
   el.onclick=()=>{
@@ -100,15 +177,29 @@ function render(tab){
  });
 }
 
-// ==== INI FUNCTION LOAD DARI SYNNSTORE ====
 async function loadProdukSynn(){
  try{
-  // Kalau kau belum ada Worker, dia akan pakai data dummy dulu
   if(SYNN_WORKER_URL.includes("ISI_WORKER")){
-   document.getElementById('loading').innerText="Sila isi SYNN_WORKER_URL dulu - pakai dummy data sekarang";
-   DATA.topup=[{n:"14 Diamonds",p:1.8,code:"ml_14"},{n:"70 Diamonds",p:6.5,code:"ml_70"},{n:"140 Diamonds",p:12.5,code:"ml_140"},{n:"284 Diamonds",p:25.0,code:"ml_284"},{n:"Weekly Diamond Pass",p:9.5,code:"ml_wdp"}];
-   DATA.weekly=[{n:"Weekly Diamond Pass",p:9.5,code:"ml_wdp"}];
-   DATA.first=[{n:"First Recharge 100",p:5.0,code:"ml_first100"}];
+   document.getElementById('loading').innerText="Belum connect SynnStore Worker - pakai data contoh dulu (nanti auto)";
+   DATA={topup:[
+    {n:"14 (13+1) Diamonds",p:1.09+PROFIT_RM,code:"ml_14"},
+    {n:"42 (38+4) Diamonds",p:3.21+PROFIT_RM,code:"ml_42"},
+    {n:"70 (64+6) Diamonds",p:5.22+PROFIT_RM,code:"ml_70"},
+    {n:"140 (127+13) Diamonds",p:10.42+PROFIT_RM,code:"ml_140"},
+    {n:"278 (253+25) Diamonds",p:19.90+PROFIT_RM,code:"ml_278"},
+    {n:"408 (368+40) Diamonds",p:28.91+PROFIT_RM,code:"ml_408"},
+    {n:"602 (544+58) Diamonds",p:42.90+PROFIT_RM,code:"ml_602"},
+    {n:"1214 (1095+119) Diamonds",p:84.92+PROFIT_RM,code:"ml_1214"}
+   ],weekly:[
+    {n:"Weekly Diamond Pass",p:8.39+PROFIT_RM,code:"ml_wdp"},
+    {n:"2x Weekly Pass",p:16.77+PROFIT_RM,code:"ml_2wdp"},
+    {n:"Twilight Pass",p:38.90+PROFIT_RM,code:"ml_twilight"}
+   ],first:[
+    {n:"100 (50+50) First",p:4.06+PROFIT_RM,code:"ml_first100"},
+    {n:"300 (150+150) First",p:12.05+PROFIT_RM,code:"ml_first300"}
+   ]};
+   // apply percent
+   Object.keys(DATA).forEach(k=>{DATA[k]=DATA[k].map(x=>({n:x.n,p:x.p*(1+PROFIT_PERCENT/100),code:x.code}))});
    document.getElementById('loading').style.display='none';
    render('topup'); return;
   }
@@ -123,25 +214,24 @@ async function loadProdukSynn(){
   });
   document.getElementById('loading').style.display='none';
   render('topup');
- }catch(e){
-  document.getElementById('loading').innerText="Gagal load SynnStore: "+e;
- }
+ }catch(e){ document.getElementById('loading').innerText="Gagal load SynnStore: "+e; }
 }
 loadProdukSynn();
 
 document.querySelectorAll('.tab').forEach(t=>{t.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));t.classList.add('on');render(t.dataset.t)}});
-document.getElementById('howHead').onclick=()=>{document.getElementById('howBody').classList.toggle('show')};
-document.getElementById('btnTheme').onclick=()=>{document.body.classList.toggle('light');};
+document.getElementById('howHead').onclick=()=>{document.getElementById('howBody').classList.toggle('show');document.getElementById('arrow').innerText=document.getElementById('howBody').classList.contains('show')?'⌃':'⌄'};
+document.getElementById('btnTheme').onclick=()=>{document.body.classList.toggle('light');document.getElementById('btnTheme').innerText=document.body.classList.contains('light')?'🌙':'☀️';};
 document.getElementById('btnMenu').onclick=()=>document.getElementById('drawer').classList.toggle('buka');
-document.querySelectorAll('.pay').forEach(p=>{p.onclick=()=>{document.querySelectorAll('.pay').forEach(x=>x.classList.remove('active'));p.classList.add('active');payMethod=p.querySelector('b').innerText;}});
+document.querySelectorAll('.pay').forEach(p=>{p.onclick=()=>{document.querySelectorAll('.pay').forEach(x=>x.classList.remove('active'));p.classList.add('active');payMethod=p.querySelector('b').innerText;document.getElementById('sumPay').innerText=payMethod;}});
 document.getElementById('btnCheck').onclick=()=>{
- let u=document.getElementById('uid').value,s=document.getElementById('sid').value;
+ let u=document.getElementById('uid').value,s=document.getElementById('sid').value,w=document.getElementById('waNum').value;
+ if(!u||!s) return alert("Isi User ID & Server ID dulu bos");
  if(!sel) return alert("Pilih diamond dulu");
- if(!u||!s) return alert("Isi ID dulu");
+ if(!w) return alert("Isi WhatsApp");
  let total=document.getElementById('pTotal').innerText;
- let msg=`Hi Khai Store%0AID: ${u}(${s})%0AItem: ${sel.n}%0ACode Synn: ${sel.code}%0ATotal: ${total}%0APay: ${payMethod}`;
+ let msg=`Hi Khai Store%0AGame: ML MY%0AID: ${u}(${s})%0AItem: ${sel.n}%0ACode Synn: ${sel.code}%0APayment: ${payMethod}%0ATotal: ${total}%0AWA: ${w}`;
  window.open("https://wa.me/"+WA+"?text="+msg,"_blank");
 };
 </script>
 </body>
-</html>
+                                                                                                                                            </html>
