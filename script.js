@@ -1,53 +1,74 @@
-const LOGO_URL = "https://i.imgur.com/Ql2zA1I.png";
-const BANNER_URL = ["https://i.imgur.com/8QJ4sQW.jpeg","https://i.imgur.com/3Z1QZ1Q.jpeg"];
-const WA = "601115852234";
+// ===== KAU GANTI LINK SINI JE 100% =====
+const LOGO_URL = "https://i.ibb.co/logo-kau.png"; // link logo kau
+const BANNER_URLS = [
+  "https://i.ibb.co/banner1.jpg",
+  "https://i.ibb.co/banner2.jpg"
+];
+const WHATSAPP_CS = "601115852234";
+// =======================================
 
-const data = [
-{name:"Mobile Legends MY",jenis:"uid",gambar:"https://i.imgur.com/8QJ4sQW.jpeg",link:"product.html"},
-{name:"Mobile Legends ID",jenis:"other",gambar:"https://i.imgur.com/8QJ4sQW.jpeg",link:"product.html"},
-{name:"Mobile Legends Global",jenis:"other",gambar:"https://i.imgur.com/8QJ4sQW.jpeg",link:"product.html"},
-{name:"Free Fire IN",jenis:"uid",gambar:"https://i.imgur.com/3Z1QZ1Q.jpeg",link:"product.html"},
-{name:"PUBG Mobile",jenis:"uid",gambar:"https://i.imgur.com/Ql2zA1I.png",link:"product.html"},
-{name:"Free Fire MY/SG",jenis:"uid",gambar:"https://i.imgur.com/3Z1QZ1Q.jpeg",link:"product.html"},
-{name:"AFK Journey",jenis:"other",gambar:"https://i.imgur.com/5X2p6yA.png",link:"product.html"},
-{name:"Arena Breakout",jenis:"uid",gambar:"https://i.imgur.com/5X2p6yA.png",link:"product.html"},
+const famousGames = [
+ {name:"Mobile Legends MY",cat:"uid",img:"https://i.imgur.com/8QJ4sQW.jpeg",link:"product.html?game=ml-my"},
+ {name:"Mobile Legends I...",cat:"other",img:"https://i.imgur.com/8QJ4sQW.jpeg",link:"product.html?game=ml-indo"},
+ {name:"Mobile Legends ...",cat:"other",img:"https://i.imgur.com/8QJ4sQW.jpeg",link:"product.html?game=ml-global"},
+ {name:"Free Fire Indones...",cat:"uid",img:"https://i.imgur.com/3Z1QZ1Q.jpeg",link:"product.html?game=ff-indo"},
+ {name:"PUBG Mobile",cat:"uid",img:"https://i.imgur.com/Ql2zA1I.png",link:"product.html?game=pubg"},
+ {name:"Free Fire MY/SG",cat:"uid",img:"https://i.imgur.com/3Z1QZ1Q.jpeg",link:"product.html?game=ff-my"},
+];
+const allGames = [...famousGames,
+ {name:"AFK Journey",cat:"other",img:"https://i.imgur.com/5X2p6yA.png",link:"product.html?game=afk"},
+ {name:"Age of Empires",cat:"other",img:"https://i.imgur.com/5X2p6yA.png",link:"product.html?game=aoe"},
+ {name:"Arena Breakout",cat:"uid",img:"https://i.imgur.com/5X2p6yA.png",link:"product.html?game=arena"},
 ];
 
-function papar(id, list){
-let el = document.getElementById(id);
-el.innerHTML = list.map(g=>`<div class="kad" onclick="location.href='${g.link}'"><img src="${g.gambar}"><span>${g.name}</span></div>`).join('');
+let showAll = false;
+function renderGrid(el, data){
+  el.innerHTML = data.map(g=>`
+    <div class="game-card" onclick="location.href='${g.link}'">
+      <img src="${g.img}"><div class="flag">🇮🇩</div><div class="label">${g.name}</div>
+    </div>`).join('');
 }
+function init(){
+  document.getElementById('logoImg').src = LOGO_URL;
+  document.getElementById('footerLogo').src = LOGO_URL;
+  document.getElementById('waFloat').href = `https://wa.me/${WHATSAPP_CS}`;
+  document.getElementById('waLinkSide').href = `https://wa.me/${WHATSAPP_CS}`;
+  document.getElementById('waFooter').innerText = WHATSAPP_CS;
+  
+  // Banner slider
+  const slider = document.getElementById('bannerSlider');
+  slider.innerHTML = BANNER_URLS.map(u=>`<img src="${u}">`).join('');
+  let idx=0;
+  setInterval(()=>{idx=(idx+1)%BANNER_URLS.length; slider.style.transform=`translateX(-${idx*100}%)`},3000);
 
-document.getElementById('logoTop').src = LOGO_URL;
-document.getElementById('logoBawah').src = LOGO_URL;
-document.getElementById('waFloat').href = "https://wa.me/"+WA;
-document.getElementById('waSisi').href = "https://wa.me/"+WA;
-document.getElementById('waBawah').innerText = "🟢 "+WA;
-document.getElementById('waBawah').href = "https://wa.me/"+WA;
+  renderGrid(document.getElementById('famousGrid'), famousGames);
+  renderGrid(document.getElementById('allServicesGrid'), allGames.slice(0,6));
 
-let track = document.getElementById('track');
-track.innerHTML = BANNER_URL.map(u=>`<img src="${u}">`).join('');
-let idx = 0;
-setInterval(()=>{ idx=(idx+1)%BANNER_URL.length; track.style.transform=`translateX(-${idx*100}%)`; },3000);
-
-papar('gridFamous', data.slice(0,6));
-let semua = false;
-papar('gridAll', data.slice(0,6));
-
-document.getElementById('btnMenu').onclick = ()=> document.getElementById('drawer').classList.toggle('buka');
-document.getElementById('btnTheme').onclick = ()=> document.body.classList.toggle('light');
-document.getElementById('btnMore').onclick = (e)=>{ semua=!semua; e.target.innerText=semua?'Show Less':'Show More'; let j=document.querySelector('.tab.aktif').dataset.jenis; let f=j=='semua'?data:data.filter(x=>x.jenis==j); papar('gridAll', semua?f:f.slice(0,6)); };
-document.querySelectorAll('.tab').forEach(t=>{
-t.onclick=()=>{
-document.querySelectorAll('.tab').forEach(x=>x.classList.remove('aktif'));
-t.classList.add('aktif');
-let j=t.dataset.jenis;
-let f=j=='semua'?data:data.filter(x=>x.jenis==j);
-papar('gridAll', semua?f:f.slice(0,6));
-};
-});
-document.getElementById('inputCari').oninput = (e)=>{
-let h=data.filter(x=>x.name.toLowerCase().includes(e.target.value.toLowerCase()));
-papar('gridFamous', h);
-papar('gridAll', h);
-};
+  // Theme toggle putih hitam
+  document.getElementById('themeBtn').onclick = ()=>{
+    document.body.classList.toggle('light');
+    document.body.classList.toggle('dark');
+    document.getElementById('themeBtn').innerText = document.body.classList.contains('light') ? '🌙' : '☀️';
+  };
+  // Sidebar
+  document.getElementById('menuBtn').onclick = ()=> document.getElementById('sidebar').classList.toggle('open');
+  // Filter
+  document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{
+    document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active')); t.classList.add('active');
+    const f=t.dataset.filter; let filtered = f==='semua'? allGames : allGames.filter(x=>x.cat===f);
+    renderGrid(document.getElementById('allServicesGrid'), showAll?filtered:filtered.slice(0,6));
+  });
+  document.getElementById('showMoreBtn').onclick = (e)=>{
+    showAll=!showAll; e.target.innerText=showAll?'Show Less':'Show More';
+    renderGrid(document.getElementById('allServicesGrid'), showAll?allGames:allGames.slice(0,6));
+  };
+  // Toast PRODUCT SOLD
+  setInterval(()=>{
+    const g = famousGames[Math.floor(Math.random()*famousGames.length)];
+    document.getElementById('toastText').innerText=`0169****33 just topped up ${g.name} - 5x Weekly Diamond Pass`;
+    document.getElementById('toastImg').src=g.img;
+    document.getElementById('toast').classList.add('show');
+    setTimeout(()=>document.getElementById('toast').classList.remove('show'),4000);
+  },8000);
+}
+init();
