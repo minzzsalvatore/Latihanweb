@@ -1,21 +1,53 @@
 <!DOCTYPE html>
 <html lang="ms"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ADMIN KHAI</title><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
-<style>*{font-family:Poppins;box-sizing:border-box}body{background:#080c14;color:#fff;padding:14px}input,select{width:100%;padding:12px;border-radius:10px;border:1px solid #1a253e;background:#121a2b;color:#fff;margin:6px 0}button{width:100%;padding:14px;border-radius:12px;border:none;font-weight:800;background:#1a5bff;color:#fff;cursor:pointer;margin-top:8px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.item{background:#121a2b;border:1px solid #1a253e;border-radius:10px;padding:8px;font-size:10px}</style>
-</head><body>
-<h2>ADMIN POST MLBB - KHAI STORE</h2>
-<input id="key" value="q3EdSMpHrXGrd6qzp3kh" placeholder="API KEY">
-<div style="display:flex;gap:8px"><input id="pp" type="number" value="20" placeholder="Profit %"><input id="prm" type="number" value="0.5" step="0.1" placeholder="Extra RM"></div>
-<button onclick="tarik()">1. TARIK SEMUA PRODUK MLBB DARI PROVIDER</button>
-<div id="stat" style="font-size:11px;color:#7a8599;margin:8px 0"></div>
-<div id="grid" class="grid"></div>
-<button onclick="publish()" style="background:#00e676;color:#000">2. PUBLISH TERUS KE MLMY.HTML</button>
+<title>ADMIN MANUAL - KHAI</title>
+<style>
+*{box-sizing:border-box;font-family:Poppins,sans-serif}body{background:#080c14;color:#fff;padding:14px}
+.card{background:#121a2b;border:1px solid #1a253e;border-radius:16px;padding:16px;margin-bottom:12px}
+input,select{width:100%;padding:12px;border-radius:10px;border:1px solid #1a253e;background:#080c14;color:#fff;margin:6px 0}
+button{width:100%;padding:13px;border-radius:10px;border:none;font-weight:800;cursor:pointer}
+.biru{background:#1a5bff;color:#fff}.hijau{background:#00e676;color:#000;margin-top:8px}
+.list{margin-top:12px}.item{background:#0f192b;border:1px solid #1a253e;border-radius:10px;padding:10px;margin:6px 0;display:flex;justify-content:space-between;font-size:11px}
+.harga{color:#00e676;font-weight:800}
+</style></head><body>
+
+<div class="card">
+<h3>➕ ADD PRODUK MANUAL</h3>
+<input id="nama" placeholder="Nama: 140 Diamonds">
+<select id="kat"><option value="topup">🔥 TOP UP</option><option value="weekly">🎁 WEEKLY / WDP</option><option value="first">🎁 FIRST</option></select>
+<input id="modal" type="number" step="0.01" placeholder="Harga Modal: 10.42">
+<div style="display:flex;gap:8px">
+<input id="pp" type="number" value="20" placeholder="Untung %">
+<input id="prm" type="number" value="0.8" step="0.1" placeholder="Extra RM">
+</div>
+<input id="code" placeholder="Code: ml_140 (optional)">
+<div id="preview" style="background:#080c14;padding:8px;border-radius:8px;font-size:12px;margin:6px 0;color:#7a8599">Harga Jual: RM 0.00</div>
+<button class="biru" onclick="add()">POST PRODUK KE WEB</button>
+<button class="hijau" onclick="location.href='mlmy.html'">👁️ LIHAT WEB MLBB</button>
+</div>
+
+<div class="card">
+<b id="count">0 produk</b>
+<div id="list" class="list"></div>
+<button onclick="clearAll()" style="background:red;color:#fff;margin-top:10px">🗑️ PADAM SEMUA</button>
+</div>
+
 <script>
-let RAW=[];
-async function tarik(){
- document.getElementById('stat').innerText='Tarik...';
- try{
-  let r=await fetch("https://corsproxy.io/?https://api.synnstore.com/api/product/list?game=mobile-legends",{headers:{"x-api-key":document.getElementById('key').value}});
-  let j=await r.json(); RAW=j.data||j.products||j||[];
-  if(!Array.isArray(RAW)) RAW=Object.values(RAW);
- }
+function calc(){let m=parseFloat(document.getElementById('modal').value)||0; let pp=parseFloat(document.getElementById('pp').value)||0; let prm=parseFloat(document.getElementById('prm').value)||0; let j=(m+prm)*(1+pp/100); document.getElementById('preview').innerText="Modal RM"+m+" + "+pp+"% +RM"+prm+" = JUAL RM"+j.toFixed(2); return j;}
+document.getElementById('modal').oninput=calc; document.getElementById('pp').oninput=calc; document.getElementById('prm').oninput=calc;
+
+function load(){let d=JSON.parse(localStorage.getItem('KHAI_MLBB')||'[]'); document.getElementById('count').innerText=d.length+" produk"; let h=''; d.forEach((p,i)=>{h+=`<div class=item><div><b>${p.n}</b><br>${p.kat} | Code:${p.code}<br><span class=harga>RM${p.p.toFixed(2)}</span> <small style=color:#7a8599>(modal ${p.modal})</small></div><button onclick="del(${i})" style="width:auto;background:red;padding:6px 12px;border-radius:8px;color:#fff">X</button></div>`}); document.getElementById('list').innerHTML=h;}
+function add(){
+ let n=document.getElementById('nama').value; let modal=parseFloat(document.getElementById('modal').value); let pp=parseFloat(document.getElementById('pp').value)||0; let prm=parseFloat(document.getElementById('prm').value)||0; let kat=document.getElementById('kat').value; let code=document.getElementById('code').value||'ml_'+Date.now();
+ if(!n||!modal) return alert('Isi nama & modal bos');
+ let jual=(modal+prm)*(1+pp/100);
+ let d=JSON.parse(localStorage.getItem('KHAI_MLBB')||'[]');
+ d.push({n:n,p:jual,modal:modal,code:code,kat:kat});
+ localStorage.setItem('KHAI_MLBB',JSON.stringify(d));
+ document.getElementById('nama').value=''; document.getElementById('modal').value=''; document.getElementById('code').value='';
+ load(); alert('SIAP POST! '+n+' RM'+jual.toFixed(2));
+}
+function del(i){let d=JSON.parse(localStorage.getItem('KHAI_MLBB')||'[]'); d.splice(i,1); localStorage.setItem('KHAI_MLBB',JSON.stringify(d)); load();}
+function clearAll(){if(confirm('Padam semua?')){localStorage.removeItem('KHAI_MLBB'); load();}}
+load(); calc();
+</script></body></html>
