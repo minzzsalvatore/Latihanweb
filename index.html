@@ -2,141 +2,90 @@
 <html lang="ms">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>MILO GAMING STORE</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>KHAI STORE</title>
 <link rel="stylesheet" href="style.css">
 </head>
-<body>
-<header class="topbar">
-  <div class="logo">MILO<br>GAMING<br>STORE</div>
-  <div class="actions">
-    <button class="circle" id="btnSearch">🔍</button>
-    <button class="circle">🇲🇾</button>
-    <button class="circle" id="btnDark">🌙</button>
-    <button class="sign"><img src="https://www.google.com/favicon.ico" width="14"> Sign In</button>
-    <button class="circle">☰</button>
+<body class="dark">
+<header class="navbar">
+  <img id="logoImg" src="https://i.ibb.co/placeholder.png" class="logo" alt="KHAI STORE">
+  <div class="nav-right">
+    <button id="themeBtn" class="icon-btn">☀️</button>
+    <button class="icon-btn">👤</button>
+    <button id="menuBtn" class="icon-btn">☰</button>
   </div>
 </header>
-<div id="searchBox" class="searchBox hidden">
-  <input type="text" id="searchInput" placeholder="Cari game, marketplace...">
+
+<!-- SIDEBAR MENU macam gambar last kau -->
+<div id="sidebar" class="sidebar">
+  <div class="side-top">
+    <input type="text" id="quickSearch" placeholder="Quick search...">
+    <div class="side-menu"><span>HOME</span></div>
+    <div class="side-menu">TRACK ORDER</div>
+    <div class="side-menu">CALCULATOR</div>
+    <div class="side-menu">CHECK REGION</div>
+    <p class="lang">🇬🇧 English</p>
+    <div class="help-box">
+      <p>NEED HELP?</p>
+      <a id="waLinkSide" href="#">WhatsApp CS →</a>
+    </div>
+  </div>
 </div>
-<section class="banner-wrap"><img src="banner.jpg" alt="Milo Banner"></section>
-<section class="section">
-  <h2>🔥 TRENDING</h2>
-  <p class="subtitle">Berikut adalah produk yang paling popular sekarang.</p>
-  <div class="grid2" id="trendingGrid"></div>
-</section>
-<div class="tabs-wrap">
-  <button class="tab-arrow">‹</button>
-  <button class="tab on">Games Mobile</button>
-  <button class="tab">Special Product (MI)</button>
-  <button class="tab-arrow">›</button>
+
+<!-- BANNER SLIDER -->
+<div class="banner-container">
+  <div id="bannerSlider" class="banner-slider"></div>
+  <div class="dots" id="bannerDots"></div>
 </div>
-<section class="section"><div class="grid3" id="gamesGrid"></div></section>
-<section class="section orange">
-  <div class="sec-head"><h3 class="with-line">Pakej Joki</h3><span>Produk Joki Mobile Legends: Bang Bang</span></div>
-  <div class="joki-grid" id="jokiGrid"></div>
+
+<section>
+  <h2 class="section-title"><span>🔥</span> FAMOUS GAME MALAYSIA</h2>
+  <div id="famousGrid" class="game-grid"></div>
 </section>
-<section class="section">
-  <div class="sec-head"><h3 class="with-line">Marketplace</h3><span>Cari permainan kegemaran anda dan terokai semua akaun yang tersedia di sana.</span></div>
-  <div class="search-field"><input type="text" id="marketSearch" placeholder="Cari permainan..."></div>
-  <div class="market-grid" id="marketGrid"></div>
-  <button class="more-btn">More</button>
+
+<section>
+  <h2 class="section-title"><span>▦</span> ALL SERVICES</h2>
+  <div class="tabs">
+    <button class="tab active" data-filter="semua">Semua</button>
+    <button class="tab" data-filter="uid">UID Games</button>
+    <button class="tab" data-filter="other">Other Region</button>
+  </div>
+  <div id="allServicesGrid" class="game-grid"></div>
+  <button id="showMoreBtn" class="show-more">Show More</button>
 </section>
-<section class="section">
-  <div class="news-head"><b>BERITA & PROMOSI</b><a href="#">SEMUA ARTIKEL →</a></div>
-  <div class="news-grid">
-    <div class="news-card"><img src="https://i.imgur.com/8Km9tLL.png"><b>Promo Akaun MLBB Sempena Hari Malaysia - 16% DISKAUN</b><small>Redaksi • 30 Aug 2026</small></div>
-    <div class="news-card"><img src="https://i.imgur.com/Ql2zA1I.png"><b>BELI AKAUN SECARA ANSURAN HINGGA 12 BULAN</b><small>Redaksi • 18 Aug 2026</small></div>
+
+<section class="why">
+  <h2>Why Choose Us?</h2>
+  <div class="why-card">
+    <div class="why-icon">🛡️</div>
+    <h3>Jujur & Terpercaya</h3>
+    <p>Setiap hari ada ribuan transaksi top-up game.</p>
+  </div>
+  <div class="why-card">
+    <div class="why-icon">💳</div>
+    <h3>Metode Pembayaran</h3>
+    <p>Kami menawarkan begitu banyak pilihan channel pembayaran.</p>
   </div>
 </section>
-<section class="section card-about"><b>TENTANG MILO GAMING STORE</b><p><strong>Top Up Game dan Baucar Murah hanya di Milogamingstore.com</strong><br><br>Milo Gaming Store hadir sebagai solusi dipercayai bagi para gamer di seluruh Malaysia.</p><button class="butiran">Butiran ∨</button></section>
-<footer><div class="pay"><b>FPX DuitNow QR</b></div><div class="foot-grid"><div><b>Tentang Kami</b><a>Laman Utama</a><a>Ulasan Pelanggan</a><a>Leaderboard</a><a>Artikel & Berita</a></div><div><b>Layanan</b><a>Semak Transaksi</a><a>Masuk</a><a>Daftar</a><a>Telegram Community</a></div><div><b>Undang - Undang</b><a>Terms & Conditions</a><a>Privacy Policy</a><a>Refund & Return Policy</a><a>Shipping Policy</a></div><div><b>Bantuan</b><a>Hubungi Kami</a><a>WhatsApp CS</a><a>Telegram CS</a><a>Email</a></div></div><div class="pwa"><span>⬆</span><div><b>Milo Gaming Store in your pocket</b><br><small>Tambah ke skrin utama</small></div></div><small>© 2026 MH ANUAR ENTERPRISE</small></footer>
-<nav class="bottom"><div class="b-item on">⌂<br>Home</div><div class="b-item">🛒<br>Marketplace</div><div class="b-item">🎮<br>Joki</div><div class="b-item">👤<br>Sign In</div></nav>
-<script src="app.js"></script>
-</body>
-     <!DOCTYPE html>
-<html lang="ms">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>MILO GAMING STORE</title>
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
-body{background:#f4f5f7;padding-bottom:80px}
-.top{background:#fff;display:flex;justify-content:space-between;align-items:center;padding:10px 14px;position:sticky;top:0;z-index:99;border-bottom:1px solid #eee}
-.logo{background:#111;color:#ffcc00;font-weight:900;font-size:11px;padding:6px 9px;border-radius:8px;line-height:1.1}
-.right{display:flex;gap:8px;align-items:center}
-.c{width:32px;height:32px;background:#f1f1f1;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px}
-.sign{border:1px solid #ddd;border-radius:20px;padding:6px 12px;font-size:12px;font-weight:700;display:flex;gap:5px;align-items:center;background:#fff}
-.banner{margin:12px;border-radius:18px;overflow:hidden}
-.banner img{width:100%;display:block}
-.sec{padding:14px}
-.sec h2{font-size:18px}
-.sub{font-size:12px;color:#777;margin:4px 0 12px}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.card{background:#fff;border-radius:14px;padding:10px;display:flex;gap:10px;align-items:center;border:1px solid #eee}
-.card img{width:48px;height:48px;border-radius:10px;background:#000}
-.card b{font-size:12px}
-.card small{font-size:11px;color:#777}
-.tabs{display:flex;gap:8px;overflow:auto;padding:10px 14px}
-.tabs span{padding:8px 16px;border-radius:20px;background:#e9eef5;font-size:13px;font-weight:700;white-space:nowrap}
-.tabs .on{background:#ffaa00;color:#fff}
-.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;padding:0 14px}
-.gbox img{width:100%;aspect-ratio:1/1;border-radius:12px;border:1px solid #eee;background:#fff}
-.gbox b{font-size:11px;display:block;margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.gbox small{font-size:10px;color:#666}
-.joki{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 14px}
-.jb{background:#fff;border-radius:14px;padding:14px;text-align:center;border:1px solid #eee}
-.nav{position:fixed;bottom:10px;left:10px;right:10px;background:#fff;display:flex;justify-content:space-around;padding:10px 0;border-radius:22px;box-shadow:0 6px 24px rgba(0,0,0,.15);border:1px solid #eee}
-.nav div{text-align:center;font-size:10px;color:#888}
-.nav .on{color:#ff9900;background:#fff3e0;padding:4px 14px;border-radius:16px}
-.foot{background:#fff;padding:14px;margin-top:10px;font-size:11px;color:#666}
-</style>
-</head>
-<body>
-<div class="top">
-<div class="logo">MILO<br>GAMING<br>STORE</div>
-<div class="right"><div class="c">🔍</div><div class="c">🇲🇾</div><div class="c">🌙</div><div class="sign"><img src="https://www.google.com/favicon.ico" width="12">Sign In</div><div class="c">☰</div></div>
+
+<footer>
+  <img id="footerLogo" src="" class="logo-footer">
+  <p class="desc">Automatic game top-up service 24/7. Fast, secure, and instant. Play without limits!</p>
+  <div class="foot-grid">
+    <div><b>SITE MAP</b><a>Home</a><a>Track Order</a><a>Calculator</a><a>Check Region</a><a>Service List</a><a>API Documentation</a></div>
+    <div><b>SUPPORT</b><span>No data yet</span></div>
+    <div><b>HELP CENTER</b><a id="waFooter" class="wa-green">601115852234</a></div>
+  </div>
+  <p class="copy">© 2026 KHAII STORE. ALL RIGHTS RESERVED.</p>
+</footer>
+
+<!-- WHATSAPP FLOAT + PRODUCT SOLD TOAST -->
+<a id="waFloat" class="wa-float">💬</a>
+<div id="toast" class="toast">
+  <div><b>PRODUCT SOLD</b><span>Just bought</span><p id="toastText"></p><small>Verified by KHAII STORE</small></div>
+  <img id="toastImg" src="">
 </div>
 
-<div class="banner"><img src="https://i.ibb.co/3sY0G0y/milo-banner-yellow.png" onerror="this.src='https://via.placeholder.com/800x380/0a0f1c/ffcc00?text=SERVIS+YANG+KAMI+SEDIAKAN'"></div>
-
-<div class="sec">
-<h2>🔥 TRENDING</h2><div class="sub">Berikut adalah produk yang paling popular sekarang.</div>
-<div class="grid2" id="tr"></div>
-</div>
-
-<div class="tabs"><span>◀</span><span class="on">Games Mobile</span><span>Special Product (MI)</span><span>▶</span></div>
-<div class="grid3" id="gm"></div>
-
-<div class="sec"><h2 style="border-left:4px solid #ff9900;padding-left:8px">Marketplace</h2><div class="sub">Cari permainan kegemaran anda dan terokai semua akaun yang tersedia di sana.</div></div>
-<div class="grid2" style="padding:0 14px" id="mp"></div>
-
-<div class="sec"><h2 style="border-left:4px solid #ff9900;padding-left:8px">Pakej Joki</h2><div class="sub">Produk Joki Mobile Legends: Bang Bang</div></div>
-<div class="joki" id="jk"></div>
-
-<div class="foot">© 2026 MH ANUAR ENTERPRISE - Milo Gaming Store in your pocket<br><br>Bayaran: FPX | DuitNow QR | TNG eWallet</div>
-
-<div class="nav"><div class="on">🏠<br>Home</div><div>🛒<br>Marketplace</div><div>🎮<br>Joki</div><div>👤<br>Sign In</div></div>
-
-<script>
-const games=[
-{n:'Mobile Legends',d:'Moonton',i:'https://i.imgur.com/NpjeX2k.png'},
-{n:'Magic Chess: Go Go',d:'Vizta Games',i:'https://i.imgur.com/3Z7Qv7L.png'},
-{n:'Free Fire',d:'Garena',i:'https://i.imgur.com/Ql2zA1I.png'},
-{n:'PUBG Mobile',d:'Tencent Games',i:'https://i.imgur.com/5X2p6yA.png'},
-{n:'Valorant',d:'Riot Games',i:'https://i.imgur.com/Lk6QY5e.png'},
-{n:'Call of Duty: Mobile',d:'Activision',i:'https://i.imgur.com/Lk6QY5e.png'}
-];
-const market=[
-{n:'Mobile Legends: Bang Bang',p:'57 Product'},{n:'eFOOTBALL',p:'39 Product'},{n:'Free Fire (Indonesia)',p:'13 Product'},{n:'PUBG Mobile',p:'12 Product'},{n:'Valorant',p:'0 Product'},{n:'Clash Of Clan',p:'0 Product'}
-];
-const joki=['WARRIOR','ELITE','MASTER','GRANDMASTER','EPIC','LEGEND','MYTHIC','MYTHIC HONOR','MYTHIC GLORY','MYTHIC IMMORTAL'];
-document.getElementById('tr').innerHTML=games.map(g=>`<div class="card"><img src="${g.i}"><div><b>${g.n}</b><br><small>${g.d}</small></div></div>`).join('');
-document.getElementById('gm').innerHTML=games.map(g=>`<div class="gbox" onclick="window.open('https://wa.me/601143678316?text=Nak topup ${g.n}','_blank')"><img src="${g.i}"><b>${g.n}</b><small>${g.d}</small></div>`).join('');
-document.getElementById('mp').innerHTML=market.map(m=>`<div class="card" style="flex-direction:column;align-items:flex-start;background:linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.6)),url(https://picsum.photos/200/200?${m.n});background-size:cover;color:#fff;height:110px;justify-content:flex-end"><span style="background:#ffaa00;color:#000;font-size:10px;padding:2px 6px;border-radius:10px">#${Math.floor(Math.random()*9+1)}</span><b style="color:#fff;margin-top:20px">${m.n}</b><small style="color:#fff;background:rgba(0,0,0,.6);padding:2px 6px;border-radius:8px">${m.p}</small></div>`).join('');
-document.getElementById('jk').innerHTML=joki.map(r=>`<div class="jb" onclick="window.open('https://wa.me/601143678316?text=Nak Joki ${r}','_blank')"><div style="font-size:28px">🛡️</div><b style="font-size:10px;color:#888">${r}</b><div style="font-weight:900">RM 1.00</div><small>/Bintang</small></div>`).join('');
-</script>
+<script src="script.js"></script>
 </body>
-</html>                                                                                                                                                                    </html>
+  </html>
