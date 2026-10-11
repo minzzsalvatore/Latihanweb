@@ -1,53 +1,20 @@
 <!DOCTYPE html>
-<html lang="ms"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ADMIN MANUAL - KHAI</title>
-<style>
-*{box-sizing:border-box;font-family:Poppins,sans-serif}body{background:#080c14;color:#fff;padding:14px}
-.card{background:#121a2b;border:1px solid #1a253e;border-radius:16px;padding:16px;margin-bottom:12px}
-input,select{width:100%;padding:12px;border-radius:10px;border:1px solid #1a253e;background:#080c14;color:#fff;margin:6px 0}
-button{width:100%;padding:13px;border-radius:10px;border:none;font-weight:800;cursor:pointer}
-.biru{background:#1a5bff;color:#fff}.hijau{background:#00e676;color:#000;margin-top:8px}
-.list{margin-top:12px}.item{background:#0f192b;border:1px solid #1a253e;border-radius:10px;padding:10px;margin:6px 0;display:flex;justify-content:space-between;font-size:11px}
-.harga{color:#00e676;font-weight:800}
-</style></head><body>
-
+<html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ADMIN KHAI</title>
+<style>*{box-sizing:border-box;font-family:Poppins}body{background:#080c14;color:#fff;padding:14px}.card{background:#121a2b;border:1px solid #1a253e;border-radius:16px;padding:16px;margin-bottom:12px}input,select{width:100%;padding:12px;border-radius:10px;border:1px solid #1a253e;background:#080c14;color:#fff;margin:6px 0}button{width:100%;padding:13px;border-radius:10px;border:none;font-weight:800} .biru{background:#1a5bff;color:#fff}.item{background:#0f192b;border:1px solid #1a253e;border-radius:10px;padding:10px;margin:6px 0;display:flex;justify-content:space-between;font-size:11px}</style>
+</head><body>
 <div class="card">
-<h3>➕ ADD PRODUK MANUAL</h3>
-<input id="nama" placeholder="Nama: 140 Diamonds">
-<select id="kat"><option value="topup">🔥 TOP UP</option><option value="weekly">🎁 WEEKLY / WDP</option><option value="first">🎁 FIRST</option></select>
-<input id="modal" type="number" step="0.01" placeholder="Harga Modal: 10.42">
-<div style="display:flex;gap:8px">
-<input id="pp" type="number" value="20" placeholder="Untung %">
-<input id="prm" type="number" value="0.8" step="0.1" placeholder="Extra RM">
+<h3>POST PRODUK MLBB</h3>
+<input id="nama" placeholder="Contoh: 140 Diamonds">
+<select id="kat"><option value="topup">TOP UP</option><option value="weekly">WEEKLY PASS</option></select>
+<input id="harga" type="number" step="0.01" placeholder="Harga Jual RM: 12.90">
+<button class="biru" onclick="add()">POST</button>
+<button onclick="location.href='mlmy.html'" style="margin-top:8px;background:#00e676">LIHAT WEB</button>
 </div>
-<input id="code" placeholder="Code: ml_140 (optional)">
-<div id="preview" style="background:#080c14;padding:8px;border-radius:8px;font-size:12px;margin:6px 0;color:#7a8599">Harga Jual: RM 0.00</div>
-<button class="biru" onclick="add()">POST PRODUK KE WEB</button>
-<button class="hijau" onclick="location.href='mlmy.html'">👁️ LIHAT WEB MLBB</button>
-</div>
-
-<div class="card">
-<b id="count">0 produk</b>
-<div id="list" class="list"></div>
-<button onclick="clearAll()" style="background:red;color:#fff;margin-top:10px">🗑️ PADAM SEMUA</button>
-</div>
-
+<div class="card"><b id="count">0 produk</b><div id="list"></div></div>
 <script>
-function calc(){let m=parseFloat(document.getElementById('modal').value)||0; let pp=parseFloat(document.getElementById('pp').value)||0; let prm=parseFloat(document.getElementById('prm').value)||0; let j=(m+prm)*(1+pp/100); document.getElementById('preview').innerText="Modal RM"+m+" + "+pp+"% +RM"+prm+" = JUAL RM"+j.toFixed(2); return j;}
-document.getElementById('modal').oninput=calc; document.getElementById('pp').oninput=calc; document.getElementById('prm').oninput=calc;
-
-function load(){let d=JSON.parse(localStorage.getItem('KHAI_MLBB')||'[]'); document.getElementById('count').innerText=d.length+" produk"; let h=''; d.forEach((p,i)=>{h+=`<div class=item><div><b>${p.n}</b><br>${p.kat} | Code:${p.code}<br><span class=harga>RM${p.p.toFixed(2)}</span> <small style=color:#7a8599>(modal ${p.modal})</small></div><button onclick="del(${i})" style="width:auto;background:red;padding:6px 12px;border-radius:8px;color:#fff">X</button></div>`}); document.getElementById('list').innerHTML=h;}
-function add(){
- let n=document.getElementById('nama').value; let modal=parseFloat(document.getElementById('modal').value); let pp=parseFloat(document.getElementById('pp').value)||0; let prm=parseFloat(document.getElementById('prm').value)||0; let kat=document.getElementById('kat').value; let code=document.getElementById('code').value||'ml_'+Date.now();
- if(!n||!modal) return alert('Isi nama & modal bos');
- let jual=(modal+prm)*(1+pp/100);
- let d=JSON.parse(localStorage.getItem('KHAI_MLBB')||'[]');
- d.push({n:n,p:jual,modal:modal,code:code,kat:kat});
- localStorage.setItem('KHAI_MLBB',JSON.stringify(d));
- document.getElementById('nama').value=''; document.getElementById('modal').value=''; document.getElementById('code').value='';
- load(); alert('SIAP POST! '+n+' RM'+jual.toFixed(2));
-}
-function del(i){let d=JSON.parse(localStorage.getItem('KHAI_MLBB')||'[]'); d.splice(i,1); localStorage.setItem('KHAI_MLBB',JSON.stringify(d)); load();}
-function clearAll(){if(confirm('Padam semua?')){localStorage.removeItem('KHAI_MLBB'); load();}}
-load(); calc();
+function load(){let d=JSON.parse(localStorage.getItem('KHAI_MLBB')||'[]');document.getElementById('count').innerText=d.length+' produk';let h='';d.forEach((p,i)=>{h+=`<div class=item><div><b>${p.n}</b><br>${p.kat}<br><span style=color:#00e676>RM${p.p.toFixed(2)}</span></div><button onclick="del(${i})" style="width:auto;background:red;color:#fff;padding:6px 10px;border-radius:8px;border:none">X</button></div>`});document.getElementById('list').innerHTML=h}
+function add(){let n=document.getElementById('nama').value;let h=parseFloat(document.getElementById('harga').value);let kat=document.getElementById('kat').value;if(!n||!h)return alert('isi nama & harga');let d=JSON.parse(localStorage.getItem('KHAI_MLBB')||'[]');d.push({n:n,p:h,kat:kat});localStorage.setItem('KHAI_MLBB',JSON.stringify(d));document.getElementById('nama').value='';document.getElementById('harga').value='';load()}
+function del(i){let d=JSON.parse(localStorage.getItem('KHAI_MLBB')||'[]');d.splice(i,1);localStorage.setItem('KHAI_MLBB',JSON.stringify(d));load()}
+load();
 </script></body></html>
