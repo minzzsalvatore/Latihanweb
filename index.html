@@ -7,12 +7,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
-:root{--bg:#080c14;--card:#121a2b;--biru:#1a5bff;--text:#fff;--kelabu:#7a8599;--garis:#1a253e}
-body{background:var(--bg);color:var(--text)}
+:root{--bg:#080c14;--card:#121a2b;--card2:#0f192b;--biru:#1a5bff;--text:#fff;--kelabu:#7a8599;--garis:#1a253e;--hijau:#00e676}
+body.light{--bg:#f5f7fb;--card:#fff;--card2:#eef2f9;--text:#0e121a;--kelabu:#6b7280;--garis:#e5e7eb}
+body{background:var(--bg);color:var(--text);transition:.3s}
 .top{position:sticky;top:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--bg);border-bottom:1px solid var(--garis)}
 .logo{height:34px;border-radius:8px;background:#fff;padding:2px}
+.kanan{display:flex;gap:8px}
 .ikon{width:38px;height:38px;border-radius:12px;border:none;background:var(--card);color:var(--text);border:1px solid var(--garis)}
-.drawer{position:fixed;top:54px;right:-100%;width:85%;height:100%;background:var(--card);z-index:200;padding:16px;transition:.35s}
+.drawer{position:fixed;top:54px;right:-100%;width:85%;height:100%;background:var(--card);z-index:200;padding:16px;transition:.35s;border-left:1px solid var(--garis)}
 .drawer.buka{right:0}
 .cari{display:flex;gap:8px;background:var(--bg);border:1px solid var(--garis);border-radius:12px;padding:12px;margin-bottom:12px}
 .cari input{flex:1;background:transparent;border:none;outline:none;color:var(--text)}
@@ -33,22 +35,40 @@ body{background:var(--bg);color:var(--text)}
 .tab{padding:8px 18px;border-radius:20px;border:none;background:var(--card);color:var(--kelabu);font-weight:700;white-space:nowrap;border:1px solid var(--garis)}
 .tab.aktif{background:var(--biru);color:#fff}
 .more{margin:16px auto;display:block;background:var(--biru);color:#fff;border:none;padding:10px 24px;border-radius:20px;font-weight:800}
-.bawah{border-top:1px solid var(--garis);padding:18px 14px;margin-top:18px;color:var(--kelabu);font-size:12px}
-.wa{position:fixed;bottom:16px;right:14px;width:54px;height:54px;background:#00d084;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;color:#fff;text-decoration:none}
+.bawah{border-top:1px solid var(--garis);padding:20px 14px;margin-top:18px;color:var(--kelabu);font-size:12px}
+.bawah b{color:var(--text);display:block;margin-bottom:8px;font-size:11px;letter-spacing:1px}
+.bawah p{line-height:1.5}
+.tiktok{width:38px;height:38px;background:var(--card);border:1px solid var(--garis);border-radius:10px;display:flex;align-items:center;justify-content:center;margin:14px 0}
+.footgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
+.footgrid a{display:block;margin:6px 0;color:var(--kelabu);text-decoration:none;font-size:12px}
+.hijau{color:var(--hijau)!important;font-weight:700}
+.copy{text-align:center;border-top:1px solid var(--garis);padding-top:12px;margin-top:12px;font-size:10px}
+.wa{position:fixed;bottom:16px;right:14px;width:54px;height:54px;background:#00d084;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;color:#fff;text-decoration:none;z-index:50}
 </style>
 </head>
 <body>
+
 <div class="top">
-<img id="logoTop" class="logo" src="https://via.placeholder.com/120x40/ffffff/000000?text=KHAI+STORE">
-<div style="display:flex;gap:8px"><button class="ikon" id="btnTheme">☀️</button><button class="ikon">👤</button><button class="ikon" id="btnMenu">☰</button></div>
+<img id="logoTop" class="logo" src="">
+<div class="kanan">
+<button class="ikon" id="btnTheme">☀️</button>
+<button class="ikon">👤</button>
+<button class="ikon" id="btnMenu">☰</button>
 </div>
+</div>
+
 <div id="drawer" class="drawer">
 <div class="cari">🔍 <input id="cari" placeholder="Quick search..."></div>
 <div class="m aktif">▦ HOME</div><div class="m">⌕ TRACK ORDER</div><div class="m">🧮 CALCULATOR</div><div class="m">📍 CHECK REGION</div>
+<div style="margin-top:16px;font-weight:700">🇬🇧 English</div>
+<div style="background:var(--bg);border:1px solid var(--garis);border-radius:12px;padding:12px;margin-top:16px"><p style="font-size:10px;color:var(--kelabu)">NEED HELP?</p><a id="waSide" href="#" style="color:#3a7bff;font-weight:700;text-decoration:none">WhatsApp CS →</a></div>
 </div>
+
 <div class="banner"><div id="track" class="track"></div><div id="dots" class="dots"></div></div>
+
 <div class="tajuk">🔥 FAMOUS GAME MALAYSIA</div>
 <div id="grid1" class="grid"></div>
+
 <div class="tajuk">▦ ALL SERVICES</div>
 <div class="tabs">
 <button class="tab aktif" data-f="semua">Semua</button>
@@ -57,11 +77,31 @@ body{background:var(--bg);color:var(--text)}
 </div>
 <div id="grid2" class="grid"></div>
 <button id="btnMore" class="more">Show More</button>
-<div class="bawah"><p>© 2026 KHAI STORE. ALL RIGHTS RESERVED.</p></div>
-<a class="wa" href="https://wa.me/601115852234">💬</a>
+
+<div class="bawah">
+<img id="logoBawah" class="logo" src="" style="margin-bottom:10px">
+<p>Automatic game top-up service 24/7. Fast, secure, and instant. Play without limits!</p>
+<div class="tiktok">♪</div>
+<div class="footgrid">
+<div><b>SITE MAP</b><a>Home</a><a>Track Order</a><a>Calculator</a><a>Check Region</a><a>Service List</a><a>API Documentation</a></div>
+<div><b>SUPPORT</b><span>No data yet</span></div>
+</div>
+<div><b>HELP CENTER</b><a id="waBawah" class="hijau" href="#"></a></div>
+<div class="copy">© 2026 KHAI STORE. ALL RIGHTS RESERVED.</div>
+</div>
+
+<a id="waFloat" class="wa" href="#">💬</a>
+
 <script>
-const LOGO_URL="https://via.placeholder.com/120x40/ffffff/000000?text=KHAI+STORE";
-const BANNER_URLS=["https://images.unsplash.com/photo-1511512578047-dfb367046420?w=800","https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=800"];
+// ==== KAU GANTI LINK SINI JE ====
+const LOGO_URL = "https://via.placeholder.com/120x40/ffffff/000000?text=KHAI+STORE";
+const BANNER_URLS = [
+  "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=800",
+  "https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=800"
+];
+const WA = "601115852234";
+// ===============================
+
 const GAMES=[
 {name:"Mobile Legends MY",t:"uid",img:"https://images.unsplash.com/photo-1511512578047-dfb367046420?w=300",link:"mlmy.html"},
 {name:"Mobile Legends ID",t:"other",img:"https://images.unsplash.com/photo-1542751371-adc38448a05e?w=300",link:"mlmy.html"},
@@ -73,16 +113,50 @@ const GAMES=[
 {name:"Arena Breakout",t:"uid",img:"https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=300",link:"mlmy.html"},
 {name:"Genshin Impact",t:"other",img:"https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=300",link:"mlmy.html"}
 ];
-function render(id,list){document.getElementById(id).innerHTML=list.map(g=>`<div class="kad" onclick="location.href='${g.link}'"><img src="${g.img}"><b>${g.name}</b></div>`).join('')}
+
+function render(id,list){document.getElementById(id).innerHTML=list.map(g=>`<div class="kad" onclick="location.href='${g.link}'"><img src="${g.img}" onerror="this.src='https://via.placeholder.com/300x400?text=${g.name}'"><b>${g.name}</b></div>`).join('')}
+
 document.getElementById('logoTop').src=LOGO_URL;
-let track=document.getElementById('track');let dots=document.getElementById('dots');
-track.innerHTML=BANNER_URLS.map(u=>`<img src="${u}">`).join('');dots.innerHTML=BANNER_URLS.map((_,i)=>`<span class="${i==0?'on':''}"></span>`).join('');
-let idx=0;setInterval(()=>{idx=(idx+1)%BANNER_URLS.length;track.style.transform=`translateX(-${idx*100}%)`;dots.querySelectorAll('span').forEach((s,i)=>s.className=i==idx?'on':'')},3000);
-render('grid1',GAMES.slice(0,6));let showAll=false;render('grid2',GAMES.slice(0,6));
+document.getElementById('logoBawah').src=LOGO_URL;
+document.getElementById('waFloat').href="https://wa.me/"+WA;
+document.getElementById('waSide').href="https://wa.me/"+WA;
+document.getElementById('waBawah').href="https://wa.me/"+WA;
+document.getElementById('waBawah').innerText="🟢 "+WA;
+
+let track=document.getElementById('track');
+let dots=document.getElementById('dots');
+track.innerHTML=BANNER_URLS.map(u=>`<img src="${u}">`).join('');
+dots.innerHTML=BANNER_URLS.map((_,i)=>`<span class="${i==0?'on':''}"></span>`).join('');
+let idx=0;
+setInterval(()=>{idx=(idx+1)%BANNER_URLS.length;track.style.transform=`translateX(-${idx*100}%)`;dots.querySelectorAll('span').forEach((s,i)=>s.className=i==idx?'on':'')},3000);
+
+render('grid1',GAMES.slice(0,6));
+let showAll=false;
+render('grid2',GAMES.slice(0,6));
+
 document.getElementById('btnMenu').onclick=()=>document.getElementById('drawer').classList.toggle('buka');
-document.getElementById('cari').oninput=e=>{let v=e.target.value.toLowerCase();let f=GAMES.filter(x=>x.name.toLowerCase().includes(v));render('grid1',f);render('grid2',f.slice(0,6))};
-document.querySelectorAll('.tab').forEach(t=>{t.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('aktif'));t.classList.add('aktif');let fil=t.dataset.f;let list=fil=='semua'?GAMES:GAMES.filter(x=>x.t==fil);render('grid2',showAll?list:list.slice(0,6))}});
-document.getElementById('btnMore').onclick=e=>{showAll=!showAll;e.target.innerText=showAll?'Show Less':'Show More';let act=document.querySelector('.tab.aktif').dataset.f;let list=act=='semua'?GAMES:GAMES.filter(x=>x.t==act);render('grid2',showAll?list:list.slice(0,6))};
+document.getElementById('btnTheme').onclick=()=>{
+  document.body.classList.toggle('light');
+  document.getElementById('btnTheme').innerText=document.body.classList.contains('light')?'🌙':'☀️';
+};
+document.getElementById('cari').oninput=e=>{
+  let v=e.target.value.toLowerCase();
+  let f=GAMES.filter(x=>x.name.toLowerCase().includes(v));
+  render('grid1',f);render('grid2',f.slice(0,6))
+};
+document.querySelectorAll('.tab').forEach(t=>{
+  t.onclick=()=>{
+    document.querySelectorAll('.tab').forEach(x=>x.classList.remove('aktif'));t.classList.add('aktif');
+    let fil=t.dataset.f;let list=fil=='semua'?GAMES:GAMES.filter(x=>x.t==fil);
+    render('grid2',showAll?list:list.slice(0,6))
+  }
+});
+document.getElementById('btnMore').onclick=e=>{
+  showAll=!showAll;e.target.innerText=showAll?'Show Less':'Show More';
+  let act=document.querySelector('.tab.aktif').dataset.f;
+  let list=act=='semua'?GAMES:GAMES.filter(x=>x.t==act);
+  render('grid2',showAll?list:list.slice(0,6))
+};
 </script>
 </body>
 </html>
