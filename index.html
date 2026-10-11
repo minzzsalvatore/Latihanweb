@@ -55,4 +55,88 @@
 <nav class="bottom"><div class="b-item on">⌂<br>Home</div><div class="b-item">🛒<br>Marketplace</div><div class="b-item">🎮<br>Joki</div><div class="b-item">👤<br>Sign In</div></nav>
 <script src="app.js"></script>
 </body>
-                                                                                                                                                                         </html>
+     <!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MILO GAMING STORE</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
+body{background:#f4f5f7;padding-bottom:80px}
+.top{background:#fff;display:flex;justify-content:space-between;align-items:center;padding:10px 14px;position:sticky;top:0;z-index:99;border-bottom:1px solid #eee}
+.logo{background:#111;color:#ffcc00;font-weight:900;font-size:11px;padding:6px 9px;border-radius:8px;line-height:1.1}
+.right{display:flex;gap:8px;align-items:center}
+.c{width:32px;height:32px;background:#f1f1f1;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px}
+.sign{border:1px solid #ddd;border-radius:20px;padding:6px 12px;font-size:12px;font-weight:700;display:flex;gap:5px;align-items:center;background:#fff}
+.banner{margin:12px;border-radius:18px;overflow:hidden}
+.banner img{width:100%;display:block}
+.sec{padding:14px}
+.sec h2{font-size:18px}
+.sub{font-size:12px;color:#777;margin:4px 0 12px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.card{background:#fff;border-radius:14px;padding:10px;display:flex;gap:10px;align-items:center;border:1px solid #eee}
+.card img{width:48px;height:48px;border-radius:10px;background:#000}
+.card b{font-size:12px}
+.card small{font-size:11px;color:#777}
+.tabs{display:flex;gap:8px;overflow:auto;padding:10px 14px}
+.tabs span{padding:8px 16px;border-radius:20px;background:#e9eef5;font-size:13px;font-weight:700;white-space:nowrap}
+.tabs .on{background:#ffaa00;color:#fff}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;padding:0 14px}
+.gbox img{width:100%;aspect-ratio:1/1;border-radius:12px;border:1px solid #eee;background:#fff}
+.gbox b{font-size:11px;display:block;margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gbox small{font-size:10px;color:#666}
+.joki{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 14px}
+.jb{background:#fff;border-radius:14px;padding:14px;text-align:center;border:1px solid #eee}
+.nav{position:fixed;bottom:10px;left:10px;right:10px;background:#fff;display:flex;justify-content:space-around;padding:10px 0;border-radius:22px;box-shadow:0 6px 24px rgba(0,0,0,.15);border:1px solid #eee}
+.nav div{text-align:center;font-size:10px;color:#888}
+.nav .on{color:#ff9900;background:#fff3e0;padding:4px 14px;border-radius:16px}
+.foot{background:#fff;padding:14px;margin-top:10px;font-size:11px;color:#666}
+</style>
+</head>
+<body>
+<div class="top">
+<div class="logo">MILO<br>GAMING<br>STORE</div>
+<div class="right"><div class="c">🔍</div><div class="c">🇲🇾</div><div class="c">🌙</div><div class="sign"><img src="https://www.google.com/favicon.ico" width="12">Sign In</div><div class="c">☰</div></div>
+</div>
+
+<div class="banner"><img src="https://i.ibb.co/3sY0G0y/milo-banner-yellow.png" onerror="this.src='https://via.placeholder.com/800x380/0a0f1c/ffcc00?text=SERVIS+YANG+KAMI+SEDIAKAN'"></div>
+
+<div class="sec">
+<h2>🔥 TRENDING</h2><div class="sub">Berikut adalah produk yang paling popular sekarang.</div>
+<div class="grid2" id="tr"></div>
+</div>
+
+<div class="tabs"><span>◀</span><span class="on">Games Mobile</span><span>Special Product (MI)</span><span>▶</span></div>
+<div class="grid3" id="gm"></div>
+
+<div class="sec"><h2 style="border-left:4px solid #ff9900;padding-left:8px">Marketplace</h2><div class="sub">Cari permainan kegemaran anda dan terokai semua akaun yang tersedia di sana.</div></div>
+<div class="grid2" style="padding:0 14px" id="mp"></div>
+
+<div class="sec"><h2 style="border-left:4px solid #ff9900;padding-left:8px">Pakej Joki</h2><div class="sub">Produk Joki Mobile Legends: Bang Bang</div></div>
+<div class="joki" id="jk"></div>
+
+<div class="foot">© 2026 MH ANUAR ENTERPRISE - Milo Gaming Store in your pocket<br><br>Bayaran: FPX | DuitNow QR | TNG eWallet</div>
+
+<div class="nav"><div class="on">🏠<br>Home</div><div>🛒<br>Marketplace</div><div>🎮<br>Joki</div><div>👤<br>Sign In</div></div>
+
+<script>
+const games=[
+{n:'Mobile Legends',d:'Moonton',i:'https://i.imgur.com/NpjeX2k.png'},
+{n:'Magic Chess: Go Go',d:'Vizta Games',i:'https://i.imgur.com/3Z7Qv7L.png'},
+{n:'Free Fire',d:'Garena',i:'https://i.imgur.com/Ql2zA1I.png'},
+{n:'PUBG Mobile',d:'Tencent Games',i:'https://i.imgur.com/5X2p6yA.png'},
+{n:'Valorant',d:'Riot Games',i:'https://i.imgur.com/Lk6QY5e.png'},
+{n:'Call of Duty: Mobile',d:'Activision',i:'https://i.imgur.com/Lk6QY5e.png'}
+];
+const market=[
+{n:'Mobile Legends: Bang Bang',p:'57 Product'},{n:'eFOOTBALL',p:'39 Product'},{n:'Free Fire (Indonesia)',p:'13 Product'},{n:'PUBG Mobile',p:'12 Product'},{n:'Valorant',p:'0 Product'},{n:'Clash Of Clan',p:'0 Product'}
+];
+const joki=['WARRIOR','ELITE','MASTER','GRANDMASTER','EPIC','LEGEND','MYTHIC','MYTHIC HONOR','MYTHIC GLORY','MYTHIC IMMORTAL'];
+document.getElementById('tr').innerHTML=games.map(g=>`<div class="card"><img src="${g.i}"><div><b>${g.n}</b><br><small>${g.d}</small></div></div>`).join('');
+document.getElementById('gm').innerHTML=games.map(g=>`<div class="gbox" onclick="window.open('https://wa.me/601143678316?text=Nak topup ${g.n}','_blank')"><img src="${g.i}"><b>${g.n}</b><small>${g.d}</small></div>`).join('');
+document.getElementById('mp').innerHTML=market.map(m=>`<div class="card" style="flex-direction:column;align-items:flex-start;background:linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.6)),url(https://picsum.photos/200/200?${m.n});background-size:cover;color:#fff;height:110px;justify-content:flex-end"><span style="background:#ffaa00;color:#000;font-size:10px;padding:2px 6px;border-radius:10px">#${Math.floor(Math.random()*9+1)}</span><b style="color:#fff;margin-top:20px">${m.n}</b><small style="color:#fff;background:rgba(0,0,0,.6);padding:2px 6px;border-radius:8px">${m.p}</small></div>`).join('');
+document.getElementById('jk').innerHTML=joki.map(r=>`<div class="jb" onclick="window.open('https://wa.me/601143678316?text=Nak Joki ${r}','_blank')"><div style="font-size:28px">🛡️</div><b style="font-size:10px;color:#888">${r}</b><div style="font-weight:900">RM 1.00</div><small>/Bintang</small></div>`).join('');
+</script>
+</body>
+</html>                                                                                                                                                                    </html>
