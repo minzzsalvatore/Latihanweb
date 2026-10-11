@@ -1,24 +1,87 @@
-const LOGO_URL = "https://i.ibb.co/khai-logo.png"; // <-- GANTI LOGO KAU SINI
-const BANNERS = ["https://i.ibb.co/banner1.jpg","https://i.ibb.co/banner2.jpg"];
-const WA = "601115852234";
-const games = [
-{name:"Mobile Legends MY",cat:"uid",img:"https://i.imgur.com/8QJ4sQW.jpeg",link:"product.html?game=mlmy"},
-{name:"Mobile Legends IN",cat:"other",img:"https://i.imgur.com/8QJ4sQW.jpeg",link:"product.html?game=mlid"},
-{name:"Mobile Legends Glo",cat:"other",img:"https://i.imgur.com/8QJ4sQW.jpeg",link:"product.html?game=mlglobal"},
-{name:"Free Fire IN",cat:"uid",img:"https://i.imgur.com/3Z1QZ1Q.jpeg",link:"product.html?game=ffid"},
-{name:"PUBG Mobile",cat:"uid",img:"https://i.imgur.com/Ql2zA1I.png",link:"product.html?game=pubg"},
-{name:"Free Fire MY/SG",cat:"uid",img:"https://i.imgur.com/3Z1QZ1Q.jpeg",link:"product.html?game=ffmy"},
-{name:"AFK Journey",cat:"other",img:"https://i.imgur.com/5X2p6yA.png",link:"product.html?game=afk"},
-{name:"Age of Empires",cat:"other",img:"https://i.imgur.com/5X2p6yA.png",link:"product.html?game=aoe"},
-{name:"Arena Breakout",cat:"uid",img:"https://i.imgur.com/5X2p6yA.png",link:"product.html?game=ab"},
+// === KAU UBAH LINK SINI JE ===
+const LOGO = "https://i.ibb.co/placeholder-logo.png"; // ganti link logo kau
+const BANNER = [
+"https://i.imgur.com/8QJ4sQW.jpeg",
+"https://i.imgur.com/3Z1QZ1Q.jpeg"
 ];
-function render(id,data){document.getElementById(id).innerHTML=data.map(g=>`<div class="card" onclick="location.href='${g.link}'"><img src="${g.img}"><div class="lb">${g.name}</div></div>`).join('')}
-document.getElementById('logo').src=LOGO_URL;document.getElementById('footLogo').src=LOGO_URL;
-document.getElementById('waFloat').href=`https://wa.me/${WA}`;document.getElementById('waSide').href=`https://wa.me/${WA}`;document.getElementById('waFoot').innerText=WA;document.getElementById('waNumberDrawer').innerText="🟢 "+WA;document.getElementById('waFoot').href=`https://wa.me/${WA}`;
-const bWrap=document.getElementById('banner');bWrap.innerHTML=BANNERS.map(u=>`<img src="${u}">`).join('');let i=0;setInterval(()=>{i=(i+1)%BANNERS.length;bWrap.style.transform=`translateX(-${i*100}%)`},3000);
-render('famous',games.slice(0,6));let showAll=false;render('all',games.slice(0,6));
-document.getElementById('openMenu').onclick=()=>document.getElementById('menuDrawer').classList.toggle('open');
-document.getElementById('themeBtn').onclick=()=>{document.body.classList.toggle('light');document.body.classList.toggle('dark');document.getElementById('themeBtn').innerText=document.body.classList.contains('light')?'🌙':'☀️'};
-document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));t.classList.add('active');const f=t.dataset.f;const fil=f==='all'?games:games.filter(g=>g.cat===f);render('all',showAll?fil:fil.slice(0,6))});
-document.getElementById('moreBtn').onclick=e=>{showAll=!showAll;e.target.innerText=showAll?'Show Less':'Show More';const act=document.querySelector('.tab.active').dataset.f;const fil=act==='all'?games:games.filter(g=>g.cat===act);render('all',showAll?fil:fil.slice(0,6))};
-setInterval(()=>{const g=games[Math.floor(Math.random()*games.length)];document.getElementById('tText').innerText=`0169****33 just topped up ${g.name} - 5x Weekly Diamond Pass`;document.getElementById('tImg').src=g.img;document.getElementById('toast').classList.add('show');setTimeout(()=>document.getElementById('toast').classList.remove('show'),4000)},8000);
+const NO_WA = "601115852234";
+// =============================
+
+const dataGame = [
+{name:"Mobile Legends MY",jenis:"uid",gambar:"https://i.imgur.com/8QJ4sQW.jpeg",link:"product.html?game=mlmy"},
+{name:"Mobile Legends ID",jenis:"other",gambar:"https://i.imgur.com/8QJ4sQW.jpeg",link:"product.html?game=mlid"},
+{name:"Mobile Legends Global",jenis:"other",gambar:"https://i.imgur.com/8QJ4sQW.jpeg",link:"product.html?game=mlglobal"},
+{name:"Free Fire IN",jenis:"uid",gambar:"https://i.imgur.com/3Z1QZ1Q.jpeg",link:"product.html?game=ffid"},
+{name:"PUBG Mobile",jenis:"uid",gambar:"https://i.imgur.com/Ql2zA1I.png",link:"product.html?game=pubg"},
+{name:"Free Fire MY/SG",jenis:"uid",gambar:"https://i.imgur.com/3Z1QZ1Q.jpeg",link:"product.html?game=ffmy"},
+{name:"AFK Journey",jenis:"other",gambar:"https://i.imgur.com/5X2p6yA.png",link:"product.html?game=afk"},
+{name:"Age of Empires",jenis:"other",gambar:"https://i.imgur.com/5X2p6yA.png",link:"product.html?game=aoe"},
+{name:"Arena Breakout",jenis:"uid",gambar:"https://i.imgur.com/5X2p6yA.png",link:"product.html?game=arena"},
+];
+
+let tunjukSemua = false;
+
+function papar(id, senarai){
+document.getElementById(id).innerHTML = senarai.map(g=>`
+<div class="card" onclick="location.href='${g.link}'">
+<img src="${g.gambar}"><div class="lb">${g.name}</div>
+</div>`).join('');
+}
+
+function mula(){
+document.getElementById('logoTop').src = LOGO;
+document.getElementById('logoFoot').src = LOGO;
+document.getElementById('waFloat').href = `https://wa.me/${NO_WA}`;
+document.getElementById('waSide').href = `https://wa.me/${NO_WA}`;
+document.getElementById('waFoot').innerText = "🟢 " + NO_WA;
+document.getElementById('waFoot').href = `https://wa.me/${NO_WA}`;
+
+const track = document.getElementById('bannerTrack');
+track.innerHTML = BANNER.map(b=>`<img src="${b}">`).join('');
+let index = 0;
+setInterval(()=>{
+index = (index+1) % BANNER.length;
+track.style.transform = `translateX(-${index*100}%)`;
+},3000);
+
+papar('gridFamous', dataGame.slice(0,6));
+papar('gridAll', dataGame.slice(0,6));
+
+document.getElementById('btnMenu').onclick = ()=> document.getElementById('drawer').classList.toggle('open');
+document.getElementById('btnTheme').onclick = ()=>{
+document.body.classList.toggle('light');
+document.body.classList.toggle('dark');
+document.getElementById('btnTheme').innerText = document.body.classList.contains('light') ? '🌙' : '☀️';
+};
+document.querySelectorAll('.tab').forEach(tab=>{
+tab.onclick = ()=>{
+document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+tab.classList.add('active');
+let tapis = tab.dataset.k === 'semua' ? dataGame : dataGame.filter(g=>g.jenis===tab.dataset.k);
+papar('gridAll', tunjukSemua ? tapis : tapis.slice(0,6));
+};
+});
+document.getElementById('btnMore').onclick = (e)=>{
+tunjukSemua = !tunjukSemua;
+e.target.innerText = tunjukSemua ? 'Show Less' : 'Show More';
+let aktif = document.querySelector('.tab.active').dataset.k;
+let tapis = aktif === 'semua' ? dataGame : dataGame.filter(g=>g.jenis===aktif);
+papar('gridAll', tunjukSemua ? tapis : tapis.slice(0,6));
+};
+document.getElementById('inputSearch').oninput = (e)=>{
+let cari = e.target.value.toLowerCase();
+let hasil = dataGame.filter(g=>g.name.toLowerCase().includes(cari));
+papar('gridFamous', hasil);
+papar('gridAll', hasil.slice(0,6));
+};
+
+// toast jualan
+setInterval(()=>{
+let g = dataGame[Math.floor(Math.random()*dataGame.length)];
+document.getElementById('toastText').innerText = `0169****33 baru topup ${g.name} - 5x Weekly Diamond Pass`;
+document.getElementById('toastImg').src = g.gambar;
+document.getElementById('toast').classList.add('show');
+setTimeout(()=>document.getElementById('toast').classList.remove('show'),4000);
+},8000);
+}
+mula();
