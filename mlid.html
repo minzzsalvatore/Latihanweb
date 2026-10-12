@@ -1,628 +1,152 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Milo Gaming Store - Topup Game</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --bg-dark: #0f172a;
-            --card-bg: #1e293b;
-            --input-bg: #0f172a;
-            --primary-blue: #2563eb;
-            --primary-blue-hover: #1d4ed8;
-            --accent-blue: #38bdf8;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --border-color: #334155;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            padding-bottom: 100px;
-        }
-
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 15px;
-        }
-
-        /* Banner Header */
-        .banner {
-            width: 100%;
-            border-radius: 12px;
-            overflow: hidden;
-            background: linear-gradient(135deg, #1e3a8a, #0284c7);
-            padding: 20px;
-            text-align: center;
-            margin-bottom: 15px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        .banner h2 {
-            color: #fff;
-            font-size: 22px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 5px;
-        }
-
-        .banner p {
-            color: var(--accent-blue);
-            font-size: 13px;
-            font-weight: 600;
-        }
-
-        /* Card MLBB Title */
-        .game-header {
-            background-color: var(--card-bg);
-            border-radius: 12px;
-            padding: 15px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 15px;
-            border: 1px solid var(--border-color);
-        }
-
-        .game-header img {
-            width: 60px;
-            height: 60px;
-            border-radius: 10px;
-            object-fit: cover;
-        }
-
-        .game-title h3 {
-            font-size: 18px;
-            margin-bottom: 4px;
-        }
-
-        .badge-secure {
-            background-color: rgba(37, 99, 235, 0.2);
-            color: var(--accent-blue);
-            padding: 3px 8px;
-            border-radius: 6px;
-            font-size: 11px;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        /* Section Block */
-        .section-card {
-            background-color: var(--card-bg);
-            border-radius: 12px;
-            padding: 18px;
-            margin-bottom: 15px;
-            border: 1px solid var(--border-color);
-        }
-
-        .section-title {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 15px;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-
-        .step-number {
-            background-color: var(--primary-blue);
-            color: white;
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            font-weight: bold;
-        }
-
-        /* Form Controls */
-        .form-group {
-            margin-bottom: 12px;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 12px;
-            color: var(--text-muted);
-            margin-bottom: 5px;
-        }
-
-        .form-row {
-            display: flex;
-            gap: 10px;
-        }
-
-        .form-row .form-group {
-            flex: 1;
-        }
-
-        input[type="text"], input[type="email"], input[type="number"] {
-            width: 100%;
-            padding: 12px;
-            background-color: var(--input-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            color: #fff;
-            font-size: 14px;
-            outline: none;
-            transition: 0.3s;
-        }
-
-        input:focus {
-            border-color: var(--primary-blue);
-            box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.3);
-        }
-
-        /* Category Tabs */
-        .tabs {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 15px;
-            overflow-x: auto;
-            padding-bottom: 5px;
-        }
-
-        .tab-btn {
-            background-color: var(--input-bg);
-            border: 1px solid var(--border-color);
-            color: var(--text-muted);
-            padding: 8px 14px;
-            border-radius: 20px;
-            font-size: 12px;
-            cursor: pointer;
-            white-space: nowrap;
-            transition: 0.3s;
-        }
-
-        .tab-btn.active {
-            background-color: var(--primary-blue);
-            color: #fff;
-            border-color: var(--primary-blue);
-        }
-
-        /* Grid Item Produk */
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-        }
-
-        .product-card {
-            background-color: var(--input-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            padding: 12px;
-            cursor: pointer;
-            position: relative;
-            transition: 0.3s;
-        }
-
-        .product-card:hover {
-            border-color: var(--accent-blue);
-        }
-
-        .product-card.selected {
-            border-color: var(--primary-blue);
-            background-color: rgba(37, 99, 235, 0.15);
-        }
-
-        .product-name {
-            font-size: 13px;
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-
-        .product-price {
-            font-size: 13px;
-            color: var(--accent-blue);
-            font-weight: bold;
-        }
-
-        .badge-instan {
-            display: inline-block;
-            font-size: 9px;
-            background-color: #1e293b;
-            color: #10b981;
-            padding: 2px 6px;
-            border-radius: 4px;
-            margin-top: 5px;
-            border: 1px solid #10b981;
-        }
-
-        /* Quantity Selector */
-        .qty-control {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .qty-btn {
-            background-color: var(--primary-blue);
-            color: white;
-            border: none;
-            width: 35px;
-            height: 35px;
-            border-radius: 8px;
-            font-size: 18px;
-            cursor: pointer;
-        }
-
-        .qty-input {
-            width: 60px !important;
-            text-align: center;
-        }
-
-        /* Payment Method Options */
-        .payment-option {
-            background-color: var(--input-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            padding: 12px;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .payment-option.selected {
-            border-color: var(--primary-blue);
-            background-color: rgba(37, 99, 235, 0.15);
-        }
-
-        .payment-info {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .payment-info i {
-            font-size: 20px;
-            color: var(--accent-blue);
-        }
-
-        .payment-name {
-            font-size: 14px;
-            font-weight: 600;
-        }
-
-        .payment-fee {
-            font-size: 11px;
-            color: var(--text-muted);
-        }
-
-        .badge-best {
-            background-color: #0284c7;
-            color: #fff;
-            font-size: 10px;
-            padding: 3px 8px;
-            border-radius: 12px;
-        }
-
-        /* Help Section Button */
-        .help-btn {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background-color: var(--input-bg);
-            border: 1px solid var(--border-color);
-            padding: 12px 15px;
-            border-radius: 8px;
-            color: var(--text-main);
-            text-decoration: none;
-            font-size: 14px;
-            transition: 0.3s;
-        }
-
-        .help-btn:hover {
-            border-color: var(--primary-blue);
-            color: var(--accent-blue);
-        }
-
-        /* Promo Box */
-        .promo-box {
-            display: flex;
-            gap: 10px;
-        }
-
-        .btn-apply {
-            background-color: var(--primary-blue);
-            color: white;
-            border: none;
-            padding: 0 18px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        /* Footer Sticky Bar */
-        .bottom-bar {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background-color: #0b1120;
-            border-top: 1px solid var(--border-color);
-            padding: 12px 15px;
-            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.5);
-            z-index: 100;
-        }
-
-        .bottom-bar-content {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .selected-item-text {
-            font-size: 12px;
-            color: var(--text-muted);
-            margin-bottom: 6px;
-            text-align: center;
-        }
-
-        .btn-order {
-            width: 100%;
-            background-color: var(--primary-blue);
-            color: white;
-            border: none;
-            padding: 14px;
-            border-radius: 8px;
-            font-size: 15px;
-            font-weight: bold;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            transition: 0.3s;
-        }
-
-        .btn-order:hover {
-            background-color: var(--primary-blue-hover);
-        }
-
-        /* Rating Stars */
-        .rating-box {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            background-color: var(--input-bg);
-            padding: 15px;
-            border-radius: 10px;
-        }
-
-        .score {
-            font-size: 32px;
-            font-weight: bold;
-            color: #f59e0b;
-        }
-
-        .stars {
-            color: #f59e0b;
-            font-size: 12px;
-        }
-
-        .footer-links {
-            text-align: center;
-            font-size: 12px;
-            color: var(--text-muted);
-            margin-top: 20px;
-            line-height: 1.8;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MOBILE LEGENDS INDONESIA - KYYSHINN STORE</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+:root{--bg:#080c14;--card:#121a2b;--card2:#0f192b;--biru:#1a5bff;--text:#fff;--kelabu:#7a8599;--garis:#1a253e;--hijau:#00e676}
+body.light{--bg:#f5f7fb;--card:#fff;--card2:#eef2f9;--text:#0e121a;--kelabu:#6b7280;--garis:#e5e7eb}
+body{background:var(--bg);color:var(--text);transition:.3s}
+.top{position:sticky;top:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--bg);border-bottom:1px solid var(--garis)}
+.logo{height:34px;border-radius:8px;background:#fff;padding:2px}.kanan{display:flex;gap:8px}
+.ikon{width:38px;height:38px;border-radius:12px;border:none;background:var(--card);color:var(--text);border:1px solid var(--garis);cursor:pointer}
+.drawer{position:fixed;top:54px;right:-100%;width:85%;height:100%;background:var(--card);z-index:200;padding:16px;transition:.35s;border-left:1px solid var(--garis);overflow-y:auto}.drawer.buka{right:0}
+.cari{display:flex;gap:8px;background:var(--bg);border:1px solid var(--garis);border-radius:12px;padding:12px;margin-bottom:12px}.cari input{flex:1;background:transparent;border:none;outline:none;color:var(--text)}
+.m{display:block;padding:14px;background:var(--bg);border-radius:12px;margin-bottom:8px;font-weight:700;font-size:12px;color:var(--kelabu);text-decoration:none}.m.aktif{background:#12295a;color:#3a7bff;border:1px solid #1a4fbf}
+.back{margin:12px 14px;background:var(--card);border:1px solid var(--garis);color:var(--text);padding:8px 14px;border-radius:20px;font-weight:700;font-size:12px;cursor:pointer}
+.wrap{margin:0 14px;background:var(--card);border-radius:22px;overflow:hidden;border:1px solid var(--garis)}
+.banner{height:200px;position:relative;background:var(--card2)}.banner img{width:100%;height:100%;object-fit:cover}
+.icon-kecik{position:absolute;right:14px;bottom:-28px;width:80px;height:80px;border-radius:16px;border:3px solid var(--card);overflow:hidden;background:var(--card)}.icon-kecik img{width:100%;height:100%;object-fit:cover}
+.info{padding:16px}.badge{display:inline-flex;border:1px solid var(--garis);background:var(--card2);padding:6px 12px;border-radius:20px;font-size:11px;color:var(--kelabu);margin-top:8px}
+.moonton{color:var(--biru);font-weight:800;font-size:11px;letter-spacing:1px;margin-top:10px;display:block}
+.how{border-top:1px solid var(--garis);margin-top:12px;padding-top:12px}.how-head{display:flex;justify-content:space-between;font-weight:800;font-size:12px;cursor:pointer}.how-body{display:none;font-size:11px;color:var(--kelabu);line-height:1.6;margin-top:10px}.how-body.show{display:block}
+.card{margin:14px;background:var(--card);border:1px solid var(--garis);border-radius:20px;padding:16px}.card-head{display:flex;align-items:center;gap:10px;margin-bottom:12px}.num{width:36px;height:36px;background:var(--biru);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff}
+.label{font-size:10px;color:var(--kelabu);font-weight:700;letter-spacing:.8px;margin-top:10px;display:block}.input{width:100%;background:var(--bg);border:1px solid var(--garis);border-radius:12px;padding:14px;color:var(--text);outline:none;margin-top:6px}
+.infobox{background:#15213c;border-radius:12px;padding:10px;font-size:11px;color:#6b9bff;margin-top:10px;display:flex;gap:8px;line-height:1.5}
+body.light .infobox{background:#dbe6ff}
+.tabs{display:flex;gap:8px;overflow:auto;padding-bottom:4px}.tab{padding:10px 16px;border-radius:20px;border:1px solid var(--garis);background:var(--bg);color:var(--kelabu);font-weight:700;font-size:11px;white-space:nowrap}.tab.on{background:var(--biru);color:#fff;border-color:var(--biru)}
+.nom-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}.nom{border:1px solid var(--garis);background:var(--bg);border-radius:14px;padding:12px;text-align:center;cursor:pointer}.nom.active{border-color:var(--biru);background:#102044}.nom b{font-size:11px;display:block;margin:6px 0 4px}.nom span{color:var(--biru);font-weight:800;font-size:11px}
+.pay{border:1px solid var(--garis);background:var(--bg);border-radius:14px;padding:12px;display:flex;justify-content:space-between;align-items:center;margin-top:10px;cursor:pointer}.pay.active{border-color:var(--biru);background:#102044}.pay img{height:36px;background:#fff;border-radius:8px;padding:3px;object-fit:contain}
+.summary{border:1px solid var(--garis);border-radius:18px;padding:14px;margin-top:12px;background:var(--bg)}.row{display:flex;justify-content:space-between;font-size:12px;margin:6px 0}.total{color:var(--biru);font-size:18px;font-weight:800}
+.checkout{width:100%;margin-top:14px;background:#1a253e;color:#5a6b8a;border:none;padding:14px;border-radius:14px;font-weight:800;cursor:pointer}.checkout.active{background:var(--biru);color:#fff}
+.bawah{border-top:1px solid var(--garis);padding:20px 14px;margin-top:24px;color:var(--kelabu);font-size:12px}.bawah b{color:var(--text);display:block;margin-bottom:8px;font-size:11px;letter-spacing:1px}.footgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}.footgrid a{display:block;margin:6px 0;color:var(--kelabu);text-decoration:none;font-size:12px}.hijau{color:var(--hijau)!important;font-weight:700}.copy{text-align:center;border-top:1px solid var(--garis);padding-top:12px;margin-top:12px;font-size:10px}
+.wa{position:fixed;bottom:16px;right:14px;width:54px;height:54px;background:#00d084;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;color:#fff;text-decoration:none;z-index:50}
+</style>
 </head>
 <body>
+<div class="top"><img id="logoTop" class="logo"><div class="kanan"><button class="ikon" id="btnTheme">☀️</button><button class="ikon" id="btnMenu">☰</button></div></div>
+<div id="drawer" class="drawer"><div class="cari">🔍 <input placeholder="Quick search..."></div><a class="m aktif" href="index.html">▦ HOME</a><a class="m" href="track.html">⌕ TRACK ORDER</a><a class="m" href="about.html">👤 ABOUT US</a><a class="m" href="privacy.html">🔒 PRIVACY POLICY</a><a class="m" href="terms.html">📄 TERMS</a><div style="background:var(--bg);border:1px solid var(--garis);border-radius:12px;padding:12px;margin-top:16px"><p style="font-size:10px;color:var(--kelabu)">NEED HELP?</p><a id="waSide" href="#" style="color:#3a7bff;font-weight:700;text-decoration:none">WhatsApp CS →</a></div></div>
+<button class="back" onclick="location.href='index.html'">‹ BACK</button>
+<div class="wrap"><div class="banner"><img id="bannerGame"><div class="icon-kecik"><img id="iconGame"></div></div><div class="info"><h1>MOBILE LEGENDS<br>INDONESIA</h1><div class="badge" id="badgeInfo">☆ Loading...</div><span class="moonton">MOONTON</span><div class="how"><div class="how-head" id="howHead">HOW TO TOP UP <span id="arrow">⌄</span></div><div class="how-body" id="howBody"><p>1. Buka MLBB dan tap avatar untuk lihat ID & Zone.</p><p>2. Masukkan User ID & Server ID.</p><p>3. Pilih Diamond dan bayar via WhatsApp.</p></div></div></div></div>
 
-    <div class="container">
-        <div class="banner">
-            <h2>MILO GAMING STORE</h2>
-            <p>TOPUP GAME PALING LENGKAP</p>
-        </div>
+<div class="card"><div class="card-head"><div class="num">1</div><b>ACCOUNT DATA</b></div><span class="label">USER ID</span><input class="input" id="uid" placeholder="Contoh: 123456789"><span class="label">SERVER ID / ZONE ID</span><input class="input" id="sid" placeholder="Contoh: 1234"><div class="infobox">ⓘ Tap avatar kiri atas di dalam game untuk cek ID kamu.</div></div>
 
-        <div class="game-header">
-            <img src="https://via.placeholder.com/60/2563eb/ffffff?text=MLBB" alt="Mobile Legends">
-            <div class="game-title">
-                <h3>Mobile Legends: Bang Bang</h3>
-                <span class="badge-secure"><i class="fa-solid fa-shield-halved"></i> Secure Payment</span>
-            </div>
-        </div>
+<div class="card"><div class="card-head"><div class="num">2</div><b>SELECT NOMINAL</b></div><div class="tabs"><button class="tab on">🔥 ALL PRODUCTS</button></div><div id="loading" style="padding:16px;text-align:center;color:var(--kelabu);font-size:11px">Loading produk dari admin.html...</div><div id="nomGrid" class="nom-grid"></div></div>
 
-        <div class="section-card">
-            <div class="section-title">
-                <span class="step-number">1</span>
-                <span>Masukkan Data Akaun</span>
-            </div>
-            <div class="form-row">
-                <div class="form-group">
-                    <label>User ID</label>
-                    <input type="number" id="userId" placeholder="Masukkan User ID">
-                </div>
-                <div class="form-group">
-                    <label>Zone ID</label>
-                    <input type="number" id="zoneId" placeholder="Masukkan Zone ID">
-                </div>
-            </div>
-        </div>
+<div class="card"><div class="card-head"><div class="num">3</div><b>SELECT PAYMENT</b></div><span class="label">E-WALLET - MANUAL NO FEE</span>
+<div class="pay active" data-pay="dana"><div style="display:flex;gap:8px;align-items:center"><img id="iconDana"><div><b>DANA</b></div></div><b class="payPrice">RM 0.00</b></div>
+<div class="pay" data-pay="gopay"><div style="display:flex;gap:8px;align-items:center"><img id="iconGopay"><div><b>GoPay</b></div></div><b class="payPrice">RM 0.00</b></div>
+<div class="pay" data-pay="ovo"><div style="display:flex;gap:8px;align-items:center"><img id="iconOvo"><div><b>OVO</b></div></div><b class="payPrice">RM 0.00</b></div>
+</div>
 
-        <div class="section-card">
-            <div class="section-title">
-                <span class="step-number">2</span>
-                <span>Pilih Jumlah Items</span>
-            </div>
+<div class="card"><div class="card-head"><div class="num">4</div><b>CONFIRM ORDER</b></div><span class="label">WHATSAPP NUMBER *</span><input class="input" id="waNum" placeholder="62xxxxxxxxxx"><span class="label">EMAIL OPTIONAL</span><input class="input" id="email" placeholder="user@email.com"><div class="summary"><span class="label">ORDER SUMMARY</span><div style="display:flex;gap:10px;align-items:center;margin:12px 0"><img id="sumIcon" style="width:48px;height:48px;border-radius:10px;background:var(--bg)"><div><small style="color:var(--kelabu);font-size:10px">MOBILE LEGENDS INDONESIA</small><b id="sumNom" style="display:block;font-size:13px">Pilih Diamond</b><small id="sumPay" style="color:var(--kelabu);font-size:10px">Manual via WhatsApp</small></div></div><div style="border-top:1px solid var(--garis);margin-top:12px;padding-top:10px"><div class="row"><span>Product Price</span><span id="pPrice">RM 0.00</span></div><div class="row" style="border-top:1px solid var(--garis);padding-top:10px;margin-top:10px"><span>TOTAL PAYMENT (NO FEE)</span><span class="total" id="pTotal">RM 0.00</span></div></div></div><button class="checkout" id="btnCheck">🛒 CHECKOUT ORDER</button></div>
 
-            <div class="tabs">
-                <button class="tab-btn active" onclick="filterCategory('all')">Malaysia 🇲🇾</button>
-                <button class="tab-btn" onclick="filterCategory('all')">Indonesia 🇮🇩</button>
-                <button class="tab-btn" onclick="filterCategory('all')">Philippines 🇵🇭</button>
-                <button class="tab-btn" onclick="filterCategory('all')">Global 🌐</button>
-            </div>
+<div class="bawah"><img id="logoBawah" class="logo" style="margin-bottom:10px"><p>Automatic game top-up service 24/7. Fast, secure, and instant. Play without limits!</p><div class="footgrid"><div><b>SITE MAP</b><a href="index.html">Home</a><a href="track.html">Track Order</a><a href="mlid.html">MLBB ID</a><a href="service.html">Service List</a></div><div><b>SUPPORT</b><a href="about.html">About Us</a><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms</a></div></div><div><b>HELP CENTER</b><a id="waBawah" class="hijau" href="#"></a></div><div class="copy">© 2026 KYYSHINN STORE. ALL RIGHTS RESERVED.</div></div>
+<a id="waFloat" class="wa" href="#">💬</a>
 
-            <div class="product-grid">
-                <div class="product-card" onclick="selectProduct(this, 'First Recharge 100 Diamonds (50 + 50)', '3.99')">
-                    <div class="product-name">100 Diamonds (50 + 50)</div>
-                    <div class="product-price">RM 3.99</div>
-                    <span class="badge-instan"><i class="fa-solid fa-bolt"></i> INSTAN</span>
-                </div>
-                <div class="product-card" onclick="selectProduct(this, 'First Recharge 300 Diamonds (150 + 150)', '11.83')">
-                    <div class="product-name">300 Diamonds (150 + 150)</div>
-                    <div class="product-price">RM 11.83</div>
-                    <span class="badge-instan"><i class="fa-solid fa-bolt"></i> INSTAN</span>
-                </div>
-                <div class="product-card" onclick="selectProduct(this, 'First Recharge 500 Diamonds (250 + 250)', '19.68')">
-                    <div class="product-name">500 Diamonds (250 + 250)</div>
-                    <div class="product-price">RM 19.68</div>
-                    <span class="badge-instan"><i class="fa-solid fa-bolt"></i> INSTAN</span>
-                </div>
-                <div class="product-card" onclick="selectProduct(this, 'First Recharge 1000 Diamonds (500 + 500)', '40.07')">
-                    <div class="product-name">1000 Diamonds (500 + 500)</div>
-                    <div class="product-price">RM 40.07</div>
-                    <span class="badge-instan"><i class="fa-solid fa-bolt"></i> INSTAN</span>
-                </div>
-                <div class="product-card" onclick="selectProduct(this, 'One Time Weekly Diamond', '8.67')">
-                    <div class="product-name">Weekly Diamond Pass</div>
-                    <div class="product-price">RM 8.67</div>
-                    <span class="badge-instan"><i class="fa-solid fa-bolt"></i> INSTAN</span>
-                </div>
-                <div class="product-card" onclick="selectProduct(this, 'Twilight Pass', '43.57')">
-                    <div class="product-name">Twilight Pass</div>
-                    <div class="product-price">RM 43.57</div>
-                    <span class="badge-instan"><i class="fa-solid fa-bolt"></i> INSTAN</span>
-                </div>
-            </div>
-        </div>
+<script>
+const LOGO_URL="https://files.catbox.moe/w1h3iy.jpg";
+const BANNER_URL="https://files.catbox.moe/ysscnw.jpeg";
+const ICON_URL="https://files.catbox.moe/ihf5ja.webp";
+const WA="60109551965";
 
-        <div class="section-card">
-            <div class="section-title">
-                <span class="step-number">3</span>
-                <span>Masukkan Kuantiti Pembelian</span>
-            </div>
-            <div class="qty-control">
-                <button class="qty-btn" onclick="changeQty(-1)">-</button>
-                <input type="number" id="itemQty" class="qty-input" value="1" readonly>
-                <button class="qty-btn" onclick="changeQty(1)">+</button>
-            </div>
-        </div>
+const DANA_ICON="https://files.catbox.moe/8r2s2p.png";
+const GOPAY_ICON="https://files.catbox.moe/jtqz1u.png";
+const OVO_ICON="https://files.catbox.moe/142daj.jpeg";
 
-        <div class="section-card">
-            <div class="section-title">
-                <span class="step-number">4</span>
-                <span>Pilih Pembayaran</span>
-            </div>
+document.getElementById('logoTop').src=LOGO_URL;
+document.getElementById('logoBawah').src=LOGO_URL;
+document.getElementById('bannerGame').src=BANNER_URL;
+document.getElementById('iconGame').src=ICON_URL;
+document.getElementById('sumIcon').src=ICON_URL;
+document.getElementById('iconDana').src=DANA_ICON;
+document.getElementById('iconGopay').src=GOPAY_ICON;
+document.getElementById('iconOvo').src=OVO_ICON;
 
-            <div class="payment-option" onclick="selectPayment(this, 'MGS Wallet')">
-                <div class="payment-info">
-                    <i class="fa-solid fa-wallet"></i>
-                    <div>
-                        <div class="payment-name">MGS Wallet</div>
-                        <div class="payment-fee">Fee: Percuma</div>
-                    </div>
-                </div>
-                <span class="badge-best">Best Price</span>
-            </div>
+document.getElementById('waFloat').href="https://wa.me/"+WA;
+document.getElementById('waSide').href="https://wa.me/"+WA;
+document.getElementById('waBawah').href="https://wa.me/"+WA;
+document.getElementById('waBawah').innerText="🟢 "+WA;
 
-            <div class="payment-option" onclick="selectPayment(this, 'DuitNow QR')">
-                <div class="payment-info">
-                    <i class="fa-solid fa-qrcode"></i>
-                    <div>
-                        <div class="payment-name">DuitNow QR</div>
-                        <div class="payment-fee">Fee: 1.6%</div>
-                    </div>
-                </div>
-            </div>
+let DATA=[];let sel=null;let payMethod="DANA";
+function render(){
+  let g=document.getElementById('nomGrid');
+  g.innerHTML=DATA.map(it=>`<div class="nom" data-n="${it.n}" data-p="${it.p}"><div>💎</div><b>${it.n}</b><span>RM ${parseFloat(it.p).toFixed(2)}</span></div>`).join('');
+  g.querySelectorAll('.nom').forEach(el=>{
+    el.onclick=()=>{
+      g.querySelectorAll('.nom').forEach(x=>x.classList.remove('active'));
+      el.classList.add('active');
+      sel={n:el.dataset.n,p:parseFloat(el.dataset.p)};
+      document.getElementById('sumNom').innerText=sel.n;
+      document.getElementById('pPrice').innerText="RM "+sel.p.toFixed(2);
+      document.getElementById('pTotal').innerText="RM "+sel.p.toFixed(2);
+      document.querySelectorAll('.payPrice').forEach(x=>x.innerText="RM "+sel.p.toFixed(2));
+      document.getElementById('btnCheck').classList.add('active');
+    }
+  });
+}
+function load(){
+  let s=JSON.parse(localStorage.getItem('KYYSHINN_MLID')||localStorage.getItem('KHAI_MLBB')||'[]');
+  let ld=document.getElementById('loading');
+  if(s.length==0){
+    ld.innerText="❌ Belum ada produk MLID. Buka admin.html untuk tambah!";
+    document.getElementById('badgeInfo').innerText="☆ 0 produk";
+    return;
+  }
+  DATA=s.map(p=>({n:p.n,p:parseFloat(p.p)}));
+  ld.style.display='none';
+  document.getElementById('badgeInfo').innerText="☆ "+DATA.length+" produk • MLBB INDONESIA";
+  render();
+}
+load();
 
-            <div class="payment-option" onclick="selectPayment(this, 'FPX Online Banking')">
-                <div class="payment-info">
-                    <i class="fa-solid fa-building-columns"></i>
-                    <div>
-                        <div class="payment-name">FPX Online Banking</div>
-                        <div class="payment-fee">Fee: RM 1.00</div>
-                    </div>
-                </div>
-            </div>
-        </div>
+document.getElementById('howHead').onclick=()=>{
+  document.getElementById('howBody').classList.toggle('show');
+  document.getElementById('arrow').innerText=document.getElementById('howBody').classList.contains('show')?'⌃':'⌄'
+};
+document.getElementById('btnTheme').onclick=()=>{
+  document.body.classList.toggle('light');
+  localStorage.setItem('kyy_theme', document.body.classList.contains('light')?'light':'dark');
+  document.getElementById('btnTheme').innerText=document.body.classList.contains('light')?'🌙':'☀️';
+};
+(function(){let t=localStorage.getItem('kyy_theme')||'dark';if(t==='light'){document.body.classList.add('light');document.getElementById('btnTheme').innerText='🌙';}})();
+document.getElementById('btnMenu').onclick=()=>document.getElementById('drawer').classList.toggle('buka');
+document.querySelectorAll('.pay').forEach(p=>{
+  p.onclick=()=>{
+    document.querySelectorAll('.pay').forEach(x=>x.classList.remove('active'));
+    p.classList.add('active');
+    payMethod=p.querySelector('b').innerText;
+  }
+});
 
-        <div class="section-card">
-            <div class="section-title">
-                <span class="step-number">5</span>
-                <span>Maklumat Hubungan</span>
-            </div>
-            <div class="form-group">
-                <label>E-mel (pilihan)</label>
-                <input type="email" id="email" placeholder="nama@emel.com">
-            </div>
-            <div class="form-group">
-                <label>No. WhatsApp</label>
-                <input type="text" id="whatsapp" placeholder="Contoh: 60123456789">
-                <span style="font-size: 10px; color: var(--text-muted); display: block; margin-top: 4px;">**Nombor ini akan dihubungi jika ada masalah</span>
-            </div>
-        </div>
+document.getElementById('btnCheck').onclick=()=>{
+ let id=document.getElementById('uid').value.trim();
+ let server=document.getElementById('sid').value.trim();
+ let waNum=document.getElementById('waNum').value.trim();
+ let email=document.getElementById('email').value.trim();
+ if(!id || !server) return alert("Isi User ID & Zone ID");
+ if(!sel) return alert("Pilih diamond");
+ if(!waNum) return alert("Isi No WhatsApp");
 
-        <div class="section-card">
-            <div class="section-title">
-                <span class="step-number">6</span>
-                <span>Kod Promosi</span>
-            </div>
-            <div class="promo-box">
-                <input type="text" placeholder="Taip Kod Promosi Anda">
-                <button class="btn-apply">Guna</button>
-            </div>
-        </div>
+ let total=document.getElementById('pTotal').innerText;
 
-        <div class="section-card">
-            <div class="section-title">
-                <i class="fa-solid fa-circle-question" style="color: var(--accent-blue);"></i>
-                <span>Perlukan Bantuan?</span>
-            </div>
-            <a href="https://wa.me/60146166722?text=Halo%20admin,%20saya%20perlukan%20bantuan%20mengenai%20topup" target="_blank" class="help-btn">
-                <span>hubungi kami disini</span>
-                <i class="fa-solid fa-chevron-right"></i>
-            </a>
-        </div>
+ let pesan = `NEW ORDER - MLBB ID!%0A%0AID : ${id}%0AServer : ${server}%0ANominal : ${sel.n}%0APayment : ${payMethod}%0ATotal : ${total}%0ANO.Whatsap : ${waNum}%0AEmail : ${email || '-'}%0A%0APlease make the payment first; once done, the admin will process your order.`;
 
-        <div class="section-card">
-            <div class="section-title">
-                <i class="fa-solid fa-star" style="color: #f59e0b;"></i>
-                <span>Ulasan & Penilaian</span>
-            </div>
-            <div class="rating-box">
-                <div class="score">4.9</div>
-                <div>
-                    <div class="stars">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                    <p style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">Berdasarkan 74 ulasan pelanggan</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="footer-links">
-            <p>FPX | DuitNow QR</p>
-            <p style="margin-top: 10px;">&copy; 2026 Milo Gaming Store. All Rights Reserved.</p>
-        </div>
-
-    </div>
-
-    <div class="bottom-bar">
-        <div class="bottom-bar-content">
-            <div class="selected-item-text" id="selectedText">Tiada item produk dipilih.</div>
-            <button class="btn-order" onclick="processOrder()">
-                <i class="fa-solid fa-bag-shopping"></i> Pesan Sek
+ window.open("https://wa.me/"+WA+"?text="+pesan,"_blank");
+};
+</script>
+</body>
+                                                                                                                                                                                                                                                                                                                                                                     </html>
