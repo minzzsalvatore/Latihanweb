@@ -13,12 +13,12 @@ body{background:var(--bg);color:var(--text);transition:.3s}
 .top{position:sticky;top:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--bg);border-bottom:1px solid var(--garis)}
 .logo{height:34px;border-radius:8px;background:#fff;padding:2px}
 .kanan{display:flex;gap:8px}
-.ikon{width:38px;height:38px;border-radius:12px;border:none;background:var(--card);color:var(--text);border:1px solid var(--garis)}
-.drawer{position:fixed;top:54px;right:-100%;width:85%;height:100%;background:var(--card);z-index:200;padding:16px;transition:.35s;border-left:1px solid var(--garis)}
+.ikon{width:38px;height:38px;border-radius:12px;border:none;background:var(--card);color:var(--text);border:1px solid var(--garis);display:flex;align-items:center;justify-content:center}
+.drawer{position:fixed;top:54px;right:-100%;width:85%;height:100%;background:var(--card);z-index:200;padding:16px;transition:.35s;border-left:1px solid var(--garis);overflow-y:auto}
 .drawer.buka{right:0}
 .cari{display:flex;gap:8px;background:var(--bg);border:1px solid var(--garis);border-radius:12px;padding:12px;margin-bottom:12px}
 .cari input{flex:1;background:transparent;border:none;outline:none;color:var(--text)}
-.m{padding:14px;background:var(--bg);border-radius:12px;margin-bottom:8px;font-weight:700;font-size:12px;color:var(--kelabu)}
+.m{display:block;padding:14px;background:var(--bg);border-radius:12px;margin-bottom:8px;font-weight:700;font-size:12px;color:var(--kelabu);text-decoration:none}
 .m.aktif{background:#12295a;color:#3a7bff;border:1px solid #1a4fbf}
 .banner{margin:12px;border-radius:18px;height:165px;overflow:hidden;background:var(--card);position:relative}
 .track{display:flex;height:100%;transition:.5s}
@@ -59,7 +59,17 @@ body{background:var(--bg);color:var(--text);transition:.3s}
 
 <div id="drawer" class="drawer">
 <div class="cari">🔍 <input id="cari" placeholder="Quick search..."></div>
-<div class="m aktif">▦ HOME</div><div class="m">⌕ TRACK ORDER</div><div class="m">🧮 CALCULATOR</div><div class="m">📍 CHECK REGION</div>
+<a class="m aktif" href="index.html">▦ HOME</a>
+<a class="m" href="track.html">⌕ TRACK ORDER</a>
+<a class="m" href="calculator.html">🧮 CALCULATOR</a>
+<a class="m" href="check-region.html">📍 CHECK REGION</a>
+<a class="m" href="service.html">📋 SERVICE LIST</a>
+<a class="m" href="api.html">🔌 API DOCS</a>
+<div style="margin-top:18px;font-weight:700;font-size:12px;color:var(--text)">SUPPORT</div>
+<a class="m" href="about.html">👤 ABOUT US</a>
+<a class="m" href="privacy.html">🔒 PRIVACY POLICY</a>
+<a class="m" href="terms.html">📄 TERMS & CONDITIONS</a>
+<a class="m" href="contact.html">💬 CONTACT US</a>
 <div style="margin-top:16px;font-weight:700">🇬🇧 English</div>
 <div style="background:var(--bg);border:1px solid var(--garis);border-radius:12px;padding:12px;margin-top:16px"><p style="font-size:10px;color:var(--kelabu)">NEED HELP?</p><a id="waSide" href="#" style="color:#3a7bff;font-weight:700;text-decoration:none">WhatsApp CS →</a></div>
 </div>
@@ -83,24 +93,35 @@ body{background:var(--bg);color:var(--text);transition:.3s}
 <p>Automatic game top-up service 24/7. Fast, secure, and instant. Play without limits!</p>
 <div class="tiktok">♪</div>
 <div class="footgrid">
-<div><b>SITE MAP</b><a>Home</a><a>Track Order</a><a>Calculator</a><a>Check Region</a><a>Service List</a><a>API Documentation</a></div>
-<div><b>SUPPORT</b><span>No data yet</span></div>
+<div><b>SITE MAP</b>
+<a href="index.html">Home</a>
+<a href="track.html">Track Order</a>
+<a href="calculator.html">Calculator</a>
+<a href="check-region.html">Check Region</a>
+<a href="service.html">Service List</a>
+<a href="api.html">API Documentation</a>
+</div>
+<div><b>SUPPORT</b>
+<a href="about.html">About Us</a>
+<a href="privacy.html">Privacy Policy</a>
+<a href="terms.html">Terms & Conditions</a>
+<a href="contact.html">Contact Us</a>
+<a href="faq.html">FAQ</a>
+</div>
 </div>
 <div><b>HELP CENTER</b><a id="waBawah" class="hijau" href="#"></a></div>
-<div class="copy">© 2026 KHAI STORE. ALL RIGHTS RESERVED.</div>
+<div class="copy">© 2026 KYYSHINN STORE. ALL RIGHTS RESERVED.</div>
 </div>
 
 <a id="waFloat" class="wa" href="#">💬</a>
 
 <script>
-// ==== KAU GANTI LINK SINI JE ====
 const LOGO_URL = "https://files.catbox.moe/w1h3iy.jpg";
 const BANNER_URLS = [
   "https://files.catbox.moe/q9z6fj.jpg",
   "https://files.catbox.moe/u9uaib.jpg"
 ];
 const WA = "601115852234";
-// ===============================
 
 const GAMES=[
 {name:"Mobile Legends MY",t:"uid",img:"https://files.catbox.moe/ihf5ja.webp",link:"mlmy.html"},
@@ -114,7 +135,7 @@ const GAMES=[
 {name:"Genshin Impact",t:"other",img:"https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=300",link:"mlmy.html"}
 ];
 
-function render(id,list){document.getElementById(id).innerHTML=list.map(g=>`<div class="kad" onclick="location.href='${g.link}'"><img src="${g.img}" onerror="this.src='https://via.placeholder.com/300x400?text=${g.name}'"><b>${g.name}</b></div>`).join('')}
+function render(id,list){document.getElementById(id).innerHTML=list.map(g=>`<div class="kad" onclick="location.href='${g.link}'"><img src="${g.img}"><b>${g.name}</b></div>`).join('')}
 
 document.getElementById('logoTop').src=LOGO_URL;
 document.getElementById('logoBawah').src=LOGO_URL;
@@ -159,4 +180,4 @@ document.getElementById('btnMore').onclick=e=>{
 };
 </script>
 </body>
-  </html>
+</html>
