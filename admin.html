@@ -1,71 +1,96 @@
 <!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>SYNN ADMIN FINAL</title>
-<style>body{background:#0f172a;color:#fff;font-family:sans-serif;padding:14px}.card{background:#1e293b;padding:16px;border-radius:14px;max-width:500px;margin:auto}input,select{width:100%;padding:12px;margin:6px 0;border-radius:10px;border:1px solid #334155;background:#0f172a;color:#fff}button{padding:14px;border-radius:12px;border:none;font-weight:800;width:100%;margin-top:10px}.p{background:#7c3aed;color:#fff}.b{background:#2563eb;color:#fff}.log{background:#000;color:#0f0;font-size:11px;padding:10px;border-radius:8px;white-space:pre-wrap;margin-top:10px;max-height:180px;overflow:auto}.item{border:1px solid #334155;padding:10px;border-radius:10px;margin-bottom:8px;background:#0f172a;display:flex;justify-content:space-between;font-size:13px}</style>
+<title>SYNN FINAL V4</title>
+<style>body{background:#0f172a;color:#fff;font-family:sans-serif;padding:12px}.card{background:#1e293b;padding:16px;border-radius:14px;max-width:520px;margin:auto}input,select{width:100%;padding:12px;margin:6px 0;border-radius:10px;border:1px solid #334155;background:#0f172a;color:#fff}button{padding:14px;border-radius:12px;border:none;font-weight:800;width:100%;margin-top:8px}.p{background:#7c3aed;color:#fff}.b{background:#2563eb;color:#fff}.log{background:#000;color:#0f0;font-size:11px;padding:10px;border-radius:8px;white-space:pre-wrap;max-height:200px;overflow:auto;margin-top:10px}.item{border:1px solid #334155;padding:10px;border-radius:10px;margin-bottom:6px;background:#0f172a;display:flex;justify-content:space-between;font-size:13px;align-items:center}</style>
 </head><body>
 <div class="card">
-<h3>🔌 SYNNMLBB - FINAL FIX</h3>
+<h3>🔌 SYNN V4 - CONFIRM JADI</h3>
 <input id="apiKey" value="q3EdSMpHrXGrd6qzp3kh">
-<input id="endpoint" value="https://synnmlbb.com/api/products">
-<div style="display:flex;gap:8px"><div style="flex:1"><label>PROFIT %</label><input id="profit" value="25" type="number"></div><div style="flex:1"><label>TYPE</label><select id="type"><option value="percent">% Persen</option><option value="rupiah">Rp</option></select></div></div>
-<select id="target"><option value="MLID">MLID - Indonesia</option><option value="MLMY" selected>MLMY - Malaysia</option></select>
+<input id="ep" value="https://synnmlbb.com/api/products">
+<div style="display:flex;gap:8px"><input id="profit" value="25" type="number"><select id="type"><option value="percent">% Persen</option><option value="rupiah">Rp</option></select></div>
+<select id="target"><option>MLID</option><option selected>MLMY</option></select>
 <button class="p" onclick="sync()">🔄 SYNC PRODUK SYNNMLBB</button>
-<button class="b" onclick="save()">💾 SIMPAN</button>
-<div id="log" class="log">Tekan SYNC</div>
-<div id="list" style="margin-top:12px"></div>
+<button class="b" onclick="save()">💾 SIMPAN KE LOCALSTORAGE</button>
+<div id="log" class="log">Tekan SYNC dulu bos. Akan cuba 3 cara auto.</div>
+<div id="list"></div>
+<pre id="raw" style="background:#000;color:#888;font-size:10px;max-height:200px;overflow:auto;display:none"></pre>
 </div>
 <script>
 let all=[];
-function log(t){document.getElementById('log').innerText+="\n"+t}
+const logE=document.getElementById('log');
+function log(m){logE.innerText+="\n"+m; logE.scrollTop=logE.scrollHeight}
+async function tryFetch(url){
+  try{let r=await fetch(url); if(!r.ok) throw new Error(r.status); let t=await r.text(); return t;}catch(e){return null}
+}
 async function sync(){
  const key=document.getElementById('apiKey').value.trim();
- let ep=document.getElementById('endpoint').value.trim();
- if(!ep.includes('api_key')) ep=ep+"?api_key="+key;
- document.getElementById('log').innerText="Fetch: "+ep;
- try{
-  const res=await fetch(ep);
-  const txt=await res.text();
-  log("Status "+res.status+" len "+txt.length);
-  let j=JSON.parse(txt);
-  // SYNN format boleh jadi {data:[...]} atau {result:[...]} atau array terus
-  let prods=[];
-  if(Array.isArray(j)) prods=j;
-  else if(j.data && Array.isArray(j.data)) prods=j.data;
-  else if(j.data && typeof j.data==='object') prods=Object.values(j.data);
-  else if(j.products) prods=j.products;
-  else if(j.result) prods=j.result;
-  else prods=Object.values(j).filter(v=>typeof v==='object');
-
-  log("Raw keys: "+Object.keys(j).slice(0,5));
-  if(prods.length>0) log("Contoh produk pertama: "+JSON.stringify(prods[0]).slice(0,200));
-
-  all=prods;
-  log("✅ Jumpa "+prods.length+" produk");
-  render();
- }catch(e){ log("❌ "+e.message); }
+ const base=document.getElementById('ep').value.trim();
+ const direct=base+"?api_key="+key;
+ const proxies=[
+   direct,
+   "https://api.allorigins.win/raw?url="+encodeURIComponent(direct),
+   "https://corsproxy.io/?"+encodeURIComponent(direct)
+ ];
+ logE.innerText="Mulai sync...\nKey: "+key.slice(0,6)+"...";
+ let txt=null, used="";
+ for(let i=0;i<proxies.length;i++){
+   log("Coba "+(i+1)+": "+proxies[i].slice(0,70)+"...");
+   txt=await tryFetch(proxies[i]);
+   if(txt){ used=proxies[i]; log("✅ Berjaya method "+(i+1)+" len="+txt.length); break; }
+   else log("❌ Gagal method "+(i+1));
+ }
+ if(!txt){ log("❌ SEMUA GAGAL. Buka direct link ni di browser baru:\n"+direct+"\nKalau keluar JSON, screenshot bagi aku"); return; }
+ document.getElementById('raw').style.display='block';
+ document.getElementById('raw').innerText=txt.slice(0,2000);
+ let j;
+ try{j=JSON.parse(txt)}catch(e){try{j=JSON.parse(JSON.parse(txt))}catch(e2){log("❌ Bukan JSON: "+txt.slice(0,100)); return}}
+ let prods=[];
+ if(Array.isArray(j)) prods=j;
+ else if(j.data && Array.isArray(j.data)) prods=j.data;
+ else if(j.result && Array.isArray(j.result)) prods=j.result;
+ else if(j.products && Array.isArray(j.products)) prods=j.products;
+ else if(typeof j==='object'){
+   // SYNN kadang return object {id: {...}}
+   let vals=Object.values(j);
+   // filter yang ada price/name
+   let filtered=vals.filter(v=>v && typeof v==='object' && (v.price||v.name||v.product));
+   if(filtered.length>0) prods=filtered;
+   else if(j.data && typeof j.data==='object') prods=Object.values(j.data);
+   else prods=vals;
+ }
+ log("Total object dikesan: "+prods.length);
+ if(prods.length===0){ log("❌ 0 produk. Structure: "+Object.keys(j).join(',')); return;}
+ // kalau 1 item tapi item tu masih container besar
+ if(prods.length===1 && prods[0].data){ prods=prods[0].data; log("Unwrap lagi, jadi "+prods.length); }
+ all=prods;
+ render();
 }
 function render(){
  const list=document.getElementById('list'); list.innerHTML="";
  const profit=parseFloat(document.getElementById('profit').value)||25;
  const type=document.getElementById('type').value;
+ log("Render "+all.length+" produk, contoh keys: "+Object.keys(all[0]||{}).join(','));
  all.forEach((p,i)=>{
-  // SYNN field mapping - cuba semua kemungkinan
-  const name=p.product || p.name || p.product_name || p.title || p.label || ("Produk "+i);
-  const rawPrice=p.price || p.cost || p.base_price || p.modal || p.harga || 0;
-  const base=parseFloat(String(rawPrice).replace(/[^0-9.]/g,''))||0;
-  let sell=base;
-  if(type==='percent') sell=base + base*profit/100;
-  else sell=base + profit;
+  const name=p.product_name||p.product||p.name||p.title||p.label||("Item "+i);
+  let raw=p.price||p.cost||p.modal||p.harga||p.base_price||0;
+  let base=parseFloat(String(raw).toString().replace(/[^0-9.]/g,''))||0;
+  if(base===0 && p.prices && typeof p.prices==='object'){ // kadang price dalam object
+    let v=Object.values(p.prices)[0]; base=parseFloat(v)||0;
+  }
+  let sell= type==='percent'? base + base*profit/100 : base+profit;
   const div=document.createElement('div');
   div.className='item';
-  div.innerHTML=`<label><input type="checkbox" checked data-i="${i}"> ${name}<br><small style="color:#94a3b8">Modal: ${base}</small></label><span style="color:#22c55e;font-weight:700">RM ${sell.toFixed(2)}</span>`;
+  div.innerHTML=`<label style="flex:1"><input type="checkbox" checked data-i="${i}"> ${name}<br><small style="color:#94a3b8">Modal ${base} -> Jual</small></label><b style="color:#22c55e">RM ${sell.toFixed(2)}</b>`;
   list.appendChild(div);
  });
+ log("✅ SIAP! Centang & tekan SIMPAN. Kalau masih RM0, screenshot log 'contoh keys' tu bagi aku");
 }
 function save(){
  const t=document.getElementById('target').value;
  const cbs=document.querySelectorAll('#list input:checked');
  let out=[]; cbs.forEach(cb=> out.push(all[parseInt(cb.dataset.i)]));
+ if(out.length===0){alert("Takde produk!"); return;}
  localStorage.setItem("products_"+t, JSON.stringify(out));
- alert("✅ Simpan "+out.length+" ke "+t+"! Buka mlmy.html cek");
+ alert("✅ Simpan "+out.length+" ke "+t);
+ log("💾 Saved key products_"+t+" total "+out.length);
 }
 </script></body></html>
