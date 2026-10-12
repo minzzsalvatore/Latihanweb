@@ -2,31 +2,48 @@
 <html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>ADMIN KYYSHINN STORE</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
-<style>*{box-sizing:border-box;font-family:'Poppins',sans-serif}body{background:#080c14;color:#fff;padding:14px;margin:0}.card{background:#121a2b;border:1px solid #1a253e;border-radius:16px;padding:16px;margin-bottom:12px}input,select{width:100%;padding:12px;border-radius:10px;border:1px solid #1a253e;background:#080c14;color:#fff;margin:6px 0;outline:none}button{width:100%;padding:13px;border-radius:10px;border:none;font-weight:800;cursor:pointer}.biru{background:#1a5bff;color:#fff}.hijau{background:#00e676;color:#000}.item{background:#0f192b;border:1px solid #1a253e;border-radius:10px;padding:10px;margin:6px 0;display:flex;justify-content:space-between;align-items:center;font-size:11px}.tabs{display:flex;gap:6px;overflow:auto;margin-bottom:12px}.tab{padding:8px 14px;border-radius:20px;border:1px solid #1a253e;background:#0f192b;color:#7a8599;font-size:11px;font-weight:700;white-space:nowrap;cursor:pointer}.tab.on{background:#1a5bff;color:#fff;border-color:#1a5bff}.badge{font-size:10px;padding:3px 8px;border-radius:6px;background:#12295a;color:#3a7bff;border:1px solid #1a4fbf}
+<style>*{box-sizing:border-box;font-family:'Poppins',sans-serif}body{background:#080c14;color:#fff;padding:14px;margin:0}.card{background:#121a2b;border:1px solid #1a253e;border-radius:16px;padding:16px;margin-bottom:12px}input,select{width:100%;padding:12px;border-radius:10px;border:1px solid #1a253e;background:#080c14;color:#fff;margin:6px 0;outline:none}button{width:100%;padding:13px;border-radius:10px;border:none;font-weight:800;cursor:pointer}.biru{background:#1a5bff;color:#fff}.hijau{background:#00e676;color:#000}.item{background:#0f192b;border:1px solid #1a253e;border-radius:10px;padding:10px;margin:6px 0;display:flex;justify-content:space-between;align-items:center;font-size:11px}.tabs{display:flex;gap:6px;overflow:auto;margin-bottom:12px}.tab{padding:8px 14px;border-radius:20px;border:1px solid #1a253e;background:#0f192b;color:#7a8599;font-size:11px;font-weight:700;white-space:nowrap;cursor:pointer}.tab.on{background:#1a5bff;color:#fff;border-color:#1a5bff}.badge{font-size:10px;padding:3px 8px;border-radius:6px;background:#12295a;color:#3a7bff;border:1px solid #1a4fbf}.preview{display:flex;gap:10px;margin-top:10px}.preview img{width:60px;height:60px;object-fit:cover;border-radius:10px;border:1px solid #1a253e;background:#fff}
+label{font-size:10px;color:#7a8599;font-weight:700;letter-spacing:1px}
 </style>
 </head><body>
 
 <div class="card">
-<h3 style="margin:0 0 10px">ADMIN KYYSHINN STORE</h3>
-<label style="font-size:10px;color:#7a8599">PILIH GAME / PRODUK</label>
+<h3 style="margin:0 0 10px">ADMIN KYYSHINN STORE - ALL IN ONE</h3>
+<label>PILIH GAME</label>
 <select id="game">
 <option value="KYYSHINN_MLID">🇮🇩 MLBB INDONESIA (mlid.html)</option>
-<option value="KHAI_MLBB">🇲🇾 MLBB MALAYSIA (mlmy.html) - lama</option>
-<option value="KYYSHINN_MLMY">🇲🇾 MLBB MALAYSIA NEW (mlmy.html)</option>
-<option value="KYYSHINN_FF">🔥 FREE FIRE (ff.html)</option>
-<option value="KYYSHINN_PUBG">🎯 PUBG MOBILE (pubg.html)</option>
-<option value="KYYSHINN_GI">⚡ GENSHIN IMPACT (genshin.html)</option>
-<option value="KYYSHINN_VAL">🎮 VALORANT (valorant.html)</option>
+<option value="KYYSHINN_MLMY">🇲🇾 MLBB MALAYSIA (mlmy.html)</option>
+<option value="KHAI_MLBB">🇲🇾 MLBB OLD KEY (mlmy.html lama)</option>
+<option value="KYYSHINN_FF">🔥 FREE FIRE</option>
+<option value="KYYSHINN_PUBG">🎯 PUBG MOBILE</option>
+<option value="KYYSHINN_GI">⚡ GENSHIN</option>
+<option value="KYYSHINN_VAL">🎮 VALORANT</option>
 </select>
 
-<input id="nama" placeholder="Contoh: 140 Diamonds / 100 Diamonds / 60 UC">
-<select id="kat"><option value="topup">TOP UP</option><option value="weekly">WEEKLY PASS</option><option value="pass">PASS / MEMBERSHIP</option><option value="other">OTHER</option></select>
-<input id="harga" type="number" step="0.01" placeholder="Harga Jual RM: 12.90">
-<button class="biru" onclick="add()">POST PRODUK</button>
+<div style="margin-top:14px;border-top:1px solid #1a253e;padding-top:14px">
+<label>🖼️ BANNER GAME (1920x600)</label>
+<input id="bannerUrl" placeholder="https://files.catbox.moe/xxxx.jpg">
+<label>🎮 ICON GAME KECIK (kotak)</label>
+<input id="iconUrl" placeholder="https://files.catbox.moe/xxxx.webp">
+<label>🏪 LOGO STORE (atas & bawah)</label>
+<input id="logoUrl" placeholder="https://files.catbox.moe/xxxx.jpg">
+<div class="preview">
+<img id="prevBanner"><img id="prevIcon"><img id="prevLogo">
+</div>
+<button class="biru" onclick="saveImages()" style="margin-top:10px">💾 SIMPAN BANNER/LOGO/ICON</button>
+<button style="background:#1a253e;color:#fff;margin-top:6px" onclick="resetImages()">RESET DEFAULT</button>
+</div>
 
+<div style="margin-top:14px;border-top:1px solid #1a253e;padding-top:14px">
+<label>📦 TAMBAH PRODUK</label>
+<input id="nama" placeholder="Contoh: 140 Diamonds">
+<select id="kat"><option value="topup">TOP UP</option><option value="weekly">WEEKLY PASS</option><option value="pass">PASS / MEMBERSHIP</option><option value="other">OTHER</option></select>
+<input id="harga" type="number" step="0.01" placeholder="Harga RM: 12.90">
+<button class="biru" onclick="add()">POST PRODUK</button>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px">
 <button class="hijau" onclick="openWeb()">LIHAT WEB</button>
-<button style="background:#1a253e;color:#fff" onclick="exportData()">EXPORT JSON</button>
+<button style="background:#1a253e;color:#fff" onclick="exportData()">EXPORT</button>
+</div>
 </div>
 </div>
 
@@ -34,62 +51,73 @@
 
 <div class="card"><b id="count">0 produk</b> <span class="badge" id="currentGame">-</span><div id="list" style="margin-top:10px"></div></div>
 
-<div class="card" style="font-size:11px;color:#7a8599;line-height:1.6">
-<b style="color:#fff">CARA PAKAI:</b><br>
-1. Pilih Game di atas<br>
-2. Isi Nama Produk + Harga RM<br>
-3. Klik POST<br>
-4. Produk auto masuk ke file game tersebut (mlid.html, mlmy.html, dll)<br>
-5. Tekan LIHAT WEB untuk test<br>
-<b style="color:#fff">KEY:</b> KYYSHINN_MLID = mlid.html, KYYSHINN_MLMY = mlmy.html, KHAI_MLBB = key lama
-</div>
-
 <script>
-const gameSelect = document.getElementById('game');
-const tabsEl = document.getElementById('tabs');
-
+const DEFAULTS = {
+  LOGO:"https://files.catbox.moe/w1h3iy.jpg",
+  BANNER:"https://files.catbox.moe/ysscnw.jpeg",
+  ICON:"https://files.catbox.moe/ihf5ja.webp"
+};
 const GAMES = [
- {key:'KYYSHINN_MLID', name:'MLID', flag:'🇮🇩'},
- {key:'KHAI_MLBB', name:'MLMY OLD', flag:'🇲🇾'},
- {key:'KYYSHINN_MLMY', name:'MLMY NEW', flag:'🇲🇾'},
- {key:'KYYSHINN_FF', name:'FF', flag:'🔥'},
- {key:'KYYSHINN_PUBG', name:'PUBG', flag:'🎯'},
- {key:'KYYSHINN_GI', name:'GI', flag:'⚡'},
- {key:'KYYSHINN_VAL', name:'VALO', flag:'🎮'},
+ {key:'KYYSHINN_MLID', name:'MLID', flag:'🇮🇩', file:'mlid.html'},
+ {key:'KYYSHINN_MLMY', name:'MLMY', flag:'🇲🇾', file:'mlmy.html'},
+ {key:'KHAI_MLBB', name:'OLD', flag:'🇲🇾', file:'mlmy.html'},
+ {key:'KYYSHINN_FF', name:'FF', flag:'🔥', file:'ff.html'},
+ {key:'KYYSHINN_PUBG', name:'PUBG', flag:'🎯', file:'pubg.html'},
+ {key:'KYYSHINN_GI', name:'GI', flag:'⚡', file:'genshin.html'},
+ {key:'KYYSHINN_VAL', name:'VALO', flag:'🎮', file:'valorant.html'},
 ];
 
-function getCurrentKey(){ return gameSelect.value; }
+const gameSelect=document.getElementById('game');
+
+function getKey(){return gameSelect.value}
+function imgKey(type){return getKey()+'_'+type} // _BANNER _ICON _LOGO
+
+function loadImages(){
+ let b=localStorage.getItem(imgKey('BANNER'))||DEFAULTS.BANNER;
+ let i=localStorage.getItem(imgKey('ICON'))||DEFAULTS.ICON;
+ let l=localStorage.getItem(imgKey('LOGO'))||DEFAULTS.LOGO;
+ document.getElementById('bannerUrl').value=localStorage.getItem(imgKey('BANNER'))||'';
+ document.getElementById('iconUrl').value=localStorage.getItem(imgKey('ICON'))||'';
+ document.getElementById('logoUrl').value=localStorage.getItem(imgKey('LOGO'))||'';
+ document.getElementById('prevBanner').src=b;
+ document.getElementById('prevIcon').src=i;
+ document.getElementById('prevLogo').src=l;
+}
+function saveImages(){
+ let b=document.getElementById('bannerUrl').value.trim();
+ let i=document.getElementById('iconUrl').value.trim();
+ let l=document.getElementById('logoUrl').value.trim();
+ if(b) localStorage.setItem(imgKey('BANNER'),b); else localStorage.removeItem(imgKey('BANNER'));
+ if(i) localStorage.setItem(imgKey('ICON'),i); else localStorage.removeItem(imgKey('ICON'));
+ if(l) localStorage.setItem(imgKey('LOGO'),l); else localStorage.removeItem(imgKey('LOGO'));
+ // sync logo global juga
+ if(l){ localStorage.setItem('KYYSHINN_GLOBAL_LOGO',l); }
+ alert('Berjaya simpan! Buka '+GAMES.find(g=>g.key===getKey()).file+' untuk lihat');
+ loadImages(); load();
+}
+function resetImages(){
+ localStorage.removeItem(imgKey('BANNER'));
+ localStorage.removeItem(imgKey('ICON'));
+ localStorage.removeItem(imgKey('LOGO'));
+ loadImages();
+ alert('Reset ke default');
+}
 
 function renderTabs(){
  let html='';
  GAMES.forEach(g=>{
-   let c = JSON.parse(localStorage.getItem(g.key)||'[]').length;
-   let active = g.key===getCurrentKey()? 'on' : '';
+   let c=JSON.parse(localStorage.getItem(g.key)||'[]').length;
+   let active=g.key===getKey()?'on':'';
    html+=`<div class="tab ${active}" onclick="setGame('${g.key}')">${g.flag} ${g.name} (${c})</div>`;
  });
- tabsEl.innerHTML=html;
+ document.getElementById('tabs').innerHTML=html;
 }
-
-function setGame(k){
- gameSelect.value=k;
- load();
-}
-
+function setGame(k){gameSelect.value=k; load(); loadImages();}
 function load(){
- let key = getCurrentKey();
+ let key=getKey();
  let d=JSON.parse(localStorage.getItem(key)||'[]');
  document.getElementById('count').innerText=d.length+' produk';
  document.getElementById('currentGame').innerText=key;
- let h='';
- // reverse biar latest di atas
- [...d].reverse().forEach((p,iReal)=>{
-   let i = d.length-1 - [...d].reverse().indexOf(p) - ([...d].reverse().slice(0).findIndex(x=>x===p) - [...d].reverse().indexOf(p));
-   // simpler: cari index original
-   let origIdx = d.findIndex((o, idx)=> o.n===p.n && o.p===p.p && idx>=0);
-   // pakai loop reverse index betul
-   h+=`<div class=item><div><b>${p.n}</b><br><span style="color:#7a8599">${p.kat||'topup'}</span> • <span class=badge>${key}</span><br><span style=color:#00e676>RM${parseFloat(p.p).toFixed(2)}</span></div><button onclick="del(${d.length-1 - d.slice().reverse().indexOf(p) - [...d].reverse().slice(0, [...d].reverse().indexOf(p)).filter(x=>x.n===p.n && x.p===p.p).length })" style="width:auto;background:red;color:#fff;padding:6px 10px;border-radius:8px;border:none">X</button></div>`;
- });
- // rebuild dengan index benar
  let h2='';
  d.forEach((p,i)=>{
    h2+=`<div class=item><div><b>${p.n}</b><br>${p.kat}<br><span style=color:#00e676>RM${parseFloat(p.p).toFixed(2)}</span></div><button onclick="del(${i})" style="width:auto;background:red;color:#fff;padding:6px 10px;border-radius:8px;border:none">X</button></div>`;
@@ -97,61 +125,47 @@ function load(){
  document.getElementById('list').innerHTML=h2;
  renderTabs();
 }
-
 function add(){
  let n=document.getElementById('nama').value.trim();
  let h=parseFloat(document.getElementById('harga').value);
  let kat=document.getElementById('kat').value;
- let key=getCurrentKey();
+ let key=getKey();
  if(!n||!h) return alert('isi nama & harga');
  let d=JSON.parse(localStorage.getItem(key)||'[]');
  d.push({n:n,p:h,kat:kat});
  localStorage.setItem(key,JSON.stringify(d));
- // sync juga ke key lama kalau MLID biar support kedua
- if(key==='KYYSHINN_MLID'){
-   localStorage.setItem('KYYSHINN_MLID',JSON.stringify(d));
- }
- if(key==='KYYSHINN_MLMY'){
-   localStorage.setItem('KYYSHINN_MLMY',JSON.stringify(d));
-   localStorage.setItem('KHAI_MLBB',JSON.stringify(d)); // biar mlmy lama juga kebaca
- }
- document.getElementById('nama').value='';
- document.getElementById('harga').value='';
+ if(key==='KYYSHINN_MLMY'){ localStorage.setItem('KHAI_MLBB',JSON.stringify(d)); }
+ document.getElementById('nama').value=''; document.getElementById('harga').value='';
  load();
 }
-
 function del(i){
- let key=getCurrentKey();
+ let key=getKey();
  let d=JSON.parse(localStorage.getItem(key)||'[]');
  d.splice(i,1);
  localStorage.setItem(key,JSON.stringify(d));
  load();
 }
-
 function openWeb(){
- let key=getCurrentKey();
- let map={
-  'KYYSHINN_MLID':'mlid.html',
-  'KHAI_MLBB':'mlmy.html',
-  'KYYSHINN_MLMY':'mlmy.html',
-  'KYYSHINN_FF':'ff.html',
-  'KYYSHINN_PUBG':'pubg.html',
-  'KYYSHINN_GI':'genshin.html',
-  'KYYSHINN_VAL':'valorant.html'
- };
- location.href=map[key]||'index.html';
+ let map={'KYYSHINN_MLID':'mlid.html','KYYSHINN_MLMY':'mlmy.html','KHAI_MLBB':'mlmy.html','KYYSHINN_FF':'ff.html','KYYSHINN_PUBG':'pubg.html','KYYSHINN_GI':'genshin.html','KYYSHINN_VAL':'valorant.html'};
+ location.href=map[getKey()]||'index.html';
 }
-
 function exportData(){
- let key=getCurrentKey();
+ let key=getKey();
  let d=localStorage.getItem(key)||'[]';
  let blob=new Blob([d],{type:'application/json'});
  let url=URL.createObjectURL(blob);
- let a=document.createElement('a');
- a.href=url; a.download=key+'.json'; a.click();
+ let a=document.createElement('a'); a.href=url; a.download=key+'.json'; a.click();
 }
+gameSelect.onchange=()=>{load(); loadImages();}
+load(); loadImages();
 
-gameSelect.onchange=load;
-load();
+// live preview while typing
+['bannerUrl','iconUrl','logoUrl'].forEach(id=>{
+ document.getElementById(id).addEventListener('input',e=>{
+   if(id==='bannerUrl') document.getElementById('prevBanner').src=e.target.value||DEFAULTS.BANNER;
+   if(id==='iconUrl') document.getElementById('prevIcon').src=e.target.value||DEFAULTS.ICON;
+   if(id==='logoUrl') document.getElementById('prevLogo').src=e.target.value||DEFAULTS.LOGO;
+ })
+});
 </script>
 </body></html>
