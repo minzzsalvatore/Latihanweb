@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Track Order - KHAI STORE</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+:root{--bg:#0a0a0a;--card:#151515;--card2:#1a1a1a;--biru:#1a5bff;--text:#fff;--kelabu:#7a8599;--garis:#222}
+body{background:var(--bg);color:var(--text);min-height:100vh}
+.top{position:sticky;top:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--bg);border-bottom:1px solid var(--garis)}
+.logo{height:32px;border-radius:6px}
+.kanan{display:flex;gap:8px}
+.ikon{width:38px;height:38px;border-radius:12px;border:none;background:var(--card2);color:var(--text);display:flex;align-items:center;justify-content:center;font-size:18px;border:1px solid var(--garis)}
+.drawer{position:fixed;top:54px;right:-100%;width:85%;height:100%;background:var(--card);z-index:200;padding:16px;transition:.35s;border-left:1px solid var(--garis)}
+.drawer.buka{right:0}
+.m{padding:14px;background:var(--bg);border-radius:12px;margin-bottom:8px;font-weight:700;font-size:12px;color:var(--kelabu)}
+.m.aktif{background:#12295a;color:#3a7bff;border:1px solid #1a4fbf}
+.wrap{padding:20px 16px}
+.icon-search{width:80px;height:80px;background:#0f1a33;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:30px auto 16px;font-size:36px;color:var(--biru);border:1px solid #1a2a55}
+h1{text-align:center;font-size:28px;font-weight:800;letter-spacing:-1px}
+.sub{text-align:center;font-size:10px;letter-spacing:3px;color:var(--kelabu);margin-top:8px;font-weight:700;line-height:1.6}
+.card{background:var(--card);border:1px solid var(--garis);border-radius:24px;padding:18px;margin-top:24px}
+.label{display:flex;align-items:center;gap:8px;font-size:10px;letter-spacing:2px;color:var(--kelabu);font-weight:700;margin-bottom:12px}
+.input{width:100%;background:#0e0e0e;border:1.5px solid #2a2a2a;border-radius:16px;padding:16px;color:#fff;outline:none;font-weight:700;letter-spacing:1px;text-transform:uppercase}
+.input::placeholder{color:#555}
+.btn{width:100%;background:var(--biru);color:#fff;border:none;border-radius:16px;padding:16px;margin-top:16px;font-weight:800;letter-spacing:3px;font-size:12px}
+.card2{background:var(--card);border:1px solid var(--garis);border-radius:24px;padding:18px;margin-top:20px;overflow:hidden}
+.table-wrap{overflow-x:auto;margin-top:14px}
+table{width:100%;border-collapse:collapse;min-width:600px}
+th{font-size:10px;letter-spacing:2px;color:var(--kelabu);text-align:left;padding:10px 8px;border-bottom:1px solid var(--garis)}
+td{font-size:12px;padding:12px 8px;border-bottom:1px solid #1a1a1a;color:#ccc;white-space:nowrap}
+.footer{margin-top:30px;padding:24px 16px;border-top:1px solid var(--garis)}
+.footer .logo{margin-bottom:10px}
+.footer p{font-size:12px;color:var(--kelabu);line-height:1.6}
+.tiktok{width:38px;height:38px;background:var(--card2);border-radius:10px;display:flex;align-items:center;justify-content:center;margin:16px 0;border:1px solid var(--garis)}
+.footgrid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:20px}
+.footgrid b{font-size:13px;display:block;margin-bottom:12px}
+.footgrid a{font-size:12px;color:var(--kelabu);display:block;margin:8px 0;text-decoration:none}
+.hijau{color:#00e676!important;font-weight:700}
+.copy{text-align:center;font-size:9px;color:#444;letter-spacing:1px;margin-top:20px;border-top:1px solid var(--garis);padding-top:16px}
+</style>
+</head>
+<body>
+<div class="top">
+<img class="logo" src="https://i.ibb.co/pvLvXRq0/pvLvXRq0.jpg" onerror="this.src='https://files.catbox.moe/xxxx.png'">
+<div class="kanan">
+<button class="ikon" id="btnTheme">☀️</button>
+<button class="ikon">👤</button>
+<button class="ikon" id="btnMenu">☰</button>
+</div>
+</div>
+
+<div id="drawer" class="drawer">
+<div style="display:flex;gap:8px;background:var(--bg);border:1px solid var(--garis);border-radius:12px;padding:12px;margin-bottom:12px">🔍 <input style="flex:1;background:transparent;border:none;outline:none;color:var(--text)" placeholder="Quick search..."></div>
+<div class="m" onclick="location.href='index.html'">▦ HOME</div>
+<div class="m aktif">⌕ TRACK ORDER</div>
+<div class="m" onclick="location.href='calculator.html'">🧮 CALCULATOR</div>
+<div class="m" onclick="location.href='check-region.html'">📍 CHECK REGION</div>
+<div class="m">📋 SERVICE LIST</div>
+<div style="margin-top:16px;font-weight:700">🇬🇧 English</div>
+</div>
+
+<div class="wrap">
+<div class="icon-search">Q</div>
+<h1>TRACK ORDER</h1>
+<div class="sub">MONITOR YOUR GAME TOP-UP STATUS<br>AUTOMATICALLY 24/7.</div>
+
+<div class="card">
+<div class="label">📄 ENTER TRANSACTION ID</div>
+<input class="input" id="trxId" placeholder="INV1774XXXXXXXX">
+<button class="btn" id="btnCheck">CHECK ORDER</button>
+<div id="result" style="margin-top:16px;display:none"></div>
+</div>
+
+<div class="card2">
+<div class="label">📄 RECENT TRANSACTIONS</div>
+<div class="table-wrap">
+<table>
+<tr><th>INVOICE NO.</th><th>CATEGORY</th><th>SERVI</th></tr>
+<tr><td>INVXXXXX6A3</td><td>Mobile Legends Global</td><td>5x We</td></tr>
+<tr><td>INVXXXXX7DF</td><td>Mobile Legends Global</td><td>Weekl</td></tr>
+<tr><td>INVXXXXX3E3</td><td>Mobile Legends Malaysia</td><td>2143 I</td></tr>
+<tr><td>INVXXXXXEE6</td><td>Mobile Legends Malaysia</td><td>Weekl</td></tr>
+<tr><td>INVXXXXXFD3</td><td>Free Fire MY/SG</td><td>100 D</td></tr>
+<tr><td>INVXXXXX76A</td><td>Mobile Legends Malaysia</td><td>1192 I</td></tr>
+<tr><td>INVXXXXX159</td><td>Mobile Legends Malaysia</td><td>14 (13</td></tr>
+<tr><td>INVXXXXXCB2</td><td>Mobile Legends Malaysia</td><td>70 (64</td></tr>
+<tr><td>INVXXXXX1EA</td><td>Mobile Legends Malaysia</td><td>613 D</td></tr>
+<tr><td>INVXXXXX623</td><td>Free Fire MY/SG</td><td>200 D</td></tr>
+</table>
+</div>
+</div>
+</div>
+
+<div class="footer">
+<img class="logo" src="https://i.ibb.co/pvLvXRq0/pvLvXRq0.jpg" style="height:28px">
+<p>Automatic game top-up service 24/7. Fast, secure, and instant. Play without limits!</p>
+<div class="tiktok">♪</div>
+<div class="footgrid">
+<div><b>SITE MAP</b><a href="index.html">Home</a><a href="track-order.html">Track Order</a><a>Calculator</a><a>Check Region</a><a>Service List</a><a>API Documentation</a></div>
+<div><b>SUPPORT</b><a style="font-style:italic;font-size:11px">No data yet</a></div>
+</div>
+<div style="margin-top:20px"><b>HELP CENTER</b><br><a class="hijau" href="https://wa.me/601115852234">💬 601115852234</a></div>
+<div class="copy">© 2026 KHAII STORE. ALL RIGHTS RESERVED.</div>
+</div>
+
+<script>
+document.getElementById('btnMenu').onclick=()=>document.getElementById('drawer').classList.toggle('buka');
+document.getElementById('btnCheck').onclick=()=>{
+ let id=document.getElementById('trxId').value;
+ if(!id) return alert('Masukkan Invoice ID');
+ let res=document.getElementById('result');
+ res.style.display='block';
+ res.innerHTML='<div style="background:#0e1a33;border:1px solid #1a4fbf;border-radius:12px;padding:12px;font-size:12px">🔍 Checking <b>'+id+'</b>...<br><br>Order tidak ditemui di sistem manual. Sila WhatsApp admin dengan Invoice ID.</div>';
+ window.open('https://wa.me/601115852234?text=Check Order '+id,'_blank');
+}
+</script>
+</body>
+  </html>
