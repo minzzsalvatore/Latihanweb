@@ -3,48 +3,64 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Track Order - KHAI STORE</title>
+<title>TRACK ORDER - KYYSHINN STORE</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
-:root{--bg:#0a0a0a;--card:#151515;--card2:#1a1a1a;--biru:#1a5bff;--text:#fff;--kelabu:#7a8599;--garis:#222}
-body{background:var(--bg);color:var(--text);min-height:100vh}
-.top{position:sticky;top:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--bg);border-bottom:1px solid var(--garis)}
-.logo{height:32px;border-radius:6px}
+:root{--bg:#080c14;--card:#121a2b;--card2:#0f192b;--biru:#1a5bff;--text:#fff;--kelabu:#7a8599;--garis:#1a253e;--hijau:#00e676;--input:#080c14}
+body.light{--bg:#f5f7fb;--card:#ffffff;--card2:#eef2f9;--text:#0e121a;--kelabu:#6b7280;--garis:#e5e7eb;--input:#ffffff}
+body{background:var(--bg);color:var(--text);transition:.3s}
+.top{position:sticky;top:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--bg);border-bottom:1px solid var(--garis);transition:.3s}
+.logo{height:32px;border-radius:8px;background:#fff;padding:2px}
 .kanan{display:flex;gap:8px}
-.ikon{width:38px;height:38px;border-radius:12px;border:none;background:var(--card2);color:var(--text);display:flex;align-items:center;justify-content:center;font-size:18px;border:1px solid var(--garis)}
-.drawer{position:fixed;top:54px;right:-100%;width:85%;height:100%;background:var(--card);z-index:200;padding:16px;transition:.35s;border-left:1px solid var(--garis)}
+.ikon{width:38px;height:38px;border-radius:12px;border:none;background:var(--card);color:var(--text);border:1px solid var(--garis);display:flex;align-items:center;justify-content:center;font-size:18px;cursor:pointer;transition:.3s}
+.drawer{position:fixed;top:54px;right:-100%;width:85%;height:100%;background:var(--card);z-index:200;padding:16px;transition:.35s;border-left:1px solid var(--garis);overflow-y:auto}
 .drawer.buka{right:0}
-.m{padding:14px;background:var(--bg);border-radius:12px;margin-bottom:8px;font-weight:700;font-size:12px;color:var(--kelabu)}
+.cari{display:flex;gap:8px;background:var(--bg);border:1px solid var(--garis);border-radius:12px;padding:12px;margin-bottom:12px}
+.cari input{flex:1;background:transparent;border:none;outline:none;color:var(--text)}
+.m{display:block;padding:14px;background:var(--bg);border-radius:12px;margin-bottom:8px;font-weight:700;font-size:12px;color:var(--kelabu);text-decoration:none}
 .m.aktif{background:#12295a;color:#3a7bff;border:1px solid #1a4fbf}
-.wrap{padding:20px 16px}
-.icon-search{width:80px;height:80px;background:#0f1a33;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:30px auto 16px;font-size:36px;color:var(--biru);border:1px solid #1a2a55}
-h1{text-align:center;font-size:28px;font-weight:800;letter-spacing:-1px}
-.sub{text-align:center;font-size:10px;letter-spacing:3px;color:var(--kelabu);margin-top:8px;font-weight:700;line-height:1.6}
-.card{background:var(--card);border:1px solid var(--garis);border-radius:24px;padding:18px;margin-top:24px}
-.label{display:flex;align-items:center;gap:8px;font-size:10px;letter-spacing:2px;color:var(--kelabu);font-weight:700;margin-bottom:12px}
-.input{width:100%;background:#0e0e0e;border:1.5px solid #2a2a2a;border-radius:16px;padding:16px;color:#fff;outline:none;font-weight:700;letter-spacing:1px;text-transform:uppercase}
-.input::placeholder{color:#555}
-.btn{width:100%;background:var(--biru);color:#fff;border:none;border-radius:16px;padding:16px;margin-top:16px;font-weight:800;letter-spacing:3px;font-size:12px}
-.card2{background:var(--card);border:1px solid var(--garis);border-radius:24px;padding:18px;margin-top:20px;overflow:hidden}
-.table-wrap{overflow-x:auto;margin-top:14px}
-table{width:100%;border-collapse:collapse;min-width:600px}
-th{font-size:10px;letter-spacing:2px;color:var(--kelabu);text-align:left;padding:10px 8px;border-bottom:1px solid var(--garis)}
-td{font-size:12px;padding:12px 8px;border-bottom:1px solid #1a1a1a;color:#ccc;white-space:nowrap}
-.footer{margin-top:30px;padding:24px 16px;border-top:1px solid var(--garis)}
-.footer .logo{margin-bottom:10px}
-.footer p{font-size:12px;color:var(--kelabu);line-height:1.6}
-.tiktok{width:38px;height:38px;background:var(--card2);border-radius:10px;display:flex;align-items:center;justify-content:center;margin:16px 0;border:1px solid var(--garis)}
-.footgrid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:20px}
-.footgrid b{font-size:13px;display:block;margin-bottom:12px}
-.footgrid a{font-size:12px;color:var(--kelabu);display:block;margin:8px 0;text-decoration:none}
-.hijau{color:#00e676!important;font-weight:700}
-.copy{text-align:center;font-size:9px;color:#444;letter-spacing:1px;margin-top:20px;border-top:1px solid var(--garis);padding-top:16px}
+body.light .m.aktif{background:#dbe6ff;color:var(--biru)}
+.wrap{padding:20px 14px 0}
+.icon-q{width:96px;height:96px;background:#0f1a33;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:40px auto 18px;border:1px solid #1a2a55;box-shadow:0 0 30px rgba(26,91,255,.2)}
+body.light .icon-q{background:#dbe6ff;border-color:#a8c1ff}
+.icon-q svg{width:42px;height:42px;fill:var(--biru)}
+h1{text-align:center;font-size:32px;font-weight:800;letter-spacing:-1px}
+.sub{text-align:center;font-size:11px;letter-spacing:3px;color:var(--kelabu);margin-top:10px;font-weight:700;line-height:1.6}
+.card{background:var(--card);border:1px solid var(--garis);border-radius:28px;padding:22px;margin-top:28px;transition:.3s}
+.label{display:flex;align-items:center;gap:8px;font-size:10px;letter-spacing:2.5px;color:#4a6ab5;font-weight:800;margin-bottom:14px}
+body.light .label{color:var(--biru)}
+.input{width:100%;background:var(--input);border:1.5px solid var(--garis);border-radius:16px;padding:18px 16px;color:var(--text);outline:none;font-weight:700;letter-spacing:1px;font-size:14px;transition:.3s}
+.input::placeholder{color:#3a4a6a}
+body.light .input::placeholder{color:#9aa3b5}
+.input:focus{border-color:var(--biru)}
+.btn{width:100%;background:var(--biru);color:#fff;border:none;border-radius:16px;padding:18px;margin-top:18px;font-weight:800;letter-spacing:4px;font-size:13px;box-shadow:0 8px 20px rgba(26,91,255,.4);cursor:pointer}
+.card2{background:var(--card);border:1px solid var(--garis);border-radius:28px;padding:22px;margin-top:18px;overflow:hidden;transition:.3s}
+.table-scroll{overflow-x:auto;margin-top:14px;scrollbar-width:thin}
+table{width:100%;border-collapse:collapse;min-width:750px}
+th{font-size:10px;letter-spacing:2px;color:#4a5a7a;text-align:left;padding:14px 10px;border-bottom:1px solid var(--garis);font-weight:700}
+td{font-size:12px;padding:14px 10px;border-bottom:1px solid var(--garis);color:#8a9bb5;white-space:nowrap}
+body.light td{color:#4b5563}
+.badge{padding:6px 12px;border-radius:8px;font-size:10px;font-weight:800;letter-spacing:1px}
+.sukses{background:#0a2a1a;color:#00e676;border:1px solid #0e4a2a}
+body.light .sukses{background:#d1fae5;color:#065f46}
+.bawah{border-top:1px solid var(--garis);padding:24px 14px;margin-top:30px;color:var(--kelabu);font-size:12px;transition:.3s}
+.bawah b{color:var(--text);display:block;margin-bottom:10px;font-size:12px;letter-spacing:1px}
+.footgrid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:24px 0}
+.footgrid a{display:block;margin:10px 0;color:var(--kelabu);text-decoration:none;font-size:13px}
+.hijau{color:var(--hijau)!important;font-weight:700}
+body.light .hijau{color:#059669!important}
+.copy{text-align:center;border-top:1px solid var(--garis);padding-top:18px;margin-top:20px;font-size:10px;color:#3a4a6a;letter-spacing:1px}
+.wa{position:fixed;bottom:16px;right:14px;width:54px;height:54px;background:#00d084;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;color:#fff;text-decoration:none;z-index:50}
+.result{display:none;margin-top:18px;background:#0e1a33;border:1px solid #1a4fbf;border-radius:14px;padding:14px;font-size:12px;color:#8ab4ff}
+body.light .result{background:#dbe6ff;color:#1e40af}
+.tiktok{width:42px;height:42px;background:var(--card);border:1px solid var(--garis);border-radius:12px;display:flex;align-items:center;justify-content:center;margin:18px 0}
 </style>
 </head>
 <body>
+
 <div class="top">
-<img class="logo" src="https://i.ibb.co/pvLvXRq0/pvLvXRq0.jpg" onerror="this.src='https://files.catbox.moe/xxxx.png'">
+<img id="logoTop" class="logo" src="">
 <div class="kanan">
 <button class="ikon" id="btnTheme">☀️</button>
 <button class="ikon">👤</button>
@@ -53,17 +69,24 @@ td{font-size:12px;padding:12px 8px;border-bottom:1px solid #1a1a1a;color:#ccc;wh
 </div>
 
 <div id="drawer" class="drawer">
-<div style="display:flex;gap:8px;background:var(--bg);border:1px solid var(--garis);border-radius:12px;padding:12px;margin-bottom:12px">🔍 <input style="flex:1;background:transparent;border:none;outline:none;color:var(--text)" placeholder="Quick search..."></div>
-<div class="m" onclick="location.href='index.html'">▦ HOME</div>
-<div class="m aktif">⌕ TRACK ORDER</div>
-<div class="m" onclick="location.href='calculator.html'">🧮 CALCULATOR</div>
-<div class="m" onclick="location.href='check-region.html'">📍 CHECK REGION</div>
-<div class="m">📋 SERVICE LIST</div>
-<div style="margin-top:16px;font-weight:700">🇬🇧 English</div>
+<div class="cari">🔍 <input id="cari" placeholder="Quick search..."></div>
+<a class="m" href="index.html">▦ HOME</a>
+<a class="m aktif" href="track.html">⌕ TRACK ORDER</a>
+<a class="m" href="calculator.html">🧮 CALCULATOR</a>
+<a class="m" href="check-region.html">📍 CHECK REGION</a>
+<a class="m" href="service.html">📋 SERVICE LIST</a>
+<a class="m" href="api.html">🔌 API DOCS</a>
+<div style="margin-top:18px;font-weight:700;font-size:12px;color:var(--text)">SUPPORT</div>
+<a class="m" href="about.html">👤 ABOUT US</a>
+<a class="m" href="privacy.html">🔒 PRIVACY POLICY</a>
+<a class="m" href="terms.html">📄 TERMS & CONDITIONS</a>
+<a class="m" href="contact.html">💬 CONTACT US</a>
 </div>
 
 <div class="wrap">
-<div class="icon-search">Q</div>
+<div class="icon-q">
+<svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+</div>
 <h1>TRACK ORDER</h1>
 <div class="sub">MONITOR YOUR GAME TOP-UP STATUS<br>AUTOMATICALLY 24/7.</div>
 
@@ -71,51 +94,77 @@ td{font-size:12px;padding:12px 8px;border-bottom:1px solid #1a1a1a;color:#ccc;wh
 <div class="label">📄 ENTER TRANSACTION ID</div>
 <input class="input" id="trxId" placeholder="INV1774XXXXXXXX">
 <button class="btn" id="btnCheck">CHECK ORDER</button>
-<div id="result" style="margin-top:16px;display:none"></div>
+<div id="result" class="result"></div>
 </div>
 
 <div class="card2">
 <div class="label">📄 RECENT TRANSACTIONS</div>
-<div class="table-wrap">
+<div class="table-scroll">
 <table>
-<tr><th>INVOICE NO.</th><th>CATEGORY</th><th>SERVI</th></tr>
-<tr><td>INVXXXXX6A3</td><td>Mobile Legends Global</td><td>5x We</td></tr>
-<tr><td>INVXXXXX7DF</td><td>Mobile Legends Global</td><td>Weekl</td></tr>
-<tr><td>INVXXXXX3E3</td><td>Mobile Legends Malaysia</td><td>2143 I</td></tr>
-<tr><td>INVXXXXXEE6</td><td>Mobile Legends Malaysia</td><td>Weekl</td></tr>
-<tr><td>INVXXXXXFD3</td><td>Free Fire MY/SG</td><td>100 D</td></tr>
-<tr><td>INVXXXXX76A</td><td>Mobile Legends Malaysia</td><td>1192 I</td></tr>
-<tr><td>INVXXXXX159</td><td>Mobile Legends Malaysia</td><td>14 (13</td></tr>
-<tr><td>INVXXXXXCB2</td><td>Mobile Legends Malaysia</td><td>70 (64</td></tr>
-<tr><td>INVXXXXX1EA</td><td>Mobile Legends Malaysia</td><td>613 D</td></tr>
-<tr><td>INVXXXXX623</td><td>Free Fire MY/SG</td><td>200 D</td></tr>
+<thead><tr><th>INVOICE NO.</th><th>CATEGORY</th><th>SERVICE</th><th>DATE & TIME</th><th>STATUS</th></tr></thead>
+<tbody id="tbody">
+<tr><td>INVXXXXX6A3</td><td>Mobile Legends Global</td><td>5x Weekly Diamond Pass</td><td>2026-10-12 00:16:36</td><td><span class="badge sukses">SUCCESS</span></td></tr>
+<tr><td>INVXXXXX7DF</td><td>Mobile Legends Global</td><td>Weekly Diamond Pass</td><td>2026-10-11 22:42:20</td><td><span class="badge sukses">SUCCESS</span></td></tr>
+<tr><td>INVXXXXX3E3</td><td>Mobile Legends Malaysia</td><td>2143 Diamonds</td><td>2026-10-11 16:50:28</td><td><span class="badge sukses">SUCCESS</span></td></tr>
+<tr><td>INVXXXXXEE6</td><td>Mobile Legends Malaysia</td><td>Weekly Diamond Pass</td><td>2026-10-11 02:41:14</td><td><span class="badge sukses">SUCCESS</span></td></tr>
+<tr><td>INVXXXXXFD3</td><td>Free Fire MY/SG</td><td>100 Diamonds</td><td>2026-10-10 22:37:56</td><td><span class="badge sukses">SUCCESS</span></td></tr>
+<tr><td>INVXXXXX76A</td><td>Mobile Legends Malaysia</td><td>1192 Diamonds</td><td>2026-10-10 16:08:00</td><td><span class="badge sukses">SUCCESS</span></td></tr>
+<tr><td>INVXXXXX159</td><td>Mobile Legends Malaysia</td><td>14 Diamonds</td><td>2026-10-10 15:29:21</td><td><span class="badge sukses">SUCCESS</span></td></tr>
+<tr><td>INVXXXXXCB2</td><td>Mobile Legends Malaysia</td><td>70 Diamonds</td><td>2026-10-09 20:58:59</td><td><span class="badge sukses">SUCCESS</span></td></tr>
+<tr><td>INVXXXXX1EA</td><td>Mobile Legends Malaysia</td><td>613 Diamonds</td><td>2026-10-09 16:26:55</td><td><span class="badge sukses">SUCCESS</span></td></tr>
+<tr><td>INVXXXXX623</td><td>Free Fire MY/SG</td><td>200 Diamonds</td><td>2026-10-08 23:05:37</td><td><span class="badge sukses">SUCCESS</span></td></tr>
+</tbody>
 </table>
 </div>
 </div>
 </div>
 
-<div class="footer">
-<img class="logo" src="https://i.ibb.co/pvLvXRq0/pvLvXRq0.jpg" style="height:28px">
+<div class="bawah">
+<img id="logoBawah" class="logo" style="margin-bottom:10px;height:36px">
 <p>Automatic game top-up service 24/7. Fast, secure, and instant. Play without limits!</p>
 <div class="tiktok">♪</div>
 <div class="footgrid">
-<div><b>SITE MAP</b><a href="index.html">Home</a><a href="track-order.html">Track Order</a><a>Calculator</a><a>Check Region</a><a>Service List</a><a>API Documentation</a></div>
-<div><b>SUPPORT</b><a style="font-style:italic;font-size:11px">No data yet</a></div>
+<div><b>SITE MAP</b><a href="index.html">Home</a><a href="track.html">Track Order</a><a href="calculator.html">Calculator</a><a href="check-region.html">Check Region</a><a href="service.html">Service List</a><a href="api.html">API Documentation</a></div>
+<div><b>SUPPORT</b><a href="about.html">About Us</a><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms & Conditions</a><a href="contact.html">Contact Us</a></div>
 </div>
-<div style="margin-top:20px"><b>HELP CENTER</b><br><a class="hijau" href="https://wa.me/601115852234">💬 601115852234</a></div>
-<div class="copy">© 2026 KHAII STORE. ALL RIGHTS RESERVED.</div>
+<div><b>HELP CENTER</b><a id="waBawah" class="hijau" href="#"></a></div>
+<div class="copy">© 2026 KYYSHINN STORE. ALL RIGHTS RESERVED.</div>
 </div>
 
+<a id="waFloat" class="wa" href="#">💬</a>
+
 <script>
+const LOGO_URL="https://files.catbox.moe/w1h3iy.jpg";
+const WA="601115852234";
+document.getElementById('logoTop').src=LOGO_URL;
+document.getElementById('logoBawah').src=LOGO_URL;
+document.getElementById('waFloat').href="https://wa.me/"+WA;
+document.getElementById('waBawah').href="https://wa.me/"+WA;
+document.getElementById('waBawah').innerText="🟢 "+WA;
+
+// === FITUR HITAM PUTIH - SAVE AUTO ===
+const btnTheme=document.getElementById('btnTheme');
+function applyTheme(t){
+  if(t==='light'){document.body.classList.add('light');btnTheme.innerText='🌙';}
+  else{document.body.classList.remove('light');btnTheme.innerText='☀️';}
+}
+applyTheme(localStorage.getItem('kyy_theme')||'dark');
+btnTheme.onclick=()=>{
+  let isLight=document.body.classList.contains('light');
+  let next=isLight?'dark':'light';
+  applyTheme(next);
+  localStorage.setItem('kyy_theme',next);
+};
+
 document.getElementById('btnMenu').onclick=()=>document.getElementById('drawer').classList.toggle('buka');
 document.getElementById('btnCheck').onclick=()=>{
- let id=document.getElementById('trxId').value;
- if(!id) return alert('Masukkan Invoice ID');
- let res=document.getElementById('result');
- res.style.display='block';
- res.innerHTML='<div style="background:#0e1a33;border:1px solid #1a4fbf;border-radius:12px;padding:12px;font-size:12px">🔍 Checking <b>'+id+'</b>...<br><br>Order tidak ditemui di sistem manual. Sila WhatsApp admin dengan Invoice ID.</div>';
- window.open('https://wa.me/601115852234?text=Check Order '+id,'_blank');
-}
+  let id=document.getElementById('trxId').value.trim();
+  if(!id) return alert('Masukkan Transaction ID');
+  let r=document.getElementById('result');
+  r.style.display='block';
+  r.innerHTML=`🔍 Checking <b>${id}</b>...<br><br>❌ Order tidak ditemui. Sila WhatsApp admin.`;
+  window.open(`https://wa.me/${WA}?text=Hi%20KYYSHINN%20STORE%20check%20order%20${id}`,'_blank');
+};
 </script>
 </body>
-  </html>
+ </html>
