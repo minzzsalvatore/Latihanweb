@@ -1,127 +1,75 @@
 <!DOCTYPE html>
-<html lang="id">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SYNNMLBB Admin - Salvatore</title>
-<style>
-*{box-sizing:border-box;font-family:Inter,system-ui,sans-serif}
-body{margin:0;background:#0f172a;color:#e2e8f0;min-height:100vh;padding:16px}
-.card{background:#1e293b;border:1px solid #334155;border-radius:16px;padding:18px;max-width:480px;margin:0 auto 16px;box-shadow:0 10px 30px rgba(0,0,0,.3)}
-h2{margin:0 0 4px;display:flex;align-items:center;gap:8px;font-size:18px}
-.muted{color:#94a3b8;font-size:12px;word-break:break-all;margin-bottom:14px}
-label{font-size:11px;color:#facc15;font-weight:700;letter-spacing:.08em;display:flex;align-items:center;gap:6px;margin:12px 0 6px}
-input,select{width:100%;background:#0f172a;border:1px solid #334155;color:#fff;border-radius:10px;padding:12px 14px;font-size:14px;outline:none}
-input:focus,select:focus{border-color:#7c3aed}
-.row{display:flex;gap:10px;margin-top:12px}
-.row>div{flex:1}
-.btn{flex:1;border:none;border-radius:12px;padding:14px 10px;font-weight:800;font-size:13px;cursor:pointer;transition:.2s}
-.btn-purple{background:#7c3aed;color:#fff}
-.btn-blue{background:#2563eb;color:#fff}
-.btn:active{transform:scale(.97)}
-.products{background:#1e293b;border:1px solid #334155;border-radius:16px;max-width:480px;margin:0 auto;padding:14px}
-.prod{border:1px solid #334155;border-radius:10px;padding:10px;display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;background:#0f172a}
-.prod input{width:auto}
-.price{font-size:12px;color:#22c55e;font-weight:700}
-.log{background:#000;color:#22c55e;font-family:monospace;font-size:11px;padding:10px;border-radius:8px;white-space:pre-wrap;margin-top:10px;max-height:150px;overflow:auto;display:none}
-</style>
-</head>
-<body>
+<html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SYNN Fix</title>
+<style>body{background:#0f172a;color:#fff;font-family:sans-serif;padding:16px}.card{background:#1e293b;padding:16px;border-radius:14px;max-width:480px;margin:auto} input,select{width:100%;padding:12px;margin:6px 0;border-radius:10px;border:1px solid #334155;background:#0f172a;color:#fff} button{padding:14px;border-radius:12px;border:none;font-weight:800;width:100%;margin-top:10px}.p{background:#7c3aed;color:#fff}.b{background:#2563eb;color:#fff}.log{background:#000;color:#0f0;font-size:11px;padding:10px;border-radius:8px;white-space:pre-wrap;margin-top:10px;max-height:200px;overflow:auto}</style>
+</head><body>
 <div class="card">
-<h2>🔌 SYNNMLBB API CONNECTED</h2>
-<div class="muted">API: https://synnmlbb.com/api/v1/products<br>Key: q3Ed...3kh</div>
-<label>🔑 API KEY</label>
+<h3>🔌 SYNNMLBB FIX 403/405</h3>
 <input id="apiKey" value="q3EdSMpHrXGrd6qzp3kh">
-<label>🔵 ENDPOINT</label>
 <input id="endpoint" value="https://synnmlbb.com/api/v1/products">
-<div class="row">
-<div><label>💰 PROFIT %</label><input id="profit" type="number" value="25"></div>
-<div><label>TYPE</label><select id="type"><option value="percent">% Persen</option><option value="rupiah">Rp Rupiah</option></select></div>
+<div style="display:flex;gap:8px">
+<div style="flex:1"><label>PROFIT %</label><input id="profit" type="number" value="25"></div>
+<div style="flex:1"><label>TYPE</label><select id="type"><option value="percent">% Persen</option><option value="rupiah">Rp</option></select></div>
 </div>
-<label>PILIH GAME LOCAL UNTUK SIMPAN</label>
-<select id="gameTarget"><option value="MLID">🇮🇩 MLID - INDONESIA</option><option value="MLMY" selected>🇲🇾 MLMY - MALAYSIA</option></select>
-<div class="row" style="margin-top:16px">
-<button class="btn btn-purple" onclick="syncProducts()">🔄 SYNC PRODUK SYNNMLBB</button>
-<button class="btn btn-blue" onclick="saveSelected()">💾 SIMPAN</button>
-</div>
-<div id="log" class="log"></div>
-</div>
-<div class="products">
-<div style="font-size:12px;font-weight:800;color:#facc15;margin-bottom:10px">📦 PRODUK DARI SYNNMLBB (centang yang mau dijual)</div>
-<div id="productList">Tekan SYNC dulu bos</div>
+<select id="gameTarget"><option>MLID</option><option selected>MLMY</option></select>
+<button class="p" onclick="sync()">🔄 SYNC PRODUK SYNNMLBB</button>
+<button class="b" onclick="save()">💾 SIMPAN</button>
+<div id="log" class="log">Tekan SYNC dulu bos</div>
+<div id="list" style="margin-top:12px"></div>
 </div>
 <script>
-let allProducts = [];
-const logEl = document.getElementById('log');
-function log(t){ logEl.style.display='block'; logEl.textContent += t + "\n"; }
-async function syncProducts(){
- const apiKey = document.getElementById('apiKey').value.trim();
- const endpoint = document.getElementById('endpoint').value.trim();
- const list = document.getElementById('productList');
- list.innerHTML = "⏳ Sedang SYNC, tunggu bos...";
- logEl.textContent = ""; log("Mulai sync...");
- const urlsToTry = [
-   endpoint + "?api_key=" + apiKey,
-   "https://api.allorigins.win/raw?url=" + encodeURIComponent(endpoint + "?api_key=" + apiKey),
-   "https://corsproxy.io/?" + encodeURIComponent(endpoint + "?api_key=" + apiKey)
+let all=[];
+function log(m){document.getElementById('log').innerText+="\n"+m}
+async function sync(){
+ const key=document.getElementById('apiKey').value.trim();
+ const ep=document.getElementById('endpoint').value.trim();
+ document.getElementById('list').innerHTML="⏳ Sync...";
+ document.getElementById('log').innerText="Mulai sync...\nEndpoint: "+ep;
+ // kaedah yang betul untuk SYNN
+ const tries=[
+  {url:ep, opt:{method:'GET', headers:{'X-API-KEY':key,'api-key':key,'Authorization':'Bearer '+key}}},
+  {url:ep, opt:{method:'POST', headers:{'Content-Type':'application/json','X-API-KEY':key}, body:JSON.stringify({api_key:key})}},
+  {url:ep+"?api_key="+key, opt:{method:'GET'}},
+  {url:"https://synnmlbb.com/api/products?api_key="+key, opt:{method:'GET'}}
  ];
- let data = null; let lastError = "";
- for(let i=0;i<urlsToTry.length;i++){
-   const url = urlsToTry[i];
-   log("Coba metode " + (i+1) + "...");
-   try{
-     const res = await fetch(url);
-     if(!res.ok) throw new Error("HTTP " + res.status);
-     const text = await res.text();
-     try{ data = JSON.parse(text); log("✅ Berjaya method " + (i+1)); break; }
-     catch(e){ data = JSON.parse(JSON.parse(text)); break; }
-   }catch(e){ lastError = e.message; log("❌ Gagal " + (i+1) + ": " + e.message); }
+ let data=null;
+ for(let i=0;i<tries.length;i++){
+  const t=tries[i];
+  log("Coba method "+(i+1)+": "+t.opt.method+" "+t.url.slice(0,60));
+  try{
+    // guna cors proxy untuk bypass github pages block
+    const proxy = "https://corsproxy.io/?"+encodeURIComponent(t.url);
+    const res = await fetch(t.url, t.opt).catch(async ()=> await fetch(proxy, t.opt));
+    log("Status: "+res.status);
+    if(!res.ok){ log("❌ "+res.status+" "+res.statusText); continue; }
+    const txt=await res.text();
+    log("Response 200, panjang: "+txt.length);
+    try{ data=JSON.parse(txt); break; }catch(e){ log("Bukan JSON: "+txt.slice(0,100)); }
+  }catch(e){ log("❌ Error: "+e.message); }
  }
- if(!data){ list.innerHTML = "❌ GAGAL: " + lastError + "<br>Pastikan di synnmlbb.com IP=0.0.0.0"; return; }
- let products = [];
- if(Array.isArray(data)) products = data;
- else if(data.data && Array.isArray(data.data)) products = data.data;
- else if(data.products) products = data.products;
- else products = [data];
- allProducts = products; log("Total: " + products.length); renderProducts(products);
-}
-function renderProducts(products){
- const list = document.getElementById('productList');
- if(products.length===0){ list.innerHTML = "⚠️ API kosong"; return; }
- list.innerHTML = "";
- products.forEach((p,i)=>{
-   const name = p.product_name || p.name || p.title || ("Produk " + (i+1));
-   const basePrice = parseFloat(p.price || p.base_price || p.cost || 0);
-   const profitInput = parseFloat(document.getElementById('profit').value) || 25;
-   const type = document.getElementById('type').value;
-   let sellPrice = basePrice;
-   if(type==="percent") sellPrice = basePrice + (basePrice*profitInput/100);
-   else sellPrice = basePrice + profitInput;
-   const div = document.createElement('div');
-   div.className = "prod";
-   div.innerHTML = `<label style="display:flex;gap:8px;align-items:center;margin:0;font-size:13px"><input type="checkbox" checked data-index="${i}"> ${name}</label><span class="price">RM ${sellPrice.toFixed(2)}</span>`;
-   list.appendChild(div);
+ if(!data){ document.getElementById('list').innerHTML="❌ GAGAL 403/405<br><br>1. Buka synnmlbb.com -> API Setting -> IP Whitelist pastikan = <b>0.0.0.0</b> DAN tekan Save<br>2. Tunggu 2 minit<br>3. Refresh page ni & SYNC balik"; return; }
+ let prods=Array.isArray(data)?data:(data.data||data.products||[data]);
+ all=prods;
+ log("✅ Dapat "+prods.length+" produk");
+ const list=document.getElementById('list'); list.innerHTML="";
+ prods.forEach((p,i)=>{
+  const name=p.product_name||p.name||p.title||"Diamond "+i;
+  const base=parseFloat(p.price||p.base_price||0);
+  const profit=parseFloat(document.getElementById('profit').value)||25;
+  let sell= base + base*profit/100;
+  const d=document.createElement('div');
+  d.style="border:1px solid #334155;padding:8px;border-radius:8px;margin-bottom:6px;display:flex;justify-content:space-between;background:#0f172a;font-size:13px";
+  d.innerHTML=`<label><input type="checkbox" checked data-i="${i}"> ${name}</label><span style="color:#22c55e">RM ${sell.toFixed(2)}</span>`;
+  list.appendChild(d);
  });
 }
-function saveSelected(){
- const target = document.getElementById('gameTarget').value;
- const profit = parseFloat(document.getElementById('profit').value) || 25;
- const type = document.getElementById('type').value;
- const checkboxes = document.querySelectorAll('#productList input[type=checkbox]:checked');
- let saved = [];
- checkboxes.forEach(cb=>{
-   const idx = parseInt(cb.dataset.index);
-   const p = allProducts[idx];
-   const basePrice = parseFloat(p.price || p.base_price || p.cost || 0);
-   let sellPrice = basePrice;
-   if(type==="percent") sellPrice = basePrice + (basePrice*profit/100);
-   else sellPrice = basePrice + profit;
-   saved.push({ id: p.id || idx, name: p.product_name || p.name || "Diamond", base_price: basePrice, sell_price: sellPrice, raw: p });
- });
- if(saved.length===0){ alert("Centang dulu!"); return; }
- localStorage.setItem("products_" + target, JSON.stringify(saved));
- alert("✅ Simpan " + saved.length + " ke " + target + "!");
+function save(){
+ const target=document.getElementById('gameTarget').value;
+ const cbs=document.querySelectorAll('#list input:checked');
+ let out=[];
+ cbs.forEach(cb=>{ const p=all[parseInt(cb.dataset.i)]; out.push(p); });
+ localStorage.setItem("products_"+target, JSON.stringify(out));
+ alert("✅ Simpan "+out.length+" ke "+target);
 }
 </script>
-</body>
-</html>
+</body></html>
