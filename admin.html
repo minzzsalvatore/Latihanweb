@@ -1,1 +1,386 @@
-<!DOCTYPE html><html lang="ms"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SALVATORE • Luxury Admin</title><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet"><style>:root{--bg:#070A14;--card:#11172A;--card2:#151E36;--border:#1E2A4A;--p:#8B5CF6;--p2:#A78BFA;--blue:#3B82F6;--green:#10B981;--yellow:#FBBF24;--red:#EF4444;--text:#E2E8F0;--muted:#64748B}*{box-sizing:border-box;margin:0;padding:0;font-family:'Plus Jakarta Sans',sans-serif}body{background:var(--bg);color:var(--text);min-height:100vh}body::before{content:"";position:fixed;inset:0;background:radial-gradient(800px at 10% -20%, #8B5CF622 0%, transparent 50%), radial-gradient(600px at 90% 0%, #3B82F622 0%, transparent 50%);pointer-events:none;z-index:-1}.header{position:sticky;top:0;z-index:50;backdrop-filter:blur(20px);background:rgba(17,23,42,0.8);border-bottom:1px solid var(--border);padding:16px 20px;display:flex;justify-content:space-between;align-items:center}.brand{display:flex;align-items:center;gap:12px}.brand-icon{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,var(--p),var(--blue));display:grid;place-items:center;font-size:20px;box-shadow:0 0 20px #8B5CF640}.brand h1{font-family:'Space Grotesk';font-size:16px;font-weight:700}.brand h1 span{background:linear-gradient(90deg,var(--p2),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent}.brand small{color:var(--muted);font-size:10px;letter-spacing:0.15em;font-weight:700}.live{display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--border);padding:8px 14px;border-radius:100px;font-size:11px;font-weight:700}.dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green);animation:pulse 2s infinite}@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.5}}.nav{max-width:1200px;margin:16px auto;padding:0 16px;display:flex;gap:8px;overflow:auto}.nav-btn{white-space:nowrap;padding:10px 18px;border-radius:100px;border:1px solid var(--border);background:var(--card);color:var(--muted);font-size:12px;font-weight:700;cursor:pointer;transition:.25s;display:flex;align-items:center;gap:7px}.nav-btn.active{background:linear-gradient(135deg,var(--p),#6D28D9);color:#fff;border-color:transparent;box-shadow:0 8px 20px #8B5CF640}.wrap{max-width:1200px;margin:0 auto;padding:0 16px 100px}.grid-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}@media(max-width:700px){.grid-stats{grid-template-columns:repeat(2,1fr)}}.stat{background:linear-gradient(135deg,var(--card),var(--card2));border:1px solid var(--border);border-radius:20px;padding:18px;position:relative;overflow:hidden}.stat small{color:var(--muted);font-size:10px;letter-spacing:0.12em;font-weight:700}.stat b{font-family:'Space Grotesk';font-size:28px;display:block;margin:6px 0}.card{background:linear-gradient(180deg,var(--card),var(--card2));border:1px solid var(--border);border-radius:24px;padding:20px;margin-bottom:16px}.card-title{font-family:'Space Grotesk';font-size:13px;letter-spacing:0.08em;color:var(--yellow);margin-bottom:16px;display:flex;align-items:center;gap:8px}label{font-size:10px;color:var(--muted);font-weight:700;letter-spacing:0.1em;margin:12px 0 6px;display:block;text-transform:uppercase}input,select{width:100%;background:var(--bg);border:1px solid var(--border);color:#fff;border-radius:14px;padding:13px 14px;font-size:13px;outline:none}.btn{border:none;border-radius:14px;padding:14px 18px;font-weight:800;font-size:12px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px}.btn-p{background:linear-gradient(135deg,var(--p),#6D28D9);color:#fff;box-shadow:0 8px 20px #8B5CF640}.btn-b{background:linear-gradient(135deg,var(--blue),#1D4ED8);color:#fff}.btn-g{background:linear-gradient(135deg,var(--green),#059669);color:#fff}.btn-dark{background:var(--card2);border:1px solid var(--border);color:var(--text)}.row{display:flex;gap:10px;flex-wrap:wrap}.row>div{flex:1;min-width:140px}.order-card{background:var(--bg);border:1px solid var(--border);border-radius:18px;padding:16px;margin-bottom:10px}.badge{font-size:10px;padding:5px 10px;border-radius:100px;font-weight:800}.b-pending{background:#FBBF2415;color:#FBBF24;border:1px solid #FBBF2440}.b-proses{background:#3B82F615;color:#60A5FA;border:1px solid #3B82F640}.b-done{background:#10B98115;color:#34D399;border:1px solid #10B98140}.b-fail{background:#EF444415;color:#F87171;border:1px solid #EF444440}.prod-card{background:var(--bg);border:1px solid var(--border);border-radius:18px;padding:14px}.prod-card img{width:100%;height:110px;object-fit:cover;border-radius:12px;margin-bottom:10px}.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px}.banner-card{border-radius:18px;overflow:hidden;border:1px solid var(--border);background:var(--bg)}.banner-card img{width:100%;height:140px;object-fit:cover}.log{background:#050814;border:1px solid var(--border);color:#10B981;font-family:monospace;font-size:11px;padding:12px;border-radius:14px;max-height:180px;overflow:auto;white-space:pre-wrap}.hidden{display:none}</style></head><body><div class="header"><div class="brand"><div class="brand-icon">⚡</div><div><h1><span>SALVATORE</span> STUDIO</h1><small>LUXURY ADMIN PANEL</small></div></div><div class="live"><div class="dot"></div> LIVE • <span id="clock">00:00</span></div></div><div class="nav"><button class="nav-btn active" onclick="tab('dash',this)">📊 Dashboard</button><button class="nav-btn" onclick="tab('orders',this)">📦 Orders</button><button class="nav-btn" onclick="tab('products',this)">🎮 Products</button><button class="nav-btn" onclick="tab('banner',this)">🖼️ Banners</button><button class="nav-btn" onclick="tab('settings',this)">⚙️ Branding</button><button class="nav-btn" onclick="tab('synn',this)">🔌 SYNN</button></div><div class="wrap"><div id="dash" class="page"><div class="grid-stats"><div class="stat"><small>TOTAL REVENUE</small><b id="rev">RM 0</b><i style="color:var(--green);font-size:11px;font-style:normal">↗ +12.5% hari ni</i></div><div class="stat"><small>TOTAL ORDERS</small><b id="stTotal">0</b></div><div class="stat"><small>PENDING</small><b id="stPending" style="color:var(--yellow)">0</b></div><div class="stat"><small>SUCCESS</small><b id="stDone" style="color:var(--green)">0</b></div></div><div class="card"><div class="card-title">⚡ QUICK ACTIONS</div><div class="row"><button class="btn btn-p" onclick="tab('orders',null)">📦 Proses Order</button><button class="btn btn-b" onclick="tab('synn',null)">🔄 Sync SYNN</button><button class="btn btn-dark" onclick="exportOrders()">📤 Export CSV</button></div><div id="recent" style="margin-top:18px"></div></div></div><div id="orders" class="page hidden"><div class="card"><div class="card-title">📦 ORDER MANAGEMENT</div><div class="row"><div><input id="q" placeholder="🔍 Cari ID, username, game..." oninput="renderOrders()"></div><div style="max-width:160px"><select id="f" onchange="renderOrders()"><option value="all">All Status</option><option value="pending">Pending</option><option value="proses">Proses</option><option value="done">Done</option><option value="fail">Fail</option></select></div></div><div id="orderList" style="margin-top:16px"></div></div></div><div id="products" class="page hidden"><div class="card"><div class="card-title">✨ TAMBAH PRODUK MANUAL</div><label>Nama Produk</label><input id="mName" placeholder="86 Diamonds • MLMY • Instant"><div class="row"><div><label>Modal RM</label><input id="mModal" type="number" step="0.01" placeholder="10.00"></div><div><label>Jual RM</label><input id="mJual" type="number" step="0.01" placeholder="13.50"></div></div><label>Gambar Produk (URL)</label><input id="mImg" placeholder="https://i.imgur.com/..."><div class="row"><div><label>Kategori</label><select id="mCat"><option>MLMY</option><option>MLID</option><option>Free Fire</option><option>PUBG</option><option>Valorant</option></select></div><div><label>Badge</label><select id="mBadge"><option>🔥 HOT</option><option>⚡ INSTANT</option><option>💎 BEST SELLER</option><option>🎉 PROMO</option><option>— Tiada</option></select></div></div><button class="btn btn-p" style="width:100%;margin-top:14px" onclick="addProd()">+ TAMBAH KE KEDAI</button></div><div class="card"><div class="card-title">🎮 PRODUK AKTIF</div><div style="display:flex;gap:8px;margin-bottom:12px"><select id="prodFilter" onchange="renderProds()" style="max-width:160px"><option value="all">Semua</option><option value="MLMY">MLMY</option><option value="MLID">MLID</option><option value="MANUAL">Manual</option><option value="SYNN">SYNN</option></select><button class="btn btn-dark" style="padding:10px 14px" onclick="clearProds()">Clear</button></div><div id="prodList" class="grid2"></div></div></div><div id="banner" class="page hidden"><div class="card"><div class="card-title">🖼️ BANNER STUDIO</div><label>Gambar Banner (16:9)</label><input id="bImg" placeholder="https://... banner promo"><div class="row"><div><label>Teks Besar</label><input id="bText" placeholder="RAYA SALE 50% OFF"></div><div><label>Sub Teks</label><input id="bSub" placeholder="Terhad 3 hari sahaja!"></div></div><label>Link Bila Klik</label><input id="bLink" placeholder="https://..."><button class="btn btn-p" style="width:100%;margin-top:12px" onclick="addBanner()">+ TAMBAH BANNER</button><div id="bannerPrev" class="grid2" style="margin-top:16px"></div></div></div><div id="settings" class="page hidden"><div class="card"><div class="card-title">⚙️ BRANDING & IDENTITY</div><label>Nama Kedai</label><input id="sName" value="SALVATORE STORE"><label>Logo URL (PNG transparent)</label><input id="sLogo" placeholder="https://... logo.png"><label>Hero Image / Background</label><input id="sHero" placeholder="https://... bg.jpg"><div class="row"><div><label>Warna Utama</label><select id="sTheme"><option value="#8B5CF6">💜 Ungu Luxury</option><option value="#3B82F6">💙 Biru Ocean</option><option value="#EC4899">💖 Pink Neon</option><option value="#10B981">💚 Emerald</option><option value="#F59E0B">🧡 Gold</option></select></div><div><label>WhatsApp Admin</label><input id="sWa" placeholder="6011xxxxxxx"></div></div><button class="btn btn-p" style="width:100%;margin-top:14px" onclick="saveSettings()">💾 SIMPAN BRANDING</button><div style="margin-top:16px;background:var(--bg);border:1px dashed var(--border);border-radius:18px;padding:20px;text-align:center"><img id="logoPrev" style="max-width:140px;max-height:60px;display:none;margin:0 auto 10px"><div id="namePrev" style="font-family:'Space Grotesk';font-weight:700;font-size:18px">SALVATORE STORE</div><small style="color:var(--muted)">Preview kedai anda</small></div></div></div><div id="synn" class="page hidden"><div class="card"><div class="card-title">🔌 SYNNMLBB INTEGRATION</div><label>API Key</label><input id="synnKey" value="q3EdSMpHrXGrd6qzp3kh"><label>Endpoint</label><input id="synnEp" value="https://synnmlbb.com/api/products"><div class="row"><div><label>Profit %</label><input id="synnProfit" type="number" value="25"></div><div><label>Simpan Ke</label><select id="synnTarget"><option>MLMY</option><option>MLID</option></select></div></div><button class="btn btn-p" style="width:100%;margin-top:14px" onclick="syncSynn()">🔄 SYNC PRODUK DARI SYNN</button><button class="btn btn-b" style="width:100%;margin-top:8px" onclick="saveSynn()">💾 SIMPAN KE KEDAI</button><div id="synnLog" class="log" style="margin-top:12px">Ready untuk sync. Auto guna proxy kalau CORS block.</div><div id="synnList" class="grid2" style="margin-top:12px"></div></div></div></div><script>function tab(id,btn){document.querySelectorAll('.page').forEach(p=>p.classList.add('hidden'));document.getElementById(id).classList.remove('hidden');document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));if(btn)btn.classList.add('active'); if(id==='orders')renderOrders(); if(id==='products')renderProds(); if(id==='banner')renderBanners(); if(id==='dash')renderDash();}setInterval(()=>{document.getElementById('clock').innerText=new Date().toLocaleTimeString('ms-MY',{hour:'2-digit',minute:'2-digit'})},1000);const K_O='salvatore_orders',K_P='salvatore_products',K_B='salvatore_banners',K_S='salvatore_settings';function saveSettings(){const s={name:sName.value,logo:sLogo.value,hero:sHero.value,theme:sTheme.value,wa:sWa.value};localStorage.setItem(K_S,JSON.stringify(s));alert('✨ Branding disimpan!');prev();}function loadS(){const s=JSON.parse(localStorage.getItem(K_S)||'{}');if(s.name){sName.value=s.name;namePrev.innerText=s.name}if(s.logo){sLogo.value=s.logo;logoPrev.src=s.logo;logoPrev.style.display='block'}if(s.hero)sHero.value=s.hero;if(s.wa)sWa.value=s.wa;if(s.theme)sTheme.value=s.theme}function prev(){namePrev.innerText=sName.value||'SALVATORE STORE';if(sLogo.value){logoPrev.src=sLogo.value;logoPrev.style.display='block'}}function addProd(){const n=mName.value.trim(),mo=parseFloat(mModal.value)||0,ju=parseFloat(mJual.value)||0,im=mImg.value.trim(),cat=mCat.value,badge=mBadge.value;if(!n)return alert('Nama wajib');let p=JSON.parse(localStorage.getItem(K_P)||'[]');const obj={id:Date.now(),product_name:n,name:n,base_price:mo,price:mo,sell_price:ju||mo*1.25,image:im,category:cat,badge,source:'MANUAL',created:new Date().toISOString()};p.push(obj);localStorage.setItem(K_P,JSON.stringify(p));let gk='products_'+cat;let gp=JSON.parse(localStorage.getItem(gk)||'[]');gp.push(obj);localStorage.setItem(gk,JSON.stringify(gp));alert('✨ Produk ditambah ke '+cat);mName.value='';renderProds();}function renderProds(){let prods=JSON.parse(localStorage.getItem(K_P)||'[]');const f=prodFilter.value;if(f!=='all')prods=prods.filter(x=>(x.category||'MLMY')===f||x.source===f);const list=document.getElementById('prodList');if(!prods.length){list.innerHTML='<small style="color:var(--muted);grid-column:1/-1;text-align:center;padding:20px">Belum ada produk ✨</small>';return}list.innerHTML='';prods.forEach((p,i)=>{const d=document.createElement('div');d.className='prod-card';d.innerHTML=`${p.image?`<img src="${p.image}" onerror="this.style.display='none'">`: `<div style="height:110px;background:linear-gradient(135deg,#151E36,#0A1020);border-radius:12px;display:grid;place-items:center;font-size:30px;margin-bottom:10px">💎</div>`}<div style="display:flex;justify-content:space-between;gap:6px"><b style="font-size:12px">${p.product_name||p.name}</b><span style="font-size:9px;background:var(--p);color:#fff;padding:3px 7px;border-radius:100px">${p.badge||p.category||'HOT'}</span></div><div style="margin-top:8px;display:flex;justify-content:space-between"><small style="color:var(--muted);font-size:10px">Modal RM${p.base_price}</small><b style="color:#10B981;font-size:14px">RM${(p.sell_price||0).toFixed(2)}</b></div><div style="margin-top:10px;display:flex;gap:6px"><button class="btn btn-dark" style="flex:1;padding:8px;font-size:10px" onclick="delProd(${i})">Hapus</button><button class="btn btn-p" style="flex:1;padding:8px;font-size:10px" onclick="editPrice(${i})">Edit</button></div>`;list.appendChild(d);});}function delProd(i){let p=JSON.parse(localStorage.getItem(K_P)||'[]');p.splice(i,1);localStorage.setItem(K_P,JSON.stringify(p));renderProds();}function editPrice(i){let p=JSON.parse(localStorage.getItem(K_P)||'[]');let n=prompt('Harga baru RM:',p[i].sell_price);if(n!==null){p[i].sell_price=parseFloat(n);localStorage.setItem(K_P,JSON.stringify(p));renderProds();}}function clearProds(){if(confirm('Hapus semua?')){localStorage.removeItem(K_P);renderProds();}}function addBanner(){const img=bImg.value.trim(),link=bLink.value.trim(),text=bText.value.trim(),sub=bSub.value.trim();if(!img)return alert('Gambar wajib');let b=JSON.parse(localStorage.getItem(K_B)||'[]');b.push({id:Date.now(),img,link,text,sub});localStorage.setItem(K_B,JSON.stringify(b));renderBanners();bImg.value='';}function renderBanners(){let b=JSON.parse(localStorage.getItem(K_B)||'[]');const prev=document.getElementById('bannerPrev');if(!b.length){prev.innerHTML='<small style="color:var(--muted);grid-column:1/-1;text-align:center;padding:20px">Belum ada banner ✨</small>';return}prev.innerHTML='';b.forEach((x,i)=>{const d=document.createElement('div');d.className='banner-card';d.innerHTML=`<img src="${x.img}"><div style="padding:12px"><b style="font-size:13px">${x.text||'Banner Promo'}</b><br><small style="color:var(--muted)">${x.sub||''}</small><div style="margin-top:10px"><button class="btn btn-dark" style="padding:8px;width:100%;font-size:10px" onclick="delBanner(${i})">Hapus</button></div></div>`;prev.appendChild(d);});}function delBanner(i){let b=JSON.parse(localStorage.getItem(K_B)||'[]');b.splice(i,1);localStorage.setItem(K_B,JSON.stringify(b));renderBanners();}function renderOrders(){let o=JSON.parse(localStorage.getItem(K_O)||'[]');const q=document.getElementById('q')?.value.toLowerCase()||'';const f=document.getElementById('f')?.value||'all';let fil=o.filter(x=>{let m=true;if(f!=='all')m=x.status===f;if(q)m=m&&JSON.stringify(x).toLowerCase().includes(q);return m;});const list=document.getElementById('orderList');if(!fil.length){list.innerHTML='<div style="text-align:center;padding:30px;color:var(--muted)"><div style="font-size:40px;margin-bottom:8px">📦</div>Tiada order</div>';return}list.innerHTML='';fil.slice().reverse().forEach(item=>{const idx=o.findIndex(z=>z.id===item.id);const d=document.createElement('div');d.className='order-card';d.innerHTML=`<div style="display:flex;justify-content:space-between"><b>#${item.id}</b><span class="badge b-${item.status}">${item.status.toUpperCase()}</span></div><div style="margin-top:10px;display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:11px"><div>🎮 ${item.game}<br>💎 ${item.product}<br>💰 RM${item.price}</div><div>👤 ${item.username}<br>🆔 ${item.userId}<br>📱 ${item.wa}</div></div><div style="margin-top:4px;color:var(--muted);font-size:10px">⏰ ${item.time}</div><div style="display:flex;gap:6px;margin-top:12px;flex-wrap:wrap"><button class="btn btn-dark" style="padding:8px 12px;font-size:10px" onclick="upS(${idx},'pending')">Pending</button><button class="btn btn-b" style="padding:8px 12px;font-size:10px" onclick="upS(${idx},'proses')">Proses</button><button class="btn btn-g" style="padding:8px 12px;font-size:10px" onclick="upS(${idx},'done')">Done ✓</button><button class="btn" style="background:var(--red);color:#fff;padding:8px 12px;font-size:10px" onclick="upS(${idx},'fail')">Fail</button></div>`;list.appendChild(d);});stTotal.innerText=o.length;stPending.innerText=o.filter(x=>x.status==='pending').length;stProses.innerText=o.filter(x=>x.status==='proses').length;stDone.innerText=o.filter(x=>x.status==='done').length;let rev=0;o.filter(x=>x.status==='done').forEach(x=>rev+=parseFloat(x.price)||0);document.getElementById('rev').innerText='RM '+rev.toFixed(2);}function upS(i,s){let o=JSON.parse(localStorage.getItem(K_O)||'[]');o[i].status=s;localStorage.setItem(K_O,JSON.stringify(o));renderOrders();renderDash();}function exportOrders(){let o=JSON.parse(localStorage.getItem(K_O)||'[]');let csv='ID,Game,Produk,Harga,Username,UserID,WA,Status,Waktu\n';o.forEach(x=>csv+=`${x.id},${x.game},${x.product},${x.price},${x.username},${x.userId},${x.wa},${x.status},${x.time}\n`);let blob=new Blob([csv],{type:'text/csv'});let url=URL.createObjectURL(blob);let a=document.createElement('a');a.href=url;a.download='salvatore_orders.csv';a.click();}function renderDash(){renderOrders();let o=JSON.parse(localStorage.getItem(K_O)||'[]');const rec=document.getElementById('recent');if(!o.length){rec.innerHTML='<small style="color:var(--muted)">Belum ada transaksi</small>';return}rec.innerHTML='<div style="margin-top:14px;font-weight:700;font-size:12px">🔥 RECENT ORDERS</div>';o.slice(-3).reverse().forEach(x=>{const d=document.createElement('div');d.className='order-card';d.style.marginTop='8px'
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SALVATORE • Luxury Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#070A14;--card:#11172A;--card2:#151E36;--border:#1E2A4A;
+  --p:#8B5CF6;--p2:#A78BFA;--blue:#3B82F6;--green:#10B981;
+  --yellow:#FBBF24;--red:#EF4444;--text:#E2E8F0;--muted:#64748B
+}
+*{box-sizing:border-box;margin:0;padding:0;font-family:'Plus Jakarta Sans',sans-serif}
+body{background:var(--bg);color:var(--text);min-height:100vh}
+body::before{
+  content:"";position:fixed;inset:0;
+  background:radial-gradient(800px at 10% -20%, #8B5CF622 0%, transparent 50%),
+             radial-gradient(600px at 90% 0%, #3B82F622 0%, transparent 50%);
+  pointer-events:none;z-index:-1
+}
+.header{
+  position:sticky;top:0;z-index:50;
+  backdrop-filter:blur(20px);
+  background:rgba(17,23,42,0.85);
+  border-bottom:1px solid var(--border);
+  padding:16px 20px;
+  display:flex;justify-content:space-between;align-items:center
+}
+.brand{display:flex;align-items:center;gap:12px}
+.brand-icon{
+  width:42px;height:42px;border-radius:12px;
+  background:linear-gradient(135deg,var(--p),var(--blue));
+  display:grid;place-items:center;font-size:20px;
+  box-shadow:0 0 20px #8B5CF640
+}
+.brand h1{font-family:'Space Grotesk';font-size:16px;font-weight:700}
+.brand h1 span{
+  background:linear-gradient(90deg,var(--p2),var(--blue));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent
+}
+.brand small{color:var(--muted);font-size:10px;letter-spacing:0.15em;font-weight:700}
+.live{
+  display:flex;align-items:center;gap:8px;
+  background:var(--card);border:1px solid var(--border);
+  padding:8px 14px;border-radius:100px;font-size:11px;font-weight:700
+}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.5}}
+.nav{max-width:1200px;margin:16px auto;padding:0 16px;display:flex;gap:8px;overflow:auto}
+.nav-btn{
+  white-space:nowrap;padding:10px 18px;border-radius:100px;
+  border:1px solid var(--border);background:var(--card);
+  color:var(--muted);font-size:12px;font-weight:700;
+  cursor:pointer;transition:.25s;display:flex;align-items:center;gap:7px
+}
+.nav-btn.active{
+  background:linear-gradient(135deg,var(--p),#6D28D9);
+  color:#fff;border-color:transparent;box-shadow:0 8px 20px #8B5CF640
+}
+.wrap{max-width:1200px;margin:0 auto;padding:0 16px 100px}
+.grid-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
+@media(max-width:700px){.grid-stats{grid-template-columns:repeat(2,1fr)}}
+.stat{
+  background:linear-gradient(135deg,var(--card),var(--card2));
+  border:1px solid var(--border);border-radius:20px;padding:18px
+}
+.stat small{color:var(--muted);font-size:10px;letter-spacing:0.12em;font-weight:700}
+.stat b{font-family:'Space Grotesk';font-size:28px;display:block;margin:6px 0}
+.card{
+  background:linear-gradient(180deg,var(--card),var(--card2));
+  border:1px solid var(--border);border-radius:24px;
+  padding:20px;margin-bottom:16px
+}
+.card-title{
+  font-family:'Space Grotesk';font-size:13px;
+  letter-spacing:0.08em;color:var(--yellow);
+  margin-bottom:16px;display:flex;align-items:center;gap:8px
+}
+label{font-size:10px;color:var(--muted);font-weight:700;letter-spacing:0.1em;margin:12px 0 6px;display:block;text-transform:uppercase}
+input,select,textarea{
+  width:100%;background:var(--bg);border:1px solid var(--border);
+  color:#fff;border-radius:14px;padding:13px 14px;font-size:13px;outline:none;transition:.2s
+}
+input:focus,select:focus{border-color:var(--p);box-shadow:0 0 0 3px #8B5CF620}
+.btn{
+  border:none;border-radius:14px;padding:14px 18px;
+  font-weight:800;font-size:12px;cursor:pointer;transition:.2s;
+  display:inline-flex;align-items:center;justify-content:center;gap:8px
+}
+.btn:active{transform:scale(.97)}
+.btn-p{background:linear-gradient(135deg,var(--p),#6D28D9);color:#fff;box-shadow:0 8px 20px #8B5CF640}
+.btn-b{background:linear-gradient(135deg,var(--blue),#1D4ED8);color:#fff}
+.btn-g{background:linear-gradient(135deg,var(--green),#059669);color:#fff}
+.btn-dark{background:var(--card2);border:1px solid var(--border);color:var(--text)}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+.row>div{flex:1;min-width:140px}
+.order-card{background:var(--bg);border:1px solid var(--border);border-radius:18px;padding:16px;margin-bottom:10px}
+.badge{font-size:10px;padding:5px 10px;border-radius:100px;font-weight:800}
+.b-pending{background:#FBBF2415;color:#FBBF24;border:1px solid #FBBF2440}
+.b-proses{background:#3B82F615;color:#60A5FA;border:1px solid #3B82F640}
+.b-done{background:#10B98115;color:#34D399;border:1px solid #10B98140}
+.b-fail{background:#EF444415;color:#F87171;border:1px solid #EF444440}
+.prod-card{background:var(--bg);border:1px solid var(--border);border-radius:18px;padding:14px;transition:.2s}
+.prod-card:hover{border-color:var(--p2);transform:translateY(-2px)}
+.prod-card img{width:100%;height:110px;object-fit:cover;border-radius:12px;margin-bottom:10px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px}
+.banner-card{border-radius:18px;overflow:hidden;border:1px solid var(--border);background:var(--bg)}
+.banner-card img{width:100%;height:140px;object-fit:cover}
+.log{
+  background:#050814;border:1px solid var(--border);
+  color:#10B981;font-family:monospace;font-size:11px;
+  padding:12px;border-radius:14px;max-height:180px;overflow:auto;
+  white-space:pre-wrap;margin-top:10px
+}
+.hidden{display:none}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="brand">
+    <div class="brand-icon">⚡</div>
+    <div>
+      <h1><span>SALVATORE</span> STUDIO</h1>
+      <small>LUXURY ADMIN PANEL</small>
+    </div>
+  </div>
+  <div class="live"><div class="dot"></div> LIVE • <span id="clock">00:00</span></div>
+</div>
+
+<div class="nav">
+  <button class="nav-btn active" onclick="openTab('dash', this)">📊 Dashboard</button>
+  <button class="nav-btn" onclick="openTab('orders', this)">📦 Orders</button>
+  <button class="nav-btn" onclick="openTab('products', this)">🎮 Products</button>
+  <button class="nav-btn" onclick="openTab('banner', this)">🖼️ Banners</button>
+  <button class="nav-btn" onclick="openTab('settings', this)">⚙️ Branding</button>
+  <button class="nav-btn" onclick="openTab('synn', this)">🔌 SYNN</button>
+</div>
+
+<div class="wrap">
+
+  <div id="dash" class="page">
+    <div class="grid-stats">
+      <div class="stat"><small>TOTAL REVENUE</small><b id="rev">RM 0</b></div>
+      <div class="stat"><small>TOTAL ORDERS</small><b id="stTotal">0</b></div>
+      <div class="stat"><small>PENDING</small><b id="stPending" style="color:var(--yellow)">0</b></div>
+      <div class="stat"><small>SUCCESS</small><b id="stDone" style="color:var(--green)">0</b></div>
+    </div>
+    <div class="card">
+      <div class="card-title">⚡ QUICK ACTIONS</div>
+      <div class="row">
+        <button class="btn btn-p" onclick="openTab('orders')">📦 Proses Order</button>
+        <button class="btn btn-b" onclick="openTab('synn')">🔄 Sync SYNN</button>
+        <button class="btn btn-dark" onclick="exportOrders()">📤 Export CSV</button>
+      </div>
+      <div id="recent" style="margin-top:18px"></div>
+    </div>
+  </div>
+
+  <div id="orders" class="page hidden">
+    <div class="card">
+      <div class="card-title">📦 ORDER MANAGEMENT</div>
+      <div class="row">
+        <div><input id="q" placeholder="🔍 Cari ID, username..." oninput="renderOrders()"></div>
+        <div style="max-width:160px">
+          <select id="f" onchange="renderOrders()">
+            <option value="all">All Status</option>
+            <option value="pending">Pending</option>
+            <option value="proses">Proses</option>
+            <option value="done">Done</option>
+            <option value="fail">Fail</option>
+          </select>
+        </div>
+      </div>
+      <div id="orderList" style="margin-top:16px"></div>
+    </div>
+  </div>
+
+  <div id="products" class="page hidden">
+    <div class="card">
+      <div class="card-title">✨ TAMBAH PRODUK MANUAL</div>
+      <label>Nama Produk</label>
+      <input id="mName" placeholder="86 Diamonds • MLMY • Instant">
+      <div class="row">
+        <div><label>Modal RM</label><input id="mModal" type="number" step="0.01"></div>
+        <div><label>Jual RM</label><input id="mJual" type="number" step="0.01"></div>
+      </div>
+      <label>Gambar URL</label><input id="mImg" placeholder="https://...">
+      <div class="row">
+        <div><label>Kategori</label><select id="mCat"><option>MLMY</option><option>MLID</option><option>Free Fire</option><option>PUBG</option></select></div>
+        <div><label>Badge</label><select id="mBadge"><option>🔥 HOT</option><option>⚡ INSTANT</option><option>💎 BEST SELLER</option><option>🎉 PROMO</option></select></div>
+      </div>
+      <button class="btn btn-p" style="width:100%;margin-top:14px" onclick="addProduct()">+ TAMBAH KE KEDAI</button>
+    </div>
+    <div class="card">
+      <div class="card-title">🎮 PRODUK AKTIF</div>
+      <div id="prodList" class="grid2"></div>
+    </div>
+  </div>
+
+  <div id="banner" class="page hidden">
+    <div class="card">
+      <div class="card-title">🖼️ BANNER STUDIO</div>
+      <label>Gambar Banner</label><input id="bImg" placeholder="https://...">
+      <div class="row">
+        <div><label>Teks Besar</label><input id="bText" placeholder="RAYA SALE 50% OFF"></div>
+        <div><label>Sub Teks</label><input id="bSub" placeholder="Terhad 3 hari"></div>
+      </div>
+      <label>Link</label><input id="bLink" placeholder="https://...">
+      <button class="btn btn-p" style="width:100%;margin-top:12px" onclick="addBanner()">+ TAMBAH BANNER</button>
+      <div id="bannerPrev" class="grid2" style="margin-top:16px"></div>
+    </div>
+  </div>
+
+  <div id="settings" class="page hidden">
+    <div class="card">
+      <div class="card-title">⚙️ BRANDING - LOGO & NAMA</div>
+      <label>Nama Kedai</label><input id="sName" value="SALVATORE STORE">
+      <label>Logo URL</label><input id="sLogo" placeholder="https://... logo.png">
+      <label>Hero Background</label><input id="sHero" placeholder="https://... bg.jpg">
+      <div class="row">
+        <div><label>Warna</label><select id="sTheme"><option value="#8B5CF6">Ungu</option><option value="#3B82F6">Biru</option><option value="#EC4899">Pink</option><option value="#10B981">Hijau</option></select></div>
+        <div><label>WhatsApp</label><input id="sWa" placeholder="6011xxxxxxx"></div>
+      </div>
+      <button class="btn btn-p" style="width:100%;margin-top:14px" onclick="saveSettings()">💾 SIMPAN BRANDING</button>
+      <div style="margin-top:16px;background:var(--bg);border:1px dashed var(--border);border-radius:18px;padding:20px;text-align:center">
+        <img id="logoPrev" style="max-width:140px;max-height:60px;display:none;margin:0 auto 10px">
+        <div id="namePrev" style="font-weight:700;font-size:18px">SALVATORE STORE</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="synn" class="page hidden">
+    <div class="card">
+      <div class="card-title">🔌 SYNNMLBB SYNC</div>
+      <label>API Key</label><input id="synnKey" value="q3EdSMpHrXGrd6qzp3kh">
+      <label>Endpoint</label><input id="synnEp" value="https://synnmlbb.com/api/products">
+      <div class="row">
+        <div><label>Profit %</label><input id="synnProfit" type="number" value="25"></div>
+        <div><label>Simpan Ke</label><select id="synnTarget"><option>MLMY</option><option>MLID</option></select></div>
+      </div>
+      <button class="btn btn-p" style="width:100%;margin-top:14px" onclick="syncSynn()">🔄 SYNC PRODUK</button>
+      <button class="btn btn-b" style="width:100%;margin-top:8px" onclick="saveSynnProducts()">💾 SIMPAN KE KEDAI</button>
+      <div id="synnLog" class="log">Ready untuk sync.</div>
+      <div id="synnList" class="grid2" style="margin-top:12px"></div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function openTab(id, btn){
+  document.querySelectorAll('.page').forEach(p=>p.classList.add('hidden'));
+  document.getElementById(id).classList.remove('hidden');
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+  if(id==='orders') renderOrders();
+  if(id==='products') renderProducts();
+  if(id==='banner') renderBanners();
+  if(id==='dash') renderDashboard();
+}
+setInterval(()=>{document.getElementById('clock').innerText=new Date().toLocaleTimeString('ms-MY',{hour:'2-digit',minute:'2-digit'})},1000);
+
+const KEY_ORDERS='salvatore_orders';
+const KEY_PRODUCTS='salvatore_products';
+const KEY_BANNERS='salvatore_banners';
+const KEY_SETTINGS='salvatore_settings';
+
+function saveSettings(){
+  const data={name:sName.value,logo:sLogo.value,hero:sHero.value,theme:sTheme.value,wa:sWa.value};
+  localStorage.setItem(KEY_SETTINGS,JSON.stringify(data));
+  alert('✨ Branding disimpan!');
+  updateBrandingPreview();
+}
+function loadSettings(){
+  const s=JSON.parse(localStorage.getItem(KEY_SETTINGS)||'{}');
+  if(s.name){sName.value=s.name;namePrev.innerText=s.name}
+  if(s.logo){sLogo.value=s.logo;logoPrev.src=s.logo;logoPrev.style.display='block'}
+  if(s.hero) sHero.value=s.hero;
+  if(s.wa) sWa.value=s.wa;
+  if(s.theme) sTheme.value=s.theme;
+}
+function updateBrandingPreview(){
+  namePrev.innerText=sName.value||'SALVATORE STORE';
+  if(sLogo.value){logoPrev.src=sLogo.value;logoPrev.style.display='block'}
+}
+
+function addProduct(){
+  const name=mName.value.trim();
+  const modal=parseFloat(mModal.value)||0;
+  const jual=parseFloat(mJual.value)||0;
+  const img=mImg.value.trim();
+  const cat=mCat.value;
+  const badge=mBadge.value;
+  if(!name){alert('Nama wajib');return;}
+  let products=JSON.parse(localStorage.getItem(KEY_PRODUCTS)||'[]');
+  const obj={id:Date.now(),product_name:name,name:name,base_price:modal,price:modal,sell_price:jual||modal*1.25,image:img,category:cat,badge,source:'MANUAL',created:new Date().toISOString()};
+  products.push(obj);
+  localStorage.setItem(KEY_PRODUCTS,JSON.stringify(products));
+  let gk='products_'+cat;
+  let gp=JSON.parse(localStorage.getItem(gk)||'[]');
+  gp.push(obj);
+  localStorage.setItem(gk,JSON.stringify(gp));
+  alert('✨ Produk ditambah ke '+cat);
+  mName.value='';renderProducts();
+}
+function renderProducts(){
+  let products=JSON.parse(localStorage.getItem(KEY_PRODUCTS)||'[]');
+  const list=document.getElementById('prodList');
+  if(!products.length){list.innerHTML='<small style="color:var(--muted);grid-column:1/-1;text-align:center;padding:20px">Belum ada produk ✨</small>';return}
+  list.innerHTML='';
+  products.forEach((p,i)=>{
+    const div=document.createElement('div');
+    div.className='prod-card';
+    div.innerHTML=`
+      ${p.image?`<img src="${p.image}">`:`<div style="height:110px;background:#151E36;border-radius:12px;display:grid;place-items:center;font-size:30px;margin-bottom:10px">💎</div>`}
+      <b style="font-size:12px">${p.product_name||p.name}</b><br>
+      <small>Modal RM${p.base_price} → <b style="color:var(--green)">RM${(p.sell_price||0).toFixed(2)}</b></small><br>
+      <div style="margin-top:8px;display:flex;gap:6px">
+        <button class="btn btn-dark" style="flex:1;padding:8px;font-size:10px" onclick="deleteProduct(${i})">Hapus</button>
+        <button class="btn btn-p" style="flex:1;padding:8px;font-size:10px" onclick="editPrice(${i})">Edit</button>
+      </div>
+    `;
+    list.appendChild(div);
+  });
+}
+function deleteProduct(i){let p=JSON.parse(localStorage.getItem(KEY_PRODUCTS)||'[]');p.splice(i,1);localStorage.setItem(KEY_PRODUCTS,JSON.stringify(p));renderProducts();}
+function editPrice(i){let p=JSON.parse(localStorage.getItem(KEY_PRODUCTS)||'[]');let n=prompt('Harga baru RM:',p[i].sell_price);if(n!==null){p[i].sell_price=parseFloat(n);localStorage.setItem(KEY_PRODUCTS,JSON.stringify(p));renderProducts();}}
+function clearProducts(){if(confirm('Hapus semua?')){localStorage.removeItem(KEY_PRODUCTS);renderProducts();}}
+
+function addBanner(){
+  const img=bImg.value.trim(),link=bLink.value.trim(),text=bText.value.trim(),sub=bSub.value.trim();
+  if(!img){alert('Gambar wajib');return;}
+  let b=JSON.parse(localStorage.getItem(KEY_BANNERS)||'[]');
+  b.push({id:Date.now(),img,link,text,sub});
+  localStorage.setItem(KEY_BANNERS,JSON.stringify(b));
+  renderBanners();bImg.value='';
+}
+function renderBanners(){
+  let b=JSON.parse(localStorage.getItem(KEY_BANNERS)||'[]');
+  const prev=document.getElementById('bannerPrev');
+  if(!b.length){prev.innerHTML='<small style="color:var(--muted)">Belum ada banner</small>';return}
+  prev.innerHTML='';
+  b.forEach((x,i)=>{
+    const div=document.createElement('div');
+    div.className='banner-card';
+    div.innerHTML=`<img src="${x.img}"><div style="padding:12px"><b>${x.text||'Banner'}</b><br><small>${x.sub||''}</small><br><button class="btn btn-dark" style="padding:8px;width:100%;margin-top:8px;font-size:10px" onclick="deleteBanner(${i})">Hapus</button></div>`;
+    prev.appendChild(div);
+  });
+}
+function deleteBanner(i){let b=JSON.parse(localStorage.getItem(KEY_BANNERS)||'[]');b.splice(i,1);localStorage.setItem(KEY_BANNERS,JSON.stringify(b));renderBanners();}
+
+function renderOrders(){
+  let orders=JSON.parse(localStorage.getItem(KEY_ORDERS)||'[]');
+  const q=document.getElementById('q')?.value.toLowerCase()||'';
+  const f=document.getElementById('f')?.value||'all';
+  let filtered=orders.filter(o=>{let m=true;if(f!=='all')m=o.status===f;if(q)m=m&&JSON.stringify(o).toLowerCase().includes(q);return m;});
+  const list=document.getElementById('orderList');
+  if(!filtered.length){list.innerHTML='<div style="text-align:center;padding:30px;color:var(--muted)">📦 Tiada order</div>';return}
+  list.innerHTML='';
+  filtered.slice().reverse().forEach(o=>{
+    const idx=orders.findIndex(x=>x.id===o.id);
+    const div=document.createElement('div');
+    div.className='order-card';
+    div.innerHTML=`
+      <div style="display:flex;justify-content:space-between"><b>#${o.id}</b><span class="badge b-${o.status}">${o.status.toUpperCase()}</span></div>
+      <div style="margin-top:10px;font-size:11px">🎮 ${o.game} | 💎 ${o.product} | 💰 RM${o.price}<br>👤 ${o.username} | 🆔 ${o.userId}<br>📱 ${o.wa} | ⏰ ${o.time}</div>
+      <div style="display:flex;gap:6px;margin-top:12px;flex-wrap:wrap">
+        <button class="btn btn-dark" style="padding:8px 12px;font-size:10px" onclick="updateStatus(${idx},'pending')">Pending</button>
+        <button class="btn btn-b" style="padding:8px 12px;font-size:10px" onclick="updateStatus(${idx},'proses')">Proses</button>
+        <button class="btn btn-g" style="padding:8px 12px;font-size:10px" onclick="updateStatus(${idx},'done')">Done ✓</button>
+        <button class="btn" style="background:var(--red);color:#fff;padding:8px 12px;font-size:10px" onclick="updateStatus(${idx},'fail')">Fail</button>
+      </div>
+    `;
+    list.appendChild(div);
+  });
+  stTotal.innerText=orders.length;
+  stPending.innerText=orders.filter(x=>x.status==='pending').length;
+  stDone.innerText=orders.filter(x=>x.status==='done').length;
+  let rev=0;orders.filter(x=>x.status==='done').forEach(x=>rev+=parseFloat(x.price)||0);rev.innerText='RM '+rev.toFixed(2);
+  document.getElementById('rev').innerText='RM '+rev.toFixed(2);
+}
+function updateStatus(i,s){let o=JSON.parse(localStorage.getItem(KEY_ORDERS)||'[]');o[i].status=s;localStorage.setItem(KEY_ORDERS,JSON.stringify(o));renderOrders();renderDashboard();}
+function exportOrders(){let o=JSON.parse(localStorage.getItem(KEY_ORDERS)||'[]');let csv='ID,Game,Produk,Harga,Username,UserID,WA,Status,Waktu\n';o.forEach(x=>csv+=`${x.id},${x.game},${x.product},${x.price},${x.username},${x.userId},${x.wa},${x.status},${x.time}\n`);let blob=new Blob([csv],{type:'text/csv'});let url=URL.createObjectURL(blob);let a=document.createElement('a');a.href=url;a.download='salvatore_orders.csv';a.click();}
+function 
