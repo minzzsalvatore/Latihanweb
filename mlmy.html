@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>MOBILE LEGENDS MALAYSIA - KHAI STORE</title>
+<title>MOBILE LEGENDS MALAYSIA - KYYSHINN STORE</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
@@ -37,20 +37,19 @@ body{background:var(--bg);color:var(--text);transition:.3s}
 </head>
 <body>
 <div class="top"><img id="logoTop" class="logo"><div class="kanan"><button class="ikon" id="btnTheme">☀️</button><button class="ikon" id="btnMenu">☰</button></div></div>
-<div id="drawer" class="drawer"><div class="cari">🔍 <input id="cari" placeholder="Quick search..."></div><div class="m aktif" onclick="location.href='index.html'">▦ HOME</div><div class="m">⌕ TRACK ORDER</div><div class="m">🧮 CALCULATOR</div><div class="m">📍 CHECK REGION</div><div style="margin-top:16px;font-weight:700">🇬🇧 English</div><div style="background:var(--bg);border:1px solid var(--garis);border-radius:12px;padding:12px;margin-top:16px"><p style="font-size:10px;color:var(--kelabu)">NEED HELP?</p><a id="waSide" href="#" style="color:#3a7bff;font-weight:700;text-decoration:none">WhatsApp CS →</a></div></div>
+<div id="drawer" class="drawer"><div class="cari">🔍 <input id="cari" placeholder="Quick search..."></div><div class="m aktif" onclick="location.href='index.html'">▦ HOME</div><div class="m" onclick="location.href='track-order.html'">⌕ TRACK ORDER</div><div class="m">🧮 CALCULATOR</div><div class="m">📍 CHECK REGION</div><div style="margin-top:16px;font-weight:700">🇬🇧 English</div><div style="background:var(--bg);border:1px solid var(--garis);border-radius:12px;padding:12px;margin-top:16px"><p style="font-size:10px;color:var(--kelabu)">NEED HELP?</p><a id="waSide" href="#" style="color:#3a7bff;font-weight:700;text-decoration:none">WhatsApp CS →</a></div></div>
 <button class="back" onclick="location.href='index.html'">‹ BACK</button>
 <div class="wrap"><div class="banner"><img id="bannerGame"><div class="icon-kecik"><img id="iconGame"></div></div><div class="info"><h1>MOBILE LEGENDS<br>MALAYSIA</h1><div class="badge" id="badgeInfo">☆ Loading...</div><span class="moonton">MOONTON</span><div class="how"><div class="how-head" id="howHead">HOW TO TOP UP <span id="arrow">⌄</span></div><div class="how-body" id="howBody"><p>1. Pilih Diamond</p><p>2. Isi ID</p><p>3. Bayar via WA manual</p></div></div></div></div>
 <div class="card"><div class="card-head"><div class="num">1</div><b>ACCOUNT DATA</b></div><span class="label">USER ID</span><input class="input" id="uid" placeholder="Contoh : 42562624"><span class="label">SERVER ID</span><input class="input" id="sid" placeholder="Contoh: 2432"><div class="infobox">ⓘ Tekan avatar kiri atas dalam game untuk cari ID kau.</div></div>
-<div class="card"><div class="card-head"><div class="num">2</div><b>SELECT NOMINAL - ALL PRODUCTS</b></div><div class="tabs"><button class="tab on">🔥 ALL PRODUCTS</button></div><div id="loading" style="padding:16px;text-align:center;color:var(--kelabu);font-size:11px">Loading produk dari admin.html...</div><div id="nomGrid" class="nom-grid"></div></div>
+<div class="card"><div class="card-head"><div class="num">2</div><b>SELECT NOMINAL</b></div><div class="tabs"><button class="tab on">🔥 ALL PRODUCTS</button></div><div id="loading" style="padding:16px;text-align:center;color:var(--kelabu);font-size:11px">Loading produk dari admin.html...</div><div id="nomGrid" class="nom-grid"></div></div>
 <div class="card"><div class="card-head"><div class="num">3</div><b>SELECT PAYMENT</b></div><span class="label">E-WALLET - MANUAL NO FEE</span>
 <div class="pay active" data-pay="tng"><div style="display:flex;gap:8px;align-items:center"><img id="iconTng"><div><b>Touch N Go</b></div></div><b class="payPrice">RM 0.00</b></div>
 <div class="pay" data-pay="shopee"><div style="display:flex;gap:8px;align-items:center"><img id="iconShopee"><div><b>ShopeePay</b></div></div><b class="payPrice">RM 0.00</b></div>
 </div>
 <div class="card"><div class="card-head"><div class="num">4</div><b>CONFIRM ORDER</b></div><span class="label">WHATSAPP NUMBER *</span><input class="input" id="waNum" placeholder="60xxxxxxxxxx"><span class="label">EMAIL OPTIONAL</span><input class="input" id="email" placeholder="user@email.com"><div class="summary"><span class="label">ORDER SUMMARY</span><div style="display:flex;gap:10px;align-items:center;margin:12px 0"><img id="sumIcon" style="width:48px;height:48px;border-radius:10px;background:var(--bg)"><div><small style="color:var(--kelabu);font-size:10px">MOBILE LEGENDS MALAYSIA</small><b id="sumNom" style="display:block;font-size:13px">Pilih Diamond</b><small id="sumPay" style="color:var(--kelabu);font-size:10px">Manual via WhatsApp</small></div></div><div style="border-top:1px solid var(--garis);margin-top:12px;padding-top:10px"><div class="row"><span>Product Price</span><span id="pPrice">RM 0.00</span></div><div class="row" style="border-top:1px solid var(--garis);padding-top:10px;margin-top:10px"><span>TOTAL PAYMENT (NO FEE)</span><span class="total" id="pTotal">RM 0.00</span></div></div></div><button class="checkout" id="btnCheck">🛒 CHECKOUT ORDER</button></div>
-<div class="bawah"><img id="logoBawah" class="logo" style="margin-bottom:10px"><p>Automatic game top-up service 24/7. Fast, secure, and instant. Play without limits!</p><div class="tiktok">♪</div><div class="footgrid"><div><b>SITE MAP</b><a href="index.html">Home</a><a>Track Order</a><a>Calculator</a><a>Check Region</a><a>Service List</a><a>API Documentation</a></div><div><b>SUPPORT</b><span style="font-size:11px;font-style:italic">No data yet</span></div></div><div><b>HELP CENTER</b><a id="waBawah" class="hijau" href="#"></a></div><div class="copy">© 2026 KHAI STORE. ALL RIGHTS RESERVED.</div></div>
+<div class="bawah"><img id="logoBawah" class="logo" style="margin-bottom:10px"><p>Automatic game top-up service 24/7. Fast, secure, and instant. Play without limits!</p><div class="tiktok">♪</div><div class="footgrid"><div><b>SITE MAP</b><a href="index.html">Home</a><a href="track-order.html">Track Order</a><a>Calculator</a><a>Check Region</a><a>Service List</a><a>API Documentation</a></div><div><b>SUPPORT</b><span style="font-size:11px;font-style:italic">No data yet</span></div></div><div><b>HELP CENTER</b><a id="waBawah" class="hijau" href="#"></a></div><div class="copy">© 2026 KYYSHINN STORE. ALL RIGHTS RESERVED.</div></div>
 <a id="waFloat" class="wa" href="#">💬</a>
 <script>
-// === KAU PUNYA LINK - DAH UBAH ===
 const LOGO_URL="https://files.catbox.moe/w1h3iy.jpg";
 const BANNER_URL="https://files.catbox.moe/ysscnw.jpeg";
 const ICON_URL="https://files.catbox.moe/ihf5ja.webp";
@@ -67,6 +66,23 @@ document.getElementById('howHead').onclick=()=>{document.getElementById('howBody
 document.getElementById('btnTheme').onclick=()=>{document.body.classList.toggle('light');document.getElementById('btnTheme').innerText=document.body.classList.contains('light')?'🌙':'☀️';};
 document.getElementById('btnMenu').onclick=()=>document.getElementById('drawer').classList.toggle('buka');
 document.querySelectorAll('.pay').forEach(p=>{p.onclick=()=>{document.querySelectorAll('.pay').forEach(x=>x.classList.remove('active'));p.classList.add('active');payMethod=p.querySelector('b').innerText;}});
-document.getElementById('btnCheck').onclick=()=>{let u=document.getElementById('uid').value,s=document.getElementById('sid').value,w=document.getElementById('waNum').value;if(!u||!s)return alert("Isi User ID & Server ID");if(!sel)return alert("Pilih diamond");if(!w)return alert("Isi WhatsApp");let t=document.getElementById('pTotal').innerText;let msg=`Hi Khai Store%0AGame: ML MY%0AID: ${u}(${s})%0AItem: ${sel.n}%0APayment: ${payMethod}%0ATotal: ${t}%0AWA: ${w}`;window.open("https://wa.me/"+WA+"?text="+msg,"_blank");};
+
+// === FORMAT BARU KYYSHINN ===
+document.getElementById('btnCheck').onclick=()=>{
+ let id=document.getElementById('uid').value.trim();
+ let server=document.getElementById('sid').value.trim();
+ let waNum=document.getElementById('waNum').value.trim();
+ let email=document.getElementById('email').value.trim();
+ if(!id || !server) return alert("Isi User ID & Server ID");
+ if(!sel) return alert("Pilih diamond");
+ if(!waNum) return alert("Isi No WhatsApp");
+
+ let total=document.getElementById('pTotal').innerText;
+
+ let pesan = `NEW ORDER!%0A%0AID : ${id}%0AServer : ${server}%0ANominal : ${sel.n}%0APayment : ${payMethod}%0ANO.Whatsap : ${waNum}%0AEmail : ${email || '-'}%0A%0APlease make the payment first; once done, the admin will process your order.`;
+
+ window.open("https://wa.me/"+WA+"?text="+pesan,"_blank");
+};
 </script>
-</body></html>
+</body>
+  </html>
