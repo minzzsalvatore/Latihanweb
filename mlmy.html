@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="ms">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>MOBILE LEGENDS INDONESIA - KYYSHINN STORE</title>
+<title>MOBILE LEGENDS MALAYSIA - KYYSHINN STORE</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
@@ -12,11 +12,11 @@ body.light{--bg:#f5f7fb;--card:#fff;--card2:#eef2f9;--text:#0e121a;--kelabu:#6b7
 body{background:var(--bg);color:var(--text);transition:.3s}
 .top{position:sticky;top:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--bg);border-bottom:1px solid var(--garis)}
 .logo{height:34px;border-radius:8px;background:#fff;padding:2px}.kanan{display:flex;gap:8px}
-.ikon{width:38px;height:38px;border-radius:12px;border:none;background:var(--card);color:var(--text);border:1px solid var(--garis);cursor:pointer}
-.drawer{position:fixed;top:54px;right:-100%;width:85%;height:100%;background:var(--card);z-index:200;padding:16px;transition:.35s;border-left:1px solid var(--garis);overflow-y:auto}.drawer.buka{right:0}
+.ikon{width:38px;height:38px;border-radius:12px;border:none;background:var(--card);color:var(--text);border:1px solid var(--garis)}
+.drawer{position:fixed;top:54px;right:-100%;width:85%;height:100%;background:var(--card);z-index:200;padding:16px;transition:.35s;border-left:1px solid var(--garis)}.drawer.buka{right:0}
 .cari{display:flex;gap:8px;background:var(--bg);border:1px solid var(--garis);border-radius:12px;padding:12px;margin-bottom:12px}.cari input{flex:1;background:transparent;border:none;outline:none;color:var(--text)}
-.m{display:block;padding:14px;background:var(--bg);border-radius:12px;margin-bottom:8px;font-weight:700;font-size:12px;color:var(--kelabu);text-decoration:none}.m.aktif{background:#12295a;color:#3a7bff;border:1px solid #1a4fbf}
-.back{margin:12px 14px;background:var(--card);border:1px solid var(--garis);color:var(--text);padding:8px 14px;border-radius:20px;font-weight:700;font-size:12px;cursor:pointer}
+.m{padding:14px;background:var(--bg);border-radius:12px;margin-bottom:8px;font-weight:700;font-size:12px;color:var(--kelabu)}.m.aktif{background:#12295a;color:#3a7bff;border:1px solid #1a4fbf}
+.back{margin:12px 14px;background:var(--card);border:1px solid var(--garis);color:var(--text);padding:8px 14px;border-radius:20px;font-weight:700;font-size:12px}
 .wrap{margin:0 14px;background:var(--card);border-radius:22px;overflow:hidden;border:1px solid var(--garis)}
 .banner{height:200px;position:relative;background:var(--card2)}.banner img{width:100%;height:100%;object-fit:cover}
 .icon-kecik{position:absolute;right:14px;bottom:-28px;width:80px;height:80px;border-radius:16px;border:3px solid var(--card);overflow:hidden;background:var(--card)}.icon-kecik img{width:100%;height:100%;object-fit:cover}
@@ -26,127 +26,63 @@ body{background:var(--bg);color:var(--text);transition:.3s}
 .card{margin:14px;background:var(--card);border:1px solid var(--garis);border-radius:20px;padding:16px}.card-head{display:flex;align-items:center;gap:10px;margin-bottom:12px}.num{width:36px;height:36px;background:var(--biru);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff}
 .label{font-size:10px;color:var(--kelabu);font-weight:700;letter-spacing:.8px;margin-top:10px;display:block}.input{width:100%;background:var(--bg);border:1px solid var(--garis);border-radius:12px;padding:14px;color:var(--text);outline:none;margin-top:6px}
 .infobox{background:#15213c;border-radius:12px;padding:10px;font-size:11px;color:#6b9bff;margin-top:10px;display:flex;gap:8px;line-height:1.5}
-body.light .infobox{background:#dbe6ff}
 .tabs{display:flex;gap:8px;overflow:auto;padding-bottom:4px}.tab{padding:10px 16px;border-radius:20px;border:1px solid var(--garis);background:var(--bg);color:var(--kelabu);font-weight:700;font-size:11px;white-space:nowrap}.tab.on{background:var(--biru);color:#fff;border-color:var(--biru)}
 .nom-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}.nom{border:1px solid var(--garis);background:var(--bg);border-radius:14px;padding:12px;text-align:center;cursor:pointer}.nom.active{border-color:var(--biru);background:#102044}.nom b{font-size:11px;display:block;margin:6px 0 4px}.nom span{color:var(--biru);font-weight:800;font-size:11px}
 .pay{border:1px solid var(--garis);background:var(--bg);border-radius:14px;padding:12px;display:flex;justify-content:space-between;align-items:center;margin-top:10px;cursor:pointer}.pay.active{border-color:var(--biru);background:#102044}.pay img{height:36px;background:#fff;border-radius:8px;padding:3px;object-fit:contain}
 .summary{border:1px solid var(--garis);border-radius:18px;padding:14px;margin-top:12px;background:var(--bg)}.row{display:flex;justify-content:space-between;font-size:12px;margin:6px 0}.total{color:var(--biru);font-size:18px;font-weight:800}
-.checkout{width:100%;margin-top:14px;background:#1a253e;color:#5a6b8a;border:none;padding:14px;border-radius:14px;font-weight:800;cursor:pointer}.checkout.active{background:var(--biru);color:#fff}
-.bawah{border-top:1px solid var(--garis);padding:20px 14px;margin-top:24px;color:var(--kelabu);font-size:12px}.bawah b{color:var(--text);display:block;margin-bottom:8px;font-size:11px;letter-spacing:1px}.footgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}.footgrid a{display:block;margin:6px 0;color:var(--kelabu);text-decoration:none;font-size:12px}.hijau{color:var(--hijau)!important;font-weight:700}.copy{text-align:center;border-top:1px solid var(--garis);padding-top:12px;margin-top:12px;font-size:10px}
+.checkout{width:100%;margin-top:14px;background:#1a253e;color:#5a6b8a;border:none;padding:14px;border-radius:14px;font-weight:800}.checkout.active{background:var(--biru);color:#fff}
+.bawah{border-top:1px solid var(--garis);padding:20px 14px;margin-top:24px;color:var(--kelabu);font-size:12px}.bawah b{color:var(--text);display:block;margin-bottom:8px;font-size:11px;letter-spacing:1px}.bawah p{line-height:1.5}.tiktok{width:38px;height:38px;background:var(--card);border:1px solid var(--garis);border-radius:10px;display:flex;align-items:center;justify-content:center;margin:14px 0}.footgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}.footgrid a{display:block;margin:6px 0;color:var(--kelabu);text-decoration:none;font-size:12px}.hijau{color:var(--hijau)!important;font-weight:700}.copy{text-align:center;border-top:1px solid var(--garis);padding-top:12px;margin-top:12px;font-size:10px}
 .wa{position:fixed;bottom:16px;right:14px;width:54px;height:54px;background:#00d084;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;color:#fff;text-decoration:none;z-index:50}
 </style>
 </head>
 <body>
 <div class="top"><img id="logoTop" class="logo"><div class="kanan"><button class="ikon" id="btnTheme">☀️</button><button class="ikon" id="btnMenu">☰</button></div></div>
-<div id="drawer" class="drawer"><div class="cari">🔍 <input placeholder="Quick search..."></div><a class="m aktif" href="index.html">▦ HOME</a><a class="m" href="track.html">⌕ TRACK ORDER</a><a class="m" href="about.html">👤 ABOUT US</a><a class="m" href="privacy.html">🔒 PRIVACY POLICY</a><a class="m" href="terms.html">📄 TERMS</a><div style="background:var(--bg);border:1px solid var(--garis);border-radius:12px;padding:12px;margin-top:16px"><p style="font-size:10px;color:var(--kelabu)">NEED HELP?</p><a id="waSide" href="#" style="color:#3a7bff;font-weight:700;text-decoration:none">WhatsApp CS →</a></div></div>
+<div id="drawer" class="drawer"><div class="cari">🔍 <input id="cari" placeholder="Quick search..."></div><div class="m aktif" onclick="location.href='index.html'">▦ HOME</div><div class="m" onclick="location.href='track-order.html'">⌕ TRACK ORDER</div><div class="m">🧮 CALCULATOR</div><div class="m">📍 CHECK REGION</div><div style="margin-top:16px;font-weight:700">🇬🇧 English</div><div style="background:var(--bg);border:1px solid var(--garis);border-radius:12px;padding:12px;margin-top:16px"><p style="font-size:10px;color:var(--kelabu)">NEED HELP?</p><a id="waSide" href="#" style="color:#3a7bff;font-weight:700;text-decoration:none">WhatsApp CS →</a></div></div>
 <button class="back" onclick="location.href='index.html'">‹ BACK</button>
-<div class="wrap"><div class="banner"><img id="bannerGame"><div class="icon-kecik"><img id="iconGame"></div></div><div class="info"><h1>MOBILE LEGENDS<br>INDONESIA</h1><div class="badge" id="badgeInfo">☆ Loading...</div><span class="moonton">MOONTON</span><div class="how"><div class="how-head" id="howHead">HOW TO TOP UP <span id="arrow">⌄</span></div><div class="how-body" id="howBody"><p>1. Buka MLBB dan tap avatar untuk lihat ID & Zone.</p><p>2. Masukkan User ID & Server ID.</p><p>3. Pilih Diamond dan bayar via WhatsApp.</p></div></div></div></div>
-
-<div class="card"><div class="card-head"><div class="num">1</div><b>ACCOUNT DATA</b></div><span class="label">USER ID</span><input class="input" id="uid" placeholder="Contoh: 123456789"><span class="label">SERVER ID / ZONE ID</span><input class="input" id="sid" placeholder="Contoh: 1234"><div class="infobox">ⓘ Tap avatar kiri atas di dalam game untuk cek ID kamu.</div></div>
-
+<div class="wrap"><div class="banner"><img id="bannerGame"><div class="icon-kecik"><img id="iconGame"></div></div><div class="info"><h1>MOBILE LEGENDS<br>MALAYSIA</h1><div class="badge" id="badgeInfo">☆ Loading...</div><span class="moonton">MOONTON</span><div class="how"><div class="how-head" id="howHead">HOW TO TOP UP <span id="arrow">⌄</span></div><div class="how-body" id="howBody"><p>1. Pilih Diamond</p><p>2. Isi ID</p><p>3. Bayar via WA manual</p></div></div></div></div>
+<div class="card"><div class="card-head"><div class="num">1</div><b>ACCOUNT DATA</b></div><span class="label">USER ID</span><input class="input" id="uid" placeholder="Contoh : 42562624"><span class="label">SERVER ID</span><input class="input" id="sid" placeholder="Contoh: 2432"><div class="infobox">ⓘ Tekan avatar kiri atas dalam game untuk cari ID kau.</div></div>
 <div class="card"><div class="card-head"><div class="num">2</div><b>SELECT NOMINAL</b></div><div class="tabs"><button class="tab on">🔥 ALL PRODUCTS</button></div><div id="loading" style="padding:16px;text-align:center;color:var(--kelabu);font-size:11px">Loading produk dari admin.html...</div><div id="nomGrid" class="nom-grid"></div></div>
-
 <div class="card"><div class="card-head"><div class="num">3</div><b>SELECT PAYMENT</b></div><span class="label">E-WALLET - MANUAL NO FEE</span>
-<div class="pay active" data-pay="dana"><div style="display:flex;gap:8px;align-items:center"><img id="iconDana"><div><b>DANA</b></div></div><b class="payPrice">RM 0.00</b></div>
-<div class="pay" data-pay="gopay"><div style="display:flex;gap:8px;align-items:center"><img id="iconGopay"><div><b>GoPay</b></div></div><b class="payPrice">RM 0.00</b></div>
-<div class="pay" data-pay="ovo"><div style="display:flex;gap:8px;align-items:center"><img id="iconOvo"><div><b>OVO</b></div></div><b class="payPrice">RM 0.00</b></div>
+<div class="pay active" data-pay="tng"><div style="display:flex;gap:8px;align-items:center"><img id="iconTng"><div><b>Touch N Go</b></div></div><b class="payPrice">RM 0.00</b></div>
+<div class="pay" data-pay="shopee"><div style="display:flex;gap:8px;align-items:center"><img id="iconShopee"><div><b>ShopeePay</b></div></div><b class="payPrice">RM 0.00</b></div>
 </div>
-
-<div class="card"><div class="card-head"><div class="num">4</div><b>CONFIRM ORDER</b></div><span class="label">WHATSAPP NUMBER *</span><input class="input" id="waNum" placeholder="62xxxxxxxxxx"><span class="label">EMAIL OPTIONAL</span><input class="input" id="email" placeholder="user@email.com"><div class="summary"><span class="label">ORDER SUMMARY</span><div style="display:flex;gap:10px;align-items:center;margin:12px 0"><img id="sumIcon" style="width:48px;height:48px;border-radius:10px;background:var(--bg)"><div><small style="color:var(--kelabu);font-size:10px">MOBILE LEGENDS INDONESIA</small><b id="sumNom" style="display:block;font-size:13px">Pilih Diamond</b><small id="sumPay" style="color:var(--kelabu);font-size:10px">Manual via WhatsApp</small></div></div><div style="border-top:1px solid var(--garis);margin-top:12px;padding-top:10px"><div class="row"><span>Product Price</span><span id="pPrice">RM 0.00</span></div><div class="row" style="border-top:1px solid var(--garis);padding-top:10px;margin-top:10px"><span>TOTAL PAYMENT (NO FEE)</span><span class="total" id="pTotal">RM 0.00</span></div></div></div><button class="checkout" id="btnCheck">🛒 CHECKOUT ORDER</button></div>
-
-<div class="bawah"><img id="logoBawah" class="logo" style="margin-bottom:10px"><p>Automatic game top-up service 24/7. Fast, secure, and instant. Play without limits!</p><div class="footgrid"><div><b>SITE MAP</b><a href="index.html">Home</a><a href="track.html">Track Order</a><a href="mlid.html">MLBB ID</a><a href="service.html">Service List</a></div><div><b>SUPPORT</b><a href="about.html">About Us</a><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms</a></div></div><div><b>HELP CENTER</b><a id="waBawah" class="hijau" href="#"></a></div><div class="copy">© 2026 KYYSHINN STORE. ALL RIGHTS RESERVED.</div></div>
+<div class="card"><div class="card-head"><div class="num">4</div><b>CONFIRM ORDER</b></div><span class="label">WHATSAPP NUMBER *</span><input class="input" id="waNum" placeholder="60xxxxxxxxxx"><span class="label">EMAIL OPTIONAL</span><input class="input" id="email" placeholder="user@email.com"><div class="summary"><span class="label">ORDER SUMMARY</span><div style="display:flex;gap:10px;align-items:center;margin:12px 0"><img id="sumIcon" style="width:48px;height:48px;border-radius:10px;background:var(--bg)"><div><small style="color:var(--kelabu);font-size:10px">MOBILE LEGENDS MALAYSIA</small><b id="sumNom" style="display:block;font-size:13px">Pilih Diamond</b><small id="sumPay" style="color:var(--kelabu);font-size:10px">Manual via WhatsApp</small></div></div><div style="border-top:1px solid var(--garis);margin-top:12px;padding-top:10px"><div class="row"><span>Product Price</span><span id="pPrice">RM 0.00</span></div><div class="row" style="border-top:1px solid var(--garis);padding-top:10px;margin-top:10px"><span>TOTAL PAYMENT (NO FEE)</span><span class="total" id="pTotal">RM 0.00</span></div></div></div><button class="checkout" id="btnCheck">🛒 CHECKOUT ORDER</button></div>
+<div class="bawah"><img id="logoBawah" class="logo" style="margin-bottom:10px"><p>Automatic game top-up service 24/7. Fast, secure, and instant. Play without limits!</p><div class="tiktok">♪</div><div class="footgrid"><div><b>SITE MAP</b><a href="index.html">Home</a><a href="track-order.html">Track Order</a><a>Calculator</a><a>Check Region</a><a>Service List</a><a>API Documentation</a></div><div><b>SUPPORT</b><span style="font-size:11px;font-style:italic">No data yet</span></div></div><div><b>HELP CENTER</b><a id="waBawah" class="hijau" href="#"></a></div><div class="copy">© 2026 KYYSHINN STORE. ALL RIGHTS RESERVED.</div></div>
 <a id="waFloat" class="wa" href="#">💬</a>
-
 <script>
 const LOGO_URL="https://files.catbox.moe/w1h3iy.jpg";
 const BANNER_URL="https://files.catbox.moe/ysscnw.jpeg";
 const ICON_URL="https://files.catbox.moe/ihf5ja.webp";
+const TNG_ICON="https://files.catbox.moe/3t3gkq.jpg";
+const SHOPEE_ICON="https://files.catbox.moe/142daj.jpeg";
 const WA="60109551965";
 
-const DANA_ICON="https://files.catbox.moe/8r2s2p.png";
-const GOPAY_ICON="https://files.catbox.moe/jtqz1u.png";
-const OVO_ICON="https://files.catbox.moe/142daj.jpeg";
-
-document.getElementById('logoTop').src=LOGO_URL;
-document.getElementById('logoBawah').src=LOGO_URL;
-document.getElementById('bannerGame').src=BANNER_URL;
-document.getElementById('iconGame').src=ICON_URL;
-document.getElementById('sumIcon').src=ICON_URL;
-document.getElementById('iconDana').src=DANA_ICON;
-document.getElementById('iconGopay').src=GOPAY_ICON;
-document.getElementById('iconOvo').src=OVO_ICON;
-
-document.getElementById('waFloat').href="https://wa.me/"+WA;
-document.getElementById('waSide').href="https://wa.me/"+WA;
-document.getElementById('waBawah').href="https://wa.me/"+WA;
-document.getElementById('waBawah').innerText="🟢 "+WA;
-
-let DATA=[];let sel=null;let payMethod="DANA";
-function render(){
-  let g=document.getElementById('nomGrid');
-  g.innerHTML=DATA.map(it=>`<div class="nom" data-n="${it.n}" data-p="${it.p}"><div>💎</div><b>${it.n}</b><span>RM ${parseFloat(it.p).toFixed(2)}</span></div>`).join('');
-  g.querySelectorAll('.nom').forEach(el=>{
-    el.onclick=()=>{
-      g.querySelectorAll('.nom').forEach(x=>x.classList.remove('active'));
-      el.classList.add('active');
-      sel={n:el.dataset.n,p:parseFloat(el.dataset.p)};
-      document.getElementById('sumNom').innerText=sel.n;
-      document.getElementById('pPrice').innerText="RM "+sel.p.toFixed(2);
-      document.getElementById('pTotal').innerText="RM "+sel.p.toFixed(2);
-      document.querySelectorAll('.payPrice').forEach(x=>x.innerText="RM "+sel.p.toFixed(2));
-      document.getElementById('btnCheck').classList.add('active');
-    }
-  });
-}
-function load(){
-  let s=JSON.parse(localStorage.getItem('KYYSHINN_MLID')||localStorage.getItem('KHAI_MLBB')||'[]');
-  let ld=document.getElementById('loading');
-  if(s.length==0){
-    ld.innerText="❌ Belum ada produk MLID. Buka admin.html untuk tambah!";
-    document.getElementById('badgeInfo').innerText="☆ 0 produk";
-    return;
-  }
-  DATA=s.map(p=>({n:p.n,p:parseFloat(p.p)}));
-  ld.style.display='none';
-  document.getElementById('badgeInfo').innerText="☆ "+DATA.length+" produk • MLBB INDONESIA";
-  render();
-}
+document.getElementById('logoTop').src=LOGO_URL;document.getElementById('logoBawah').src=LOGO_URL;document.getElementById('bannerGame').src=BANNER_URL;document.getElementById('iconGame').src=ICON_URL;document.getElementById('sumIcon').src=ICON_URL;document.getElementById('iconTng').src=TNG_ICON;document.getElementById('iconShopee').src=SHOPEE_ICON;document.getElementById('waFloat').href="https://wa.me/"+WA;document.getElementById('waSide').href="https://wa.me/"+WA;document.getElementById('waBawah').href="https://wa.me/"+WA;document.getElementById('waBawah').innerText="🟢 "+WA;
+let DATA=[];let sel=null,payMethod="Touch N Go";
+function render(){let g=document.getElementById('nomGrid');g.innerHTML=DATA.map(it=>`<div class="nom" data-n="${it.n}" data-p="${it.p}"><div>💎</div><b>${it.n}</b><span>RM ${it.p.toFixed(2)}</span></div>`).join('');g.querySelectorAll('.nom').forEach(el=>{el.onclick=()=>{g.querySelectorAll('.nom').forEach(x=>x.classList.remove('active'));el.classList.add('active');sel={n:el.dataset.n,p:parseFloat(el.dataset.p)};document.getElementById('sumNom').innerText=sel.n;document.getElementById('pPrice').innerText="RM "+sel.p.toFixed(2);document.getElementById('pTotal').innerText="RM "+sel.p.toFixed(2);document.querySelectorAll('.payPrice').forEach(x=>x.innerText="RM "+sel.p.toFixed(2));document.getElementById('btnCheck').classList.add('active');}});}
+function load(){let s=JSON.parse(localStorage.getItem('KHAI_MLBB')||'[]');let ld=document.getElementById('loading');if(s.length==0){ld.innerText="❌ Belum ada produk. Buka admin.html untuk tambah!";document.getElementById('badgeInfo').innerText="☆ 0 produk";return;}DATA=s.map(p=>({n:p.n,p:parseFloat(p.p)}));ld.style.display='none';document.getElementById('badgeInfo').innerText="☆ "+DATA.length+" produk";render();}
 load();
-
-document.getElementById('howHead').onclick=()=>{
-  document.getElementById('howBody').classList.toggle('show');
-  document.getElementById('arrow').innerText=document.getElementById('howBody').classList.contains('show')?'⌃':'⌄'
-};
-document.getElementById('btnTheme').onclick=()=>{
-  document.body.classList.toggle('light');
-  localStorage.setItem('kyy_theme', document.body.classList.contains('light')?'light':'dark');
-  document.getElementById('btnTheme').innerText=document.body.classList.contains('light')?'🌙':'☀️';
-};
-(function(){let t=localStorage.getItem('kyy_theme')||'dark';if(t==='light'){document.body.classList.add('light');document.getElementById('btnTheme').innerText='🌙';}})();
+document.getElementById('howHead').onclick=()=>{document.getElementById('howBody').classList.toggle('show');document.getElementById('arrow').innerText=document.getElementById('howBody').classList.contains('show')?'⌃':'⌄'};
+document.getElementById('btnTheme').onclick=()=>{document.body.classList.toggle('light');document.getElementById('btnTheme').innerText=document.body.classList.contains('light')?'🌙':'☀️';};
 document.getElementById('btnMenu').onclick=()=>document.getElementById('drawer').classList.toggle('buka');
-document.querySelectorAll('.pay').forEach(p=>{
-  p.onclick=()=>{
-    document.querySelectorAll('.pay').forEach(x=>x.classList.remove('active'));
-    p.classList.add('active');
-    payMethod=p.querySelector('b').innerText;
-  }
-});
+document.querySelectorAll('.pay').forEach(p=>{p.onclick=()=>{document.querySelectorAll('.pay').forEach(x=>x.classList.remove('active'));p.classList.add('active');payMethod=p.querySelector('b').innerText;}});
 
+// === FORMAT BARU KYYSHINN ===
 document.getElementById('btnCheck').onclick=()=>{
  let id=document.getElementById('uid').value.trim();
  let server=document.getElementById('sid').value.trim();
  let waNum=document.getElementById('waNum').value.trim();
  let email=document.getElementById('email').value.trim();
- if(!id || !server) return alert("Isi User ID & Zone ID");
+ if(!id || !server) return alert("Isi User ID & Server ID");
  if(!sel) return alert("Pilih diamond");
  if(!waNum) return alert("Isi No WhatsApp");
 
  let total=document.getElementById('pTotal').innerText;
 
- let pesan = `NEW ORDER - MLBB ID!%0A%0AID : ${id}%0AServer : ${server}%0ANominal : ${sel.n}%0APayment : ${payMethod}%0ATotal : ${total}%0ANO.Whatsap : ${waNum}%0AEmail : ${email || '-'}%0A%0APlease make the payment first; once done, the admin will process your order.`;
+ let pesan = `NEW ORDER!%0A%0AID : ${id}%0AServer : ${server}%0ANominal : ${sel.n}%0APayment : ${payMethod}%0ANO.Whatsap : ${waNum}%0AEmail : ${email || '-'}%0A%0APlease make the payment first; once done, the admin will process your order.`;
 
  window.open("https://wa.me/"+WA+"?text="+pesan,"_blank");
 };
 </script>
 </body>
-                                                                                                                                                                                                                    </html>
+  </html>
